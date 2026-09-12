@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="relative grid md:grid-cols-2 gap-12 items-center">
         <div>
           <Section>
-            <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
+            <h1 className="font-display text-3xl md:text-5xl font-bold tracking-tight leading-[1.1]">
               Everyone sees the same tokenized stocks<br />
               <span className="bg-gradient-to-r from-zenblue via-accent to-accent2 bg-clip-text text-transparent">
                 Zivic makes it yours
@@ -22,19 +22,27 @@ export default function Hero() {
           <Section>
             <p className="mt-5 text-[15px] text-white/50 leading-relaxed">
               Zivic is a hyper-personalized AI dashboard for tokenized stocks on{' '}
-              <span className="text-accent font-semibold">X Layer</span>. Tell Zivic your goals and risk appetite — it ranks, filters, and explains the xStocks that matter most to you.
+              <a href="https://web3.okx.com/xlayer" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">X Layer</a>,{' '}
+              <a href="https://www.bnbchain.org/en" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">BNB</a>,{' '}
+              <a href="https://robinhood.com/us/en/crypto/chain/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Robinhood</a>. Tell Zivic your goals and risk appetite — it ranks, filters, and explains the xStocks that matter most to you.
             </p>
           </Section>
 
           <Section>
-            <div className="mt-8 flex items-center gap-4">
-              <a href="#" className="text-[14px] font-medium bg-accent text-white px-6 py-3 rounded-lg hover:bg-accent/80 transition-colors">
-                Try Zivic →
-              </a>
-              <a href="#how-it-works" className="text-[14px] text-white/50 hover:text-white transition-colors">
-                See how it works
-              </a>
-            </div>
+            <ul className="mt-6 space-y-2 text-[13px] text-white/35">
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
+                Hyper-personalized AI for tokenized stocks
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
+                Live market data across Web3
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
+                Pay only for the AI you use
+              </li>
+            </ul>
           </Section>
         </div>
 

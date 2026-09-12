@@ -12,16 +12,17 @@ export default function Header() {
           <span className="font-display text-lg font-semibold tracking-tight">Zivic</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7 text-[13px] text-white/50 font-medium">
-          <Link href="/dashboard/new-chat" className="hover:text-white transition-colors">Chat</Link>
+        <nav className="hidden md:flex font-display items-center gap-7 text-[13px] text-white/50 font-medium">
+          <Link href="/dashboard" className="hover:text-white transition-colors">Chat</Link>
           <Link href="/dashboard/explore" className="hover:text-white transition-colors">Explore</Link>
+          <a href="https://www.tamagolabs.com/en/blog" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Blog</a>
           <Link href="#" className="hover:text-white transition-colors">Pricing</Link>
           <Link href="#" className="hover:text-white transition-colors">Chains</Link>
         </nav>
 
         <div className="flex items-center gap-4">
           <AgentStatus />
-          <Link href="/dashboard" className="text-[13px] font-medium bg-accent text-white px-4 py-2 rounded-lg hover:bg-accent/80 transition-colors">
+          <Link href="/dashboard" className="text-[13px] font-display font-medium bg-accent text-white px-4 py-2 rounded-lg hover:bg-accent/80 transition-colors">
             Dashboard
           </Link>
         </div>

@@ -11,61 +11,80 @@ export default function Problem() {
         </Section>
 
         <Section>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-center tracking-tight mb-10 max-w-lg mx-auto">
-            Tokenized stocks are here. The interfaces aren&apos;t.
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-center tracking-tight max-w-lg mx-auto">
+            Why tokenized stocks belong on-chain
           </h2>
         </Section>
 
         <Section>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Generic */}
-            <div className="bg-white/[0.02] border border-border3/50 rounded-xl p-6">
-              <p className="text-[13px] text-warn2 font-semibold mb-4">Generic ranking — same for everyone</p>
-              <div className="space-y-3">
-                {[
-                  { rank: '#1', ticker: 'NVDAx', name: 'NVIDIA' },
-                  { rank: '#2', ticker: 'AAPLx', name: 'Apple' },
-                  { rank: '#3', ticker: 'MSFTx', name: 'Microsoft' },
-                  { rank: '#4', ticker: 'GOOGLx', name: 'Alphabet' },
-                ].map((s) => (
-                  <div key={s.ticker} className="flex items-center gap-3 text-[14px] text-white/40">
-                    <span className="text-[12px] text-white/25 w-6">{s.rank}</span>
-                    <span className="font-mono font-semibold text-white/60">{s.ticker}</span>
-                    <span className="text-white/30">{s.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Personalized */}
-            <div className="bg-accent/5 border border-accent/20 rounded-xl p-6">
-              <p className="text-[13px] text-accent2 font-semibold mb-4">Your ranking — based on your goals</p>
-              <div className="space-y-3">
-                {[
-                  { rank: '#1', ticker: 'NVDAx', name: 'NVIDIA', score: 94 },
-                  { rank: '#2', ticker: 'MSFTx', name: 'Microsoft', score: 89 },
-                  { rank: '#3', ticker: 'GOOGLx', name: 'Alphabet', score: 86 },
-                  { rank: '#4', ticker: 'METAx', name: 'Meta', score: 82 },
-                ].map((s) => (
-                  <div key={s.ticker} className="flex items-center gap-3 text-[14px]">
-                    <span className="text-[12px] text-white/25 w-6">{s.rank}</span>
-                    <span className="font-mono font-semibold text-white">{s.ticker}</span>
-                    <span className="text-white/30">{s.name}</span>
-                    <span className="ml-auto text-[12px] font-mono text-accent2">{s.score}/100</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <p className="mt-6 text-[15px] text-white/50 leading-relaxed text-center max-w-2xl mx-auto">
+            Tokenized stocks don&apos;t have to live inside a single platform. Onchain markets give users a new way to hold, transfer, and interact with tokenized equities.
+          </p>
         </Section>
 
         <Section>
-          <div className="text-center mt-12">
-            <p className="text-xl text-white font-semibold">
-              The market is shared. The experience should be personal.
-            </p>
-            <p className="text-[14px] text-white/40 mt-3 max-w-lg mx-auto">
-              Zivic combines your goals and risk appetite with live market and RWA data to rank, filter, and explain the xStocks most relevant to you.
+          <div className="mt-12 max-w-3xl mx-auto">
+            {/* Desktop table */}
+            <div className="hidden md:block border border-border3/50 rounded-xl overflow-hidden">
+              <table className="w-full text-[13px]">
+                <thead>
+                  <tr className="border-b border-border3/50 bg-white/[0.02]">
+                    <th className="text-left px-6 py-4 text-white/50 font-medium">Capability</th>
+                    <th className="text-left px-6 py-4 text-white/50 font-medium">CEX / Traditional</th>
+                    <th className="text-left px-6 py-4 text-accent2 font-medium">Onchain</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border3/50">
+                  <tr>
+                    <td className="px-6 py-4 text-white/70 font-medium">Access</td>
+                    <td className="px-6 py-4 text-white/40">Platform account and eligibility requirements.</td>
+                    <td className="px-6 py-4 text-white/60"><span className="font-semibold text-white/80">Permissionless interaction</span> with supported onchain markets.</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 text-white/70 font-medium">Ownership</td>
+                    <td className="px-6 py-4 text-white/40">Held within the platform&apos;s account or custody model.</td>
+                    <td className="px-6 py-4 text-white/60"><span className="font-semibold text-white/80">Wallet-native</span> assets you can hold and transfer through supported networks.</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 text-white/70 font-medium">Composability</td>
+                    <td className="px-6 py-4 text-white/40">Limited to the platform&apos;s supported features and integrations.</td>
+                    <td className="px-6 py-4 text-white/60"><span className="font-semibold text-white/80">Connect to DeFi, lending, and other onchain applications</span> where supported.</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 text-white/70 font-medium">Transferability</td>
+                    <td className="px-6 py-4 text-white/40">Transfers depend on the platform&apos;s supported workflows.</td>
+                    <td className="px-6 py-4 text-white/60"><span className="font-semibold text-white/80">Transfer</span> between compatible wallets and applications.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile cards */}
+            <div className="md:hidden space-y-4">
+              {[
+                { cap: 'Access', cex: 'Platform account and eligibility requirements.', onchain: 'Permissionless interaction with supported onchain markets.' },
+                { cap: 'Ownership', cex: 'Held within the platform\'s account or custody model.', onchain: 'Wallet-native assets you can hold and transfer through supported networks.' },
+                { cap: 'Composability', cex: 'Limited to the platform\'s supported features and integrations.', onchain: 'Connect to DeFi, lending, and other onchain applications where supported.' },
+                { cap: 'Transferability', cex: 'Transfers depend on the platform\'s supported workflows.', onchain: 'Transfer between compatible wallets and applications.' },
+              ].map((row) => (
+                <div key={row.cap} className="border border-border3/50 rounded-xl p-4 bg-white/[0.02]">
+                  <p className="text-[13px] text-white/70 font-medium mb-3">{row.cap}</p>
+                  <div className="space-y-2">
+                    <div>
+                      <p className="text-[11px] text-white/30 uppercase tracking-wider mb-1">CEX / Traditional</p>
+                      <p className="text-[12px] text-white/40">{row.cex}</p>
+                    </div>
+                    <div>
+                      <p className="text-[11px] text-accent2 uppercase tracking-wider mb-1">Onchain</p>
+                      <p className="text-[12px] text-white/60">{row.onchain}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-4 text-[11px] text-white/30 leading-relaxed text-center">
+              <span className="text-white/40 font-medium">Important:</span> <span className="text-accent">&ldquo;Permissionless&rdquo;</span> describes the ability to interact with supported onchain contracts or markets without a traditional platform account. It does not mean every tokenized stock can be acquired by anyone, or that issuer, transfer, KYC, or geographic restrictions disappear.
             </p>
           </div>
         </Section>

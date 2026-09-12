@@ -31,7 +31,7 @@ export default function AgentStatus() {
   return (
     <div className="relative">
       <div
-        className="flex items-center gap-2 bg-white/[0.03] border border-border3/50 rounded-lg px-3 py-1.5 cursor-default"
+        className="flex items-center gap-2 bg-white/[0.03] font-display border border-border3/50 rounded-lg px-3 py-1.5 cursor-default"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
