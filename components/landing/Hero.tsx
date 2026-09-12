@@ -22,9 +22,9 @@ export default function Hero() {
           <Section>
             <p className="mt-5 text-[15px] text-white/50 leading-relaxed">
               Zivic is a hyper-personalized AI dashboard for tokenized stocks on{' '}
-              <a href="https://web3.okx.com/xlayer" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">X Layer</a>,{' '}
-              <a href="https://www.bnbchain.org/en" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">BNB</a>,{' '}
-              <a href="https://robinhood.com/us/en/crypto/chain/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Robinhood</a>. Tell Zivic your goals and risk appetite — it ranks, filters, and explains the xStocks that matter most to you.
+              <a href="https://solana.com/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Solana</a>. Tell Zivic your goals and risk appetite — it ranks, filters, and explains the{' '}
+              <a href="https://xstocks.fi/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">xStocks</a>{' '}
+              that matter most to you.
             </p>
           </Section>
 
@@ -32,15 +32,15 @@ export default function Hero() {
             <ul className="mt-6 space-y-2 text-[13px] text-white/35">
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
-                Hyper-personalized AI for tokenized stocks
+                Trading-ready on <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png" alt="Solana" className="w-4 h-4 inline-block rounded-full" /> <span className="text-accent font-semibold">Solana Mainnet</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
-                Live market data across Web3
+                Data supplied by <img src="data:image/webp;base64,UklGRpABAABXRUJQVlA4IIQBAACQCACdASocABwAPtEutFooIagoGAEAGglsAJ0yhHVmgr0u2A3AG8jbyMSqrxp/Q2/A/YAVxwJw+yloJ8smrpKqFYWRvVgPnY0CG+B4AAD+Ctjsye/cX1TUx/xyKUIg9Ud32p9rJksmCygByiPDZFVXIusKLNlU/ZYW654rHaxRl+81N+ap6z5/+JUP85O4X9LOTiHyYhIS+Uv0SbUMOlRY5nwz++/kUpwVj7HrZvaoS6CMjojqhvH70H0o2n+lj1mVb8fn4F//afX8GlQuLQ++sH/FV/wsDf0/sw7GHQkWO9SfjH5O7wBfAYag/NcAisPc06GbPrnCrictkX8eI2RAd6t4KuNhlUlp2SGRV1LTnkMrY8Weg17US9j97ZZMSCoqc37qX4VhuMeYDv/xXYCbiJwHo/7m/9tn1N/6Lxa0GzOaixvJugxQ1/fMJncLK31Qx0a/dRjeeaySYZCWqSBrAU4Gn9gwt+x/z/zSoUNDUfjex7f0/z6I3nYWKUpL+weT4AAA" alt="CoinMarketCap" className="w-4 h-4 inline-block rounded-full" /> <span className="text-accent font-semibold">CoinMarketCap Pro</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
-                Pay only for the AI you use
+                Frontier AI-level reasoning
               </li>
             </ul>
           </Section>

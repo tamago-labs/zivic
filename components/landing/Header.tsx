@@ -15,9 +15,8 @@ export default function Header() {
         <nav className="hidden md:flex font-display items-center gap-7 text-[13px] text-white/50 font-medium">
           <Link href="/dashboard" className="hover:text-white transition-colors">Chat</Link>
           <Link href="/dashboard/explore" className="hover:text-white transition-colors">Explore</Link>
-          <a href="https://www.tamagolabs.com/en/blog" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Blog</a>
           <Link href="#" className="hover:text-white transition-colors">Pricing</Link>
-          <Link href="#" className="hover:text-white transition-colors">Chains</Link>
+
         </nav>
 
         <div className="flex items-center gap-4">

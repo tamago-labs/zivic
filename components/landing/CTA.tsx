@@ -12,7 +12,7 @@ export default function CTA() {
             </div>
             <div className="relative bg-surface rounded-2xl p-10 text-center z-10">
               <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">
-                Make the market yours.
+                Make the market yours
               </h2>
               <p className="mt-4 text-[15px] text-white/45">
                 Same xStock universe. Your personalized view. Try Zivic and see which stocks matter most to you.

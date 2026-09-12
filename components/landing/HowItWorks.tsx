@@ -5,40 +5,40 @@ import Section from './Section';
 const steps = [
   {
     num: '01',
-    title: 'Define your goal',
+    title: 'Ask Zivic',
     description: (
       <>
-        Choose from <span className="text-white/70 font-medium">Growth, Lower Risk, Diversification, Income, Technology/AI</span> — or describe what you want in natural language.
+        Ask anything about tokenized stocks. <span className="text-white/70 font-medium">What should I buy? Why is a stock moving? Which stocks fit my goals and risk appetite?</span>
       </>
     ),
-    example: '"I want long-term exposure to AI but don\'t want to take extreme risk."',
+    example: null,
   },
   {
     num: '02',
-    title: 'Set risk appetite',
+    title: 'Get a personalized answer',
     description: (
       <>
-        Simple profile: <span className="text-white/70 font-medium">Conservative, Balanced,</span> or <span className="text-white/70 font-medium">Aggressive</span>. No complicated questionnaire.
+        Zivic combines your preferences with market data to <span className="text-white/70 font-medium">rank, compare, and explain</span> the xStocks that matter to you.
       </>
     ),
     example: null,
   },
   {
     num: '03',
-    title: 'Zivic analyzes',
+    title: 'Find the best trade',
     description: (
       <>
-        Evaluates xStocks using <span className="text-white/70 font-medium">CoinMarketCap RWA data</span> — price, market cap, volume, liquidity, risk characteristics — combined with your preferences.
+        When you&apos;re ready, Zivic finds the <span className="text-white/70 font-medium">best available route</span> for your trade across Solana liquidity through <span className="text-white/70 font-medium">Jupiter</span>.
       </>
     ),
     example: null,
   },
   {
     num: '04',
-    title: 'Personalized ranking',
+    title: 'Trade on Solana',
     description: (
       <>
-        Each xStock gets a <span className="text-white/70 font-medium">Zivic Score</span> = Market Signals × Personal Fit. Every recommendation is explained.
+        Review the transaction, connect your wallet, and execute the trade directly on <span className="text-white/70 font-medium">Solana Mainnet</span>.
       </>
     ),
     example: null,
@@ -47,7 +47,9 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 grid-bg scroll-mt-14">
+    <section id="how-it-works" className="py-24 grid-bg scroll-mt-14 relative overflow-hidden">
+      <div className="absolute w-[400px] h-[400px] top-1/2 -translate-y-1/2 -left-40 rounded-full blur-[100px] opacity-30 bg-accent pointer-events-none" />
+      <div className="absolute w-[350px] h-[350px] top-1/2 -translate-y-1/2 -right-32 rounded-full blur-[100px] opacity-30 bg-zenpurple pointer-events-none" />
       <div className="max-w-3xl mx-auto px-6">
         <Section>
           <p className="text-[13px] text-accent uppercase tracking-wider text-center mb-4">How it works</p>
@@ -55,11 +57,12 @@ export default function HowItWorks() {
 
         <Section>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-center tracking-tight mb-12">
-            Set preferences. Get your market.
+            Simple steps to your first trade
           </h2>
         </Section>
 
-        <Section>
+        <div className="max-w-lg mx-auto">
+          <Section>
           <div className="relative pl-16">
             <div className="absolute left-[18px] top-4 bottom-4 w-px bg-border3" />
 
@@ -80,6 +83,9 @@ export default function HowItWorks() {
             </div>
           </div>
         </Section>
+        </div>
+
+        
       </div>
     </section>
   );
