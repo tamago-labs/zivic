@@ -6,8 +6,8 @@ const schema = a.schema({
       walletAddress: a.string().required(),
       profileName: a.string(),
       credits: a.float().required(),
-      experience: a.enum(["newcomer", "regular", "lite-degen", "full-degen"]),
-      writingStyle: a.enum(["default", "journalist", "storytelling", "ct-vibes", "concise"]),
+      experience: a.enum(["newcomer", "regular", "lite_degen", "full_degen"]),
+      writingStyle: a.enum(["default", "journalist", "storytelling", "ct_vibes", "concise"]),
       sources: a.string().array(),
     })
     .authorization((allow) => [allow.publicApiKey().to(["read", "create", "update"])])

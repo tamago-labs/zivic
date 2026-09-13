@@ -8,15 +8,15 @@ import { examplePrompts, getRandomPrompt } from '@/lib/prompts';
 const experienceOptions = [
   { value: 'newcomer', label: 'Newcomer', desc: 'New to crypto. Plain language, more explanations.' },
   { value: 'regular', label: 'Regular', desc: 'Comfortable with basics. Balanced detail.' },
-  { value: 'lite-degen', label: 'Lite Degen', desc: 'Familiar with DeFi. Technical but accessible.' },
-  { value: 'full-degen', label: 'Full Degen', desc: 'Crypto native. Max degen, no hand-holding.' },
+  { value: 'lite_degen', label: 'Lite Degen', desc: 'Familiar with DeFi. Technical but accessible.' },
+  { value: 'full_degen', label: 'Full Degen', desc: 'Crypto native. Max degen, no hand-holding.' },
 ];
 
 const writingStyleOptions = [
   { value: 'default', label: 'Default', desc: 'Balanced tone, clear and direct.' },
   { value: 'journalist', label: 'Journalist', desc: 'Fact-driven, neutral reporting style.' },
   { value: 'storytelling', label: 'Storytelling', desc: 'Narrative flow, explains the why.' },
-  { value: 'ct-vibes', label: 'CT Vibes', desc: 'Crypto Twitter slang, memes, vibes.' },
+  { value: 'ct_vibes', label: 'CT Vibes', desc: 'Crypto Twitter slang, memes, vibes.' },
   { value: 'concise', label: 'Concise', desc: 'Short and to the point. No fluff.' },
 ];
 
@@ -181,6 +181,7 @@ function NewChatInner() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
   const [experience, setExperience] = useState('regular');
+
   const [writingStyle, setWritingStyle] = useState('default');
   const [sources, setSources] = useState(['cmc', 'news', 'exchange', 'tradfi']);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
