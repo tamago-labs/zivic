@@ -5,7 +5,7 @@ const schema = a.schema({
     .model({
       walletAddress: a.string().required(),
       profileName: a.string(),
-      credits: a.integer().required(),
+      credits: a.float().required(),
       experience: a.enum(["newcomer", "regular", "lite-degen", "full-degen"]),
       writingStyle: a.enum(["default", "journalist", "storytelling", "ct-vibes", "concise"]),
       sources: a.string().array(),
