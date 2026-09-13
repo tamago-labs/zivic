@@ -11,7 +11,7 @@ import {
 } from "@solana/kit-plugin-wallet/react";
 import { useClient } from "@solana/react";
 import { Wallet, Copy, Check, LogOut, ChevronDown, X } from "lucide-react";
-import type { AppClient } from "./SolanaWalletProvider";
+import type { AppClient } from "../SolanaWalletProvider";
 
 function truncate(address: string) {
   return `${address.slice(0, 5)}…${address.slice(-4)}`;
@@ -46,7 +46,7 @@ const modal = {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { type: "spring", damping: 25, stiffness: 300 },
+    transition: { type: "spring" as const, damping: 25, stiffness: 300 },
   },
   exit: { opacity: 0, scale: 0.95, y: 20 },
 };
@@ -165,7 +165,7 @@ export function WalletModal({
               </div>
             )}
 
-            {connect.error && (
+            {!!connect.error && (
               <p className="mt-4 text-[12px] text-red-400 text-center">
                 {connect.error instanceof Error
                   ? connect.error.message
@@ -187,7 +187,7 @@ const popover = {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { type: "spring", damping: 25, stiffness: 350 },
+    transition: { type: "spring" as const, damping: 25, stiffness: 350 },
   },
   exit: { opacity: 0, scale: 0.95, y: -8 },
 };
