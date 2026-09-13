@@ -1,33 +1,39 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Send } from 'lucide-react';
-
-const prompts = [
-  'I want long-term AI exposure with moderate risk',
-  'Show me lower-risk alternatives to NVDAx',
-  'Build a diversified $10K portfolio',
-  'Why is NVDAx ranked above MSFTx?',
-];
-
-const responses = [
-  {
-    score: 94,
-    ticker: 'NVDAx',
-    reason: 'Strong match for your growth + AI preference.',
-  },
-];
+import { examplePrompts, getRandomPrompt } from '@/lib/prompts';
 
 export default function HeroPrompt() {
+  const router = useRouter();
   const [inputValue, setInputValue] = useState('');
-  const [placeholderIndex] = useState(() => Math.floor(Math.random() * prompts.length));
-  const [submitted, setSubmitted] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
-  const handleSubmit = () => {
-    if (inputValue.trim()) setSubmitted(true);
+  useEffect(() => {
+    setActiveIndex(Math.floor(Math.random() * examplePrompts.length));
+    setMounted(true);
+  }, []);
+
+  const handleBadgeClick = () => {
+    setActiveIndex((prev) => getRandomPrompt(prev));
   };
 
+  const handlePromptClick = () => {
+    setInputValue(examplePrompts[activeIndex].text);
+  };
+
+  const handleSubmit = () => {
+    if (inputValue.trim()) {
+      router.push(`/dashboard?prompt=${encodeURIComponent(inputValue.trim())}`);
+    }
+  };
+
+  const current = examplePrompts[activeIndex];
+
   return (
+    <div className="flex flex-col">
     <div className="bg-surface border border-border3 rounded-2xl shadow-2xl glow-blue overflow-hidden">
       <div className="flex items-center gap-2 px-4 py-3 border-b border-border3 bg-white/[0.02]">
         <div className="flex items-center gap-1.5">
@@ -42,41 +48,40 @@ export default function HeroPrompt() {
         <div className="bg-white/[0.03] border border-border3 rounded-xl p-4">
           <textarea
             value={inputValue}
-            onChange={(e) => { setInputValue(e.target.value); setSubmitted(false); }}
-            placeholder={prompts[placeholderIndex]}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Ask Zivic anything about the market…"
             className="w-full bg-transparent text-[14px] text-white placeholder:text-white/25 outline-none resize-none min-h-[80px]"
           />
-
-          <div className="flex flex-wrap gap-2 mt-3">
-            {prompts.map((prompt) => (
-              <button
-                key={prompt}
-                onClick={() => { setInputValue(prompt); setSubmitted(false); }}
-                className="text-[12px] text-white/40 border border-border3 rounded-lg px-3 py-1.5 hover:border-accent/40 hover:text-white/60 transition-colors truncate max-w-[220px]"
-              >
-                {prompt.length > 38 ? prompt.substring(0, 38) + '…' : prompt}
-              </button>
-            ))}
-          </div>
         </div>
 
-        {submitted && (
-          <div className="mt-4 bg-accent/5 border border-accent/20 rounded-xl p-4">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="text-[12px] font-mono text-accent2 font-bold">Score: {responses[0].score}/100</span>
-              <span className="text-[14px] font-semibold">{responses[0].ticker}</span>
-            </div>
-            <p className="text-[13px] text-white/50">{responses[0].reason}</p>
-          </div>
-        )}
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-border3/50">
+          <button
+            onClick={handlePromptClick}
+            className="flex items-center gap-2 min-w-0 max-w-[70%]"
+          >
+            <span className={`shrink-0 inline-flex items-center text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border ${current.color}`}>
+              <span onClick={(e) => { e.stopPropagation(); handleBadgeClick(); }} className="cursor-pointer">
+                {current.badge}
+              </span>
+            </span>
+            <span className="text-[13px] text-white/60 font-medium truncate">
+              {current.text}
+            </span>
+          </button>
 
-        <div className="flex justify-end mt-3">
-          <button onClick={handleSubmit} className="h-9 px-4 rounded-lg bg-accent flex items-center justify-center gap-2 hover:bg-accent/80 transition-colors">
+          <button
+            onClick={handleSubmit}
+            className="h-9 px-4 rounded-lg bg-accent flex items-center justify-center gap-2 hover:bg-accent/80 transition-colors shrink-0"
+          >
             <Send className="w-4 h-4 text-white" />
             <span className="text-[13px] font-medium text-white">Ask Zivic</span>
           </button>
         </div>
       </div>
+    </div>
+    <p className="text-[12px] text-white/30 mt-3 text-center">
+      Prompts are AI-generated. Rankings reflect what other traders find useful.
+    </p>
     </div>
   );
 }

@@ -35,9 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${zenTokyoZen.variable}`}>
       <body className="font-sans">
-        {/*<ConfigureAmplify>*/}
+        <ConfigureAmplify>
         <SolanaWalletProvider>{children}</SolanaWalletProvider>
-        {/*</ConfigureAmplify>*/}
+        </ConfigureAmplify>
       </body>
     </html>
   );
