@@ -134,7 +134,7 @@ export function CreditsModal({
               </div>
               <h3 className="font-display text-lg font-semibold">Credits</h3>
               <p className="text-[13px] text-white/40 mt-1">
-                Each request to Zivic uses 1 credit
+                We&apos;re free for now, new user got 1,000 credits
               </p>
             </div>
 
@@ -163,18 +163,18 @@ export function CreditsModal({
 
                 <button
                   onClick={handleRequest}
-                  disabled={requesting}
+                  disabled={requesting || credits !== null}
                   className="w-full rounded-xl bg-accent px-4 py-3 text-[13px] font-medium text-white hover:bg-accent/80 transition-colors disabled:opacity-50"
                 >
                   {requesting
                     ? "Requesting…"
                     : credits === null
                     ? "Request 1,000 Credits"
-                    : "Request 1,000 More Credits"}
+                    : "Credits already claimed"}
                 </button>
 
                 <p className="text-[11px] text-white/20 text-center">
-                  Free credits for early users. No card required.
+                  One-time request per wallet. Credits never expire.
                 </p>
               </div>
             )}
