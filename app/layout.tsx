@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, Zen_Tokyo_Zoo } from "next/font/google";
+import SolanaWalletProvider from "@/components/SolanaWalletProvider";
+import ConfigureAmplify from "@/components/ConfigureAmplify";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -32,7 +34,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${zenTokyoZen.variable}`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {/*<ConfigureAmplify>*/}
+        <SolanaWalletProvider>{children}</SolanaWalletProvider>
+        {/*</ConfigureAmplify>*/}
+      </body>
     </html>
   );
 }

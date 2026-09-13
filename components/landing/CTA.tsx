@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import Section from './Section';
 
 export default function CTA() {
@@ -15,13 +16,13 @@ export default function CTA() {
                 Make the market yours
               </h2>
               <p className="mt-4 text-[15px] text-white/45">
-                Same xStock universe. Your personalized view. Try Zivic and see which stocks matter most to you.
+                Get AI-ranked xStocks tailored to your goals, with the data and tools to trade them directly on Solana.
               </p>
               <Link
                 href="#"
                 className="mt-8 inline-block text-[15px] font-medium bg-accent text-white px-8 py-4 rounded-lg hover:bg-accent/80 transition-colors"
               >
-                Get started →
+                Get started <ArrowRight className="inline-block w-4 h-4 ml-1" />
               </Link>
             </div>
           </div>

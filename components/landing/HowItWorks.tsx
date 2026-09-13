@@ -38,7 +38,7 @@ const steps = [
     title: 'Trade on Solana',
     description: (
       <>
-        Review the transaction, connect your wallet, and execute the trade directly on <span className="text-white/70 font-medium">Solana Mainnet</span>.
+        Review the details and execute on <span className="text-white/70 font-medium">Solana Mainnet</span>. No fully autonomous agents — you approve what you trade.
       </>
     ),
     example: null,

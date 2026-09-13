@@ -6,21 +6,21 @@ const tiers = [
   {
     name: 'Starter',
     price: '$5',
-    credits: '100',
+    credits: '1,000',
     discount: null,
     highlight: false,
   },
   {
     name: 'Pro',
     price: '$20',
-    credits: '500',
+    credits: '5,000',
     discount: '20%',
     highlight: true,
   },
   {
     name: 'Power',
     price: '$50',
-    credits: '1,500',
+    credits: '15,000',
     discount: '50%',
     highlight: false,
     bestValue: true,
@@ -29,7 +29,7 @@ const tiers = [
 
 export default function Pricing() {
   return (
-    <section className="py-24">
+    <section id="pricing" className="py-24 scroll-mt-14">
       <div className="max-w-4xl mx-auto px-6">
         <Section>
           <p className="text-[13px] text-accent uppercase tracking-wider text-center mb-6">Pricing</p>
