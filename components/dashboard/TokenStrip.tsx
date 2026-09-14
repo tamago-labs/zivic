@@ -40,7 +40,10 @@ for (const asset of (listData as any).assets) {
 export default function TokenStrip() {
   const { prices } = usePrices();
   const [metric, setMetric] = useState<SortMetric>("market_cap");
+  const [mounted, setMounted] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => { setMounted(true); }, []);
 
   const sorted = [...prices]
     .filter((p) => p[metric] != null)
@@ -60,6 +63,8 @@ export default function TokenStrip() {
   const scrollBy = useCallback((dir: number) => {
     scrollRef.current?.scrollBy({ left: dir * 200, behavior: "smooth" });
   }, []);
+
+  if (!mounted) return <div className="flex-1" />;
 
   return (
     <div className="flex items-center gap-2 flex-1 min-w-0 ml-2">

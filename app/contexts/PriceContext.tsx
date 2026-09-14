@@ -11,6 +11,8 @@ export interface PriceData {
   price: number | null;
   percent_1h: number | null;
   percent_24h: number | null;
+  percent_7d: number | null;
+  percent_30d: number | null;
   market_cap: number | null;
   volume_24h: number | null;
 }
@@ -59,6 +61,8 @@ export function PriceProvider({ children }: { children: ReactNode }) {
           price: item.price,
           percent_1h: item.percent_1h,
           percent_24h: item.percent_24h,
+          percent_7d: item.percent_7d,
+          percent_30d: item.percent_30d,
           market_cap: item.market_cap,
           volume_24h: item.volume_24h,
         })));

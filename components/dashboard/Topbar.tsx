@@ -13,10 +13,18 @@ import { WalletModal } from "./WalletModal";
 import { ConnectedPopover } from "./ConnectedPopover";
 import { CreditsModal } from "./CreditsModal";
 import TokenStrip from "./TokenStrip";
+import { usePathname } from "next/navigation";
 
 const dataClient = generateClient<Schema>();
 
+const PAGE_TITLES: Record<string, string> = {
+  "/dashboard/portfolio": "Your AI-Powered Portfolio",
+  "/dashboard/explore": "Explore All Tokenized Stocks on Solana",
+  "/dashboard/alerts": "Stay Notified",
+};
+
 export default function Topbar() {
+  const pathname = usePathname();
   const client = useClient<AppClient>();
   const connected = useConnectedWallet(client);
   const [walletModalOpen, setWalletModalOpen] = useState(false);
@@ -42,7 +50,19 @@ export default function Topbar() {
 
   return (
     <header className="h-14 border-b border-border3/50 bg-surface flex items-center justify-between px-6 pl-0 sticky top-0 z-10">
-      <TokenStrip />
+      {PAGE_TITLES[pathname] ? (
+        <motion.h1
+          key={pathname}
+          initial={{ opacity: 0, filter: "blur(8px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="text-lg font-display font-semibold text-white/70 px-2 ml-5"
+        >
+          {PAGE_TITLES[pathname]}
+        </motion.h1>
+      ) : (
+        <TokenStrip />
+      )}
 
       <div className="flex items-center gap-3 relative shrink-0 ml-2">
         <button
