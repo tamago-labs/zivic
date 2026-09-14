@@ -74,24 +74,21 @@ export default function TokenTicker() {
   useEffect(() => {
     async function fetchPrices() {
       const symbols = tokens.map((t) => t.token_symbol);
+
       try {
-        const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
         const { data } = await client.models.PriceSnapshot.list();
 
         const priceMap = new Map<string, PriceData>();
         for (const item of data) {
           if (!item.token_symbol || !symbols.includes(item.token_symbol)) continue;
-          if (item.createdAt && item.createdAt < since) continue;
-          if (!priceMap.has(item.token_symbol)) {
-            priceMap.set(item.token_symbol, {
-              token_symbol: item.token_symbol,
-              price: item.price,
-              percent_1h: item.percent_1h,
-              percent_24h: item.percent_24h,
-              market_cap: item.market_cap,
-              volume_24h: item.volume_24h,
-            });
-          }
+          priceMap.set(item.token_symbol, {
+            token_symbol: item.token_symbol,
+            price: item.price,
+            percent_1h: item.percent_1h,
+            percent_24h: item.percent_24h,
+            market_cap: item.market_cap,
+            volume_24h: item.volume_24h,
+          });
         }
         setPrices(priceMap);
       } catch (err) {
