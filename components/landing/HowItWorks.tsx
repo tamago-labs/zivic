@@ -18,7 +18,7 @@ const steps = [
     title: 'Get a personalized answer',
     description: (
       <>
-        Zivic combines your preferences with market data to <span className="text-white/70 font-medium">rank, compare, and explain</span> the xStocks that matter to you.
+        Zivic combines your preferences with market data to <span className="text-white/70 font-medium">rank, compare, and explain</span> the tokenized stocks that matter to you.
       </>
     ),
     example: null,
@@ -28,7 +28,7 @@ const steps = [
     title: 'Find the best trade',
     description: (
       <>
-        When you&apos;re ready, Zivic finds the <span className="text-white/70 font-medium">best available route</span> for your trade across Solana liquidity through <span className="text-white/70 font-medium">Jupiter</span>.
+        When you&apos;re ready, Zivic finds the <span className="text-white/70 font-medium">best available route</span> for your trade across Solana liquidity through <span className="text-white/70 font-medium">Jupiter & OKX Router</span>.
       </>
     ),
     example: null,
