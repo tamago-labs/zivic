@@ -68,7 +68,7 @@ export const handler: EventBridgeHandler<"Scheduled Event", null, void> = async 
 
   const client = generateClient<Schema>();
 
-  const listPath = join(__dirname, "..", "..", "..", "lib", "data", "rwa-v1-list.json");
+  const listPath = join(__dirname, "rwa-v1-list.json");
   const raw = readFileSync(listPath, "utf-8");
   const { assets } = JSON.parse(raw) as { assets: ActiveAsset[] };
 
