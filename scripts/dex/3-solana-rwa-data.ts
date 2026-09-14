@@ -245,3 +245,5 @@ main().catch(console.error);
 
 // Total tokens found: 24
 // Saved to: C:\projects\zivic\lib\data\solana-rwa-tokens.json
+
+export {};

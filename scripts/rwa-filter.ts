@@ -17,14 +17,14 @@ if (!CMC_API_KEY) {
   process.exit(1);
 }
 
-async function fetchQuotes(symbols: string[]) {
+async function fetchQuotes(symbols: string[]): Promise<any[]> {
   const url = new URL(`${BASE_URL}/v5/real-world-assets/quotes/latest`);
   url.searchParams.set("symbol", symbols.join(","));
   url.searchParams.set("convert", "USD");
 
   const res = await fetch(url.toString(), {
     headers: {
-      "X-CMC_PRO_API_KEY": CMC_API_KEY,
+      "X-CMC_PRO_API_KEY": CMC_API_KEY!,
       Accept: "application/json",
     },
   });
