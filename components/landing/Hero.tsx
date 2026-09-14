@@ -24,6 +24,7 @@ export default function Hero() {
               Zivic is a hyper-personalized AI dashboard for tokenized stocks on{' '}
               <a href="https://solana.com/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Solana</a>. Tell Zivic your goals and risk appetite — it ranks, filters, and explains the{' '}
               <a href="https://xstocks.fi/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">xStocks</a>{' '}
+              / <a href="https://ondo.finance/ondo-stocks" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Ondo Stocks</a>{' '}
               that matter most to you.
             </p>
           </Section>

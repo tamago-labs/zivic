@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Send } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { examplePrompts, getRandomPrompt } from '@/lib/prompts';
 
 export default function HeroPrompt() {
@@ -10,14 +11,31 @@ export default function HeroPrompt() {
   const [inputValue, setInputValue] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [animKey, setAnimKey] = useState(0);
 
   useEffect(() => {
     setActiveIndex(Math.floor(Math.random() * examplePrompts.length));
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (!mounted) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => {
+        const next = getRandomPrompt(prev);
+        setAnimKey((k) => k + 1);
+        return next;
+      });
+    }, 20000);
+    return () => clearInterval(interval);
+  }, [mounted]);
+
   const handleBadgeClick = () => {
-    setActiveIndex((prev) => getRandomPrompt(prev));
+    setActiveIndex((prev) => {
+      const next = getRandomPrompt(prev);
+      setAnimKey((k) => k + 1);
+      return next;
+    });
   };
 
   const handlePromptClick = () => {
@@ -59,14 +77,32 @@ export default function HeroPrompt() {
             onClick={handlePromptClick}
             className="flex items-center gap-2 min-w-0 max-w-[70%]"
           >
-            <span className={`shrink-0 inline-flex items-center text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border ${current.color}`}>
-              <span onClick={(e) => { e.stopPropagation(); handleBadgeClick(); }} className="cursor-pointer">
-                {current.badge}
-              </span>
-            </span>
-            <span className="text-[13px] text-white/60 font-medium truncate">
-              {current.text}
-            </span>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={`badge-${animKey}`}
+                initial={{ opacity: 0, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, filter: 'blur(8px)' }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className={`shrink-0 inline-flex items-center text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border ${current.color}`}
+                title="Click to change"
+              >
+                <span onClick={(e) => { e.stopPropagation(); handleBadgeClick(); }} className="cursor-pointer">
+                  {current.badge}
+                </span>
+              </motion.span>
+              <motion.span
+                key={`text-${animKey}`}
+                initial={{ opacity: 0, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, filter: 'blur(8px)' }}
+                transition={{ duration: 0.4, delay: 0.05, ease: 'easeOut' }}
+                className="text-[13px] text-white/60 font-medium truncate"
+                title={current.text}
+              >
+                {current.text}
+              </motion.span>
+            </AnimatePresence>
           </button>
 
           <button
