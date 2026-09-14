@@ -76,16 +76,13 @@ export default function TokenTicker() {
       const symbols = tokens.map((t) => t.token_symbol);
       try {
         const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
-        const { data } = await client.models.PriceSnapshot.list({
-          filter: {
-            token_symbol: { in: symbols },
-            createdAt: { gt: since },
-          },
-        });
+        const { data } = await client.models.PriceSnapshot.list();
 
         const priceMap = new Map<string, PriceData>();
         for (const item of data) {
-          if (item.token_symbol && !priceMap.has(item.token_symbol)) {
+          if (!item.token_symbol || !symbols.includes(item.token_symbol)) continue;
+          if (item.createdAt && item.createdAt < since) continue;
+          if (!priceMap.has(item.token_symbol)) {
             priceMap.set(item.token_symbol, {
               token_symbol: item.token_symbol,
               price: item.price,
