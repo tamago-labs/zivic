@@ -6,16 +6,24 @@ const schema = a.schema({
     .model({
       symbol: a.string().required(),
       rwa_id: a.integer().required(),
+      token_symbol: a.string().required(),
+      crypto_id: a.integer().required(),
       price: a.float(),
       market_cap: a.float(),
       volume_24h: a.float(),
-      tokens: a.json(),
+      percent_1h: a.float(),
+      percent_24h: a.float(),
+      percent_7d: a.float(),
+      percent_30d: a.float(),
+      circulating_supply: a.float(),
+      total_supply: a.float(),
     })
     .authorization((allow) => [
       allow.publicApiKey().to(["read"]),
     ])
     .secondaryIndexes((index) => [
-      index("symbol").queryField("bySymbol"),
+      index("rwa_id").queryField("byRwaId"),
+      index("token_symbol").queryField("byTokenSymbol"),
     ]),
   UserProfile: a
     .model({

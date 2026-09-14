@@ -4,8 +4,7 @@ import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/data";
 import { getAmplifyDataClientConfig } from "@aws-amplify/backend/function/runtime";
 import { env } from "$amplify/env/price-tracker";
-import { readFileSync } from "fs";
-import { join } from "path";
+import listData from "./rwa-v1-list.json";
 
 const CMC_API_KEY = env.CMC_API_KEY;
 const BASE_URL = "https://pro-api.coinmarketcap.com";
@@ -39,14 +38,14 @@ interface ActiveAsset {
   description: string | null;
 }
 
-async function fetchQuotes(symbols: string[]): Promise<any[]> {
-  const url = new URL(`${BASE_URL}/v5/real-world-assets/quotes/latest`);
-  url.searchParams.set("symbol", symbols.join(","));
+async function fetchCryptoQuotes(cryptoIds: number[]): Promise<any[]> {
+  const url = new URL(`${BASE_URL}/v2/cryptocurrency/quotes/latest`);
+  url.searchParams.set("id", cryptoIds.join(","));
   url.searchParams.set("convert", "USD");
 
   const res = await fetch(url.toString(), {
     headers: {
-      "X-CMC_PRO_API_KEY": CMC_API_KEY!,
+      "X-CMC_PRO_API_KEY": CMC_API_KEY,
       Accept: "application/json",
     },
   });
@@ -57,7 +56,7 @@ async function fetchQuotes(symbols: string[]): Promise<any[]> {
   }
 
   const data = await res.json();
-  return data.data?.rwa_assets ?? [];
+  return Object.values(data.data ?? {});
 }
 
 export const handler: EventBridgeHandler<"Scheduled Event", null, void> = async (event) => {
@@ -68,57 +67,75 @@ export const handler: EventBridgeHandler<"Scheduled Event", null, void> = async 
 
   const client = generateClient<Schema>();
 
-  const listPath = join(__dirname, "rwa-v1-list.json");
-  const raw = readFileSync(listPath, "utf-8");
-  const { assets } = JSON.parse(raw) as { assets: ActiveAsset[] };
+  const { assets } = listData as { assets: ActiveAsset[] };
 
-  const symbols = assets.map((a) => a.symbol);
-  console.log(`Tracking ${symbols.length} stocks...`);
+  const allTokens: { token: Token; rwa_id: number }[] = [];
+  for (const asset of assets) {
+    for (const token of asset.tokens) {
+      if (token.crypto_id) {
+        allTokens.push({ token, rwa_id: asset.rwa_id });
+      }
+    }
+  }
+
+  console.log(`Tracking ${allTokens.length} tokens across ${assets.length} stocks...`);
 
   let saved = 0;
   const errors: string[] = [];
 
-  for (let i = 0; i < symbols.length; i += BATCH_SIZE) {
-    const batch = symbols.slice(i, i + BATCH_SIZE);
-    const progress = Math.min(i + BATCH_SIZE, symbols.length);
-    console.log(`  Fetching ${progress}/${symbols.length}`);
+  for (let i = 0; i < allTokens.length; i += BATCH_SIZE) {
+    const batch = allTokens.slice(i, i + BATCH_SIZE);
+    const progress = Math.min(i + BATCH_SIZE, allTokens.length);
+    console.log(`  ${progress}/${allTokens.length}`);
 
     try {
-      const quotes = await fetchQuotes(batch);
-      const quoteMap = new Map(quotes.map((q: any) => [q.symbol, q]));
+      const ids = batch.map((b) => Number(b.token.crypto_id));
+      const quotes = await fetchCryptoQuotes(ids);
+      const quoteMap = new Map<number, any>();
+      for (const q of quotes) {
+        quoteMap.set(q.id, q);
+      }
 
-      for (const asset of assets.filter((a) => batch.includes(a.symbol))) {
-        const quote = quoteMap.get(asset.symbol);
+      for (const { token, rwa_id } of batch) {
+        const quote = quoteMap.get(Number(token.crypto_id));
         if (!quote) {
-          errors.push(asset.symbol);
+          errors.push(token.symbol);
           continue;
         }
 
+        const usd = quote.quote?.USD;
         try {
           await client.models.PriceSnapshot.create({
-            symbol: asset.symbol,
-            rwa_id: asset.rwa_id,
-            price: quote.average_tokenized_price ?? null,
-            market_cap: quote.tokenized_market_cap ?? null,
-            volume_24h: quote.tokenized_volume_24h ?? null,
-            tokens: quote.tokens ?? asset.tokens,
+            symbol: assets.find((a) => a.rwa_id === rwa_id)?.symbol ?? "",
+            rwa_id,
+            token_symbol: token.symbol,
+            crypto_id: Number(token.crypto_id),
+            price: usd?.price ?? null,
+            market_cap: usd?.market_cap ?? null,
+            volume_24h: usd?.volume_24h ?? null,
+            percent_1h: usd?.percent_change_1h ?? null,
+            percent_24h: usd?.percent_change_24h ?? null,
+            percent_7d: usd?.percent_change_7d ?? null,
+            percent_30d: usd?.percent_change_30d ?? null,
+            circulating_supply: quote.circulating_supply ?? null,
+            total_supply: quote.total_supply ?? null,
           });
           saved++;
         } catch (err) {
-          console.error(`\nError saving ${asset.symbol}: ${err}`);
-          errors.push(asset.symbol);
+          console.error(`Error saving ${token.symbol}: ${err}`);
+          errors.push(token.symbol);
         }
       }
     } catch (err) {
-      console.error(`\nBatch error: ${err}`);
+      console.error(`Batch error: ${err}`);
     }
 
-    if (i + BATCH_SIZE < symbols.length) {
+    if (i + BATCH_SIZE < allTokens.length) {
       await sleep(2500);
     }
   }
 
-  console.log(`\nDone. Saved: ${saved}, Errors: ${errors.length}`);
+  console.log(`Done. Saved: ${saved}, Errors: ${errors.length}`);
   if (errors.length > 0) {
     console.log(`Failed: ${errors.join(", ")}`);
   }
