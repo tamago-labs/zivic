@@ -71,7 +71,12 @@ export default function TokenTicker() {
   const [prices, setPrices] = useState<Map<string, PriceData>>(new Map());
   const trackRef = useRef<HTMLDivElement>(null);
 
+  const fetchedRef = useRef(false);
+
   useEffect(() => {
+    if (fetchedRef.current) return;
+    fetchedRef.current = true;
+
     async function fetchPrices() {
       const symbols = tokens.map((t) => t.token_symbol);
 
@@ -80,6 +85,8 @@ export default function TokenTicker() {
         const { data } = await client.models.PriceSnapshot.list({
           filter: { createdAt: { gt: since } },
         });
+
+        console.log("data:", data)
 
         const priceMap = new Map<string, PriceData>();
         for (const item of data) {
