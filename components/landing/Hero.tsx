@@ -41,7 +41,7 @@ export default function Hero() {
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
-                Frontier AI-level reasoning
+                Frontier AI reasoning with <span className="w-4 h-4 rounded-full bg-white inline-flex items-center justify-center"><img src="https://openrouter.ai/images/icons/OpenAI.svg" alt="OpenAI" className="w-3 h-3" /></span> <span className="text-accent font-semibold">GPT-6 Astra</span>
               </li>
             </ul>
           </Section>
