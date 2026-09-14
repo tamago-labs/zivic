@@ -1,5 +1,4 @@
-import { readFileSync } from "fs";
-import { join } from "path";
+import listData from "./data/rwa-v1-list.json";
 
 export interface TokenDisplay {
   symbol: string;
@@ -15,9 +14,7 @@ export interface TokenDisplay {
 }
 
 export function getTopTokens(limit = 20): TokenDisplay[] {
-  const filePath = join(process.cwd(), "lib", "data", "rwa-v1-list.json");
-  const raw = readFileSync(filePath, "utf-8");
-  const { assets } = JSON.parse(raw);
+  const { assets } = listData as any;
 
   const sorted = [...assets].sort((a: any, b: any) => a.rwa_rank - b.rwa_rank);
 
