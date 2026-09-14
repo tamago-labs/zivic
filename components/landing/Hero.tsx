@@ -1,11 +1,12 @@
 'use client';
 
 import HeroPrompt from './HeroPrompt';
+import TokenTicker from './TokenTicker';
 import Section from './Section';
 
 export default function Hero() {
   return (
-    <section className="max-w-6xl mx-auto px-6 pt-16 pb-36 relative grid-bg">
+    <section className="max-w-6xl mx-auto px-6 pt-10 pb-24 relative grid-bg">
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-accent/8 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative grid md:grid-cols-2 gap-12 items-center">
@@ -49,6 +50,8 @@ export default function Hero() {
 
         <HeroPrompt />
       </div>
+
+      <TokenTicker />
     </section>
   );
 }
