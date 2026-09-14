@@ -67,7 +67,7 @@ export const handler: EventBridgeHandler<"Scheduled Event", null, void> = async 
 
   const client = generateClient<Schema>();
 
-  const { assets } = listData as { assets: ActiveAsset[] };
+  const { assets } = listData as unknown as { assets: ActiveAsset[] };
 
   const allTokens: { token: Token; rwa_id: number }[] = [];
   for (const asset of assets) {
