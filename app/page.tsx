@@ -2,6 +2,7 @@
 
 import Header from '@/components/landing/Header';
 import Hero from '@/components/landing/Hero';
+import TokenTicker from '@/components/landing/TokenTicker';
 import Problem from '@/components/landing/Problem';
 import HowItWorks from '@/components/landing/HowItWorks';
 import Differentiator from '@/components/landing/Differentiator';
@@ -21,6 +22,7 @@ export default function Home() {
         <Hero />
       </section>
 
+      <TokenTicker />
       <Problem />
       <HowItWorks />
       <Pricing />
