@@ -75,8 +75,12 @@ export default function TokenTicker() {
     async function fetchPrices() {
       const symbols = tokens.map((t) => t.token_symbol);
       try {
+        const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
         const { data } = await client.models.PriceSnapshot.list({
-          filter: { token_symbol: { in: symbols } },
+          filter: {
+            token_symbol: { in: symbols },
+            createdAt: { gt: since },
+          },
         });
 
         const priceMap = new Map<string, PriceData>();
