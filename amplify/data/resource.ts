@@ -20,10 +20,6 @@ const schema = a.schema({
     })
     .authorization((allow) => [
       allow.publicApiKey().to(["read"]),
-    ])
-    .secondaryIndexes((index) => [
-      index("rwa_id").queryField("byRwaId"),
-      index("token_symbol").queryField("byTokenSymbol"),
     ]),
   UserProfile: a
     .model({
