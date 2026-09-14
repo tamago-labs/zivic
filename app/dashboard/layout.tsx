@@ -14,11 +14,11 @@ export default function DashboardLayout({
 
   return (
     <div className="min-h-screen bg-dark">
-      <Sidebar />
-      <div className="ml-56">
-        <Topbar />
-        <main className={isNewChat ? '' : 'p-6'}>{children}</main>
-      </div>
+        <Sidebar />
+        <div className="ml-56">
+          <Topbar />
+          <main className={isNewChat ? '' : 'p-6'}>{children}</main>
+        </div>
     </div>
   );
 }

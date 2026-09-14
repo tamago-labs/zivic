@@ -36,7 +36,7 @@ function TokenCard({ price }: { price: PriceData }) {
   const issuerClass = issuerColor[meta?.issuer ?? ""] ?? "text-white/50 bg-white/5 border-white/10";
 
   return (
-    <div className="min-w-[200px] bg-surface border border-border3 rounded-xl p-4 flex flex-col gap-3 hover:border-white/20 hover:glow-blue transition-all">
+    <div className="min-w-[200px] bg-surface border border-border3 rounded-xl p-4 flex flex-col gap-3 hover:border-accent/20 hover:shadow-2xl hover:glow-blue transition-all">
       <div className="flex items-center gap-2.5">
         {meta?.logo ? (
           <img src={meta.logo} alt={price.token_symbol} className="w-8 h-8 rounded-full" />

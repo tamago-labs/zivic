@@ -1,7 +1,7 @@
 'use client';
 
 import HeroPrompt from './HeroPrompt';
-import TokenTicker from './TokenTicker';
+import TokenShowcase from './TokenShowcase';
 import Section from './Section';
 
 export default function Hero() {
@@ -51,7 +51,7 @@ export default function Hero() {
         <HeroPrompt />
       </div>
 
-      <TokenTicker />
+      <TokenShowcase />
     </section>
   );
 }

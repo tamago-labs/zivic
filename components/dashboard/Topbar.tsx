@@ -12,6 +12,7 @@ import { getGradient } from "@/lib/wallet";
 import { WalletModal } from "./WalletModal";
 import { ConnectedPopover } from "./ConnectedPopover";
 import { CreditsModal } from "./CreditsModal";
+import TokenStrip from "./TokenStrip";
 
 const dataClient = generateClient<Schema>();
 
@@ -40,8 +41,10 @@ export default function Topbar() {
   const gradient = address ? getGradient(address) : null;
 
   return (
-    <header className="h-14 border-b border-border3/50 bg-surface flex items-center justify-between px-6 sticky top-0 z-10">
-      <div className="flex items-center gap-3">
+    <header className="h-14 border-b border-border3/50 bg-surface flex items-center justify-between px-6 pl-0 sticky top-0 z-10">
+      <TokenStrip />
+
+      <div className="flex items-center gap-3 relative shrink-0 ml-2">
         <button
           onClick={() => setCreditsModalOpen(true)}
           className="text-[13px] flex items-center gap-1.5 hover:opacity-80 transition-opacity"
@@ -50,9 +53,7 @@ export default function Topbar() {
           <span className="text-white/80 font-medium">{credits !== null ? credits.toLocaleString() : "—"}</span>
           <span className="text-white/30">credits</span>
         </button>
-      </div>
 
-      <div className="flex items-center gap-3 relative">
         {address ? (
           <button onClick={() => setPopoverOpen((v) => !v)} className="relative flex items-center gap-2">
             <div
