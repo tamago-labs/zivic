@@ -1,6 +1,6 @@
 {
   "fetched_at": "2026-09-14T04:03:19.933Z",
-  "count": 154,
+  "count": 162,
   "assets": [
     {
       "symbol": "CRCL",
@@ -1837,7 +1837,7 @@
             "defi",
             "tokenized-stock",
             "solana-ecosystem",
-            "tokenized-assets"
+            "tokenized-assets",
           ],
           "date_added": "2026-08-11T16:20:28.000Z",
           "slug": "bitmine-tokenized-stock-xstock",
@@ -3206,6 +3206,33 @@
           "mint": "XsQZdaWUAGC4R3fgD2N1fupKvJfJq6YM51ccnsLUWFA",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wAMATx",
+          "name": "Wrapped Applied Materials, Inc. Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41094,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41094.png",
+          "description": "Wrapped Applied Materials, Inc. xStock (wAMATx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Applied Materials, Inc. xStock (AMATx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xe9FA01197B7E836982a1cab03FE591F7e331E313), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:20:10.000Z",
+          "slug": "wrapped-applied-materials-inc-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.appliedmaterials.com",
@@ -3247,9 +3274,9 @@
           ],
           "date_added": "2025-09-03T10:55:03.000Z",
           "slug": "cisco-systems-tokenized-stock-ondo",
-          "mint": "7DWcZE1uVc8m2mf9pV8KNov28ET7HsvHkhrhgr9ondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "CSCOX",
@@ -3279,9 +3306,36 @@
           ],
           "date_added": "2025-07-01T15:48:47.000Z",
           "slug": "cisco-tokenized-stock-xstock",
-          "mint": "Xsr3pdLQyXvDJBFgpR5nexCEZwXvigb8wbPYp4YoNFf",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WCSCOX",
+          "name": "Wrapped Cisco Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37196,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37196.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T04:27:49.000Z",
+          "slug": "wrapped-cisco-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.cisco.com",
@@ -3327,9 +3381,9 @@
           ],
           "date_added": "2025-07-01T15:48:48.000Z",
           "slug": "jpmorgan-chase-tokenized-stock-xstock",
-          "mint": "XsMAqkcKsUewDrzVkait4e5u4y8REgtyS7jWgCpLV2C",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "JPMon",
@@ -3359,6 +3413,33 @@
           "mint": "E5Gczsavxcomqf6Cw1sGCKLabL1xYD2FzKxVoB4ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "WJPMX",
+          "name": "Wrapped JPMorgan Chase Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37204,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37204.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T08:43:24.000Z",
+          "slug": "wrapped-jpmorgan-chase-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.jpmorganchase.com",
@@ -3400,9 +3481,9 @@
           ],
           "date_added": "2026-01-08T15:44:19.000Z",
           "slug": "oklo-tokenized-stock-ondo",
-          "mint": "m6oDLvJT7rY7M1TxuLWP3pWmAPg2cCWDQR1NKiEondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "OKLOx",
@@ -3435,6 +3516,33 @@
           "mint": "XsJb1p4Ks6VFggq68JyMz7S3kdRfkqh4wA6EMyxi4DD",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wOKLOx",
+          "name": "Wrapped Oklo Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41661,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41661.png",
+          "description": "Wrapped Oklo xStock (wOKLOx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Oklo xStock (OKLOx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x4b0eE7C047D43cA403239f28f42115bEdB7c0076), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:15.000Z",
+          "slug": "wrapped-oklo-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.oklo.com",
@@ -3508,9 +3616,35 @@
           ],
           "date_added": "2025-07-01T18:39:23.000Z",
           "slug": "procter-gamble-tokenized-stock-xstock",
-          "mint": "XsYdjDjNUygZ7yGKfQaB6TxLh2gC6RRjzLtLAGJrhzV",
-          "decimals": 8,
-          "verified": true
+          "mint": "HdDCkdztXxWsDEdu3b1JqvoBdVqcEnTdn9wEibkupump",
+          "decimals": 6
+        },
+        {
+          "symbol": "WPGX",
+          "name": "Wrapped Procter & Gamble Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37116,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37116.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-03T06:09:13.000Z",
+          "slug": "wrapped-procter-gamble-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://us.pg.com",
@@ -3519,6 +3653,48 @@
       "employees": 109000,
       "exchange": "New York Stock Exchange",
       "description": "Since its founding in 1837, Procter & Gamble has become one of the world's largest consumer product manufacturers, with annual sales approaching $85 billion. It operates with a lineup of leading brands, including more than 20 that generate north of $1 billion each in annual global sales, such as Tide laundry detergent, Charmin toilet paper, Pantene shampoo, and Pampers diapers. Sales outside its home turf represent just more than half of the firm's consolidated total."
+    },
+    {
+      "symbol": "CBRS",
+      "name": "Cerebras Systems",
+      "slug": "cerebras-systems",
+      "rwa_id": 251,
+      "rwa_rank": 345,
+      "tokens": [
+        {
+          "symbol": "wCBRSx",
+          "name": "Wrapped Cerebras Systems Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41273,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41273.png",
+          "description": "Wrapped Cerebras Systems xStock (wCBRSx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Cerebras Systems xStock (CBRSx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x874C1986ede15f6520686652268E0d62d9A10618), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:22:05.000Z",
+          "slug": "wrapped-cerebras-systems-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        }
+      ],
+      "website": "https://www.cerebras.ai/",
+      "industry": "Semiconductors & Related Devices",
+      "founded": "2015-01-01",
+      "employees": 1000,
+      "exchange": null,
+      "description": null
     },
     {
       "symbol": "DELL",
@@ -3558,6 +3734,33 @@
           "mint": "Xsu7Tc5J2fVUE4H5vYAiSr34cvLJeCsYPMjAYnayQn6",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wDELLx",
+          "name": "Wrapped Dell Technologies Inc. Tokenized Stock (xStock)",
+          "price": 560.6182469997079,
+          "crypto_id": 41142,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": 0,
+          "volume_24h": 69047.0530642,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41142.png",
+          "description": "Wrapped Dell Technologies Inc. Tokenized Stock (xStock) (wDELLx) is a cryptocurrency and operates on the X Layer platform. Wrapped Dell Technologies Inc. Tokenized Stock (xStock) has a current supply of 0. The last known price of Wrapped Dell Technologies Inc. Tokenized Stock (xStock) is 553.5725369 USD and is down -1.88 over the last 24 hours. It is currently trading on 2 active market(s) with $71,108.68 traded over the last 24 hours. More information can be found at https://xstocks.fi.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:20:41.000Z",
+          "slug": "wrapped-dell-technologies-inc-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": null,
@@ -3574,6 +3777,33 @@
       "rwa_id": 75,
       "rwa_rank": 106,
       "tokens": [
+        {
+          "symbol": "wWDCx",
+          "name": "Wrapped Western Digital Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41725,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41725.png",
+          "description": "Wrapped Western Digital xStock (wWDCx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Western Digital xStock (WDCx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xD2E60293f29Dde3815c16C664dE722029e96E03A), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:56.000Z",
+          "slug": "wrapped-western-digital-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
         {
           "symbol": "WDCx",
           "name": "Western Digital tokenized stock (xStock)",
@@ -3681,9 +3911,36 @@
           ],
           "date_added": "2025-07-01T18:40:23.000Z",
           "slug": "novo-nordisk-tokenized-stock-xstock",
-          "mint": "XsfAzPzYrYjd4Dpa9BU3cusBsvWfVB9gBcyGC87S57n",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WNVOX",
+          "name": "Wrapped Novo Nordisk Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37217,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37217.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T11:28:32.000Z",
+          "slug": "wrapped-novo-nordisk-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.novonordisk.com",
@@ -3728,6 +3985,33 @@
           "mint": "HXFrTf9v9NdjGUTnx4sojR3Cf92hoBsQFUxKTN7ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wRDDTx",
+          "name": "Wrapped Reddit Tokenized Stock (xStock)",
+          "price": 156.60577433167774,
+          "crypto_id": 41583,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": 0,
+          "volume_24h": 0,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41583.png",
+          "description": "Wrapped Reddit Tokenized Stock (xStock) (wRDDTx) is a cryptocurrency and operates on the X Layer platform. Wrapped Reddit Tokenized Stock (xStock) has a current supply of 0. The last known price of Wrapped Reddit Tokenized Stock (xStock) is 156.60577433 USD and is down -0.80 over the last 24 hours. It is currently trading on 1 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://xstocks.fi.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:21.000Z",
+          "slug": "wrapped-reddit-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.redditinc.com",
@@ -3774,6 +4058,33 @@
           "mint": "6btaz134wjHkR8sqhAYrtSM6tavftfxnRvnyMd8ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wCOSTx",
+          "name": "Wrapped Costco Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41837,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41837.png",
+          "description": "Wrapped Costco xStock (wCOSTx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Costco xStock (COSTx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x4720B5e6421e6879132aED52040d56Bb6e5CFeeF), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-16T03:25:03.000Z",
+          "slug": "wrapped-costco-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.costco.com",
@@ -3815,9 +4126,36 @@
           ],
           "date_added": "2025-09-03T10:55:01.000Z",
           "slug": "palo-alto-networks-tokenized-stock-ondo",
-          "mint": "M7hVQomhw4Q2D2op3HvBrZjHu9SryjNvD5haEZ1ondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "wPANWx",
+          "name": "Wrapped Palo Alto Networks Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41673,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41673.png",
+          "description": "Wrapped Palo Alto Networks xStock (wPANWx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Palo Alto Networks xStock (PANWx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xe12BB32D77BE4DB10DDC82088b230D35d097E9C5), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:24.000Z",
+          "slug": "wrapped-palo-alto-networks-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.paloaltonetworks.com",
@@ -3908,9 +4246,8 @@
           ],
           "date_added": "2025-07-01T18:39:43.000Z",
           "slug": "visa-tokenized-stock-xstock",
-          "mint": "XsqgsbXwWogGJsNcVZ3TyVouy2MbTkfCFhCGGGcQZ2p",
-          "decimals": 8,
-           "verified": true
+          "mint": "bU8nqzN6t4hd2xAv68gMvSo952b8WV2qXz2xJU3pump",
+          "decimals": 6
         },
         {
           "symbol": "Von",
@@ -3937,6 +4274,33 @@
           "mint": "kxEW4oJL75K37VeXaZF1ynbHQATQwhECQKN1374ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wVx",
+          "name": "Wrapped Visa Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41734,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41734.png",
+          "description": "Wrapped Visa xStock (wVx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Visa xStock (Vx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x2363FD1235C1B6d3A5088DdF8dF3A0b3A30C5293), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:27:02.000Z",
+          "slug": "wrapped-visa-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.usa.visa.com",
@@ -3978,9 +4342,9 @@
           ],
           "date_added": "2025-09-03T10:55:28.000Z",
           "slug": "pepsico-tokenized-stock-ondo",
-          "mint": "gud6b3fYekjhMG5F818BALwbg2vt4JKoow59Md9ondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "PEPX",
@@ -4010,9 +4374,35 @@
           ],
           "date_added": "2025-07-01T18:40:46.000Z",
           "slug": "pepsico-tokenized-stock-xstock",
-          "mint": "Xsv99frTRUeornyvCfvhnDesQDWuvns1M852Pez91vF",
-          "decimals": 8,
-          "verified": true
+          "mint": "9qy89gnSE6HkPPFigfJPWppuLsL3hTpE7HR3YE4Qpump",
+          "decimals": 6
+        },
+        {
+          "symbol": "WPEPX",
+          "name": "Wrapped PepsiCo Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37219,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37219.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T11:40:56.000Z",
+          "slug": "wrapped-pepsico-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.pepsico.com",
@@ -4057,9 +4447,8 @@
           ],
           "date_added": "2025-07-01T18:39:48.000Z",
           "slug": "walmart-tokenized-stock-xstock",
-          "mint": "Xs151QeqTCiuKtinzfRATnUESM2xTU6V9Wy8Vy538ci",
-          "decimals": 8,
-          "verified": true
+          "mint": "WMTXyYKUMTG3VuZA5beXuHVRLpyTwwaoP7h2i8YpuRH",
+          "decimals": 6
         },
         {
           "symbol": "WMTon",
@@ -4089,6 +4478,33 @@
           "mint": "LZddqAqKqJW9oMZSjTxCUmbmzBRQtv9gMkD9hZ3ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "WWMTX",
+          "name": "Wrapped Walmart Tokenized stock (xStock)",
+          "price": 106.3263319950475,
+          "crypto_id": 37229,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": 978.1,
+          "volume_24h": 0,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37229.png",
+          "description": "Wrapped Walmart Tokenized stock (xStock) (WWMTX) is a cryptocurrency and operates on the X Layer platform. Wrapped Walmart Tokenized stock (xStock) has a current supply of 9.19904728. The last known price of Wrapped Walmart Tokenized stock (xStock) is 106.326332 USD and is down -0.72 over the last 24 hours. It is currently trading on 1 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://assets.backed.fi/.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-07T04:54:03.000Z",
+          "slug": "wrapped-walmart-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://stock.walmart.com",
@@ -4132,9 +4548,9 @@
           ],
           "date_added": "2025-09-03T10:55:25.000Z",
           "slug": "salesforce-tokenized-stock-ondo",
-          "mint": "7D7ukbcnUNYt7Et5vtsDZhAy28MKu9pkHka1Hp9ondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "CRMX",
@@ -4164,9 +4580,36 @@
           ],
           "date_added": "2025-07-01T18:39:27.000Z",
           "slug": "salesforce-tokenized-stock-xstock",
-          "mint": "XsczbcQ3zfcgAEt9qHQES8pxKAVG5rujPSHQEXi4kaN",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WCRMX",
+          "name": "Wrapped Salesforce Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37194,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37194.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T04:17:25.000Z",
+          "slug": "wrapped-salesforce-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.salesforce.com",
@@ -4246,6 +4689,33 @@
           "mint": "XshWQWYVp5ff8CrAEsGmLVKD47nBWi3Ygn5v8wXK27G",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wPYPLx",
+          "name": "Wrapped PayPal Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41616,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41616.png",
+          "description": "Wrapped PayPal xStock (wPYPLx) is the non-rebasing ERC-20/ERC-4626 wrapped version of PayPal xStock (PYPLx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xf706585e7e8900bE0267bEE3B9A2F70835EC6628), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:43.000Z",
+          "slug": "wrapped-paypal-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.paypal.com",
@@ -4287,9 +4757,9 @@
           ],
           "date_added": "2025-09-03T10:55:03.000Z",
           "slug": "toyota-tokenized-stock-ondo",
-          "mint": "kbmF7ERJWMaaDswMprrH9gHSLya5D2RMBNgKqg3ondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.global.toyota",
@@ -4334,6 +4804,33 @@
           "mint": "G7pTVoSECz5RQWubEnTP7AC83KHUsSyoiqYR1R2ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wNOWx",
+          "name": "Wrapped ServiceNow Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41548,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41548.png",
+          "description": "Wrapped ServiceNow xStock (wNOWx) is the non-rebasing ERC-20/ERC-4626 wrapped version of ServiceNow xStock (NOWx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x47C789E2A8ED186ef3dfC91814e726126fdbeD60), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:24:58.000Z",
+          "slug": "wrapped-servicenow-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.servicenow.com",
@@ -4408,9 +4905,35 @@
           ],
           "date_added": "2025-07-01T15:49:12.000Z",
           "slug": "goldman-sachs-tokenized-stock-xstock",
-          "mint": "XsgaUyp4jd1fNBCxgtTKkW64xnnhQcvgaxzsbAq5ZD1",
-          "decimals": 8,
-          "verified": true
+          "mint": "9BjjkzQTz6iKeuyc1DYqTBpgTnmMR2uNcAJxQgTpump",
+          "decimals": 6
+        },
+        {
+          "symbol": "WGSX",
+          "name": "Wrapped Goldman Sachs Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37197,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37197.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T04:38:43.000Z",
+          "slug": "wrapped-goldman-sachs-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.goldmansachs.com",
@@ -4452,9 +4975,36 @@
           ],
           "date_added": "2025-09-03T10:54:59.000Z",
           "slug": "starbucks-tokenized-stock-ondo",
-          "mint": "iPFqjcZQTNMNXA4kbShbMhfAVD8yr8Uq9UtXMV6ondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "wSBUXx",
+          "name": "Wrapped Starbucks Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41626,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41626.png",
+          "description": "Wrapped Starbucks xStock (wSBUXx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Starbucks xStock (SBUXx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x5667C2D45ACb2933CE129B53615aAF17C69f262c), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:50.000Z",
+          "slug": "wrapped-starbucks-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.starbucks.com",
@@ -4503,6 +5053,33 @@
           "mint": "XsR4LAtaBgTKTRUhiijY1ba13nx4bepeEcag2Pr4dZ1",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wASTSx",
+          "name": "Wrapped AST SpaceMobile Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41099,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41099.png",
+          "description": "Wrapped AST SpaceMobile xStock (wASTSx) is the non-rebasing ERC-20/ERC-4626 wrapped version of AST SpaceMobile xStock (ASTSx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x89b2607878ae19baB8020b8140eD550Ef3E953bb), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:20:13.000Z",
+          "slug": "wrapped-ast-spacemobile-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": null,
@@ -4544,6 +5121,33 @@
           "mint": "5H1VpMzRuoNtRbPTRCz35ETtEUtnkt8hJuQb9v7ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wBLKx",
+          "name": "Wrapped BlackRock Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41838,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41838.png",
+          "description": "Wrapped BlackRock xStock (wBLKx) is the non-rebasing ERC-20/ERC-4626 wrapped version of BlackRock xStock (BLKx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x5A6a0742cA689E7E8a91A38F5255589CB2191646), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-16T03:25:03.000Z",
+          "slug": "wrapped-blackrock-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.blackrock.com",
@@ -4587,9 +5191,36 @@
           ],
           "date_added": "2025-09-03T10:55:40.000Z",
           "slug": "snowflake-tokenized-stock-ondo",
-          "mint": "JmFLCBwoNvcXy6B2VqABg6m784ubkXpaEx3p7S5ondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "wSNOWx",
+          "name": "Wrapped Snowflake Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41585,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41585.png",
+          "description": "Wrapped Snowflake xStock (wSNOWx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Snowflake xStock (SNOWx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x18af2B532AC2D9fD18E9099A57fa3585f4bfA931), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:23.000Z",
+          "slug": "wrapped-snowflake-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.snowflake.com",
@@ -4634,9 +5265,36 @@
           ],
           "date_added": "2025-07-01T15:49:32.000Z",
           "slug": "berkshire-hathaway-tokenized-stock-xstock",
-          "mint": "Xs6B6zawENwAbWVi7w92rjazLuAr5Az59qgWKcNb45x",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WBRK.BX",
+          "name": "Wrapped Berkshire Hathaway Tokenized stock (xStock)",
+          "price": 509.1749487508528,
+          "crypto_id": 37191,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": 50066.34,
+          "volume_24h": 5707.78265783,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37191.png",
+          "description": "Wrapped Berkshire Hathaway Tokenized stock (xStock) (WBRK.BX) is a cryptocurrency and operates on the X Layer platform. Wrapped Berkshire Hathaway Tokenized stock (xStock) has a current supply of 92.91897459. The last known price of Wrapped Berkshire Hathaway Tokenized stock (xStock) is 508.11002984 USD and is up 0.41 over the last 24 hours. It is currently trading on 1 active market(s) with $5,707.78 traded over the last 24 hours. More information can be found at https://assets.backed.fi/.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T03:11:36.000Z",
+          "slug": "wrapped-berkshire-hathaway-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": null,
@@ -4653,6 +5311,33 @@
       "rwa_id": 256,
       "rwa_rank": 111,
       "tokens": [
+        {
+          "symbol": "wGLWx",
+          "name": "Wrapped Corning Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41402,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41402.png",
+          "description": "Wrapped Corning xStock (wGLWx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Corning xStock (GLWx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xDC12f19AF085310e952e0A03b173fAaCdDeAD8c2), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:23:24.000Z",
+          "slug": "wrapped-corning-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
         {
           "symbol": "GLWx",
           "name": "Corning tokenized stock (xStock)",
@@ -4729,9 +5414,9 @@
           ],
           "date_added": "2025-07-01T18:39:40.000Z",
           "slug": "unitedhealth-tokenized-stock-xstock",
-          "mint": "XszvaiXGPwvk2nwb3o9C1CX4K6zH8sez11E6uyup6fe",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "UNHon",
@@ -4763,6 +5448,33 @@
           "mint": "kPBGL8vAwKN3UGmr9cjkM2dU79SC3nzTC9yu7F8ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "WUNHX",
+          "name": "Wrapped UnitedHealth Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37228,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37228.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-07T04:50:34.000Z",
+          "slug": "wrapped-unitedhealth-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.unitedhealthgroup.com",
@@ -4836,9 +5548,35 @@
           ],
           "date_added": "2025-07-01T18:39:57.000Z",
           "slug": "linde-tokenized-stock-xstock",
-          "mint": "XsSr8anD1hkvNMu8XQiVcmiaTP7XGvYu7Q58LdmtE8Z",
-          "decimals": 8,
-          "verified": true
+          "mint": "BNAosBb4PTpviJdHuKKJ4A9rnowou2JcgiowWQwwpump",
+          "decimals": 6
+        },
+        {
+          "symbol": "WLINX",
+          "name": "Wrapped Linde Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37231,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37231.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-07T05:16:18.000Z",
+          "slug": "wrapped-linde-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.linde.com",
@@ -4880,9 +5618,9 @@
           ],
           "date_added": "2025-09-03T10:55:27.000Z",
           "slug": "abbott-tokenized-stock-ondo",
-          "mint": "129gRoHKhVg7CvPMrqVsEB4uYZo6zV4yDZX6NBg9ondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "ABTX",
@@ -4912,9 +5650,36 @@
           ],
           "date_added": "2025-07-01T13:51:12.000Z",
           "slug": "abbott-tokenized-stock-xstock",
-          "mint": "XsHtf5RpxsQ7jeJ9ivNewouZKJHbPxhPoEy6yYvULr7",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WABTX",
+          "name": "Wrapped Abbott tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37095,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37095.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-02T11:41:19.000Z",
+          "slug": "wrapped-abbott-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.abbottinvestor.com",
@@ -4959,6 +5724,33 @@
           "mint": "aheEdmuryJU8ymy8LjYheZH5i2BW1UMsfuWQKD2ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wEQIXx",
+          "name": "Wrapped Equinix Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41339,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41339.png",
+          "description": "Wrapped Equinix xStock (wEQIXx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Equinix xStock (EQIXx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xbb75CDd39E47a569e66162353544F86BCdFC4416), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:22:46.000Z",
+          "slug": "wrapped-equinix-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.equinix.com",
@@ -5031,9 +5823,36 @@
           ],
           "date_added": "2026-06-10T06:33:40.000Z",
           "slug": "vertiv-holdings-co-tokenized-stock-xstock",
-          "mint": "XsLUiVEwYeoneKpgR1C2Q4DBUZhX4xDktSCfQqq8zmn",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "wVRTx",
+          "name": "Wrapped Vertiv Holdings Co Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41733,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41733.png",
+          "description": "Wrapped Vertiv Holdings Co xStock (wVRTx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Vertiv Holdings Co xStock (VRTx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x0A62dB029ab8dc0B49b3E8159431728DbD23c7BF), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:27:01.000Z",
+          "slug": "wrapped-vertiv-holdings-co-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.vertiv.com",
@@ -5042,6 +5861,48 @@
       "employees": 31000,
       "exchange": "New York Stock Exchange",
       "description": "Vertiv has roots tracing back to 1946 when its founder, Ralph Liebert, developed an air-cooling system for mainframe data rooms. As computers started making their way into commercial applications in 1965, Liebert developed one of the first computer room air conditioning, or CRAC, units, enabling the precise control of temperature and humidity. The firm has slowly expanded its data center portfolio through internal product development and the acquisition of thermal and power management products like condensers, busways, and switches. Vertiv has global operations today; its products can be found in data centers in most regions throughout the world."
+    },
+    {
+      "symbol": "CRWV",
+      "name": "Coreweave, Inc.",
+      "slug": "coreweave-inc",
+      "rwa_id": 443,
+      "rwa_rank": 324,
+      "tokens": [
+        {
+          "symbol": "wCRWVx",
+          "name": "Wrapped CoreWeave Tokenized Stock (xStock)",
+          "price": 88.55098679465466,
+          "crypto_id": 41257,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": 0,
+          "volume_24h": 0,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41257.png",
+          "description": "Wrapped CoreWeave Tokenized Stock (xStock) (wCRWVx) is a cryptocurrency and operates on the X Layer platform. Wrapped CoreWeave Tokenized Stock (xStock) has a current supply of 0. The last known price of Wrapped CoreWeave Tokenized Stock (xStock) is 88.55098679 USD and is down -1.18 over the last 24 hours. It is currently trading on 1 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://xstocks.fi.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:21:55.000Z",
+          "slug": "wrapped-coreweave-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        }
+      ],
+      "website": null,
+      "industry": null,
+      "founded": null,
+      "employees": null,
+      "exchange": null,
+      "description": null
     },
     {
       "symbol": "GE",
@@ -5078,6 +5939,33 @@
           "mint": "aTBfDuLRqYHBiG82bHA7DzwjSDTFre2dRtGH3S5ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wGEx",
+          "name": "Wrapped GE Aerospace Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41322,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41322.png",
+          "description": "Wrapped GE Aerospace xStock (wGEx) is the non-rebasing ERC-20/ERC-4626 wrapped version of GE Aerospace xStock (GEx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x450D36A2B13DF58f3ac374A4002dbcc177C99718), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:22:36.000Z",
+          "slug": "wrapped-ge-aerospace-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.geaerospace.com",
@@ -5122,6 +6010,33 @@
           "mint": "128qNYovdGv2YqayErcJgU7gDwbNVX1VuoxbtWz8ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wABNBx",
+          "name": "Wrapped Airbnb Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41084,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41084.png",
+          "description": "Wrapped Airbnb xStock (wABNBx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Airbnb xStock (ABNBx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xC1566b43Ee3D9F507C75435C5eeA81De7E7515F3), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:20:04.000Z",
+          "slug": "wrapped-airbnb-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.airbnb.com",
@@ -5130,6 +6045,48 @@
       "employees": 7300,
       "exchange": "Nasdaq",
       "description": "Started in 2008, Airbnb is the world's largest online alternative accommodation travel agency; it also offers booking services for boutique hotels and experiences. Airbnb's platform offered over 8 million active accommodation listings as of Dec. 31, 2024. Listings from the company's 5 million-plus hosts are spread over almost every country in the world. In 2024, 45% of revenue was from North America, 37% from Europe, the Middle East, and Africa, 9% from Latin America, and 9% from Asia-Pacific. Transaction fees for online bookings account for all its revenue."
+    },
+    {
+      "symbol": "USAR",
+      "name": "USA Rare Earth, Inc.",
+      "slug": "usa-rare-earth-inc",
+      "rwa_id": 1682,
+      "rwa_rank": 1568,
+      "tokens": [
+        {
+          "symbol": "wUSARx",
+          "name": "Wrapped USA Rare Earth Inc. Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41736,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41736.png",
+          "description": "Wrapped USA Rare Earth Inc. xStock (wUSARx) is the non-rebasing ERC-20/ERC-4626 wrapped version of USA Rare Earth Inc. xStock (USARx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x6Ee270D24B593F85863E95B6a7dd916A5957719f), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:27:03.000Z",
+          "slug": "wrapped-usa-rare-earth-inc-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        }
+      ],
+      "website": null,
+      "industry": null,
+      "founded": null,
+      "employees": null,
+      "exchange": null,
+      "description": null
     },
     {
       "symbol": "MA",
@@ -5195,9 +6152,35 @@
           ],
           "date_added": "2025-07-01T18:39:57.000Z",
           "slug": "mastercard-tokenized-stock-xstock",
-          "mint": "XsApJFV9MAktqnAc6jqzsHVujxkGm9xcSUffaBoYLKC",
-          "decimals": 8,
+          "mint": "oraim8c9d1nkfuQk9EzGYEUGxqL3MHQYndRw1huVo5h",
+          "decimals": 6,
           "verified": true
+        },
+        {
+          "symbol": "WMAX",
+          "name": "Wrapped Mastercard Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37208,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37208.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T10:35:07.000Z",
+          "slug": "wrapped-mastercard-tokenized-stock-xstock",
+          "mint": "DxBtn8LpTTJH14LMxpMwSd2xvEA9ERZfxB8FmPcppump",
+          "decimals": 6
         }
       ],
       "website": "https://www.mastercard.com",
@@ -5242,6 +6225,33 @@
           "mint": "1YVZ4LGpq8CAhpdpm3mgy7GgPb83gJczCpxLUQ3ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wBAx",
+          "name": "Wrapped Boeing Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41119,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41119.png",
+          "description": "Wrapped Boeing xStock (wBAx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Boeing xStock (BAx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x5e5e6aA595f5Ba2E12D3120810B9Fe607735aC8C), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:20:25.000Z",
+          "slug": "wrapped-boeing-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.boeing.com",
@@ -5287,9 +6297,8 @@
           ],
           "date_added": "2025-07-01T15:48:31.000Z",
           "slug": "crowdstrike-tokenized-stock-xstock",
-          "mint": "Xs7xXqkcK7K8urEqGg52SECi79dRp2cEKKuYjUePYDw",
-          "decimals": 8,
-          "verified": true
+          "mint": "DPppgBtC81kWu8UDjTZeKE7yqpS7tTpFWwwrWoE7pump",
+          "decimals": 6
         },
         {
           "symbol": "CRWDon",
@@ -5317,6 +6326,33 @@
           "mint": "cdKfoNjbXgnSuxvoajhtH3uixfZhq1YXhQsS1Rwondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "WCRWDX",
+          "name": "Wrapped CrowdStrike Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37195,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37195.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T04:21:11.000Z",
+          "slug": "wrapped-crowdstrike-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.crowdstrike.com",
@@ -5361,6 +6397,33 @@
           "mint": "L6ZE5qCpVVSqLePz64CrwkgyWoPF9M7tB8BeFH4ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wWFCx",
+          "name": "Wrapped Wells Fargo Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41706,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41706.png",
+          "description": "Wrapped Wells Fargo xStock (wWFCx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Wells Fargo xStock (WFCx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xAAb7F231396D7DF9C51337a555FA07E3df02A42D), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:44.000Z",
+          "slug": "wrapped-wells-fargo-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.wellsfargo.com",
@@ -5402,9 +6465,36 @@
           ],
           "date_added": "2025-09-03T10:55:23.000Z",
           "slug": "doordash-tokenized-stock-ondo",
-          "mint": "83P1gCFBZfGRCwJuBt9juxJKEsZwejJoG66eTZ6ondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "wDASHx",
+          "name": "Wrapped DoorDash Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41178,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41178.png",
+          "description": "Wrapped DoorDash xStock (wDASHx) is the non-rebasing ERC-20/ERC-4626 wrapped version of DoorDash xStock (DASHx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xF38665a4a42A1E7eEB36A5f26D1757B788E64A4F), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:21:04.000Z",
+          "slug": "wrapped-doordash-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.doordash.com",
@@ -5480,9 +6570,36 @@
           ],
           "date_added": "2025-09-18T14:10:29.000Z",
           "slug": "accenture-tokenized-stock-xstock",
-          "mint": "Xs5UJzmCRQ8DWZjskExdSQDnbE6iLkRu2jjrRAB1JSU",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WACNX",
+          "name": "Wrapped Accenture Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37099,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37099.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-02T11:59:05.000Z",
+          "slug": "wrapped-accenture-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.accenture.com",
@@ -5537,6 +6654,48 @@
       "description": "JD.com is the third-largest Chinese e-commerce platform by GMV in 2024. it offers a wide selection of authentic products with speedy and reliable delivery. The company has built its own nationwide fulfilment infrastructure and last-mile delivery network, staffed by its own employees, which supports both its online direct sales, its online marketplace and omnichannel businesses."
     },
     {
+      "symbol": "TTWO",
+      "name": "Take-Two Interactive Software, Inc.",
+      "slug": "take-two-interactive-software-inc",
+      "rwa_id": 466,
+      "rwa_rank": 379,
+      "tokens": [
+        {
+          "symbol": "wTTWOx",
+          "name": "Wrapped Take-Two Interactive Software Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41680,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41680.png",
+          "description": "Wrapped Take-Two Interactive Software xStock (wTTWOx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Take-Two Interactive Software xStock (TTWOx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x3234421Fa54dDf0Eb750aE04680cc0c4d2DE2721), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:29.000Z",
+          "slug": "wrapped-take-two-interactive-software-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        }
+      ],
+      "website": null,
+      "industry": null,
+      "founded": null,
+      "employees": null,
+      "exchange": null,
+      "description": null
+    },
+    {
       "symbol": "MRNA",
       "name": "Moderna Inc",
       "slug": "moderna",
@@ -5571,6 +6730,33 @@
           "mint": "14VP7DvCAdBCc5XGNZkPt6zhtPzJrWWS64Koxtxyondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wMRNAx",
+          "name": "Wrapped Moderna Tokenized Stock (xStock)",
+          "price": 148.67,
+          "crypto_id": 41483,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": 0,
+          "volume_24h": 511.46003479,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41483.png",
+          "description": "Wrapped Moderna Tokenized Stock (xStock) (wMRNAx) is a cryptocurrency and operates on the X Layer platform. Wrapped Moderna Tokenized Stock (xStock) has a current supply of 0. The last known price of Wrapped Moderna Tokenized Stock (xStock) is 148.67 USD and is up 0.00 over the last 24 hours. It is currently trading on 2 active market(s) with $511.46 traded over the last 24 hours. More information can be found at https://xstocks.fi.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:24:18.000Z",
+          "slug": "wrapped-moderna-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.modernatx.com",
@@ -5617,6 +6803,33 @@
           "mint": "XswXzAsMV9kebQjCVtr1btvrQgQ7C4C9kKgH4QYAVzw",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wGEVx",
+          "name": "Wrapped GE Vernova Inc. Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41400,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41400.png",
+          "description": "Wrapped GE Vernova Inc. xStock (wGEVx) is the non-rebasing ERC-20/ERC-4626 wrapped version of GE Vernova Inc. xStock (GEVx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x5FB4184F8B515B1C54d1baC839DCF81276d6b73e), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:23:23.000Z",
+          "slug": "wrapped-ge-vernova-inc-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": null,
@@ -5692,9 +6905,36 @@
           ],
           "date_added": "2025-07-01T15:49:32.000Z",
           "slug": "applovin-tokenized-stock-xstock",
-          "mint": "XsPdAVBi8Zc1xvv53k4JcMrQaEDTgkGqKYeh7AYgPHV",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WAPPX",
+          "name": "Wrapped AppLovin Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37113,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37113.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-02T13:44:06.000Z",
+          "slug": "wrapped-applovin-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.applovin.com",
@@ -5785,6 +7025,33 @@
           "mint": "5owVsVFSHACQuippFYdLp3qWRobp2EGcwxMmsr6ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wCMGx",
+          "name": "Wrapped Chipotle Mexican Grill Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41242,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41242.png",
+          "description": "Wrapped Chipotle Mexican Grill xStock (wCMGx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Chipotle Mexican Grill xStock (CMGx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xDad1865dD327fD305DF6ec6aCCEDE2B5fAAEC9cA), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:21:44.000Z",
+          "slug": "wrapped-chipotle-mexican-grill-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.chipotle.com",
@@ -5829,6 +7096,33 @@
           "mint": "g646pcdG2Rt5DH9WZzL7VVnVDWCCMTTrnktwE74ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wNKEx",
+          "name": "Wrapped Nike Tokenized Stock (xStock)",
+          "price": 38.0680610553199,
+          "crypto_id": 41576,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": 0,
+          "volume_24h": 0,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41576.png",
+          "description": "Wrapped Nike Tokenized Stock (xStock) (wNKEx) is a cryptocurrency and operates on the X Layer platform. Wrapped Nike Tokenized Stock (xStock) has a current supply of 0. The last known price of Wrapped Nike Tokenized Stock (xStock) is 38.06806106 USD and is down -1.07 over the last 24 hours. It is currently trading on 1 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://xstocks.fi.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:16.000Z",
+          "slug": "wrapped-nike-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.nike.com",
@@ -5917,6 +7211,33 @@
           "mint": "mJf1xT3suXtkXBCfZcE9oUUuyxkvSgqYBWiX7v1ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wDISx",
+          "name": "Wrapped The Walt Disney Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41231,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41231.png",
+          "description": "Wrapped The Walt Disney xStock (wDISx) is the non-rebasing ERC-20/ERC-4626 wrapped version of The Walt Disney xStock (DISx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xb07F6ED1496Aa9bb751Dc3cB901328Dc08A64ac4), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:21:37.000Z",
+          "slug": "wrapped-the-walt-disney-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.thewaltdisneycompany.com",
@@ -6007,9 +7328,9 @@
           ],
           "date_added": "2025-07-01T15:48:14.000Z",
           "slug": "exxon-mobil-tokenized-stock-xstock",
-          "mint": "XsaHND8sHyfMfsWPj6kSdd5VwvCayZvjYgKmmcNL5qh",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "XOMon",
@@ -6036,9 +7357,36 @@
           ],
           "date_added": "2026-01-08T15:44:33.000Z",
           "slug": "exxon-mobil-tokenized-stock-ondo",
-          "mint": "qCYD74QnXzd9pzv6pGHQKJVwoibL6sNcPQDnpDiondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WXOMX",
+          "name": "Wrapped Exxon Mobil Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37230,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37230.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-07T05:00:17.000Z",
+          "slug": "wrapped-exxon-mobil-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.exxonmobil.com",
@@ -6085,6 +7433,33 @@
           "mint": "KJNeFW3kk3ycPjXpC6cbuyckjeYHacc2ekhtAi5ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wUBERx",
+          "name": "Wrapped Uber Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41715,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41715.png",
+          "description": "Wrapped Uber xStock (wUBERx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Uber xStock (UBERx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xdb9783Ca04bBD64fe2c6d7B9503A979b3DE30729), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:49.000Z",
+          "slug": "wrapped-uber-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.uber.com",
@@ -6129,6 +7504,33 @@
           "mint": "JrTYw7A9jihX5TwpRStYviEbsYf2X2VJpZ13719ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wSPGIx",
+          "name": "Wrapped S&P Global Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41850,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41850.png",
+          "description": "Wrapped S&P Global xStock (wSPGIx) is the non-rebasing ERC-20/ERC-4626 wrapped version of S&P Global xStock (SPGIx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xD3c5Af6B2F0F754b2141f368cFc5ea99C3594d3a), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-16T03:25:07.000Z",
+          "slug": "wrapped-sp-global-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.spglobal.com",
@@ -6173,9 +7575,36 @@
           ],
           "date_added": "2025-07-01T15:48:20.000Z",
           "slug": "dfdv-tokenized-stock-xstock",
-          "mint": "Xs2yquAgsHByNzx68WJC55WHjHBvG9JsMB7CWjTLyPy",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "wDFDVx",
+          "name": "Wrapped DFDV Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41179,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41179.png",
+          "description": "Wrapped DFDV xStock (wDFDVx) is the non-rebasing ERC-20/ERC-4626 wrapped version of DFDV xStock (DFDVx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x521860bB5dF5468358875266B89BFE90d990C6e7), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:21:05.000Z",
+          "slug": "wrapped-dfdv-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.defidevcorp.com",
@@ -6220,6 +7649,33 @@
           "mint": "1WxT6NdK7uqpfXuKpALxL2n3f7Rq61XXeHA8UM4ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wAXPx",
+          "name": "Wrapped American Express Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41841,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41841.png",
+          "description": "Wrapped American Express xStock (wAXPx) is the non-rebasing ERC-20/ERC-4626 wrapped version of American Express xStock (AXPx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xb23767492D0Ca6dC7221CBeA45689a0410f388c4), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-16T03:25:04.000Z",
+          "slug": "wrapped-american-express-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.americanexpress.com",
@@ -6266,6 +7722,33 @@
           "mint": "12Rh6JhfW4X5fKP16bbUdb4pcVCKDHFB48x8GG33ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wADBEx",
+          "name": "Wrapped Adobe Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41083,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41083.png",
+          "description": "Wrapped Adobe xStock (wADBEx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Adobe xStock (ADBEx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x16E0B579be45bAaE54cEddd52e742B6457A7fE12), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:20:03.000Z",
+          "slug": "wrapped-adobe-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.adobe.com",
@@ -6307,9 +7790,9 @@
           ],
           "date_added": "2026-01-08T15:44:37.000Z",
           "slug": "ondas-holdings-tokenized-stock-ondo",
-          "mint": "7qy1j4Mechfyr6uAST3djH4vk4kiEYC2cjEytXdondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "ONDSx",
@@ -6343,6 +7826,33 @@
           "mint": "Xsgc9YTqdAH1GzDLBGQcScCMgkKsVBn4hBmqtNRospY",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wONDSx",
+          "name": "Wrapped Ondas Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41638,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41638.png",
+          "description": "Wrapped Ondas xStock (wONDSx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Ondas xStock (ONDSx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x50343212d7AADd7a104dCc7Ed751514aA174D9dC), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:59.000Z",
+          "slug": "wrapped-ondas-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.ondas.com",
@@ -6351,6 +7861,48 @@
       "employees": 108,
       "exchange": "Nasdaq",
       "description": "Ondas Holdings Inc designs, develops, manufactures, sells, and supports FullMAX Software Defined Radio (SDR) technology in the United States, Israel, and India. The company operates in two business segments namely Ondas Networks and Ondas Autonomous Systems. The company generates maximum revenue from Ondas Autonomous Systems through the sales of the Optimus system and separately priced support, maintenance, and ancillary services related to the sale of the Optimus system."
+    },
+    {
+      "symbol": "LULU",
+      "name": "Lululemon Athletica Inc.",
+      "slug": "lululemon-athletica-inc",
+      "rwa_id": 868,
+      "rwa_rank": 878,
+      "tokens": [
+        {
+          "symbol": "wLULUx",
+          "name": "Wrapped lululemon Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41836,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41836.png",
+          "description": "Wrapped lululemon xStock (wLULUx) is the non-rebasing ERC-20/ERC-4626 wrapped version of lululemon xStock (LULUx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x847dEB9c78fb00319bC7A006dFF729c11428E537), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-16T03:25:02.000Z",
+          "slug": "wrapped-lululemon-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        }
+      ],
+      "website": null,
+      "industry": null,
+      "founded": null,
+      "employees": null,
+      "exchange": null,
+      "description": null
     },
     {
       "symbol": "MELI",
@@ -6431,6 +7983,33 @@
           "mint": "14VXAhoa1R74vi1ZuiQyGLJrnDMfoFBPJSCpGVz3ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wAPOx",
+          "name": "Wrapped Apollo Global Management Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41192,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41192.png",
+          "description": "Wrapped Apollo Global Management xStock (wAPOx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Apollo Global Management xStock (APOx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x38c49e8236242Ec4dCE135775c2A8d525830fFc0), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:21:13.000Z",
+          "slug": "wrapped-apollo-global-management-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.apollo.com",
@@ -6439,6 +8018,90 @@
       "employees": 5141,
       "exchange": "New York Stock Exchange",
       "description": "Apollo Asset Management, Inc., formerly Apollo Global Management Inc is an alternative investment manager. It serves various sectors such as chemicals, manufacturing and industrial, natural resources, consumer and retail, consumer services, business services, financial services, leisure, and media and telecom and technology. The company operates in three business segments that are Asset Management, Retirement Services, and Principal Investing. It generates maximum revenue from the Retirement Services segment."
+    },
+    {
+      "symbol": "RBLX",
+      "name": "Roblox Corporation",
+      "slug": "roblox-corporation",
+      "rwa_id": 365,
+      "rwa_rank": 437,
+      "tokens": [
+        {
+          "symbol": "wRBLXx",
+          "name": "Wrapped Roblox Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41487,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41487.png",
+          "description": "Wrapped Roblox xStock (wRBLXx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Roblox xStock (RBLXx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x5d8dA1417E3565eb02C9ca8cC588bE5D8F65b1c5), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:24:20.000Z",
+          "slug": "wrapped-roblox-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        }
+      ],
+      "website": null,
+      "industry": null,
+      "founded": null,
+      "employees": null,
+      "exchange": null,
+      "description": null
+    },
+    {
+      "symbol": "ALAB",
+      "name": "Astera Labs, Inc.",
+      "slug": "astera-labs-inc",
+      "rwa_id": 255,
+      "rwa_rank": 317,
+      "tokens": [
+        {
+          "symbol": "wALABx",
+          "name": "Wrapped Astera Labs Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41095,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41095.png",
+          "description": "Wrapped Astera Labs xStock (wALABx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Astera Labs xStock (ALABx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xD64cb407FE4E76f5676Ab656866f0e1de2ff4330), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:20:11.000Z",
+          "slug": "wrapped-astera-labs-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        }
+      ],
+      "website": null,
+      "industry": null,
+      "founded": null,
+      "employees": null,
+      "exchange": null,
+      "description": null
     },
     {
       "symbol": "INTU",
@@ -6475,6 +8138,33 @@
           "mint": "CozoH5HBTyyeYSQxHcWpGzd4Sq5XBaKzBzvTtN3ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wINTUx",
+          "name": "Wrapped Intuit Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41309,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41309.png",
+          "description": "Wrapped Intuit xStock (wINTUx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Intuit xStock (INTUx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x714b99933BA569e3982e4381990c354410f21A50), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:22:29.000Z",
+          "slug": "wrapped-intuit-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.intuit.com",
@@ -6560,9 +8250,36 @@
           ],
           "date_added": "2026-01-08T15:44:24.000Z",
           "slug": "texas-instruments-tokenized-stock-ondo",
-          "mint": "81xLFvCzFaUM3KDxSHC75pXu3RPCeSeCbmGBY8aondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "wTXNx",
+          "name": "Wrapped Texas Instruments Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41729,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41729.png",
+          "description": "Wrapped Texas Instruments xStock (wTXNx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Texas Instruments xStock (TXNx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xCE6D41Dca96b4Ebe560721dF729dBcBa46a87AC7), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:58.000Z",
+          "slug": "wrapped-texas-instruments-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.ti.com",
@@ -6638,6 +8355,33 @@
           "mint": "XsSN912SN4Whn2xn59vWZHt1uLbw9WnoNGp5MigmHFf",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wLRCXx",
+          "name": "Wrapped Lam Research Corporation Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41375,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41375.png",
+          "description": "Wrapped Lam Research Corporation xStock (wLRCXx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Lam Research Corporation xStock (LRCXx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x4177D16A5d2465CF4bd52E07c1c56ab500243FD4), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:23:08.000Z",
+          "slug": "wrapped-lam-research-corporation-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.lamresearch.com",
@@ -6683,6 +8427,33 @@
           "mint": "AXRsYFt7TXNQ3DcY6BkvRgPV6VsYMURyDtaeudjondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wRIVNx",
+          "name": "Wrapped Rivian Automotive Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41521,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41521.png",
+          "description": "Wrapped Rivian Automotive xStock (wRIVNx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Rivian Automotive xStock (RIVNx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xe6A12D72AB88191147158F0d4Cf3f614fC6441bC), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:24:41.000Z",
+          "slug": "wrapped-rivian-automotive-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "RIVNx",
@@ -6760,6 +8531,33 @@
           "mint": "aLDdFsr3VTUQaHFK6yNvQxztvxQ8nxW4AMuSGC7ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wFIGx",
+          "name": "Wrapped Figma Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41855,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41855.png",
+          "description": "Wrapped Figma xStock (wFIGx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Figma xStock (FIGx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x3C313D234D0C6C876F6c21ba2EC1F26823247Be2), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-16T03:25:08.000Z",
+          "slug": "wrapped-figma-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.figma.com",
@@ -6848,6 +8646,33 @@
           "verified": true
         },
         {
+          "symbol": "wISRGx",
+          "name": "Wrapped Intuitive Surgical Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41352,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41352.png",
+          "description": "Wrapped Intuitive Surgical xStock (wISRGx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Intuitive Surgical xStock (ISRGx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x2F8eb54f81898b40AdcF8ce3d415DDa9372015d7), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:22:53.000Z",
+          "slug": "wrapped-intuitive-surgical-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
           "symbol": "ISRGx",
           "name": "Intuitive Surgical tokenized stock (xStock)",
           "price": 368.3835349702404,
@@ -6923,6 +8748,33 @@
           "mint": "iLDu2jjp2i3Uqc2Vm7K7GLiUj3hR4Un49MtD7c4ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wSBETx",
+          "name": "Wrapped SharpLink Gaming Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41596,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41596.png",
+          "description": "Wrapped SharpLink Gaming xStock (wSBETx) is the non-rebasing ERC-20/ERC-4626 wrapped version of SharpLink Gaming xStock (SBETx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x338791c58fdED314b81EAb139A1A2Fb7967D90d6), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:29.000Z",
+          "slug": "wrapped-sharplink-gaming-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.sharplink.com",
@@ -6967,9 +8819,9 @@
           ],
           "date_added": "2025-07-01T15:48:54.000Z",
           "slug": "johnson-johnson-tokenized-stock-xstock",
-          "mint": "XsGVi5eo1Dh2zUpic4qACcjuWGjNv8GCt3dm5XcX6Dn",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "JNJon",
@@ -6997,6 +8849,33 @@
           "mint": "KUXt7LzHWSQXp5eyqMZRxWjAP6yM8BUh4LRHwiwondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "WJNJX",
+          "name": "Wrapped Johnson & Johnson Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37203,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37203.png",
+          "description": "\"For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.\"",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T08:37:09.000Z",
+          "slug": "wrapped-johnson-johnson-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.jnj.com",
@@ -7039,6 +8918,33 @@
           "mint": "7NWHifsBnn9DimUeNnsHdEXkTZhXmJTiXxcCngBondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wCEGx",
+          "name": "Wrapped Constellation Energy Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41185,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41185.png",
+          "description": "Wrapped Constellation Energy Corporation xStock (wCEGx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Constellation Energy Corporation xStock (CEGx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x7636244Bab612264e1B2dFd4bA6E26d0311b1Eb7), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:21:08.000Z",
+          "slug": "wrapped-constellation-energy-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.constellation.com",
@@ -7083,6 +8989,33 @@
           "mint": "i6f3DvZBuLpnGSqS8x6WPeStJ7jNe5KewD6afD5ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wRIOTx",
+          "name": "Wrapped Riot Platforms Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41630,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41630.png",
+          "description": "Wrapped Riot Platforms xStock (wRIOTx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Riot Platforms xStock (RIOTx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x6Ac47387f0a2798dF4C4eE5bb31ab9517ac97cb8), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:53.000Z",
+          "slug": "wrapped-riot-platforms-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.riotplatforms.com",
@@ -7166,9 +9099,36 @@
           ],
           "date_added": "2026-01-08T15:44:20.000Z",
           "slug": "vistra-tokenized-stock-ondo",
-          "mint": "h6MW8GFpfzxFa1JNn6hZNnBF3t4fj9SHAXKy6LXondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "wVSTx",
+          "name": "Wrapped Vistra Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41844,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41844.png",
+          "description": "Wrapped Vistra xStock (wVSTx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Vistra xStock (VSTx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x7AB6C97f65e4227adc5090Bd31a376D1F36f39fa), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-16T03:25:05.000Z",
+          "slug": "wrapped-vistra-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.vistracorp.com",
@@ -7242,6 +9202,33 @@
           "mint": "Xsw2uU1i8tHjbgstUbtt3m6kg7BS7AgG5aj8z7ddmmN",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wKLACx",
+          "name": "Wrapped KLA Corporation Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41437,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41437.png",
+          "description": "Wrapped KLA Corporation xStock (wKLACx) is the non-rebasing ERC-20/ERC-4626 wrapped version of KLA Corporation xStock (KLACx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xb7e2E3eF9F5c6b72a162FFc76382e4477A44D913), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:23:46.000Z",
+          "slug": "wrapped-kla-corporation-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.kla.com",
@@ -7314,9 +9301,36 @@
           ],
           "date_added": "2026-06-10T06:33:32.000Z",
           "slug": "terawulf-tokenized-stock-xstock",
-          "mint": "XsuwUbQSzCJN2wZabD1Gxf1MER2Ypa7hMzVMYB2WawJ",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "wWULFx",
+          "name": "Wrapped TeraWulf Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41759,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41759.png",
+          "description": "Wrapped TeraWulf xStock (wWULFx) is the non-rebasing ERC-20/ERC-4626 wrapped version of TeraWulf xStock (WULFx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xC0c2150cf0870E2d7aBc7cDe17C20A542faFBB9B), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:27:18.000Z",
+          "slug": "wrapped-terawulf-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.terawulf.com",
@@ -7403,9 +9417,9 @@
           ],
           "date_added": "2025-07-01T18:40:09.000Z",
           "slug": "merck-tokenized-stock-xstock",
-          "mint": "XsnQnU7AdbRZYe2akqqpibDdXjkieGFfSkbkjX1Sd1X",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "MRKon",
@@ -7433,6 +9447,33 @@
           "mint": "bn1fb8dwzafGePqNPrM8m8cbAKQiFqeEPuZkPySondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "WMRKX",
+          "name": "Wrapped Merck Tokenized stock (xStock)",
+          "price": 147.39229671593571,
+          "crypto_id": 37212,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": 15001.41,
+          "volume_24h": 0,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37212.png",
+          "description": "Wrapped Merck Tokenized stock (xStock) (WMRKX) is a cryptocurrency and operates on the X Layer platform. Wrapped Merck Tokenized stock (xStock) has a current supply of 102.56180541. The last known price of Wrapped Merck Tokenized stock (xStock) is 146.92773884 USD and is up 0.32 over the last 24 hours. It is currently trading on 1 active market(s) with $880.38 traded over the last 24 hours. More information can be found at https://assets.backed.fi/.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T11:09:13.000Z",
+          "slug": "wrapped-merck-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.merck.com",
@@ -7441,6 +9482,48 @@
       "employees": 75000,
       "exchange": "New York Stock Exchange",
       "description": "Merck makes pharmaceutical products to treat several conditions in a number of therapeutic areas, including cardiometabolic disease, cancer, and infections. Within cancer, the firm's immuno-oncology platform is growing as a major contributor to overall sales. The company also has a substantial vaccine business, with treatments to prevent pediatric diseases as well as human papillomavirus, or HPV. Additionally, Merck sells animal health-related drugs. From a geographical perspective, just under half of the company's sales are generated in the United States."
+    },
+    {
+      "symbol": "UPS",
+      "name": "United Parcel Service, Inc.",
+      "slug": "united-parcel-service-inc",
+      "rwa_id": 401,
+      "rwa_rank": 199,
+      "tokens": [
+        {
+          "symbol": "wUPSx",
+          "name": "Wrapped United Parcel Service Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41682,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41682.png",
+          "description": "Wrapped United Parcel Service xStock (wUPSx) is the non-rebasing ERC-20/ERC-4626 wrapped version of United Parcel Service xStock (UPSx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xF19423deA91acE37FbA0eDD46A521Be6330b791a), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:30.000Z",
+          "slug": "wrapped-united-parcel-service-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        }
+      ],
+      "website": null,
+      "industry": null,
+      "founded": null,
+      "employees": null,
+      "exchange": null,
+      "description": null
     },
     {
       "symbol": "TER",
@@ -7479,6 +9562,33 @@
           "mint": "Xsbe4fwmjVQEWEPkzfyxqNdPUUK7X9dKfTJrZdDbNgx",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wTERx",
+          "name": "Wrapped Teradyne, Inc. Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41671,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41671.png",
+          "description": "Wrapped Teradyne, Inc. xStock (wTERx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Teradyne, Inc. xStock (TERx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x99A1a9BC796bAe48631a15B1C1889625C86B7b98), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:22.000Z",
+          "slug": "wrapped-teradyne-inc-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": null,
@@ -7569,9 +9679,9 @@
           ],
           "date_added": "2025-07-01T15:49:32.000Z",
           "slug": "bank-of-america-tokenized-stock-xstock",
-          "mint": "XswsQk4duEQmCbGzfqUUWYmi7pV7xpJ9eEmLHXCaEQP",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "BACon",
@@ -7601,6 +9711,33 @@
           "mint": "Wk8gC6iTNp8dqd4ghkJ3h1giiUnyhykwHh7tYWjondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "WBACX",
+          "name": "Wrapped Bank of America Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37190,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37190.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-05T16:01:44.000Z",
+          "slug": "wrapped-bank-of-america-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.bankofamerica.com",
@@ -7647,6 +9784,33 @@
           "mint": "ETCJUmuhs5aY62xgEVWCZ5JR8KPdeXUaJz3LuC5ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wMARAx",
+          "name": "Wrapped MARA Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41335,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41335.png",
+          "description": "Wrapped MARA xStock (wMARAx) is the non-rebasing ERC-20/ERC-4626 wrapped version of MARA xStock (MARAx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x9D692bffEf6f6BedF4274053ff9998EFE3B2539E), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:22:44.000Z",
+          "slug": "wrapped-mara-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "http://www.mara.com",
@@ -7691,9 +9855,9 @@
           ],
           "date_added": "2025-09-18T13:57:46.000Z",
           "slug": "abbvie-tokenized-stock-xstock",
-          "mint": "XswbinNKyPmzTa5CskMbCPvMW6G5CMnZXZEeQSSQoie",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         },
         {
           "symbol": "ABBVon",
@@ -7723,6 +9887,33 @@
           "mint": "MFerpBVGKZh2jXN7cbJdXRXQTp6j6pbSnSZrfWrondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "WABBVX",
+          "name": "Wrapped AbbVie Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37272,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37272.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-08T05:44:37.000Z",
+          "slug": "wrapped-abbvie-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.abbvie.com",
@@ -7739,6 +9930,33 @@
       "rwa_id": 376,
       "rwa_rank": 476,
       "tokens": [
+        {
+          "symbol": "wZMx",
+          "name": "Wrapped Zoom Communications Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41693,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41693.png",
+          "description": "Wrapped Zoom Communications xStock (wZMx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Zoom Communications xStock (ZMx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x979Ce3d15b845E7471A667338b7122e12ab66B52), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:37.000Z",
+          "slug": "wrapped-zoom-communications-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
         {
           "symbol": "ZMx",
           "name": "Zoom Communications tokenized stock (xStock)",
@@ -7816,9 +10034,35 @@
           ],
           "date_added": "2025-07-01T14:12:30.000Z",
           "slug": "amber-tokenized-stock-xstock",
-          "mint": "XsaQTCgebC2KPbf27KUhdv5JFvHhQ4GDAPURwrEhAzb",
-          "decimals": 8,
-          "verified": true
+          "mint": "FQFAgaJm342o369qx9R4KgCPqNh2b1zQqm4Fk4F4bonk",
+          "decimals": 6
+        },
+        {
+          "symbol": "wAMBRx",
+          "name": "Wrapped Amber Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41145,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41145.png",
+          "description": "Wrapped Amber xStock (wAMBRx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Amber xStock (AMBRx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x2f9a35aB5dDFBc49927BFdEab98A86c53DC6E763), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:20:43.000Z",
+          "slug": "wrapped-amber-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://ambergroup.io",
@@ -7866,6 +10110,33 @@
           "mint": "J27UYHX5oeaG1YbUGQc8BmJySXDjNWChdGB2Pi2TMDAq",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "WPMX",
+          "name": "Wrapped Philip Morris Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37225,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37225.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-07T04:26:11.000Z",
+          "slug": "wrapped-philip-morris-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.pmi.com",
@@ -7905,9 +10176,9 @@
           ],
           "date_added": "2026-01-08T15:44:38.000Z",
           "slug": "rigetti-computing-tokenized-stock-ondo",
-          "mint": "dwEPNKQab3iwRmjGvZPXhAmws1W5NsQGwuXwi8oondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.rigetti.com",
@@ -7952,9 +10223,36 @@
           ],
           "date_added": "2025-07-01T15:48:28.000Z",
           "slug": "danaher-tokenized-stock-xstock",
-          "mint": "Xseo8tgCZfkHxWS9xbFYeKFyMSbWEvZGFV1Gh53GtCV",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WDHRX",
+          "name": "Wrapped Danaher Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37119,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37119.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-03T07:40:08.000Z",
+          "slug": "wrapped-danaher-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.danaher.com",
@@ -7999,9 +10297,8 @@
           ],
           "date_added": "2025-07-01T18:39:31.000Z",
           "slug": "thermo-fisher-tokenized-stock-xstock",
-          "mint": "Xs8drBWy3Sd5QY3aifG9kt9KFs2K3PGZmx7jWrsrk57",
-          "decimals": 8,
-          "verified": true
+          "mint": "A8ZMCtvEDCqenaQiR5hK7pCrAzkb3onZ34imfRD37cng",
+          "decimals": 6
         },
         {
           "symbol": "TMOon",
@@ -8029,6 +10326,33 @@
           "mint": "T699bgtXQw4CJ59rQ4VzLsupVQUzoL5RmuhHnKrondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "WTMOX",
+          "name": "Wrapped Thermo Fisher Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37226,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37226.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-07T04:38:02.000Z",
+          "slug": "wrapped-thermo-fisher-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.thermofisher.com",
@@ -8068,9 +10392,9 @@
           ],
           "date_added": "2026-01-08T15:44:37.000Z",
           "slug": "nio-tokenized-stock-ondo",
-          "mint": "yQ37dFiGAbzrb2FRAEhGNzRy5zFfoYGWYhAepFEondo",
-          "decimals": 9,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.nio.com",
@@ -8115,6 +10439,33 @@
           "mint": "1GNFMryQ6c9ZpMhgNimmsbtgYM21qnBJgRAFoNiondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wOXYx",
+          "name": "Wrapped Occidental Petroleum Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41592,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41592.png",
+          "description": "Wrapped Occidental Petroleum xStock (wOXYx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Occidental Petroleum xStock (OXYx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x7758b37789015B5E8036e44F82De5f4871E648bB), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:27.000Z",
+          "slug": "wrapped-occidental-petroleum-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.oxy.com",
@@ -8157,6 +10508,33 @@
           "mint": "5hT2o25X9tGXipwhLckaUdgnxrZ6Y8eiUwdhpLeondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wFx",
+          "name": "Wrapped Ford Motor Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41320,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41320.png",
+          "description": "Wrapped Ford Motor xStock (wFx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Ford Motor xStock (Fx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x1F0211620dD867245f3BFcEB6b5FF8E0403877BF), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:22:35.000Z",
+          "slug": "wrapped-ford-motor-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.ford.com",
@@ -8201,9 +10579,36 @@
           ],
           "date_added": "2025-07-01T15:48:31.000Z",
           "slug": "comcast-tokenized-stock-xstock",
-          "mint": "XsvKCaNsxg2GN8jjUmq71qukMJr7Q1c5R2Mk9P8kcS8",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WCMCSAX",
+          "name": "Wrapped Comcast Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37192,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37192.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T03:18:02.000Z",
+          "slug": "wrapped-comcast-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.comcastcorporation.com",
@@ -8248,9 +10653,36 @@
           ],
           "date_added": "2025-07-01T18:40:02.000Z",
           "slug": "medtronic-tokenized-stock-xstock",
-          "mint": "XsDgw22qRLTv5Uwuzn6T63cW69exG41T6gwQhEK22u2",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WMDTX",
+          "name": "Wrapped Medtronic Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37210,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37210.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T10:58:46.000Z",
+          "slug": "wrapped-medtronic-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.medtronic.com",
@@ -8368,6 +10800,33 @@
           "mint": "XsrsM2RgtYxXqxmy4iWgxQJUkkHG1U5wzi74sVNUW8m",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wANETx",
+          "name": "Wrapped Arista Networks, Inc. Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41081,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41081.png",
+          "description": "Wrapped Arista Networks, Inc. xStock (wANETx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Arista Networks, Inc. xStock (ANETx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x27aD5CC5242f4258030D81A5639098ce0a96820F), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:20:00.000Z",
+          "slug": "wrapped-arista-networks-inc-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.arista.com",
@@ -8412,9 +10871,36 @@
           ],
           "date_added": "2025-07-01T15:49:32.000Z",
           "slug": "astrazeneca-tokenized-stock-xstock",
-          "mint": "Xs3ZFkPYT2BN7qBMqf1j1bfTeTm1rFzEFSsQ1z3wAKU",
-          "decimals": 8,
-          "verified": true
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
+        {
+          "symbol": "WAZNX",
+          "name": "Wrapped AstraZeneca Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37183,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37183.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-04T10:32:47.000Z",
+          "slug": "wrapped-astrazeneca-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.astrazeneca.com",
@@ -8463,6 +10949,75 @@
           "mint": "Xsgrm4D6VBTfDx5bs7GNdjtmWDgZ8V79r3YpsYwf5py",
           "decimals": 8,
           "verified": true
+        },
+        {
+          "symbol": "wSPCEx",
+          "name": "Wrapped Virgin Galactic Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41645,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41645.png",
+          "description": "Wrapped Virgin Galactic xStock (wSPCEx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Virgin Galactic xStock (SPCEx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x7F8ba411ECBC0A135d669d5EaE5D15b0Ca0b0ea1), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:05.000Z",
+          "slug": "wrapped-virgin-galactic-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        }
+      ],
+      "website": null,
+      "industry": null,
+      "founded": null,
+      "employees": null,
+      "exchange": null,
+      "description": null
+    },
+    {
+      "symbol": "DDOG",
+      "name": "Datadog, Inc.",
+      "slug": "datadog-inc",
+      "rwa_id": 278,
+      "rwa_rank": 215,
+      "tokens": [
+        {
+          "symbol": "wDDOGx",
+          "name": "Wrapped Datadog Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41153,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41153.png",
+          "description": "Wrapped Datadog xStock (wDDOGx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Datadog xStock (DDOGx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x84BB81e42faBBdFC7A760a19f73983Da1bD90080), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:20:48.000Z",
+          "slug": "wrapped-datadog-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": null,
@@ -8567,6 +11122,33 @@
       "rwa_id": 809,
       "rwa_rank": 466,
       "tokens": [
+        {
+          "symbol": "wOKTAx",
+          "name": "Wrapped Okta Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41591,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41591.png",
+          "description": "Wrapped Okta xStock (wOKTAx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Okta xStock (OKTAx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x46e75757Bdd40F3BE9f6bE392CB233e8772D946d), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:26.000Z",
+          "slug": "wrapped-okta-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
         {
           "symbol": "OKTAx",
           "name": "Okta tokenized stock (xStock)",
@@ -8725,9 +11307,8 @@
           ],
           "date_added": "2025-10-23T09:34:22.000Z",
           "slug": "open-tokenized-stock-xstock",
-          "mint": "XsGtpmjhmC8kyjVSWL4VicGu36ceq9u55PTgF8bhGv6",
-          "decimals": 8,
-          "verified": true
+          "mint": "7XGWsecok6LoNuLBFpJKaNnYk7HYpJjRLXiS4oTyvm4w",
+          "decimals": 6
         },
         {
           "symbol": "OPENon",
@@ -8755,6 +11336,33 @@
           "mint": "ou1uE526v7zmUYP2qCb2LJgfXAyWAtWS9SETtr8ondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wOPENx",
+          "name": "Wrapped OPEN Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41532,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41532.png",
+          "description": "Wrapped OPEN xStock (wOPENx) is the non-rebasing ERC-20/ERC-4626 wrapped version of OPEN xStock (OPENx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xbEe6b69345F376598Fe16AbD5592c6F844825E66), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:24:48.000Z",
+          "slug": "wrapped-open-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.opendoor.com",
@@ -8799,9 +11407,8 @@
           ],
           "date_added": "2025-07-01T15:49:12.000Z",
           "slug": "home-depot-tokenized-stock-xstock",
-          "mint": "XszjVtyhowGjSC5odCqBpW1CtXXwXjYokymrk7fGKD3",
-          "decimals": 8,
-          "verified": true
+          "mint": "HDXDXp393X65axMrXhvKDTkEq5rQpYZzTiK4MBC7VD6X",
+          "decimals": 6
         },
         {
           "symbol": "HDon",
@@ -8829,6 +11436,33 @@
           "mint": "MtEXKVN3Pcggy8MPA3eJr15H6SK3RXheScqj9qtondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "WHDX",
+          "name": "Wrapped Home Depot Tokenized stock (xStock)",
+          "price": null,
+          "crypto_id": 37198,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/37198.png",
+          "description": "For too long, investing has come with barriers. Borders. Brokers. Limitations. It’s been complicated, costly, and — for millions — out of reach. xStocks were created to change that.\r\n\r\nxStocks are tokenized stocks. They’re backed 1:1 by the underlying assets, composable with DeFi protocols, compliant with EU regulations, accessible to non-US users, and provide a legal claim to the value of the stock.\r\n\r\nxStocks enable easy access to 57 US Stocks and ETFs to regular users through top centralized and decentralized exchanges, and can be integrated with other DeFi protocols like any other token.\r\n\r\nThis is a wrapped xStock, meaning that it does not rebase, allowing it to be used within DeFi applications.",
+          "website": "https://assets.backed.fi/",
+          "twitter": "https://twitter.com/xStocksFi",
+          "discord": null,
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "arbitrum-ecosystem",
+            "x-layer-ecosystem",
+            "tokenized-assets"
+          ],
+          "date_added": "2025-07-06T04:42:32.000Z",
+          "slug": "wrapped-home-depot-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.homedepot.com",
@@ -8845,6 +11479,33 @@
       "rwa_id": 257,
       "rwa_rank": 177,
       "tokens": [
+        {
+          "symbol": "wBXx",
+          "name": "Wrapped Blackstone Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41103,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41103.png",
+          "description": "Wrapped Blackstone xStock (wBXx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Blackstone xStock (BXx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xC0B359593633c8bdb05Cd838d6b23CeF42ac7d03), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:20:15.000Z",
+          "slug": "wrapped-blackstone-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
         {
           "symbol": "BXx",
           "name": "Blackstone tokenized stock (xStock)",
@@ -8888,12 +11549,81 @@
       "description": null
     },
     {
+      "symbol": "WDAY",
+      "name": "Workday, Inc.",
+      "slug": "workday-inc",
+      "rwa_id": 350,
+      "rwa_rank": 348,
+      "tokens": [
+        {
+          "symbol": "wWDAYx",
+          "name": "Wrapped Workday Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41766,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41766.png",
+          "description": "Wrapped Workday xStock (wWDAYx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Workday xStock (WDAYx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x8537107b02089E42E6761774cEf2264Da2018768), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:27:22.000Z",
+          "slug": "wrapped-workday-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        }
+      ],
+      "website": null,
+      "industry": null,
+      "founded": null,
+      "employees": null,
+      "exchange": null,
+      "description": null
+    },
+    {
       "symbol": "ROK",
       "name": "Rockwell Automation, Inc.",
       "slug": "rockwell-automation-inc",
       "rwa_id": 322,
       "rwa_rank": 331,
       "tokens": [
+        {
+          "symbol": "wROKx",
+          "name": "Wrapped Rockwell Automation Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41664,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41664.png",
+          "description": "Wrapped Rockwell Automation xStock (wROKx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Rockwell Automation xStock (ROKx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0xE4F484E5cA6d6f06A5E5B8c9d2870921e8Fbc814), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:26:17.000Z",
+          "slug": "wrapped-rockwell-automation-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        },
         {
           "symbol": "ROKx",
           "name": "Rockwell Automation tokenized stock (xStock)",
@@ -8980,6 +11710,48 @@
       "description": "Founded in 2012, Grab provides ride-sharing services, food and grocery delivery, and financial services (payments, consumer loans, and enterprise offerings) in eight Southeast-Asian countries through its mobile platform. The company partners with merchants and riders, connecting them with consumers while charging commission to both sides. Grab has a leading market share in and derives 89% of its revenue from its core businesses, ride-sharing and food delivery. Singapore, Indonesia, and Malaysia contributed more than 70% of revenue in 2024. Grab's main competitors in Southeast Asia are Line Man and Goto. Its financial services business is still in its nascent stage and provides minimal revenue currently. The company now also generates advertising revenue."
     },
     {
+      "symbol": "P",
+      "name": "Everpure, Inc.",
+      "slug": "everpure-inc",
+      "rwa_id": 794,
+      "rwa_rank": 436,
+      "tokens": [
+        {
+          "symbol": "wPx",
+          "name": "Wrapped Everpure Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41605,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41605.png",
+          "description": "Wrapped Everpure xStock (wPx) is the non-rebasing ERC-20/ERC-4626 wrapped version of Everpure xStock (Px) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x982b371bF69683065f2A32a4CF785751272Aba9d), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:35.000Z",
+          "slug": "wrapped-everpure-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
+        }
+      ],
+      "website": null,
+      "industry": null,
+      "founded": null,
+      "employees": null,
+      "exchange": null,
+      "description": null
+    },
+    {
       "symbol": "ON",
       "name": "ON Semiconductor Corp",
       "slug": "on-semiconductor",
@@ -9012,6 +11784,33 @@
           "mint": "13qtwy5fZi9Przz14pzo9xqFSr8QHmLyUpUCvP1xondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wONx",
+          "name": "Wrapped ON Semiconductor Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41615,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41615.png",
+          "description": "Wrapped ON Semiconductor xStock (wONx) is the non-rebasing ERC-20/ERC-4626 wrapped version of ON Semiconductor xStock (ONx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x8DD3d692A2fcfF0aec09EaFa7633f52c36a312FA), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:43.000Z",
+          "slug": "wrapped-on-semiconductor-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.onsemi.com",
@@ -9054,6 +11853,33 @@
           "mint": "12BvLZtzjdssAycxPeBQUjukhmgQpULAvy6SroYdondo",
           "decimals": 9,
           "verified": true
+        },
+        {
+          "symbol": "wRTXx",
+          "name": "Wrapped RTX Tokenized Stock (xStock)",
+          "price": null,
+          "crypto_id": 41584,
+          "issuer_id": "6878977dcbbf471de3366e85",
+          "issuer_name": "Backed Assets",
+          "market_cap": null,
+          "volume_24h": null,
+          "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/41584.png",
+          "description": "Wrapped RTX xStock (wRTXx) is the non-rebasing ERC-20/ERC-4626 wrapped version of RTX xStock (RTXx) on X Layer. Vault shares represent a proportional claim on the underlying xStock deposited in the wrapper (0x5884F1e7c69bE620F0c0ff218e43C9a898153b21), and wrap/unwrap conversion uses the live xStocks multiplier.",
+          "website": "https://xstocks.fi",
+          "twitter": "https://twitter.com/xstocksfi",
+          "discord": "https://defi.xstocks.fi/wrap",
+          "tags": [
+            "defi",
+            "tokenized-stock",
+            "x-layer-ecosystem",
+            "tokenized-assets",
+            "xstocks-ecosystem"
+          ],
+          "date_added": "2026-08-11T16:25:21.000Z",
+          "slug": "wrapped-rtx-tokenized-stock-xstock",
+          "mint": null,
+          "decimals": null,
+          "verified": null
         }
       ],
       "website": "https://www.rtx.com",
