@@ -22,5 +22,8 @@ export interface Asset {
   rwa_id: number;
   description?: string | null;
   industry?: string | null;
+  website?: string | null;
+  employees?: number | null;
+  exchange?: string | null;
   tokens: Token[];
 }

@@ -1,5 +1,6 @@
 import type { Token, Asset } from "@/lib/types/token";
 
+
 export default function TokenDetailHeader({ token, asset }: { token: Token; asset: Asset }) {
   return (
     <div className="flex items-start gap-4">
@@ -12,26 +13,26 @@ export default function TokenDetailHeader({ token, asset }: { token: Token; asse
       )}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-3 flex-wrap">
-          <h1 className="text-2xl font-display font-bold text-white/95">{token.name}</h1>
-          <span className="text-sm font-mono text-white/40 bg-white/[0.06] px-2 py-0.5 rounded">
-            {token.symbol}
-          </span>
-          <span className={`text-[11px] font-medium px-2 py-0.5 rounded border ${
-            token.issuer_name === "Backed Assets"
-              ? "text-orange-400 bg-orange-400/10 border-orange-400/20"
-              : "text-purple-400 bg-purple-400/10 border-purple-400/20"
-          }`}>
-            {token.issuer_name === "Backed Assets" ? "xStock" : "Ondo"}
-          </span>
-          {token.verified && (
-            <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">
-              Verified
-            </span>
-          )}
+          <h1 className="text-2xl font-display font-bold text-white/95">{asset.name} ({asset.symbol})</h1>
+
         </div>
         <p className="text-sm text-white/40 mt-1">
-          {asset.name} ({asset.symbol}) {asset.industry && `· ${asset.industry}`}
+          {asset.website ? (
+            <a href={asset.website} target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors">
+              {asset.website}
+            </a>
+          ) : (
+            asset.name
+          )}
+          {asset.industry && <span className="text-white/30"> · {asset.industry}</span>}
         </p>
+        {(asset.employees || asset.exchange) && (
+          <p className="text-xs text-white/30 mt-0.5">
+            {asset.employees && <span>{asset.employees.toLocaleString()} employees</span>}
+            {asset.employees && asset.exchange && <span className="text-white/15"> · </span>}
+            {asset.exchange && <span>{asset.exchange}</span>}
+          </p>
+        )}
       </div>
     </div>
   );
