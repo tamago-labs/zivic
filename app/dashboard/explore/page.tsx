@@ -9,6 +9,8 @@ interface TokenRow {
   token_symbol: string;
   stock_symbol: string;
   name: string;
+  slug: string;
+  crypto_id: string;
   issuer: string;
   logo: string | null;
   industry: string | null;
@@ -67,6 +69,8 @@ export default function Explore() {
           token_symbol: token.symbol,
           stock_symbol: asset.symbol,
           name: asset.name,
+          slug: asset.slug,
+          crypto_id: token.crypto_id,
           issuer: token.issuer_name === "Backed Assets" ? "xStock" : "Ondo",
           logo: token.logo ?? null,
           industry: asset.industry ?? null,
@@ -198,7 +202,8 @@ export default function Explore() {
             </thead>
             <tbody>
               {paginated.map((row) => (
-                <tr key={row.token_symbol} className="border-b border-border3/20 hover:bg-white/[0.02] transition-colors">
+                <tr key={row.token_symbol} className="border-b border-border3/20 hover:bg-white/[0.02] transition-colors cursor-pointer"
+                  onClick={() => window.location.href = `/dashboard/token/${row.slug}/${row.crypto_id}`}>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2.5">
                       {row.logo ? (
