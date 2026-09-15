@@ -25,13 +25,15 @@ const metricColors: Record<SortMetric, string> = {
   percent_24h: "bg-purple-400",
 };
 
-const tokenMetaMap = new Map<string, { logo: string | null; name: string | null }>();
+const tokenMetaMap = new Map<string, { logo: string | null; name: string | null; slug: string; crypto_id: string }>();
 for (const asset of (listData as any).assets) {
   for (const token of asset.tokens ?? []) {
     if (!tokenMetaMap.has(token.symbol)) {
       tokenMetaMap.set(token.symbol, {
         logo: token.logo ?? null,
         name: token.name ?? null,
+        slug: asset.slug,
+        crypto_id: token.crypto_id,
       });
     }
   }
@@ -112,9 +114,10 @@ export default function TokenStrip() {
         {sorted.map((price) => {
           const meta = tokenMetaMap.get(price.token_symbol);
           return (
-            <div
+            <a
               key={price.token_symbol}
-              className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white/[0.02] border border-border3/30 shrink-0 hover:border-white/10 transition-colors"
+              href={`/dashboard/token/${meta?.slug}/${meta?.crypto_id}`}
+              className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white/[0.02] border border-border3/30 shrink-0 hover:border-white/10 cursor-pointer transition-colors"
             >
               {meta?.logo ? (
                 <img src={meta.logo} alt="" className="w-4 h-4 rounded-full" />
@@ -132,7 +135,7 @@ export default function TokenStrip() {
                   {price.percent_24h >= 0 ? "+" : ""}{price.percent_24h.toFixed(1)}%
                 </span>
               )}
-            </div>
+            </a>
           );
         })}
         </div>

@@ -13,7 +13,7 @@ const metrics: { key: SortMetric; label: string }[] = [
   { key: "percent_24h", label: "By 24h%" },
 ];
 
-const tokenMetaMap = new Map<string, { logo: string | null; name: string | null; symbol: string | null }>();
+const tokenMetaMap = new Map<string, { logo: string | null; name: string | null; symbol: string | null; slug: string; crypto_id: string }>();
 for (const asset of (listData as any).assets) {
   for (const token of asset.tokens ?? []) {
     if (!tokenMetaMap.has(token.symbol)) {
@@ -21,6 +21,8 @@ for (const asset of (listData as any).assets) {
         logo: token.logo ?? null,
         name: token.name ?? null,
         symbol: asset.symbol,
+        slug: asset.slug,
+        crypto_id: token.crypto_id,
       });
     }
   }
@@ -82,9 +84,10 @@ export default function TokenShowcase() {
               {currentTokens.map((price) => {
               const meta = tokenMetaMap.get(price.token_symbol);
               return (
-                <div
+                <a
                   key={price.token_symbol}
-                  className="min-w-0 bg-surface border border-border3 rounded-lg p-4 flex flex-col gap-3 hover:border-white/20 hover:shadow-2xl hover:glow-blue transition-all"
+                  href={`/dashboard/token/${meta?.slug}/${meta?.crypto_id}`}
+                  className="min-w-0 bg-surface border border-border3 rounded-lg p-4 flex flex-col gap-3 hover:border-white/20 hover:shadow-2xl hover:glow-blue transition-all cursor-pointer"
                 >
                   <div className="flex items-center gap-2.5">
                     {meta?.logo ? (
@@ -119,7 +122,7 @@ export default function TokenShowcase() {
                       </div>
                     )}
                   </div>
-                </div>
+                </a>
               );
             })}
           </motion.div>
