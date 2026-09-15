@@ -21,6 +21,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/dashboard/portfolio": "Your AI-Powered Portfolio",
   "/dashboard/explore": "Explore All Tokenized Stocks on Solana",
   "/dashboard/alerts": "Stay Notified",
+  "/dashboard/token": "Token Details",
 };
 
 export default function Topbar() {
@@ -50,7 +51,7 @@ export default function Topbar() {
 
   return (
     <header className="h-14 border-b border-border3/50 bg-surface flex items-center justify-between px-6 pl-0 sticky top-0 z-10">
-      {PAGE_TITLES[pathname] ? (
+      {PAGE_TITLES[pathname] || pathname.startsWith("/dashboard/token/") ? (
         <motion.h1
           key={pathname}
           initial={{ opacity: 0, filter: "blur(8px)" }}
@@ -58,9 +59,9 @@ export default function Topbar() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-lg font-display font-semibold text-white/70 px-2 ml-5"
         >
-          {PAGE_TITLES[pathname]}
+          {PAGE_TITLES[pathname] ?? "Token Details"}
         </motion.h1>
-      ) : pathname.startsWith("/dashboard/token/") ? null : (
+      ) : (
         <TokenStrip />
       )}
 
