@@ -116,7 +116,7 @@ export default function TokenStrip() {
           return (
             <a
               key={price.token_symbol}
-              href={`/dashboard/token/${meta?.slug}/${meta?.crypto_id}`}
+              href={`/dashboard/token-data?slug=${meta?.slug}&crypto_id=${meta?.crypto_id}`}
               className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white/[0.02] border border-border3/30 shrink-0 hover:border-white/10 cursor-pointer transition-colors"
             >
               {meta?.logo ? (

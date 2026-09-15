@@ -4,33 +4,14 @@ import type { Token, Asset } from "@/lib/types/token";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string; crypto_id: string }>;
-}) {
-  const { slug, crypto_id } = await params;
-  const assets = (listData as any).assets as Asset[];
-  const asset = assets.find(
-    (a) => a.slug === slug && a.tokens?.some((t) => String(t.crypto_id) === crypto_id)
-  );
-  const token = asset?.tokens?.find((t) => String(t.crypto_id) === crypto_id);
-
-  if (!asset || !token) return { title: "Token Not Found | Zivic" };
-
-  return {
-    title: `${token.name} (${token.symbol}) on Solana | Zivic`,
-    description: `Track ${token.symbol} — ${asset.name} tokenized stock on Solana. Live price, market cap, and chart.`,
-  };
+interface PageProps {
+  searchParams: Promise<{ slug?: string; crypto_id?: string }>;
 }
 
-export default async function TokenDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string; crypto_id: string }>;
-}) {
-  const { slug, crypto_id } = await params;
+export default async function TokenDataPage({ searchParams }: PageProps) {
+  const { slug, crypto_id } = await searchParams;
   const assets = (listData as any).assets as Asset[];
+
   const asset = assets.find(
     (a) => a.slug === slug && a.tokens?.some((t) => String(t.crypto_id) === crypto_id)
   );
@@ -54,8 +35,7 @@ export default async function TokenDetailPage({
 
   return (
     <div className="h-full overflow-y-auto">
-      <div className="max-w-6xl mx-auto px-0 py-0">
-        {/* Breadcrumb */}
+        <div className="max-w-6xl mx-auto">
         <nav className="flex items-center gap-1.5 text-xs text-white/30 mb-6">
           <Link href="/dashboard/explore" className="hover:text-white/60 transition-colors">
             Explore
