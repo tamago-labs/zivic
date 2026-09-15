@@ -211,7 +211,7 @@ export default function Explore() {
                       <span className="font-mono font-semibold text-white/90">{row.token_symbol}</span>
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-white/60">{row.stock_symbol}</td>
+                  <td className="px-4 py-3 text-white/60 cursor-default" title={row.name}>{row.stock_symbol}</td>
                   <td className="px-4 py-3">
                     <span className="text-[12px] text-white/50 font-medium">
                       {row.issuer}

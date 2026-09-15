@@ -10,7 +10,7 @@ const navItems = [
   { href: '/dashboard', label: 'New Chat', icon: MessageSquare },
   { href: '/dashboard/portfolio', label: 'Portfolio', icon: PieChart },
   { href: '/dashboard/explore', label: 'Explore', icon: Compass },
-  { href: '/dashboard/alerts', label: 'Alerts', icon: Bell },
+  // { href: '/dashboard/alerts', label: 'Alerts', icon: Bell },
   { href: '/dashboard/top-news', label: 'Top News', icon: Newspaper },
 ];
 
