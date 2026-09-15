@@ -63,7 +63,6 @@ export default async function TokenDetailPage({
           token={token}
           description={description}
           otherTokens={otherTokens}
-          prices={[]}
         />
       </div>
     </div>
