@@ -9,6 +9,7 @@ import TokenDetailAbout from "./TokenDetailAbout";
 import TokenDetailInfo from "./TokenDetailInfo";
 import TokenDetailLinks from "./TokenDetailLinks";
 import TokenDetailOther from "./TokenDetailOther";
+import SwapPanel from "./SwapPanel";
 
 export default function TokenDetailClient({
   asset,
@@ -28,14 +29,15 @@ export default function TokenDetailClient({
       <div className="space-y-6">
         <TokenDetailHeader token={token} asset={asset} />
         <div className="grid grid-cols-5 gap-6">
-          <div className="col-span-2 space-y-6">
+           <div className="col-span-2 space-y-6">
             <TokenDetailStats token={token} price={price} />
-            <TokenDetailAbout asset={asset} description={description} />
+            <SwapPanel token={token} asset={asset} />
             <TokenDetailInfo token={token} asset={asset} price={price} />
-            <TokenDetailLinks token={token} />
           </div>
-          <div className="col-span-3">
+          <div className="col-span-3 space-y-6">
             <TokenDetailPrice token={token} />
+            <TokenDetailAbout asset={asset} description={description} />
+            <TokenDetailLinks token={token} />
           </div>
         </div>
         <TokenDetailOther asset={asset} otherTokens={otherTokens} prices={prices} />
