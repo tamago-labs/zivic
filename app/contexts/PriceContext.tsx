@@ -58,8 +58,6 @@ export function PriceProvider({ children }: { children: ReactNode }) {
           }
         }
 
-        console.log("latestBySymbol:", latestBySymbol)
-
         setPrices(Array.from(latestBySymbol.values()).map((item) => ({
           token_symbol: item.token_symbol,
           price: item.price,

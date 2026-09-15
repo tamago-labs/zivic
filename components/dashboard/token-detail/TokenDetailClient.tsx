@@ -25,18 +25,20 @@ export default function TokenDetailClient({
   const price = prices.find((p) => p.token_symbol === token.symbol);
 
   return (
-    <div className="grid grid-cols-5 gap-6">
-      <div className="col-span-2 space-y-6">
+      <div className="space-y-6">
         <TokenDetailHeader token={token} asset={asset} />
-        <TokenDetailStats token={token} price={price} />
-        <TokenDetailAbout asset={asset} description={description} />
-        <TokenDetailInfo token={token} asset={asset} />
-        <TokenDetailLinks token={token} />
+        <div className="grid grid-cols-5 gap-6">
+          <div className="col-span-2 space-y-6">
+            <TokenDetailStats token={token} price={price} />
+            <TokenDetailAbout asset={asset} description={description} />
+            <TokenDetailInfo token={token} asset={asset} price={price} />
+            <TokenDetailLinks token={token} />
+          </div>
+          <div className="col-span-3">
+            <TokenDetailPrice token={token} price={price} />
+          </div>
+        </div>
         <TokenDetailOther asset={asset} otherTokens={otherTokens} prices={prices} />
       </div>
-      <div className="col-span-3">
-        <TokenDetailPrice token={token} price={price} />
-      </div>
-    </div>
   );
 }

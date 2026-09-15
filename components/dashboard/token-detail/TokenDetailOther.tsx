@@ -19,7 +19,7 @@ export default function TokenDetailOther({
   return (
     <div>
       <h2 className="text-sm font-semibold text-white/70 mb-3">Other {asset.symbol} Tokens</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {otherTokens.map((ot) => {
           const otPrice = prices.find((p) => p.token_symbol === ot.symbol);
           return (

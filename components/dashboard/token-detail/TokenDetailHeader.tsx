@@ -25,14 +25,9 @@ export default function TokenDetailHeader({ token, asset }: { token: Token; asse
             asset.name
           )}
           {asset.industry && <span className="text-white/30"> · {asset.industry}</span>}
+          {asset.employees && <span className="text-white/30"> · {asset.employees.toLocaleString()} employees</span>}
+          {asset.exchange && <span className="text-white/30"> · {asset.exchange}</span>}
         </p>
-        {(asset.employees || asset.exchange) && (
-          <p className="text-xs text-white/30 mt-0.5">
-            {asset.employees && <span>{asset.employees.toLocaleString()} employees</span>}
-            {asset.employees && asset.exchange && <span className="text-white/15"> · </span>}
-            {asset.exchange && <span>{asset.exchange}</span>}
-          </p>
-        )}
       </div>
     </div>
   );
