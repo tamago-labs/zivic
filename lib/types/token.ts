@@ -1,0 +1,26 @@
+export interface Token {
+  symbol: string;
+  name: string;
+  crypto_id: string;
+  issuer_name: string;
+  logo?: string | null;
+  description?: string | null;
+  website?: string | null;
+  twitter?: string | null;
+  discord?: string | null;
+  tags?: string[] | null;
+  date_added?: string | null;
+  mint?: string | null;
+  decimals?: number | null;
+  verified?: boolean | null;
+}
+
+export interface Asset {
+  symbol: string;
+  name: string;
+  slug: string;
+  rwa_id: number;
+  description?: string | null;
+  industry?: string | null;
+  tokens: Token[];
+}
