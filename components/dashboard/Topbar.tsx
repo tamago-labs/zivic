@@ -13,6 +13,7 @@ import { WalletModal } from "./WalletModal";
 import { ConnectedPopover } from "./ConnectedPopover";
 import { CreditsModal } from "./CreditsModal";
 import TokenStrip from "./TokenStrip";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import listData from "@/lib/data/rwa-v1-list.json";
 import { usePrices } from "@/app/contexts/PriceContext";
@@ -35,7 +36,7 @@ const dataClient = generateClient<Schema>();
 
 const PAGE_TITLES: Record<string, string> = {
   "/dashboard/portfolio": "Your AI-Powered Portfolio",
-  "/dashboard/explore": "Explore All Tokenized Stocks on Solana",
+  "/dashboard/explore": "Explore Tokenized Stocks on Solana",
   "/dashboard/alerts": "Stay Notified",
 };
 
@@ -68,10 +69,20 @@ export default function Topbar() {
   const tokenMatch = pathname.match(/^\/dashboard\/token\/([^/]+)\/([^/]+)$/);
   const tokenSlug = tokenMatch?.[1];
   const tokenCryptoId = tokenMatch?.[2];
-  const tokenData = (listData as any).assets.flatMap((a: any) =>
-    (a.tokens ?? []).map((t: any) => ({ ...t, assetSlug: a.slug, rwaRank: a.rwa_rank ?? null }))
-  ).find((t: any) => t.assetSlug === tokenSlug && String(t.crypto_id) === tokenCryptoId);
+  const assetData = (listData as any).assets.find((a: any) => a.slug === tokenSlug);
+  const tokenData = assetData?.tokens?.find((t: any) => String(t.crypto_id) === tokenCryptoId);
+  const otherTokens = assetData?.tokens?.filter((t: any) => String(t.crypto_id) !== tokenCryptoId) ?? [];
   const tokenPrice = tokenData ? prices.find((p) => p.token_symbol === tokenData.symbol) : undefined;
+
+  const tokenMeta = tokenData ? {
+    logo: tokenData.logo ?? null,
+    name: tokenData.name,
+    symbol: tokenData.symbol,
+    rwaRank: assetData?.rwa_rank ?? null,
+    mint: tokenData.mint ?? null,
+    assetSymbol: assetData?.symbol ?? null,
+    assetSlug: assetData?.slug ?? null,
+  } : null;
 
   return (
     <header className="h-14 border-b border-border3/50 bg-surface flex items-center justify-between px-6 pl-0 sticky top-0 z-10">
@@ -85,25 +96,25 @@ export default function Topbar() {
         >
           {PAGE_TITLES[pathname]}
         </motion.h1>
-      ) : tokenData ? (
+      ) : tokenMeta ? (
         <motion.div
           key={pathname}
           initial={{ opacity: 0, filter: "blur(8px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex items-center gap-3 px-2 ml-5"
+          className="flex items-center gap-3 px-2 ml-5 overflow-hidden"
         >
-          {tokenData.logo ? (
-            <img src={tokenData.logo} alt="" className="w-7 h-7 rounded-full" />
+          {tokenMeta.logo ? (
+            <img src={tokenMeta.logo} alt="" className="w-7 h-7 rounded-full" />
           ) : (
             <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-[9px] font-bold text-white/40">
-              {tokenData.symbol?.slice(0, 2)}
+              {tokenMeta.symbol?.slice(0, 2)}
             </div>
           )}
-          <span className="text-sm font-semibold text-white/90 cursor-default" title={tokenData.name}>{tokenData.symbol}</span>
-          {tokenData.rwaRank != null && (
-            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-white/[0.06] text-white/40 cursor-default" title={`Ranked #${tokenData.rwaRank} by CoinMarketCap`}>
-              #{tokenData.rwaRank}
+          <span className="text-sm font-semibold text-white/90 cursor-default" title={tokenMeta.name}>{tokenMeta.symbol}</span>
+          {tokenMeta.rwaRank != null && (
+            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-white/[0.06] text-white/40 cursor-default" title={`Ranked #${tokenMeta.rwaRank} by CoinMarketCap`}>
+              #{tokenMeta.rwaRank}
             </span>
           )}
           {tokenPrice?.price != null && (
@@ -137,17 +148,51 @@ export default function Topbar() {
               </span>
             )}
           </div>
-          {tokenData.mint && (
+          {tokenMeta.mint && (
             <a
-              href={`https://solscan.io/token/${tokenData.mint}`}
+              href={`https://solscan.io/token/${tokenMeta.mint}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-2 py-0.5 rounded-md border border-white/[0.08] bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04] transition-colors ml-3"
-              title={tokenData.mint}
+              title={tokenMeta.mint}
             >
-              <span className="text-[11px] font-mono text-white/50">{tokenData.mint.slice(0, 6)}...{tokenData.mint.slice(-4)}</span>
+              <span className="text-[11px] font-mono text-white/50">{tokenMeta.mint.slice(0, 6)}...{tokenMeta.mint.slice(-4)}</span>
               <ExternalLink className="w-3 h-3 text-white/30" />
             </a>
+          )}
+          {otherTokens.length > 0 && (
+            <div className="flex items-center gap-2 ml-3 pl-3 border-l border-white/[0.06]">
+              <span className="text-[10px] text-white/25 shrink-0">Other {tokenMeta.assetSymbol}</span>
+              {otherTokens.map((ot: any) => {
+                const otPrice = prices.find((p) => p.token_symbol === ot.symbol);
+                return (
+                  <Link
+                    key={ot.crypto_id}
+                    href={`/dashboard/token/${tokenMeta.assetSlug}/${ot.crypto_id}`}
+                    className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white/[0.02] border border-border3/30 shrink-0 hover:border-white/10 transition-colors"
+                  >
+                    {ot.logo ? (
+                      <img src={ot.logo} alt="" className="w-4 h-4 rounded-full" />
+                    ) : (
+                      <div className="w-4 h-4 rounded-full bg-white/10 flex items-center justify-center text-[7px] font-bold text-white/40">
+                        {ot.symbol?.slice(0, 2)}
+                      </div>
+                    )}
+                    <span className="text-[11px] font-medium text-white/70">{ot.symbol}</span>
+                    {otPrice?.price != null && (
+                      <span className="text-[11px] font-semibold text-white/90">
+                        ${otPrice.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                      </span>
+                    )}
+                    {otPrice?.percent_24h != null && (
+                      <span className={`text-[10px] font-medium ${otPrice.percent_24h >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                        {otPrice.percent_24h >= 0 ? "+" : ""}{otPrice.percent_24h.toFixed(1)}%
+                      </span>
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
           )}
         </motion.div>
       ) : (
