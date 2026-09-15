@@ -19,7 +19,7 @@ const dataClient = generateClient<Schema>();
 
 const PAGE_TITLES: Record<string, string> = {
   "/dashboard/portfolio": "Your AI-Powered Portfolio",
-  "/dashboard/explore": "Explore Tokenized Stocks on Solana",
+  "/dashboard/explore": "Explore All Tokenized Stocks on Solana",
   "/dashboard/alerts": "Stay Notified",
 };
 
@@ -60,7 +60,7 @@ export default function Topbar() {
         >
           {PAGE_TITLES[pathname]}
         </motion.h1>
-      ) : (
+      ) : pathname.startsWith("/dashboard/token/") ? null : (
         <TokenStrip />
       )}
 

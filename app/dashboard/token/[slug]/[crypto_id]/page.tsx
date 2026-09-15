@@ -68,15 +68,11 @@ export default async function TokenDetailPage({
 
   return (
     <div className="h-full overflow-y-auto">
-      <div className="max-w-6xl mx-auto px-6 py-6">
+      <div className="max-w-6xl mx-auto px-0 py-6">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-xs text-white/30 mb-6">
           <Link href="/dashboard/explore" className="hover:text-white/60 transition-colors">
             Explore
-          </Link>
-          <ChevronRight className="w-3 h-3" />
-          <Link href={`/dashboard/token/${asset.slug}`} className="hover:text-white/60 transition-colors">
-            {asset.symbol}
           </Link>
           <ChevronRight className="w-3 h-3" />
           <span className="text-white/70">{token.symbol}</span>
