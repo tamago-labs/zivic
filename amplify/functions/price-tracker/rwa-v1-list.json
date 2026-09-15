@@ -1,6 +1,6 @@
 {
   "fetched_at": "2026-09-14T04:03:19.933Z",
-  "count": 166,
+  "count": 154,
   "assets": [
     {
       "symbol": "CRCL",
@@ -28,16 +28,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 111779717.36,
           "volume_24h": 4531693.98083177
-        },
-        {
-          "symbol": "wCRCLx",
-          "name": "Wrapped Circle Tokenized Stock (xStock)",
-          "price": 92.27996283302016,
-          "crypto_id": 41268,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 116909.39507672
         }
       ],
       "website": "https://www.circle.com",
@@ -73,16 +63,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 10013616.12,
           "volume_24h": 1302599.0392442
-        },
-        {
-          "symbol": "wSPCXx",
-          "name": "Wrapped SpaceX Tokenized ETF (xStock)",
-          "price": 148.76983688707287,
-          "crypto_id": 41610,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 2999540.34365953
         }
       ],
       "website": "https://www.spacex.com/",
@@ -118,16 +98,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 25608387.43,
           "volume_24h": 2675920.01887823
-        },
-        {
-          "symbol": "WMSTRX",
-          "name": "Wrapped MicroStrategy Tokenized stock (xStock)",
-          "price": 131.5427432333795,
-          "crypto_id": 37215,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 247905.33,
-          "volume_24h": 75246.76488369
         }
       ],
       "website": "https://www.strategy.com",
@@ -163,16 +133,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 35802853.4,
           "volume_24h": 1567969.0374717
-        },
-        {
-          "symbol": "WNVDAX",
-          "name": "Wrapped NVIDIA Tokenized stock (xStock)",
-          "price": 215.71474967531242,
-          "crypto_id": 37270,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 584460.33,
-          "volume_24h": 948166.72362562
         }
       ],
       "website": "https://www.nvidia.com",
@@ -208,16 +168,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 16188606.7,
           "volume_24h": 2930479.87151178
-        },
-        {
-          "symbol": "WTSLAX",
-          "name": "Wrapped Tesla Tokenized stock (xStock)",
-          "price": 360.5548613148397,
-          "crypto_id": 37227,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 294638.92,
-          "volume_24h": 1517894.66145679
         }
       ],
       "website": "https://www.tesla.com",
@@ -253,16 +203,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 16440569.75,
           "volume_24h": 2968871.99080775
-        },
-        {
-          "symbol": "wMUx",
-          "name": "Wrapped Micron Technology Tokenized Stock (xStock)",
-          "price": 940.6670618906719,
-          "crypto_id": 41636,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 106532.20604711
         }
       ],
       "website": "https://www.micron.com",
@@ -298,16 +238,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 19660259.49,
           "volume_24h": 8502277.65457503
-        },
-        {
-          "symbol": "WGOOGLX",
-          "name": "Wrapped Alphabet Tokenized stock (xStock)",
-          "price": 337.11306449432396,
-          "crypto_id": 37121,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 336110.13,
-          "volume_24h": 89184.40090216
         },
         {
           "symbol": "GOOGon",
@@ -353,16 +283,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 13830402.58,
           "volume_24h": 7079577.98745547
-        },
-        {
-          "symbol": "wSNDKx",
-          "name": "Wrapped Sandisk Corporation Tokenized Stock (xStock)",
-          "price": 1565.0833153519666,
-          "crypto_id": 41493,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 191174.74005148
         }
       ],
       "website": null,
@@ -398,16 +318,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 12460613.15,
           "volume_24h": 1820653.59069622
-        },
-        {
-          "symbol": "WINTCX",
-          "name": "Wrapped Intel Tokenized stock (xStock)",
-          "price": 98.73664572222262,
-          "crypto_id": 37202,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 134458.54,
-          "volume_24h": 79954.26878164
         }
       ],
       "website": "https://www.intel.com",
@@ -443,16 +353,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 8632112.84,
           "volume_24h": 1928966.52426122
-        },
-        {
-          "symbol": "WCOINX",
-          "name": "Wrapped Coinbase Tokenized stock (xStock)",
-          "price": 176.41463443639094,
-          "crypto_id": 37193,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 193454.64,
-          "volume_24h": 73037.00180449
         }
       ],
       "website": "https://www.coinbase.com",
@@ -488,16 +388,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 8688891.77,
           "volume_24h": 2252570.50593171
-        },
-        {
-          "symbol": "WAAPLX",
-          "name": "Wrapped Apple Tokenized stock (xStock)",
-          "price": 330.5306672651748,
-          "crypto_id": 37269,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 392485.43,
-          "volume_24h": 835206.37355618
         }
       ],
       "website": "https://www.apple.com",
@@ -533,16 +423,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 7705929.83,
           "volume_24h": 1543567.01002312
-        },
-        {
-          "symbol": "WMRVLX",
-          "name": "Wrapped Marvell Tokenized stock (xStock)",
-          "price": 227.32865696993176,
-          "crypto_id": 37213,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 151830.93,
-          "volume_24h": 110763.23307563
         }
       ],
       "website": "https://www.marvell.com",
@@ -578,16 +458,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1248077.4,
           "volume_24h": 1961195.76722294
-        },
-        {
-          "symbol": "wSKHYx",
-          "name": "Wrapped SK hynix Tokenized Stock (xStock)",
-          "price": 180.92843849094297,
-          "crypto_id": 41523,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 90702.54209238
         }
       ],
       "website": null,
@@ -623,16 +493,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 12763170.11,
           "volume_24h": 4230188.65052783
-        },
-        {
-          "symbol": "WMETAX",
-          "name": "Wrapped Meta Tokenized stock (xStock)",
-          "price": 642.670786545965,
-          "crypto_id": 37211,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 129270.81,
-          "volume_24h": 10549.82337849
         }
       ],
       "website": "https://about.meta.com",
@@ -668,16 +528,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 422622.18,
           "volume_24h": 1647.74872232
-        },
-        {
-          "symbol": "wHIMSx",
-          "name": "Wrapped Hims & Hers Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41430,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.forhims.com",
@@ -713,16 +563,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 5042896.24,
           "volume_24h": 1944033.49730418
-        },
-        {
-          "symbol": "WHOODX",
-          "name": "Wrapped Robinhood Tokenized stock (xStock)",
-          "price": 111.99772552259789,
-          "crypto_id": 37200,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 242262.7,
-          "volume_24h": 120375.25711328
         }
       ],
       "website": "https://www.robinhood.com",
@@ -758,16 +598,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 8134821.75,
           "volume_24h": 2452260.72380777
-        },
-        {
-          "symbol": "WMSFTX",
-          "name": "Wrapped Microsoft Tokenized stock (xStock)",
-          "price": 496.766673062119,
-          "crypto_id": 37214,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 147201.27,
-          "volume_24h": 17341.17139241
         }
       ],
       "website": "https://www.microsoft.com",
@@ -803,16 +633,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 4444482.97,
           "volume_24h": 3146357.69750471
-        },
-        {
-          "symbol": "WAVGOX",
-          "name": "Wrapped Broadcom Tokenized stock (xStock)",
-          "price": 357.15761117097827,
-          "crypto_id": 37129,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 137588.64,
-          "volume_24h": 0
         }
       ],
       "website": "https://www.broadcom.com",
@@ -848,16 +668,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 6087733.53,
           "volume_24h": 1849828.38825713
-        },
-        {
-          "symbol": "WAMZNX",
-          "name": "Wrapped Amazon Tokenized stock (xStock)",
-          "price": 254.32143242125676,
-          "crypto_id": 37112,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 48735.52,
-          "volume_24h": 13008.91935432
         }
       ],
       "website": "https://www.amazon.com",
@@ -883,16 +693,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 8135861.62,
           "volume_24h": 3353689.59681054
-        },
-        {
-          "symbol": "wAMDx",
-          "name": "Wrapped AMD Tokenized Stock (xStock)",
-          "price": 500.6492709625824,
-          "crypto_id": 41115,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 87662.25234923
         }
       ],
       "website": "https://www.amd.com",
@@ -920,10 +720,10 @@
           "volume_24h": 3056893.68789697
         },
         {
-          "symbol": "wTSMx",
-          "name": "Wrapped TSMC Tokenized Stock (xStock)",
+          "symbol": "TSMX",
+          "name": "TSMC tokenized stock(xStock)",
           "price": 425.13943485287,
-          "crypto_id": 41688,
+          "crypto_id": 40083,
           "issuer_id": "6878977dcbbf471de3366e85",
           "issuer_name": "Backed Assets",
           "market_cap": 0,
@@ -963,16 +763,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 3024788.02,
           "volume_24h": 242194.1191964
-        },
-        {
-          "symbol": "WORCLX",
-          "name": "Wrapped Oracle Tokenized stock (xStock)",
-          "price": 150.01787961206097,
-          "crypto_id": 37218,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 135344.81,
-          "volume_24h": 40027.12420834
         }
       ],
       "website": "https://www.oracle.com",
@@ -998,16 +788,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 11876774.53,
           "volume_24h": 558386.57632977
-        },
-        {
-          "symbol": "wSOFIx",
-          "name": "Wrapped SoFi Technologies Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41634,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.sofi.com",
@@ -1035,10 +815,10 @@
           "volume_24h": 1819680.390019
         },
         {
-          "symbol": "wBMNRx",
-          "name": "Wrapped Bitmine Tokenized Stock (xStock)",
+          "symbol": "BMNRx",
+          "name": "Bitmine Tokenised Stock (xStock)",
           "price": 24.911733635292993,
-          "crypto_id": 41124,
+          "crypto_id": 39700,
           "issuer_id": "6878977dcbbf471de3366e85",
           "issuer_name": "Backed Assets",
           "market_cap": 0,
@@ -1078,16 +858,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 427664.19,
           "volume_24h": 830065.49901974
-        },
-        {
-          "symbol": "WGMEX",
-          "name": "Wrapped Gamestop Tokenized stock (xStock)",
-          "price": 21.190566397150867,
-          "crypto_id": 37120,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 183996.33,
-          "volume_24h": 371614.02133589
         }
       ],
       "website": "https://www.gamestop.com",
@@ -1123,16 +893,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 2433490.85,
           "volume_24h": 506677.55581002
-        },
-        {
-          "symbol": "WPLTRX",
-          "name": "Wrapped Palantir Tokenized stock (xStock)",
-          "price": 166.7309572852469,
-          "crypto_id": 37220,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 140786.53,
-          "volume_24h": 27027.42227238
         }
       ],
       "website": "https://www.palantir.com",
@@ -1193,16 +953,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 960427.83,
           "volume_24h": 55488.65005498
-        },
-        {
-          "symbol": "WLLYX",
-          "name": "Wrapped Eli Lilly Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37207,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.lilly.com",
@@ -1238,16 +988,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 740645.44,
           "volume_24h": 23658.23157553
-        },
-        {
-          "symbol": "wASMLx",
-          "name": "Wrapped ASML Tokenized Stock (xStock)",
-          "price": 1671.381083303687,
-          "crypto_id": 41170,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 22800.3170818
         }
       ],
       "website": "https://www.asml.com",
@@ -1300,16 +1040,6 @@
           "volume_24h": 1062681.7815478
         },
         {
-          "symbol": "wQCOMx",
-          "name": "Wrapped Qualcomm Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41622,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        },
-        {
           "symbol": "QCOMx",
           "name": "Qualcomm tokenized stock (xStock)",
           "price": 177.31103307504165,
@@ -1328,31 +1058,6 @@
       "description": "Qualcomm develops and licenses wireless technology and designs chips for smartphones. The company's key patents revolve around CDMA and OFDMA technologies, which are standards in wireless communications that are the backbone of all 3G, 4G, and 5G networks. Qualcomm's IP is licensed by virtually all wireless device makers. The firm is also the world's largest wireless chip vendor, supplying nearly every premier handset maker with leading-edge processors. Qualcomm also sells RF-front end modules into smartphones, as well as chips into automotive and Internet of Things markets."
     },
     {
-      "symbol": "NBIS",
-      "name": "Nebius Group N.V.",
-      "slug": "nebius-group-n-v",
-      "rwa_id": 254,
-      "rwa_rank": 276,
-      "tokens": [
-        {
-          "symbol": "wNBISx",
-          "name": "Wrapped Nebius Tokenized Stock (xStock)",
-          "price": 222.0100378650986,
-          "crypto_id": 41481,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 0
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
-    },
-    {
       "symbol": "LITE",
       "name": "Lumentum Holdings Inc.",
       "slug": "lumentum-holdings-inc",
@@ -1368,16 +1073,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 2141816.73,
           "volume_24h": 955896.03794178
-        },
-        {
-          "symbol": "wLITEx",
-          "name": "Wrapped Lumentum Holdings Inc. Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41452,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": null,
@@ -1438,16 +1133,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1390756.66,
           "volume_24h": 1789765.27470887
-        },
-        {
-          "symbol": "wCOHRx",
-          "name": "Wrapped Coherent Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41149,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.coherent.com",
@@ -1483,16 +1168,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 791952.92,
           "volume_24h": 77352.33309311
-        },
-        {
-          "symbol": "wIRENx",
-          "name": "Wrapped IREN Tokenized Stock (xStock)",
-          "price": 41.861816908481224,
-          "crypto_id": 41291,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 0
         }
       ],
       "website": "https://iren.com",
@@ -1528,16 +1203,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 924479.07,
           "volume_24h": 396357.39605407
-        },
-        {
-          "symbol": "WKOX",
-          "name": "Wrapped Coca-Cola Tokenized stock (xStock)",
-          "price": 90.30456850152805,
-          "crypto_id": 37205,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 23786.53,
-          "volume_24h": 4456.03828559
         }
       ],
       "website": "https://www.coca-colacompany.com",
@@ -1573,16 +1238,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 1070072.82,
           "volume_24h": 9204.13254673
-        },
-        {
-          "symbol": "wIBMx",
-          "name": "Wrapped International Business Tokenized Stock (xStock)",
-          "price": 248.86960976984233,
-          "crypto_id": 41431,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 7301.49933887
         }
       ],
       "website": "https://www.ibm.com",
@@ -1591,31 +1246,6 @@
       "employees": 270300,
       "exchange": "New York Stock Exchange",
       "description": "Incorporated in 1911, International Business Machines, or IBM, is one of the oldest technology companies in the world. It provides software, IT consulting services, and hardware to help business customers modernize their technology workflows. IBM operates in 175 countries and employs approximately 300,000 people. The company has a robust roster of business partners to service its clients, which includes 95% of all Fortune 500 companies. IBM's products, including Red Hat, watsonx, and mainframes, handle some of the world's most important data workloads in areas like finance and retail."
-    },
-    {
-      "symbol": "AAOI",
-      "name": "Applied Optoelectronics, Inc.",
-      "slug": "applied-optoelectronics-inc",
-      "rwa_id": 191,
-      "rwa_rank": 999,
-      "tokens": [
-        {
-          "symbol": "wAAOIx",
-          "name": "Wrapped Applied Optoelectronics Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41090,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
     },
     {
       "symbol": "SMCI",
@@ -1642,16 +1272,6 @@
           "issuer_id": "6878977dcbbf471de3366e85",
           "issuer_name": "Backed Assets",
           "market_cap": 816863.39,
-          "volume_24h": 0
-        },
-        {
-          "symbol": "wSMCIx",
-          "name": "Wrapped Super Micro Computer, Inc. Tokenized Stock (xStock)",
-          "price": 39.19444763531629,
-          "crypto_id": 41508,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
           "volume_24h": 0
         }
       ],
@@ -1688,16 +1308,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 2453322.38,
           "volume_24h": 717800.93594038
-        },
-        {
-          "symbol": "WMCDX",
-          "name": "Wrapped McDonald's Tokenized stock (xStock)",
-          "price": 259.01867645994713,
-          "crypto_id": 37209,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 28507.92,
-          "volume_24h": 553.45488688
         }
       ],
       "website": "https://corporate.mcdonalds.com",
@@ -1733,16 +1343,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 1187985.45,
           "volume_24h": 6.49334431
-        },
-        {
-          "symbol": "WCVXX",
-          "name": "Wrapped Chevron Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37118,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.chevron.com",
@@ -1778,16 +1378,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 876107.18,
           "volume_24h": 2077085.0464641
-        },
-        {
-          "symbol": "WNFLXX",
-          "name": "Wrapped Netflix Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37216,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.netflix.com",
@@ -1796,31 +1386,6 @@
       "employees": 14000,
       "exchange": "Nasdaq",
       "description": "Netflix's relatively simple business model involves only one business, its streaming service. It has the biggest television entertainment subscriber base in both the United States and the collective international market, with more than 300 million subscribers globally. Netflix has exposure to nearly the entire global population outside of China. The firm has traditionally avoided a regular slate of live programming or sports content, instead focusing on on-demand access to episodic television, movies, and documentaries. The firm introduced ad-supported subscription plans in 2022, giving the firm exposure to the advertising market in addition to the subscription fees that have historically accounted for nearly all its revenue."
-    },
-    {
-      "symbol": "BE",
-      "name": "Bloom Energy Corporation",
-      "slug": "bloom-energy-corporation",
-      "rwa_id": 190,
-      "rwa_rank": 209,
-      "tokens": [
-        {
-          "symbol": "wBEx",
-          "name": "Wrapped Bloom Energy Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41174,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
     },
     {
       "symbol": "LMT",
@@ -1838,16 +1403,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 3947525.5,
           "volume_24h": 83975.19852888
-        },
-        {
-          "symbol": "wLMTx",
-          "name": "Wrapped Lockheed Martin Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41313,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.lockheedmartin.com",
@@ -1856,31 +1411,6 @@
       "employees": 121000,
       "exchange": "New York Stock Exchange",
       "description": "Lockheed Martin is the world's largest defense contractor and has dominated the Western market for high-end fighter aircraft since it won the F-35 Joint Strike Fighter program in 2001. Aeronautics is Lockheed's largest segment, which derives upward of two-thirds of its revenue from the F-35. Lockheed's remaining segments are rotary and mission systems, mainly encompassing the Sikorsky helicopter business; missiles and fire control, which creates missiles and missile defense systems; and space systems, which produces satellites and receives equity income from the United Launch Alliance joint venture."
-    },
-    {
-      "symbol": "RKLB",
-      "name": "Rocket Lab Corporation",
-      "slug": "rocket-lab-corporation",
-      "rwa_id": 297,
-      "rwa_rank": 377,
-      "tokens": [
-        {
-          "symbol": "wRKLBx",
-          "name": "Wrapped Rocket Lab Tokenized Stock (xStock)",
-          "price": 64.09173335924821,
-          "crypto_id": 41489,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 0
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
     },
     {
       "symbol": "PFE",
@@ -1908,16 +1438,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 348858.36,
           "volume_24h": 121.65468334
-        },
-        {
-          "symbol": "WPFEX",
-          "name": "Wrapped Pfizer Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37115,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.pfizer.com",
@@ -1953,16 +1473,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 605570.16,
           "volume_24h": 57605.92167622
-        },
-        {
-          "symbol": "wAMATx",
-          "name": "Wrapped Applied Materials, Inc. Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41094,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.appliedmaterials.com",
@@ -1998,16 +1508,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 722807.42,
           "volume_24h": 6070.07971264
-        },
-        {
-          "symbol": "WCSCOX",
-          "name": "Wrapped Cisco Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37196,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.cisco.com",
@@ -2043,16 +1543,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 2954905.17,
           "volume_24h": 1006831.76065633
-        },
-        {
-          "symbol": "WJPMX",
-          "name": "Wrapped JPMorgan Chase Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37204,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.jpmorganchase.com",
@@ -2084,16 +1574,6 @@
           "name": "Oklo tokenized stock (xStock)",
           "price": null,
           "crypto_id": 40158,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        },
-        {
-          "symbol": "wOKLOx",
-          "name": "Wrapped Oklo Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41661,
           "issuer_id": "6878977dcbbf471de3366e85",
           "issuer_name": "Backed Assets",
           "market_cap": null,
@@ -2133,16 +1613,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 460432.94,
           "volume_24h": 14579.70682662
-        },
-        {
-          "symbol": "WPGX",
-          "name": "Wrapped Procter & Gamble Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37116,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://us.pg.com",
@@ -2151,31 +1621,6 @@
       "employees": 109000,
       "exchange": "New York Stock Exchange",
       "description": "Since its founding in 1837, Procter & Gamble has become one of the world's largest consumer product manufacturers, with annual sales approaching $85 billion. It operates with a lineup of leading brands, including more than 20 that generate north of $1 billion each in annual global sales, such as Tide laundry detergent, Charmin toilet paper, Pantene shampoo, and Pampers diapers. Sales outside its home turf represent just more than half of the firm's consolidated total."
-    },
-    {
-      "symbol": "CBRS",
-      "name": "Cerebras Systems",
-      "slug": "cerebras-systems",
-      "rwa_id": 251,
-      "rwa_rank": 345,
-      "tokens": [
-        {
-          "symbol": "wCBRSx",
-          "name": "Wrapped Cerebras Systems Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41273,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": "https://www.cerebras.ai/",
-      "industry": "Semiconductors & Related Devices",
-      "founded": "2015-01-01",
-      "employees": 1000,
-      "exchange": null,
-      "description": null
     },
     {
       "symbol": "DELL",
@@ -2193,16 +1638,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 1586276.29,
           "volume_24h": 406561.41152688
-        },
-        {
-          "symbol": "wDELLx",
-          "name": "Wrapped Dell Technologies Inc. Tokenized Stock (xStock)",
-          "price": 560.6182469997079,
-          "crypto_id": 41142,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 69047.0530642
         }
       ],
       "website": null,
@@ -2219,16 +1654,6 @@
       "rwa_id": 75,
       "rwa_rank": 106,
       "tokens": [
-        {
-          "symbol": "wWDCx",
-          "name": "Wrapped Western Digital Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41725,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        },
         {
           "symbol": "WDCx",
           "name": "Western Digital tokenized stock (xStock)",
@@ -2273,16 +1698,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 536088.08,
           "volume_24h": 98.50542648
-        },
-        {
-          "symbol": "WNVOX",
-          "name": "Wrapped Novo Nordisk Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37217,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.novonordisk.com",
@@ -2308,16 +1723,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 753975.41,
           "volume_24h": 606391.59682343
-        },
-        {
-          "symbol": "wRDDTx",
-          "name": "Wrapped Reddit Tokenized Stock (xStock)",
-          "price": 156.60577433167774,
-          "crypto_id": 41583,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 0
         }
       ],
       "website": "https://www.redditinc.com",
@@ -2343,16 +1748,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1175312.19,
           "volume_24h": 3944243.7888482
-        },
-        {
-          "symbol": "wCOSTx",
-          "name": "Wrapped Costco Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41837,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.costco.com",
@@ -2378,16 +1773,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 2657461.09,
           "volume_24h": 599425.47012025
-        },
-        {
-          "symbol": "wPANWx",
-          "name": "Wrapped Palo Alto Networks Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41673,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.paloaltonetworks.com",
@@ -2448,16 +1833,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 2022521.15,
           "volume_24h": 118265.05523667
-        },
-        {
-          "symbol": "wVx",
-          "name": "Wrapped Visa Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41734,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.usa.visa.com",
@@ -2493,16 +1868,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 264423.1,
           "volume_24h": 55776.33114435
-        },
-        {
-          "symbol": "WPEPX",
-          "name": "Wrapped PepsiCo Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37219,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.pepsico.com",
@@ -2538,16 +1903,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 2171145.49,
           "volume_24h": 1770808.04811674
-        },
-        {
-          "symbol": "WWMTX",
-          "name": "Wrapped Walmart Tokenized stock (xStock)",
-          "price": 106.3263319950475,
-          "crypto_id": 37229,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 978.1,
-          "volume_24h": 0
         }
       ],
       "website": "https://stock.walmart.com",
@@ -2583,16 +1938,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 563912.68,
           "volume_24h": 33110.97801733
-        },
-        {
-          "symbol": "WCRMX",
-          "name": "Wrapped Salesforce Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37194,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.salesforce.com",
@@ -2628,16 +1973,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 302600.53,
           "volume_24h": 64.78003413
-        },
-        {
-          "symbol": "wPYPLx",
-          "name": "Wrapped PayPal Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41616,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.paypal.com",
@@ -2688,16 +2023,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1742333.1,
           "volume_24h": 1181224.61917376
-        },
-        {
-          "symbol": "wNOWx",
-          "name": "Wrapped ServiceNow Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41548,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.servicenow.com",
@@ -2733,16 +2058,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 321970.74,
           "volume_24h": 49.98213527
-        },
-        {
-          "symbol": "WGSX",
-          "name": "Wrapped Goldman Sachs Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37197,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.goldmansachs.com",
@@ -2768,16 +2083,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1987384.63,
           "volume_24h": 50954.14893927
-        },
-        {
-          "symbol": "wSBUXx",
-          "name": "Wrapped Starbucks Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41626,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.starbucks.com",
@@ -2803,16 +2108,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 707439.79,
           "volume_24h": 26672.52572726
-        },
-        {
-          "symbol": "wASTSx",
-          "name": "Wrapped AST SpaceMobile Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41099,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": null,
@@ -2838,16 +2133,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1919464.48,
           "volume_24h": 544317.88724331
-        },
-        {
-          "symbol": "wBLKx",
-          "name": "Wrapped BlackRock Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41838,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.blackrock.com",
@@ -2873,16 +2158,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1845691.31,
           "volume_24h": 904617.74682367
-        },
-        {
-          "symbol": "wSNOWx",
-          "name": "Wrapped Snowflake Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41585,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.snowflake.com",
@@ -2908,16 +2183,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 1772020.8,
           "volume_24h": 177211.36202636
-        },
-        {
-          "symbol": "WBRK.BX",
-          "name": "Wrapped Berkshire Hathaway Tokenized stock (xStock)",
-          "price": 509.1749487508528,
-          "crypto_id": 37191,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 50066.34,
-          "volume_24h": 5707.78265783
         }
       ],
       "website": null,
@@ -2934,16 +2199,6 @@
       "rwa_id": 256,
       "rwa_rank": 111,
       "tokens": [
-        {
-          "symbol": "wGLWx",
-          "name": "Wrapped Corning Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41402,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        },
         {
           "symbol": "GLWx",
           "name": "Corning tokenized stock (xStock)",
@@ -2988,16 +2243,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1219094.02,
           "volume_24h": 726958.40561841
-        },
-        {
-          "symbol": "WUNHX",
-          "name": "Wrapped UnitedHealth Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37228,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.unitedhealthgroup.com",
@@ -3033,16 +2278,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 194886.49,
           "volume_24h": 396.80684748
-        },
-        {
-          "symbol": "WLINX",
-          "name": "Wrapped Linde Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37231,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.linde.com",
@@ -3078,16 +2313,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 258159.13,
           "volume_24h": 54878.35608138
-        },
-        {
-          "symbol": "WABTX",
-          "name": "Wrapped Abbott tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37095,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.abbottinvestor.com",
@@ -3113,16 +2338,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1666075.35,
           "volume_24h": 280898.36141017
-        },
-        {
-          "symbol": "wEQIXx",
-          "name": "Wrapped Equinix Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41339,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.equinix.com",
@@ -3158,16 +2373,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 519515.5,
           "volume_24h": 13354.38316434
-        },
-        {
-          "symbol": "wVRTx",
-          "name": "Wrapped Vertiv Holdings Co Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41733,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.vertiv.com",
@@ -3176,31 +2381,6 @@
       "employees": 31000,
       "exchange": "New York Stock Exchange",
       "description": "Vertiv has roots tracing back to 1946 when its founder, Ralph Liebert, developed an air-cooling system for mainframe data rooms. As computers started making their way into commercial applications in 1965, Liebert developed one of the first computer room air conditioning, or CRAC, units, enabling the precise control of temperature and humidity. The firm has slowly expanded its data center portfolio through internal product development and the acquisition of thermal and power management products like condensers, busways, and switches. Vertiv has global operations today; its products can be found in data centers in most regions throughout the world."
-    },
-    {
-      "symbol": "CRWV",
-      "name": "Coreweave, Inc.",
-      "slug": "coreweave-inc",
-      "rwa_id": 443,
-      "rwa_rank": 324,
-      "tokens": [
-        {
-          "symbol": "wCRWVx",
-          "name": "Wrapped CoreWeave Tokenized Stock (xStock)",
-          "price": 88.55098679465466,
-          "crypto_id": 41257,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 0
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
     },
     {
       "symbol": "GE",
@@ -3218,16 +2398,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1531843.85,
           "volume_24h": 737680.13111658
-        },
-        {
-          "symbol": "wGEx",
-          "name": "Wrapped GE Aerospace Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41322,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.geaerospace.com",
@@ -3253,16 +2423,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1529543.76,
           "volume_24h": 779422.44483845
-        },
-        {
-          "symbol": "wABNBx",
-          "name": "Wrapped Airbnb Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41084,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.airbnb.com",
@@ -3271,31 +2431,6 @@
       "employees": 7300,
       "exchange": "Nasdaq",
       "description": "Started in 2008, Airbnb is the world's largest online alternative accommodation travel agency; it also offers booking services for boutique hotels and experiences. Airbnb's platform offered over 8 million active accommodation listings as of Dec. 31, 2024. Listings from the company's 5 million-plus hosts are spread over almost every country in the world. In 2024, 45% of revenue was from North America, 37% from Europe, the Middle East, and Africa, 9% from Latin America, and 9% from Asia-Pacific. Transaction fees for online bookings account for all its revenue."
-    },
-    {
-      "symbol": "USAR",
-      "name": "USA Rare Earth, Inc.",
-      "slug": "usa-rare-earth-inc",
-      "rwa_id": 1682,
-      "rwa_rank": 1568,
-      "tokens": [
-        {
-          "symbol": "wUSARx",
-          "name": "Wrapped USA Rare Earth Inc. Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41736,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
     },
     {
       "symbol": "MA",
@@ -3323,16 +2458,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 194133.36,
           "volume_24h": 35425.84874623
-        },
-        {
-          "symbol": "WMAX",
-          "name": "Wrapped Mastercard Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37208,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.mastercard.com",
@@ -3403,16 +2528,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 245141.14,
           "volume_24h": 0
-        },
-        {
-          "symbol": "WCRWDX",
-          "name": "Wrapped CrowdStrike Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37195,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.crowdstrike.com",
@@ -3438,16 +2553,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1355553.47,
           "volume_24h": 196632.41314396
-        },
-        {
-          "symbol": "wWFCx",
-          "name": "Wrapped Wells Fargo Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41706,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.wellsfargo.com",
@@ -3473,16 +2578,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1278771.88,
           "volume_24h": 114039.44160573
-        },
-        {
-          "symbol": "wDASHx",
-          "name": "Wrapped DoorDash Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41178,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.doordash.com",
@@ -3518,16 +2613,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 226189.6,
           "volume_24h": 49661.91629395
-        },
-        {
-          "symbol": "WACNX",
-          "name": "Wrapped Accenture Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37099,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.accenture.com",
@@ -3563,31 +2648,6 @@
       "description": "JD.com is the third-largest Chinese e-commerce platform by GMV in 2024. it offers a wide selection of authentic products with speedy and reliable delivery. The company has built its own nationwide fulfilment infrastructure and last-mile delivery network, staffed by its own employees, which supports both its online direct sales, its online marketplace and omnichannel businesses."
     },
     {
-      "symbol": "TTWO",
-      "name": "Take-Two Interactive Software, Inc.",
-      "slug": "take-two-interactive-software-inc",
-      "rwa_id": 466,
-      "rwa_rank": 379,
-      "tokens": [
-        {
-          "symbol": "wTTWOx",
-          "name": "Wrapped Take-Two Interactive Software Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41680,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
-    },
-    {
       "symbol": "MRNA",
       "name": "Moderna Inc",
       "slug": "moderna",
@@ -3603,16 +2663,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 112096.28,
           "volume_24h": 548170.37810033
-        },
-        {
-          "symbol": "wMRNAx",
-          "name": "Wrapped Moderna Tokenized Stock (xStock)",
-          "price": 148.67,
-          "crypto_id": 41483,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 511.46003479
         }
       ],
       "website": "https://www.modernatx.com",
@@ -3638,16 +2688,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 1173754.07,
           "volume_24h": 21579.39793828
-        },
-        {
-          "symbol": "wGEVx",
-          "name": "Wrapped GE Vernova Inc. Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41400,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": null,
@@ -3683,16 +2723,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 636891.58,
           "volume_24h": 7.2362257
-        },
-        {
-          "symbol": "WAPPX",
-          "name": "Wrapped AppLovin Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37113,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.applovin.com",
@@ -3743,16 +2773,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1113507.62,
           "volume_24h": 545768.65555529
-        },
-        {
-          "symbol": "wCMGx",
-          "name": "Wrapped Chipotle Mexican Grill Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41242,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.chipotle.com",
@@ -3778,16 +2798,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1106064.92,
           "volume_24h": 768423.2198091
-        },
-        {
-          "symbol": "wNKEx",
-          "name": "Wrapped Nike Tokenized Stock (xStock)",
-          "price": 38.0680610553199,
-          "crypto_id": 41576,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 0,
-          "volume_24h": 0
         }
       ],
       "website": "https://www.nike.com",
@@ -3838,16 +2848,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1011461.72,
           "volume_24h": 251312.22436373
-        },
-        {
-          "symbol": "wDISx",
-          "name": "Wrapped The Walt Disney Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41231,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.thewaltdisneycompany.com",
@@ -3908,16 +2908,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 157859.64,
           "volume_24h": 1932194.9859739
-        },
-        {
-          "symbol": "WXOMX",
-          "name": "Wrapped Exxon Mobil Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37230,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.exxonmobil.com",
@@ -3943,16 +2933,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 956160.7,
           "volume_24h": 1958931.08513696
-        },
-        {
-          "symbol": "wUBERx",
-          "name": "Wrapped Uber Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41715,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.uber.com",
@@ -3978,16 +2958,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 936413.95,
           "volume_24h": 175015.40253106
-        },
-        {
-          "symbol": "wSPGIx",
-          "name": "Wrapped S&P Global Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41850,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.spglobal.com",
@@ -4013,16 +2983,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 932435.51,
           "volume_24h": 292863.68031609
-        },
-        {
-          "symbol": "wDFDVx",
-          "name": "Wrapped DFDV Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41179,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.defidevcorp.com",
@@ -4048,16 +3008,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 913539.72,
           "volume_24h": 404557.63509926
-        },
-        {
-          "symbol": "wAXPx",
-          "name": "Wrapped American Express Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41841,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.americanexpress.com",
@@ -4083,16 +3033,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 876710.41,
           "volume_24h": 1503060.78499034
-        },
-        {
-          "symbol": "wADBEx",
-          "name": "Wrapped Adobe Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41083,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.adobe.com",
@@ -4128,16 +3068,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 456058.65,
           "volume_24h": 4036.33600732
-        },
-        {
-          "symbol": "wONDSx",
-          "name": "Wrapped Ondas Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41638,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.ondas.com",
@@ -4146,31 +3076,6 @@
       "employees": 108,
       "exchange": "Nasdaq",
       "description": "Ondas Holdings Inc designs, develops, manufactures, sells, and supports FullMAX Software Defined Radio (SDR) technology in the United States, Israel, and India. The company operates in two business segments namely Ondas Networks and Ondas Autonomous Systems. The company generates maximum revenue from Ondas Autonomous Systems through the sales of the Optimus system and separately priced support, maintenance, and ancillary services related to the sale of the Optimus system."
-    },
-    {
-      "symbol": "LULU",
-      "name": "Lululemon Athletica Inc.",
-      "slug": "lululemon-athletica-inc",
-      "rwa_id": 868,
-      "rwa_rank": 878,
-      "tokens": [
-        {
-          "symbol": "wLULUx",
-          "name": "Wrapped lululemon Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41836,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
     },
     {
       "symbol": "MELI",
@@ -4213,16 +3118,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 799656.17,
           "volume_24h": 0
-        },
-        {
-          "symbol": "wAPOx",
-          "name": "Wrapped Apollo Global Management Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41192,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.apollo.com",
@@ -4231,56 +3126,6 @@
       "employees": 5141,
       "exchange": "New York Stock Exchange",
       "description": "Apollo Asset Management, Inc., formerly Apollo Global Management Inc is an alternative investment manager. It serves various sectors such as chemicals, manufacturing and industrial, natural resources, consumer and retail, consumer services, business services, financial services, leisure, and media and telecom and technology. The company operates in three business segments that are Asset Management, Retirement Services, and Principal Investing. It generates maximum revenue from the Retirement Services segment."
-    },
-    {
-      "symbol": "RBLX",
-      "name": "Roblox Corporation",
-      "slug": "roblox-corporation",
-      "rwa_id": 365,
-      "rwa_rank": 437,
-      "tokens": [
-        {
-          "symbol": "wRBLXx",
-          "name": "Wrapped Roblox Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41487,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
-    },
-    {
-      "symbol": "ALAB",
-      "name": "Astera Labs, Inc.",
-      "slug": "astera-labs-inc",
-      "rwa_id": 255,
-      "rwa_rank": 317,
-      "tokens": [
-        {
-          "symbol": "wALABx",
-          "name": "Wrapped Astera Labs Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41095,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
     },
     {
       "symbol": "INTU",
@@ -4298,16 +3143,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 725868.38,
           "volume_24h": 543428.549909
-        },
-        {
-          "symbol": "wINTUx",
-          "name": "Wrapped Intuit Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41309,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.intuit.com",
@@ -4358,16 +3193,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 706521.55,
           "volume_24h": 425744.64104098
-        },
-        {
-          "symbol": "wTXNx",
-          "name": "Wrapped Texas Instruments Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41729,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.ti.com",
@@ -4403,16 +3228,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 328190.57,
           "volume_24h": 29.29585596
-        },
-        {
-          "symbol": "wLRCXx",
-          "name": "Wrapped Lam Research Corporation Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41375,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.lamresearch.com",
@@ -4438,16 +3253,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 38420.1,
           "volume_24h": 1462688.26639577
-        },
-        {
-          "symbol": "wRIVNx",
-          "name": "Wrapped Rivian Automotive Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41521,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         },
         {
           "symbol": "RIVNx",
@@ -4483,16 +3288,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 633206.65,
           "volume_24h": 486050.12065878
-        },
-        {
-          "symbol": "wFIGx",
-          "name": "Wrapped Figma Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41855,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.figma.com",
@@ -4545,16 +3340,6 @@
           "volume_24h": 543874.96611656
         },
         {
-          "symbol": "wISRGx",
-          "name": "Wrapped Intuitive Surgical Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41352,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        },
-        {
           "symbol": "ISRGx",
           "name": "Intuitive Surgical tokenized stock (xStock)",
           "price": 368.3835349702404,
@@ -4588,16 +3373,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 507304.46,
           "volume_24h": 743617.04473158
-        },
-        {
-          "symbol": "wSBETx",
-          "name": "Wrapped SharpLink Gaming Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41596,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.sharplink.com",
@@ -4633,16 +3408,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 13450.77,
           "volume_24h": 613301.75769615
-        },
-        {
-          "symbol": "WJNJX",
-          "name": "Wrapped Johnson & Johnson Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37203,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.jnj.com",
@@ -4668,16 +3433,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 486790.1,
           "volume_24h": 518425.46220155
-        },
-        {
-          "symbol": "wCEGx",
-          "name": "Wrapped Constellation Energy Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41185,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.constellation.com",
@@ -4703,16 +3458,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 481853.08,
           "volume_24h": 602900.95239388
-        },
-        {
-          "symbol": "wRIOTx",
-          "name": "Wrapped Riot Platforms Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41630,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.riotplatforms.com",
@@ -4763,16 +3508,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 415241.83,
           "volume_24h": 249573.32309549
-        },
-        {
-          "symbol": "wVSTx",
-          "name": "Wrapped Vistra Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41844,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.vistracorp.com",
@@ -4808,16 +3543,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 351464.3,
           "volume_24h": 134.24932994
-        },
-        {
-          "symbol": "wKLACx",
-          "name": "Wrapped KLA Corporation Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41437,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.kla.com",
@@ -4849,16 +3574,6 @@
           "name": "TeraWulf tokenized stock (xStock)",
           "price": null,
           "crypto_id": 40156,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        },
-        {
-          "symbol": "wWULFx",
-          "name": "Wrapped TeraWulf Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41759,
           "issuer_id": "6878977dcbbf471de3366e85",
           "issuer_name": "Backed Assets",
           "market_cap": null,
@@ -4923,16 +3638,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 22454.71,
           "volume_24h": 718919.69652825
-        },
-        {
-          "symbol": "WMRKX",
-          "name": "Wrapped Merck Tokenized stock (xStock)",
-          "price": 147.39229671593571,
-          "crypto_id": 37212,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": 15001.41,
-          "volume_24h": 0
         }
       ],
       "website": "https://www.merck.com",
@@ -4941,31 +3646,6 @@
       "employees": 75000,
       "exchange": "New York Stock Exchange",
       "description": "Merck makes pharmaceutical products to treat several conditions in a number of therapeutic areas, including cardiometabolic disease, cancer, and infections. Within cancer, the firm's immuno-oncology platform is growing as a major contributor to overall sales. The company also has a substantial vaccine business, with treatments to prevent pediatric diseases as well as human papillomavirus, or HPV. Additionally, Merck sells animal health-related drugs. From a geographical perspective, just under half of the company's sales are generated in the United States."
-    },
-    {
-      "symbol": "UPS",
-      "name": "United Parcel Service, Inc.",
-      "slug": "united-parcel-service-inc",
-      "rwa_id": 401,
-      "rwa_rank": 199,
-      "tokens": [
-        {
-          "symbol": "wUPSx",
-          "name": "Wrapped United Parcel Service Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41682,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
     },
     {
       "symbol": "TER",
@@ -4983,16 +3663,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 291488.61,
           "volume_24h": 1167.14308664
-        },
-        {
-          "symbol": "wTERx",
-          "name": "Wrapped Teradyne, Inc. Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41671,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": null,
@@ -5053,16 +3723,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 27845.39,
           "volume_24h": 797965.28108616
-        },
-        {
-          "symbol": "WBACX",
-          "name": "Wrapped Bank of America Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37190,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.bankofamerica.com",
@@ -5088,16 +3748,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 263544.38,
           "volume_24h": 1694191.97521616
-        },
-        {
-          "symbol": "wMARAx",
-          "name": "Wrapped MARA Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41335,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "http://www.mara.com",
@@ -5133,16 +3783,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 6298.28,
           "volume_24h": 199352.93067079
-        },
-        {
-          "symbol": "WABBVX",
-          "name": "Wrapped AbbVie Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37272,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.abbvie.com",
@@ -5159,16 +3799,6 @@
       "rwa_id": 376,
       "rwa_rank": 476,
       "tokens": [
-        {
-          "symbol": "wZMx",
-          "name": "Wrapped Zoom Communications Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41693,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        },
         {
           "symbol": "ZMx",
           "name": "Zoom Communications tokenized stock (xStock)",
@@ -5203,16 +3833,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 231742.19,
           "volume_24h": 88.4091564
-        },
-        {
-          "symbol": "wAMBRx",
-          "name": "Wrapped Amber Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41145,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://ambergroup.io",
@@ -5238,16 +3858,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 231150.1,
           "volume_24h": 147179.8833301
-        },
-        {
-          "symbol": "WPMX",
-          "name": "Wrapped Philip Morris Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37225,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.pmi.com",
@@ -5298,16 +3908,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 226012.4,
           "volume_24h": 52911.43984593
-        },
-        {
-          "symbol": "WDHRX",
-          "name": "Wrapped Danaher Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37119,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.danaher.com",
@@ -5343,16 +3943,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 13332.34,
           "volume_24h": 255975.38402839
-        },
-        {
-          "symbol": "WTMOX",
-          "name": "Wrapped Thermo Fisher Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37226,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.thermofisher.com",
@@ -5403,16 +3993,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 207737.49,
           "volume_24h": 46434.49433932
-        },
-        {
-          "symbol": "wOXYx",
-          "name": "Wrapped Occidental Petroleum Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41592,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.oxy.com",
@@ -5438,16 +4018,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 12543.19,
           "volume_24h": 564543.53246558
-        },
-        {
-          "symbol": "wFx",
-          "name": "Wrapped Ford Motor Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41320,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.ford.com",
@@ -5473,16 +4043,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 189379.93,
           "volume_24h": 68969.73552553
-        },
-        {
-          "symbol": "WCMCSAX",
-          "name": "Wrapped Comcast Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37192,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.comcastcorporation.com",
@@ -5508,16 +4068,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 183402.43,
           "volume_24h": 65.52009724
-        },
-        {
-          "symbol": "WMDTX",
-          "name": "Wrapped Medtronic Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37210,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.medtronic.com",
@@ -5578,16 +4128,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": null,
           "volume_24h": null
-        },
-        {
-          "symbol": "wANETx",
-          "name": "Wrapped Arista Networks, Inc. Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41081,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.arista.com",
@@ -5613,16 +4153,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 159563.53,
           "volume_24h": 183265.32391312
-        },
-        {
-          "symbol": "WAZNX",
-          "name": "Wrapped AstraZeneca Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37183,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.astrazeneca.com",
@@ -5648,41 +4178,6 @@
           "issuer_name": "Backed Assets",
           "market_cap": 151016.88,
           "volume_24h": 0
-        },
-        {
-          "symbol": "wSPCEx",
-          "name": "Wrapped Virgin Galactic Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41645,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
-    },
-    {
-      "symbol": "DDOG",
-      "name": "Datadog, Inc.",
-      "slug": "datadog-inc",
-      "rwa_id": 278,
-      "rwa_rank": 215,
-      "tokens": [
-        {
-          "symbol": "wDDOGx",
-          "name": "Wrapped Datadog Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41153,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": null,
@@ -5749,16 +4244,6 @@
       "rwa_id": 809,
       "rwa_rank": 466,
       "tokens": [
-        {
-          "symbol": "wOKTAx",
-          "name": "Wrapped Okta Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41591,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        },
         {
           "symbol": "OKTAx",
           "name": "Okta tokenized stock (xStock)",
@@ -5853,16 +4338,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 9213.56,
           "volume_24h": 0
-        },
-        {
-          "symbol": "wOPENx",
-          "name": "Wrapped OPEN Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41532,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.opendoor.com",
@@ -5898,16 +4373,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 22749.58,
           "volume_24h": 107369.59593817
-        },
-        {
-          "symbol": "WHDX",
-          "name": "Wrapped Home Depot Tokenized stock (xStock)",
-          "price": null,
-          "crypto_id": 37198,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.homedepot.com",
@@ -5924,16 +4389,6 @@
       "rwa_id": 257,
       "rwa_rank": 177,
       "tokens": [
-        {
-          "symbol": "wBXx",
-          "name": "Wrapped Blackstone Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41103,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        },
         {
           "symbol": "BXx",
           "name": "Blackstone tokenized stock (xStock)",
@@ -5953,47 +4408,12 @@
       "description": null
     },
     {
-      "symbol": "WDAY",
-      "name": "Workday, Inc.",
-      "slug": "workday-inc",
-      "rwa_id": 350,
-      "rwa_rank": 348,
-      "tokens": [
-        {
-          "symbol": "wWDAYx",
-          "name": "Wrapped Workday Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41766,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
-    },
-    {
       "symbol": "ROK",
       "name": "Rockwell Automation, Inc.",
       "slug": "rockwell-automation-inc",
       "rwa_id": 322,
       "rwa_rank": 331,
       "tokens": [
-        {
-          "symbol": "wROKx",
-          "name": "Wrapped Rockwell Automation Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41664,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        },
         {
           "symbol": "ROKx",
           "name": "Rockwell Automation tokenized stock (xStock)",
@@ -6038,31 +4458,6 @@
       "description": "Founded in 2012, Grab provides ride-sharing services, food and grocery delivery, and financial services (payments, consumer loans, and enterprise offerings) in eight Southeast-Asian countries through its mobile platform. The company partners with merchants and riders, connecting them with consumers while charging commission to both sides. Grab has a leading market share in and derives 89% of its revenue from its core businesses, ride-sharing and food delivery. Singapore, Indonesia, and Malaysia contributed more than 70% of revenue in 2024. Grab's main competitors in Southeast Asia are Line Man and Goto. Its financial services business is still in its nascent stage and provides minimal revenue currently. The company now also generates advertising revenue."
     },
     {
-      "symbol": "P",
-      "name": "Everpure, Inc.",
-      "slug": "everpure-inc",
-      "rwa_id": 794,
-      "rwa_rank": 436,
-      "tokens": [
-        {
-          "symbol": "wPx",
-          "name": "Wrapped Everpure Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41605,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
-        }
-      ],
-      "website": null,
-      "industry": null,
-      "founded": null,
-      "employees": null,
-      "exchange": null,
-      "description": null
-    },
-    {
       "symbol": "ON",
       "name": "ON Semiconductor Corp",
       "slug": "on-semiconductor",
@@ -6078,16 +4473,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 67937.6,
           "volume_24h": 0
-        },
-        {
-          "symbol": "wONx",
-          "name": "Wrapped ON Semiconductor Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41615,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.onsemi.com",
@@ -6113,16 +4498,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 58555.42,
           "volume_24h": 530586.63161967
-        },
-        {
-          "symbol": "wRTXx",
-          "name": "Wrapped RTX Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41584,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.rtx.com",
