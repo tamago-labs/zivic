@@ -86,7 +86,7 @@ export default function TokenShowcase() {
               return (
                 <a
                   key={price.token_symbol}
-                  href={`/dashboard/token-data?slug=${meta?.slug}&crypto_id=${meta?.crypto_id}`}
+                  href={`/dashboard/token/${meta?.slug}/${meta?.crypto_id}`}
                   className="min-w-0 bg-surface border border-border3 rounded-lg p-4 flex flex-col gap-3 hover:border-white/20 hover:shadow-2xl hover:glow-blue transition-all cursor-pointer"
                 >
                   <div className="flex items-center gap-2.5">
