@@ -2,7 +2,7 @@ import listData from "@/lib/data/rwa-v1-list.json";
 import TokenDetailClient from "@/components/dashboard/token-detail/TokenDetailClient";
 import type { Token, Asset } from "@/lib/types/token";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export function generateStaticParams() {
   const params: { slug: string; crypto_id: string }[] = [];
@@ -51,11 +51,9 @@ export default async function TokenDetailPage({
     <div className="h-full overflow-y-auto">
       <div className="max-w-6xl mx-auto">
         <nav className="flex items-center gap-1.5 text-xs text-white/30 mb-6">
-          <Link href="/dashboard/explore" className="hover:text-white/60 transition-colors">
-            Explore
+          <Link href="/dashboard/explore" className="flex items-center gap-1 hover:text-white/60 transition-colors">
+            <ArrowLeft className="w-3 h-3" /> Back to Explore
           </Link>
-          <ChevronRight className="w-3 h-3" />
-          <span className="text-white/70">{token.symbol}</span>
         </nav>
 
         <TokenDetailClient

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Search, ChevronUp, ChevronDown, ChevronsLeft, ChevronLeft, ChevronRight, ChevronsRight } from "lucide-react";
 import { usePrices } from "@/app/contexts/PriceContext";
 import listData from "@/lib/data/rwa-v1-list.json";
@@ -27,6 +28,7 @@ type SortDir = "asc" | "desc";
 
 function usePageSize(rowHeight = 48, offset = 220) {
   const [size, setSize] = useState(20);
+  
   useEffect(() => {
     function calc() {
       const available = window.innerHeight - offset;
@@ -40,9 +42,8 @@ function usePageSize(rowHeight = 48, offset = 220) {
   return size;
 }
 
-
-
 export default function Explore() {
+  const router = useRouter();
   const { prices } = usePrices();
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("market_cap");
@@ -203,7 +204,7 @@ export default function Explore() {
             <tbody>
               {paginated.map((row) => (
                 <tr key={row.token_symbol} className="border-b border-border3/20 hover:bg-white/[0.02] transition-colors cursor-pointer"
-                  onClick={() => window.location.href = `/dashboard/token/${row.slug}/${row.crypto_id}`}>
+                  onClick={() => router.push(`/dashboard/token/${row.slug}/${row.crypto_id}`)}>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2.5">
                       {row.logo ? (

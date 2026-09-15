@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useConnectedWallet } from "@solana/kit-plugin-wallet/react";
 import { useClient } from "@solana/react";
-import { Wallet, ChevronDown } from "lucide-react";
+import { Wallet, ChevronDown, ExternalLink } from "lucide-react";
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/amplify/data/resource";
 import type { AppClient } from "../SolanaWalletProvider";
@@ -100,9 +100,9 @@ export default function Topbar() {
               {tokenData.symbol?.slice(0, 2)}
             </div>
           )}
-          <span className="text-sm font-semibold text-white/90">{tokenData.symbol}</span>
+          <span className="text-sm font-semibold text-white/90 cursor-default" title={tokenData.name}>{tokenData.symbol}</span>
           {tokenData.rwaRank != null && (
-            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-white/[0.06] text-white/40">
+            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-white/[0.06] text-white/40 cursor-default" title={`Ranked #${tokenData.rwaRank} by CoinMarketCap`}>
               #{tokenData.rwaRank}
             </span>
           )}
@@ -111,23 +111,44 @@ export default function Topbar() {
               ${tokenPrice.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </span>
           )}
-          <div className="flex items-center gap-2.5 text-[11px]">
+          <div className="flex items-center gap-3 text-[11px]">
             {tokenPrice?.percent_24h != null && (
-              <span className={`font-medium ${tokenPrice.percent_24h >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-                24h {tokenPrice.percent_24h >= 0 ? "+" : ""}{tokenPrice.percent_24h.toFixed(2)}%
+              <span className="flex items-center gap-0.5">
+                <span className="text-white/25">24h</span>
+                <span className={`font-medium ${tokenPrice.percent_24h >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                  {tokenPrice.percent_24h >= 0 ? "+" : ""}{tokenPrice.percent_24h.toFixed(2)}%
+                </span>
               </span>
             )}
             {tokenPrice?.percent_7d != null && (
-              <span className={`font-medium ${tokenPrice.percent_7d >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-                7d {tokenPrice.percent_7d >= 0 ? "+" : ""}{tokenPrice.percent_7d.toFixed(2)}%
+              <span className="flex items-center gap-0.5">
+                <span className="text-white/25">7d</span>
+                <span className={`font-medium ${tokenPrice.percent_7d >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                  {tokenPrice.percent_7d >= 0 ? "+" : ""}{tokenPrice.percent_7d.toFixed(2)}%
+                </span>
               </span>
             )}
             {tokenPrice?.percent_30d != null && (
-              <span className={`font-medium ${tokenPrice.percent_30d >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-                30d {tokenPrice.percent_30d >= 0 ? "+" : ""}{tokenPrice.percent_30d.toFixed(2)}%
+              <span className="flex items-center gap-0.5">
+                <span className="text-white/25">30d</span>
+                <span className={`font-medium ${tokenPrice.percent_30d >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                  {tokenPrice.percent_30d >= 0 ? "+" : ""}{tokenPrice.percent_30d.toFixed(2)}%
+                </span>
               </span>
             )}
           </div>
+          {tokenData.mint && (
+            <a
+              href={`https://solscan.io/token/${tokenData.mint}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-2 py-0.5 rounded-md border border-white/[0.08] bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04] transition-colors ml-3"
+              title={tokenData.mint}
+            >
+              <span className="text-[11px] font-mono text-white/50">{tokenData.mint.slice(0, 6)}...{tokenData.mint.slice(-4)}</span>
+              <ExternalLink className="w-3 h-3 text-white/30" />
+            </a>
+          )}
         </motion.div>
       ) : (
         <TokenStrip />
