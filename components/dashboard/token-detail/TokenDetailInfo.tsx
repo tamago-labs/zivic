@@ -1,5 +1,7 @@
 import type { Token, Asset } from "@/lib/types/token";
+import type { PriceData } from "@/app/contexts/PriceContext";
 import CopyButton from "../CopyButton";
+import { formatNumber } from "@/lib/utils/format";
 
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
@@ -10,21 +12,22 @@ function DetailRow({ label, value }: { label: string; value: string }) {
   );
 }
 
-export default function TokenDetailInfo({ token, asset }: { token: Token; asset: Asset }) {
+export default function TokenDetailInfo({ token, asset, price }: { token: Token; asset: Asset; price: PriceData | undefined }) {
   return (
     <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
       <h2 className="text-sm font-semibold text-white/70 mb-4">Token Details</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+      <div className="grid grid-cols-1 gap-4 text-sm">
         <div className="space-y-3">
           <DetailRow label="Full Name" value={token.name} />
           <DetailRow label="Symbol" value={token.symbol} />
           <DetailRow label="Issuer" value={token.issuer_name} />
-          <DetailRow label="Crypto ID" value={String(token.crypto_id)} />
-          <DetailRow label="RWA ID" value={String(asset.rwa_id)} />
         </div>
         <div className="space-y-3">
           <DetailRow label="Blockchain" value="Solana" />
           <DetailRow label="Decimals" value={token.decimals != null ? String(token.decimals) : "—"} />
+          <DetailRow label="Circulating Supply" value={price?.circulating_supply != null ? price.circulating_supply.toLocaleString() : "—"} />
+          <DetailRow label="Total Supply" value={price?.total_supply != null ? price.total_supply.toLocaleString() : "—"} />
+          <DetailRow label="Market Cap" value={price?.market_cap != null ? formatNumber(price.market_cap, "$") : "—"} />
           <DetailRow label="Verified" value={token.verified ? "Yes" : "No"} />
           <DetailRow label="Date Added" value={token.date_added ? new Date(token.date_added).toLocaleDateString() : "—"} />
           <div className="flex items-center justify-between">

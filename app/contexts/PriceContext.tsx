@@ -15,6 +15,8 @@ export interface PriceData {
   percent_30d: number | null;
   market_cap: number | null;
   volume_24h: number | null;
+  circulating_supply?: number | null;
+  total_supply?: number | null;
 }
 
 interface PriceContextValue {
@@ -56,6 +58,8 @@ export function PriceProvider({ children }: { children: ReactNode }) {
           }
         }
 
+        console.log("latestBySymbol:", latestBySymbol)
+
         setPrices(Array.from(latestBySymbol.values()).map((item) => ({
           token_symbol: item.token_symbol,
           price: item.price,
@@ -65,6 +69,8 @@ export function PriceProvider({ children }: { children: ReactNode }) {
           percent_30d: item.percent_30d,
           market_cap: item.market_cap,
           volume_24h: item.volume_24h,
+          circulating_supply: item.circulating_supply,
+          total_supply: item.total_supply,
         })));
       } catch (err) {
         console.error("Failed to fetch prices:", err);

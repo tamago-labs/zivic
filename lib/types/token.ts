@@ -13,6 +13,8 @@ export interface Token {
   mint?: string | null;
   decimals?: number | null;
   verified?: boolean | null;
+  circulating_supply?: number | null;
+  total_supply?: number | null;
 }
 
 export interface Asset {
