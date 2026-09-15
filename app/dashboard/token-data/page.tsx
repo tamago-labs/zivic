@@ -1,21 +1,29 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import listData from "@/lib/data/rwa-v1-list.json";
 import TokenDetailClient from "@/components/dashboard/token-detail/TokenDetailClient";
 import type { Token, Asset } from "@/lib/types/token";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-interface PageProps {
-  searchParams: Promise<{ slug?: string; crypto_id?: string }>;
-}
+export default function TokenDataPage() {
+  const searchParams = useSearchParams();
+  const slug = searchParams.get("slug");
+  const crypto_id = searchParams.get("crypto_id");
+  const [asset, setAsset] = useState<Asset | null>(null);
+  const [token, setToken] = useState<Token | null>(null);
 
-export default async function TokenDataPage({ searchParams }: PageProps) {
-  const { slug, crypto_id } = await searchParams;
-  const assets = (listData as any).assets as Asset[];
-
-  const asset = assets.find(
-    (a) => a.slug === slug && a.tokens?.some((t) => String(t.crypto_id) === crypto_id)
-  );
-  const token = asset?.tokens?.find((t) => String(t.crypto_id) === crypto_id);
+  useEffect(() => {
+    const assets = (listData as any).assets as Asset[];
+    const foundAsset = assets.find(
+      (a) => a.slug === slug && a.tokens?.some((t) => String(t.crypto_id) === crypto_id)
+    );
+    const foundToken = foundAsset?.tokens?.find((t) => String(t.crypto_id) === crypto_id);
+    setAsset(foundAsset ?? null);
+    setToken(foundToken ?? null);
+  }, [slug, crypto_id]);
 
   if (!asset || !token) {
     return (
