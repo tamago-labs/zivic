@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
+import Link from "next/link";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { usePrices } from "@/app/contexts/PriceContext";
 import listData from "@/lib/data/rwa-v1-list.json";
@@ -114,7 +115,7 @@ export default function TokenStrip() {
         {sorted.map((price) => {
           const meta = tokenMetaMap.get(price.token_symbol);
           return (
-            <a
+            <Link
               key={price.token_symbol}
               href={`/dashboard/token/${meta?.slug}/${meta?.crypto_id}`}
               className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white/[0.02] border border-border3/30 shrink-0 hover:border-white/10 cursor-pointer transition-colors"
@@ -135,7 +136,7 @@ export default function TokenStrip() {
                   {price.percent_24h >= 0 ? "+" : ""}{price.percent_24h.toFixed(1)}%
                 </span>
               )}
-            </a>
+            </Link>
           );
         })}
         </div>

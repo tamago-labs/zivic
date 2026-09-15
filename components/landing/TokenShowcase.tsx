@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePrices } from "@/app/contexts/PriceContext";
 import listData from "@/lib/data/rwa-v1-list.json";
@@ -84,7 +85,7 @@ export default function TokenShowcase() {
               {currentTokens.map((price) => {
               const meta = tokenMetaMap.get(price.token_symbol);
               return (
-                <a
+                <Link
                   key={price.token_symbol}
                   href={`/dashboard/token/${meta?.slug}/${meta?.crypto_id}`}
                   className="min-w-0 bg-surface border border-border3 rounded-lg p-4 flex flex-col gap-3 hover:border-white/20 hover:shadow-2xl hover:glow-blue transition-all cursor-pointer"
@@ -122,7 +123,7 @@ export default function TokenShowcase() {
                       </div>
                     )}
                   </div>
-                </a>
+                </Link>
               );
             })}
           </motion.div>
