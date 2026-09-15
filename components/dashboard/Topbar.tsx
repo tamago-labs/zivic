@@ -111,11 +111,23 @@ export default function Topbar() {
               ${tokenPrice.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </span>
           )}
-          {tokenPrice?.percent_24h != null && (
-            <span className={`text-[11px] font-medium ${tokenPrice.percent_24h >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-              {tokenPrice.percent_24h >= 0 ? "+" : ""}{tokenPrice.percent_24h.toFixed(2)}%
-            </span>
-          )}
+          <div className="flex items-center gap-2.5 text-[11px]">
+            {tokenPrice?.percent_24h != null && (
+              <span className={`font-medium ${tokenPrice.percent_24h >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                24h {tokenPrice.percent_24h >= 0 ? "+" : ""}{tokenPrice.percent_24h.toFixed(2)}%
+              </span>
+            )}
+            {tokenPrice?.percent_7d != null && (
+              <span className={`font-medium ${tokenPrice.percent_7d >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                7d {tokenPrice.percent_7d >= 0 ? "+" : ""}{tokenPrice.percent_7d.toFixed(2)}%
+              </span>
+            )}
+            {tokenPrice?.percent_30d != null && (
+              <span className={`font-medium ${tokenPrice.percent_30d >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                30d {tokenPrice.percent_30d >= 0 ? "+" : ""}{tokenPrice.percent_30d.toFixed(2)}%
+              </span>
+            )}
+          </div>
         </motion.div>
       ) : (
         <TokenStrip />
