@@ -4,20 +4,6 @@ import type { Token, Asset } from "@/lib/types/token";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-export function generateStaticParams() {
-  const params: { slug: string; crypto_id: string }[] = [];
-  for (const asset of (listData as any).assets as Asset[]) {
-    if (!asset.slug) continue;
-    for (const token of asset.tokens ?? []) {
-      params.push({
-        slug: asset.slug,
-        crypto_id: String(token.crypto_id),
-      });
-    }
-  }
-  return params;
-}
-
 export async function generateMetadata({
   params,
 }: {
@@ -68,7 +54,7 @@ export default async function TokenDetailPage({
 
   return (
     <div className="h-full overflow-y-auto">
-      <div className="max-w-6xl mx-auto px-0 py-6">
+      <div className="max-w-6xl mx-auto px-0 py-0">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-xs text-white/30 mb-6">
           <Link href="/dashboard/explore" className="hover:text-white/60 transition-colors">
