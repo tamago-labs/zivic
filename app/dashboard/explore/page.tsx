@@ -203,7 +203,7 @@ export default function Explore() {
             <tbody>
               {paginated.map((row) => (
                 <tr key={row.token_symbol} className="border-b border-border3/20 hover:bg-white/[0.02] transition-colors cursor-pointer"
-                  onClick={() => window.location.href = `/dashboard/token-data?slug=${row.slug}&crypto_id=${row.crypto_id}`}>
+                  onClick={() => window.location.href = `/dashboard/token/${row.slug}/${row.crypto_id}`}>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2.5">
                       {row.logo ? (
