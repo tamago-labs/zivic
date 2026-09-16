@@ -28,7 +28,7 @@ const steps = [
     title: 'Find the best trade',
     description: (
       <>
-        When you&apos;re ready, Zivic finds the <span className="text-white/70 font-medium">best available route</span> for your trade across Solana liquidity through <span className="text-white/70 font-medium">Jupiter & OKX Router</span>.
+        When you&apos;re ready, Zivic finds the <span className="text-white/70 font-medium">best available route</span> for your trade across Solana liquidity through <span className="text-white/70 font-medium">OKX DEX Router</span>.
       </>
     ),
     example: null,

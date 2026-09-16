@@ -1098,16 +1098,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 3574309.05,
           "volume_24h": 1957089.93384065
-        },
-        {
-          "symbol": "wARMx",
-          "name": "Wrapped ARM Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41183,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.arm.com",
@@ -2483,16 +2473,6 @@
           "issuer_name": "Ondo Assets",
           "market_cap": 1291785.43,
           "volume_24h": 1171718.25870525
-        },
-        {
-          "symbol": "wBAx",
-          "name": "Wrapped Boeing Tokenized Stock (xStock)",
-          "price": null,
-          "crypto_id": 41119,
-          "issuer_id": "6878977dcbbf471de3366e85",
-          "issuer_name": "Backed Assets",
-          "market_cap": null,
-          "volume_24h": null
         }
       ],
       "website": "https://www.boeing.com",
