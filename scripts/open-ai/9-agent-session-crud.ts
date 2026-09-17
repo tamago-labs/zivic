@@ -1,11 +1,11 @@
 // Usage: npx tsx scripts/open-ai/9-agent-session-crud.ts
 // https://openai.github.io/openai-agents-js/guides/sessions/
 
-import { Agent, MemorySession, run } from '@openai/agents'
+import { Agent, SQLiteSession, run } from '@openai/agents'
 import { getClient, PROVIDER_MODEL } from './provider'
 
-// Session CRUD: getItems, addItems, popItem, clearSession.
-// Swap MemorySession for a DB-backed session later (e.g. AWS DynamoDB).
+// Session CRUD with SQLite persistence.
+// Swap SQLiteSession for a DB-backed session later (e.g. AWS DynamoDB).
 
 async function main() {
   getClient()
@@ -19,7 +19,7 @@ async function main() {
     model: PROVIDER_MODEL,
   })
 
-  const session = new MemorySession()
+  const session = new SQLiteSession('zivic-conversation-crud')
 
   // --- Turn 1 ---
   console.log('--- Turn 1 ---')
