@@ -5,8 +5,11 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { MessageSquare, PieChart, Compass, Rocket, Bell, Newspaper, List, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useClient } from '@solana/react';
+import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
 import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '@/amplify/data/resource';
+import type { AppClient } from '@/components/SolanaWalletProvider';
 
 const navItems = [
   { href: '/dashboard', label: 'New Chat', icon: MessageSquare },
@@ -21,14 +24,30 @@ const dataClient = generateClient<Schema>();
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const client = useClient<AppClient>();
+  const connected = useConnectedWallet(client);
+  const walletAddress = connected ? String(connected.account.address) : null;
   const [chatsOpen, setChatsOpen] = useState(false);
   const [sessions, setSessions] = useState<{ id: string; sessionName: string }[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchSessions = () => {
+    if (!walletAddress) { setSessions([]); return; }
+    setLoading(true);
+    dataClient.models.AgentSession.list({
+      filter: { walletAddress: { eq: walletAddress } },
+    }).then((res) => {
+      setSessions((res.data ?? []).map((s) => ({ id: s.id, sessionName: s.sessionName })));
+    }).catch(() => {
+      setSessions([]);
+    }).finally(() => {
+      setLoading(false);
+    });
+  };
 
   useEffect(() => {
-    dataClient.models.AgentSession.list({ limit: 50 }).then((res) => {
-      setSessions((res.data || []).map((s) => ({ id: s.id, sessionName: s.sessionName })));
-    }).catch(() => {});
-  }, []);
+    fetchSessions();
+  }, [walletAddress, pathname]);
 
   return (
     <aside className="w-56 h-screen border-r border-border3/50 bg-surface flex flex-col fixed left-0 top-0">
