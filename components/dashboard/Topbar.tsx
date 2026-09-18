@@ -62,7 +62,7 @@ export default function Topbar() {
         setCredits(profiles[0]?.credits ?? null);
       } catch { setCredits(null); }
     })();
-  }, [connected, creditsModalOpen]);
+  }, [connected, creditsModalOpen, pathname]);
 
   const address = connected ? String(connected.account.address) : null;
   const gradient = address ? getGradient(address) : null;
