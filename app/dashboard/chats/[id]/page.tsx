@@ -3,8 +3,11 @@
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
 import { Send, MoreVertical, Trash2 } from 'lucide-react';
+import { useClient } from '@solana/react';
+import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
 import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '@/amplify/data/resource';
+import type { AppClient } from '@/components/SolanaWalletProvider';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
@@ -22,6 +25,9 @@ export default function ChatSession() {
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
+  const client = useClient<AppClient>();
+  const connected = useConnectedWallet(client);
+  const walletAddress = connected ? String(connected.account.address) : null;
   const id = params.id as string;
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -39,11 +45,16 @@ export default function ChatSession() {
   }, [messages]);
 
   useEffect(() => {
-    const stored = sessionStorage.getItem('zivic_credits');
-    if (stored) setCredits(parseFloat(stored));
-  }, []);
+    if (!walletAddress) { setCredits(null); return; }
+    dataClient.models.UserProfile.list({
+      filter: { walletAddress: { eq: walletAddress } },
+    }).then((res) => {
+      setCredits(res.data?.[0]?.credits ?? null);
+    }).catch(() => setCredits(null));
+  }, [walletAddress]);
 
   useEffect(() => {
+    if (searchParams.get('prompt')) return;
     dataClient.models.AgentSession.get({ id }).then((res) => {
       if (res.data?.items) {
         const items = JSON.parse(res.data.items as string);
@@ -54,7 +65,7 @@ export default function ChatSession() {
         setMessages(history);
       }
     }).catch(() => {});
-  }, [id]);
+  }, [id, searchParams]);
 
   const handleDelete = async () => {
     if (!confirm('Delete this chat session?')) return;
@@ -75,7 +86,7 @@ export default function ChatSession() {
       fetch(process.env.NEXT_PUBLIC_CHAT_API_URL || '', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sessionId: id, message: prompt }),
+        body: JSON.stringify({ sessionId: id, message: prompt, walletAddress }),
       }).then(async (res) => {
         const reader = res.body?.getReader();
         if (!reader) return;
@@ -121,7 +132,7 @@ export default function ChatSession() {
       const res = await fetch(process.env.NEXT_PUBLIC_CHAT_API_URL || '', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sessionId: id, message }),
+        body: JSON.stringify({ sessionId: id, message, walletAddress }),
       });
 
       if (!res.ok) throw new Error('Request failed');
@@ -131,6 +142,8 @@ export default function ChatSession() {
 
       const decoder = new TextDecoder();
       let aiContent = '';
+
+      setMessages((prev) => [...prev, { role: 'ai', content: '' }]);
 
       while (true) {
         const { done, value } = await reader.read();
@@ -159,7 +172,10 @@ export default function ChatSession() {
   };
 
   return (
-    <div className="flex-1 flex flex-col overflow-hidden h-[calc(100vh-3.5rem)] relative">
+    <div className="flex-1 flex flex-col  grid-bg overflow-hidden h-[calc(100vh-3.5rem)] relative ">
+
+      <div className="absolute w-[500px] h-[500px] top-1/2 -translate-y-1/2 -left-48 rounded-full blur-[120px] opacity-25 bg-accent pointer-events-none" />
+      <div className="absolute w-[400px] h-[400px] top-1/2 -translate-y-1/2 -right-40 rounded-full blur-[120px] opacity-25 bg-zenpurple pointer-events-none" />
       <div className="border-b border-border3/50 px-6 py-4 relative z-10 flex items-center justify-between">
         <h1 className="font-display text-lg font-semibold">Chat Session</h1>
         <div className="relative">

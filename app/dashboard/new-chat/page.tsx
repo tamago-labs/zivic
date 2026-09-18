@@ -4,6 +4,9 @@ import { useState, useRef, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Send, ChevronDown, Check, Info } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useClient } from '@solana/react';
+import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
+import type { AppClient } from '@/components/SolanaWalletProvider';
 import { examplePrompts, getRandomPrompt } from '@/lib/prompts';
 
 const experienceOptions = [
@@ -178,6 +181,9 @@ function ToggleDropdown({
 function NewChatInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const client = useClient<AppClient>();
+  const connected = useConnectedWallet(client);
+  const walletAddress = connected ? String(connected.account.address) : null;
   const initialPrompt = searchParams.get('prompt');
   const [input, setInput] = useState(initialPrompt ?? '');
   const [activeIndex, setActiveIndex] = useState(0);
@@ -213,23 +219,33 @@ function NewChatInner() {
   };
 
   const handleSend = async () => {
-    if (!input.trim() || sending) return;
+    if (!input.trim() || sending || !walletAddress) return;
     const message = input.trim();
     setInput('');
     setSending(true);
 
     try {
       const apiUrl = process.env.NEXT_PUBLIC_CHAT_API_URL || '';
+      console.log('[handleSend] URL:', apiUrl);
+      console.log('[handleSend] message:', message);
+
       const res = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           sessionName: message.slice(0, 30),
           message,
+          walletAddress,
         }),
       });
 
-      if (!res.ok) throw new Error('Failed to create session');
+      console.log('[handleSend] status:', res.status, 'ok:', res.ok);
+
+      if (!res.ok) {
+        const errText = await res.text();
+        console.error('[handleSend] error body:', errText);
+        throw new Error('Failed to create session');
+      }
 
       const reader = res.body?.getReader();
       if (!reader) throw new Error('No response stream');
@@ -241,14 +257,18 @@ function NewChatInner() {
         const { done, value } = await reader.read();
         if (done) break;
         const text = decoder.decode(value);
+        console.log('[handleSend] chunk:', text);
         const lines = text.split('\n').filter((l) => l.startsWith('data: '));
         for (const line of lines) {
           try {
             const json = JSON.parse(line.slice(6));
+            console.log('[handleSend] parsed:', json);
             if (json.sessionId) sessionId = json.sessionId;
           } catch {}
         }
       }
+
+      console.log('[handleSend] sessionId:', sessionId);
 
       if (sessionId) {
         router.push(`/dashboard/chats/${sessionId}?prompt=${encodeURIComponent(message)}`);
@@ -269,7 +289,7 @@ function NewChatInner() {
       <div className="absolute w-[400px] h-[400px] top-1/2 -translate-y-1/2 -right-40 rounded-full blur-[120px] opacity-25 bg-zenpurple pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center px-6 max-w-3xl mx-auto">
+      <div className="relative z-1 h-full flex flex-col items-center justify-center px-6 max-w-3xl mx-auto">
         {/* Example prompt */}
         <p className="font-display text-2xl md:text-3xl font-semibold text-center text-white/70 mb-8">
           &ldquo;Ask Zivic anything about the market&rdquo;
@@ -317,20 +337,24 @@ function NewChatInner() {
                 </motion.span>
               </AnimatePresence>
             </button>
-            <button
-              onClick={handleSend}
-              disabled={sending}
-              className="h-9 w-9 rounded-lg bg-accent flex items-center justify-center hover:bg-accent/80 transition-colors shrink-0 disabled:opacity-50"
-            >
-              {sending ? (
-                <svg className="w-4 h-4 text-white animate-spin" viewBox="0 0 24 24" fill="none">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                </svg>
-              ) : (
-                <Send className="w-4 h-4 text-white" />
-              )}
-            </button>
+            {walletAddress ? (
+              <button
+                onClick={handleSend}
+                disabled={sending}
+                className="h-9 w-9 rounded-lg bg-accent flex items-center justify-center hover:bg-accent/80 transition-colors shrink-0 disabled:opacity-50"
+              >
+                {sending ? (
+                  <svg className="w-4 h-4 text-white animate-spin" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  </svg>
+                ) : (
+                  <Send className="w-4 h-4 text-white" />
+                )}
+              </button>
+            ) : (
+              <span className="text-[12px] text-white/30">Connect wallet to chat</span>
+            )}
           </div>
         </div>
 
