@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { Send, ChevronDown, Check, Info } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { examplePrompts, getRandomPrompt } from '@/lib/prompts';
@@ -177,11 +177,13 @@ function ToggleDropdown({
 
 function NewChatInner() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const initialPrompt = searchParams.get('prompt');
   const [input, setInput] = useState(initialPrompt ?? '');
   const [activeIndex, setActiveIndex] = useState(0);
   const [animKey, setAnimKey] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [experience, setExperience] = useState('regular');
 
   const [writingStyle, setWritingStyle] = useState('default');
@@ -208,6 +210,54 @@ function NewChatInner() {
 
   const handlePromptClick = () => {
     setInput(examplePrompts[activeIndex].text);
+  };
+
+  const handleSend = async () => {
+    if (!input.trim() || sending) return;
+    const message = input.trim();
+    setInput('');
+    setSending(true);
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_CHAT_API_URL || '';
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionName: message.slice(0, 30),
+          message,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Failed to create session');
+
+      const reader = res.body?.getReader();
+      if (!reader) throw new Error('No response stream');
+
+      let sessionId = '';
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const text = decoder.decode(value);
+        const lines = text.split('\n').filter((l) => l.startsWith('data: '));
+        for (const line of lines) {
+          try {
+            const json = JSON.parse(line.slice(6));
+            if (json.sessionId) sessionId = json.sessionId;
+          } catch {}
+        }
+      }
+
+      if (sessionId) {
+        router.push(`/dashboard/chats/${sessionId}?prompt=${encodeURIComponent(message)}`);
+      }
+    } catch (err) {
+      console.error('[handleSend] failed:', err);
+    } finally {
+      setSending(false);
+    }
   };
 
   const current = examplePrompts[activeIndex];
@@ -267,8 +317,19 @@ function NewChatInner() {
                 </motion.span>
               </AnimatePresence>
             </button>
-            <button className="h-9 w-9 rounded-lg bg-accent flex items-center justify-center hover:bg-accent/80 transition-colors shrink-0">
-              <Send className="w-4 h-4 text-white" />
+            <button
+              onClick={handleSend}
+              disabled={sending}
+              className="h-9 w-9 rounded-lg bg-accent flex items-center justify-center hover:bg-accent/80 transition-colors shrink-0 disabled:opacity-50"
+            >
+              {sending ? (
+                <svg className="w-4 h-4 text-white animate-spin" viewBox="0 0 24 24" fill="none">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+              ) : (
+                <Send className="w-4 h-4 text-white" />
+              )}
             </button>
           </div>
         </div>

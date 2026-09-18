@@ -9,6 +9,9 @@ const nextConfig = {
       { protocol: "https", hostname: "https://static.okx.com" }
     ],
   },
+  env: {
+    NEXT_PUBLIC_CHAT_API_URL: process.env.NEXT_PUBLIC_CHAT_API_URL,
+  },
   serverRuntimeConfig: {
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     CMC_API_KEY: process.env.CMC_API_KEY,

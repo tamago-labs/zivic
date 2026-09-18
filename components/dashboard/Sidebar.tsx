@@ -2,9 +2,11 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MessageSquare, PieChart, Compass, Rocket, Bell, Newspaper, List, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { generateClient } from 'aws-amplify/data';
+import type { Schema } from '@/amplify/data/resource';
 
 const navItems = [
   { href: '/dashboard', label: 'New Chat', icon: MessageSquare },
@@ -15,16 +17,18 @@ const navItems = [
   { href: '/dashboard/top-news', label: 'Top News', icon: Newspaper },
 ];
 
-const mockSessions = [
-  { id: '12333454', title: 'TSLA xStock analysis' },
-  { id: '98765432', title: 'NVDA risk assessment' },
-  { id: '55512345', title: 'AAPL vs MSFT comparison' },
-  { id: '22288899', title: 'Portfolio rebalancing' },
-];
+const dataClient = generateClient<Schema>();
 
 export default function Sidebar() {
   const pathname = usePathname();
   const [chatsOpen, setChatsOpen] = useState(false);
+  const [sessions, setSessions] = useState<{ id: string; sessionName: string }[]>([]);
+
+  useEffect(() => {
+    dataClient.models.AgentSession.list({ limit: 50 }).then((res) => {
+      setSessions((res.data || []).map((s) => ({ id: s.id, sessionName: s.sessionName })));
+    }).catch(() => {});
+  }, []);
 
   return (
     <aside className="w-56 h-screen border-r border-border3/50 bg-surface flex flex-col fixed left-0 top-0">
@@ -82,7 +86,7 @@ export default function Sidebar() {
                 className="overflow-hidden"
               >
                 <div className="pl-10 pr-3 py-1 space-y-0.5">
-                  {mockSessions.map((session) => {
+                  {sessions.map((session) => {
                     const isActive = pathname === `/dashboard/chats/${session.id}`;
                     return (
                       <Link
@@ -94,7 +98,7 @@ export default function Sidebar() {
                             : 'text-white/40 hover:text-white/70 hover:bg-white/[0.02]'
                         }`}
                       >
-                        {session.title}
+                        {session.sessionName}
                       </Link>
                     );
                   })}

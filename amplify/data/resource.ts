@@ -60,6 +60,17 @@ const schema = a.schema({
     })
     .authorization((allow) => [allow.publicApiKey().to(["read", "update"])]),
 
+  AgentSession: a
+    .model({
+      walletAddress: a.string().required(),
+      sessionName: a.string().required(),
+      items: a.json().required(),
+    })
+    .authorization((allow) => [allow.publicApiKey().to(["read", "create", "update", "delete"])])
+    .secondaryIndexes((index) => [
+      index("walletAddress").queryField("bySessionWallet"),
+    ]),
+
   NewsArticle: a
     .model({
       title: a.string().required(),
