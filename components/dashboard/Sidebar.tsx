@@ -105,19 +105,21 @@ export default function Sidebar() {
                 className="overflow-hidden"
               >
                 <div className="pl-10 pr-3 py-1 space-y-0.5">
-                  {sessions.map((session) => {
+                   {sessions.map((session) => {
                     const isActive = pathname === `/dashboard/chats/${session.id}`;
                     return (
                       <Link
                         key={session.id}
                         href={`/dashboard/chats/${session.id}`}
-                        className={`block px-3 py-1.5 rounded-md text-[12px] font-display truncate transition-colors ${
+                        className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-[12px] font-display truncate transition-colors ${
                           isActive
                             ? 'bg-accent/10 text-accent'
                             : 'text-white/40 hover:text-white/70 hover:bg-white/[0.02]'
                         }`}
                       >
-                        {session.sessionName}
+                        <MessageSquare className="w-3 h-3 shrink-0" />
+                        <span className="flex-1 truncate">{session.sessionName}</span>
+                        <ChevronDown className="w-3 h-3 shrink-0 opacity-50" />
                       </Link>
                     );
                   })}
