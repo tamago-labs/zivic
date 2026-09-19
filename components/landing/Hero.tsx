@@ -21,12 +21,12 @@ export default function Hero() {
           </Section>
 
           <Section>
-            <p className="mt-5 text-[15px] text-white/50 leading-relaxed">
+              <p className="mt-5 text-[15px] text-white/50 leading-relaxed">
               Zivic is a hyper-personalized AI dashboard for tokenized stocks on{' '}
-              <a href="https://solana.com/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Solana</a>. Tell Zivic your goals and risk appetite — it ranks, filters, and explains the{' '}
-              <a href="https://xstocks.fi/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">xStocks</a>{' '}
-              / <a href="https://ondo.finance/ondo-stocks" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Ondo Stocks</a>{' '}
-              that matter most to you.
+              <a href="https://solana.com/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Solana</a>. Explore{' '}
+              <a href="https://xstocks.fi/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">xStocks</a>,{' '}
+              <a href="https://ondo.finance/ondo-stocks" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Ondo Stocks</a>, and{' '}
+              <a href="https://prestocks.com" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">PreStocks</a> — with AI that finds, ranks, and explains what matters to you.
             </p>
           </Section>
 
