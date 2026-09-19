@@ -16,8 +16,8 @@ export default function Header() {
           <Link href="/dashboard" className="hover:text-white transition-colors">Chat</Link>
           <Link href="/dashboard/explore" className="hover:text-white transition-colors">Explore</Link>
           <Link href="/dashboard/pre-ipo" className="hover:text-white transition-colors">Pre-IPO</Link>
-          <Link href="#how-it-works" className="hover:text-white transition-colors">How it works</Link>
-          <Link href="#pricing" className="hover:text-white transition-colors">Pricing</Link>
+          <Link href="/dashboard/compare" className="hover:text-white transition-colors">Compare</Link>
+          <Link href="#faq" className="hover:text-white transition-colors">FAQ</Link>
 
         </nav>
 

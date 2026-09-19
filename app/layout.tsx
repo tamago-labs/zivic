@@ -24,8 +24,8 @@ const zenTokyoZen = Zen_Tokyo_Zoo({
 });
 
 export const metadata: Metadata = {
-  title: "Zivic — Your Gateway to Tokenized Stocks on Solana",
-  description: "Explore tokenized stocks on Solana with Zivic, a personalized AI dashboard powered by frontier AI and real-time market data backed by leading data providers. Discover stocks that fit your goals.",
+  title: "Zivic — One-Stop AI for Tokenized Stocks on Solana",
+  description: "Your one-stop AI platform for tokenized stocks and pre-IPO markets on Solana. Discover xStocks, Ondo Stocks, and PreStocks with AI-powered research, comparison, and trading.",
 };
 
 export default function RootLayout({

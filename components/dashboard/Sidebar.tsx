@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { MessageSquare, PieChart, Compass, Rocket, Bell, Newspaper, List, ChevronDown } from 'lucide-react';
+import { MessageSquare, PieChart, Compass, Rocket, Bell, Newspaper, List, ChevronDown, GitCompare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useClient } from '@solana/react';
 import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
@@ -16,6 +16,7 @@ const navItems = [
   { href: '/dashboard/portfolio', label: 'Portfolio', icon: PieChart },
   { href: '/dashboard/explore', label: 'Explore', icon: Compass },
   { href: '/dashboard/pre-ipo', label: 'Pre-IPO', icon: Rocket },
+  { href: '/dashboard/compare', label: 'Compare', icon: GitCompare },
   // { href: '/dashboard/alerts', label: 'Alerts', icon: Bell },
   { href: '/dashboard/top-news', label: 'Top News', icon: Newspaper },
 ];
