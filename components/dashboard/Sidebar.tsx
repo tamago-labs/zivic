@@ -106,22 +106,30 @@ export default function Sidebar() {
                 className="overflow-hidden"
               >
                 <div className="pl-10 pr-3 py-1 space-y-0.5">
-                   {sessions.map((session) => {
-                    const isActive = pathname === `/dashboard/chats/${session.id}`;
-                    return (
-                      <Link
-                        key={session.id}
-                        href={`/dashboard/chats/${session.id}`}
-                        className={`block px-3 py-1.5 rounded-md text-[12px] font-display truncate transition-colors ${
-                          isActive
-                            ? 'bg-accent/10 text-accent'
-                            : 'text-white/40 hover:text-white/70 hover:bg-white/[0.02]'
-                        }`}
-                      >
-                        {session.sessionName}
-                      </Link>
-                    );
-                  })}
+                  {!walletAddress ? (
+                    <p className="px-3 py-1.5 text-[11px] text-white/30">Connect wallet to see chats</p>
+                  ) : loading ? (
+                    <p className="px-3 py-1.5 text-[11px] text-white/30">Loading...</p>
+                  ) : sessions.length === 0 ? (
+                    <p className="px-3 py-1.5 text-[11px] text-white/30">No chats yet</p>
+                  ) : (
+                    sessions.map((session) => {
+                      const isActive = pathname === `/dashboard/chats/${session.id}`;
+                      return (
+                        <Link
+                          key={session.id}
+                          href={`/dashboard/chats/${session.id}`}
+                          className={`block px-3 py-1.5 rounded-md text-[12px] font-display truncate transition-colors ${
+                            isActive
+                              ? 'bg-accent/10 text-accent'
+                              : 'text-white/40 hover:text-white/70 hover:bg-white/[0.02]'
+                          }`}
+                        >
+                          {session.sessionName}
+                        </Link>
+                      );
+                    })
+                  )}
                 </div>
               </motion.div>
             )}
