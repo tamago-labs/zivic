@@ -32,6 +32,7 @@ export default function ChatSession() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [activeAgent, setActiveAgent] = useState<string | null>(null);
   const [credits, setCredits] = useState<number | null>(null);
   const [error, setError] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
@@ -83,6 +84,7 @@ export default function ChatSession() {
       autoSentRef.current = true;
       setMessages([{ role: 'user', content: prompt }]);
       setLoading(true);
+      setActiveAgent(null);
       fetch(process.env.NEXT_PUBLIC_CHAT_API_URL || '', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -98,7 +100,7 @@ export default function ChatSession() {
           if (done) break;
           const text = decoder.decode(value);
           const lines = text.split('\n').filter((l) => l.startsWith('data: '));
-          for (const line of lines) {
+           for (const line of lines) {
             try {
               const json = JSON.parse(line.slice(6));
               if (json.chunk) {
@@ -109,10 +111,13 @@ export default function ChatSession() {
                   return next;
                 });
               }
+              if (json.agent) {
+                setActiveAgent(json.agent);
+              }
             } catch {}
           }
         }
-      }).catch(console.error).finally(() => setLoading(false));
+      }).catch(console.error).finally(() => { setLoading(false); setActiveAgent(null); });
     }
   }, [searchParams, id]);
 
@@ -125,8 +130,9 @@ export default function ChatSession() {
     const message = input.trim();
     setInput('');
     setError('');
-    setMessages((prev) => [...prev, { role: 'user', content: message }, { role: 'ai', content: '' }]);
+    setMessages((prev) => [...prev, { role: 'user', content: message }]);
     setLoading(true);
+    setActiveAgent(null);
 
     try {
       const res = await fetch(process.env.NEXT_PUBLIC_CHAT_API_URL || '', {
@@ -161,6 +167,9 @@ export default function ChatSession() {
                 return next;
               });
             }
+            if (json.agent) {
+              setActiveAgent(json.agent);
+            }
           } catch {}
         }
       }
@@ -168,6 +177,7 @@ export default function ChatSession() {
       console.error('Stream error:', err);
     } finally {
       setLoading(false);
+      setActiveAgent(null);
     }
   };
 
@@ -219,7 +229,16 @@ export default function ChatSession() {
                 msg.role === 'user'
                   ? 'bg-accent text-white'
                   : 'bg-white/[0.03] border border-border3/50 text-white/80 prose prose-invert prose-sm prose-p:my-1.5 prose-ul:my-1.5 prose-ol:my-1.5 prose-li:my-0.5 prose-headings:my-2 prose-pre:my-2 prose-pre:bg-black/30 prose-pre:border prose-pre:border-border3/50 prose-code:text-accent prose-code:bg-white/[0.06] prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none'
-              }`}>
+               }`}>
+                {msg.role === 'ai' && activeAgent && i === messages.length - 1 && (
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-wider text-accent mb-2 block">
+                    <span className="relative flex items-center justify-center w-3 h-3">
+                      <span className="absolute w-2.5 h-2.5 rounded-full bg-accent/30 animate-ping" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent relative z-10" />
+                    </span>
+                    Using {activeAgent}
+                  </span>
+                )}
                 {msg.role === 'ai' ? (
                   <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
                     {msg.content}
