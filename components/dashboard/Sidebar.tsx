@@ -84,15 +84,16 @@ export default function Sidebar() {
         <div>
           <button
             onClick={() => setChatsOpen(!chatsOpen)}
-            className="w-full flex items-center gap-4 px-3 py-2 rounded-lg text-sm font-display font-medium text-white/50 hover:text-white hover:bg-white/[0.03] transition-colors"
+            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-display font-medium text-white/50 hover:text-white hover:bg-white/[0.03] transition-colors"
           >
+            <MessageSquare className="w-4 h-4" />
+            <span className="flex-1 text-left">Chats</span>
             <motion.div
               animate={{ rotate: chatsOpen ? 180 : 0 }}
               transition={{ duration: 0.2 }}
             >
               <ChevronDown className="w-3 h-3" />
             </motion.div>
-            <span className="flex-1 text-left">Chats</span>
           </button>
 
           <AnimatePresence>
@@ -111,15 +112,13 @@ export default function Sidebar() {
                       <Link
                         key={session.id}
                         href={`/dashboard/chats/${session.id}`}
-                        className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-[12px] font-display truncate transition-colors ${
+                        className={`block px-3 py-1.5 rounded-md text-[12px] font-display truncate transition-colors ${
                           isActive
                             ? 'bg-accent/10 text-accent'
                             : 'text-white/40 hover:text-white/70 hover:bg-white/[0.02]'
                         }`}
                       >
-                        <MessageSquare className="w-3 h-3 shrink-0" />
-                        <span className="flex-1 truncate">{session.sessionName}</span>
-                        <ChevronDown className="w-3 h-3 shrink-0 opacity-50" />
+                        {session.sessionName}
                       </Link>
                     );
                   })}
