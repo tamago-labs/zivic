@@ -8,7 +8,7 @@ import { examplePrompts, getRandomPrompt } from '@/lib/prompts';
 
 export default function HeroPrompt() {
   const router = useRouter();
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState('What are the top stock tokens on Solana by volume?');
   const [activeIndex, setActiveIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
   const [animKey, setAnimKey] = useState(0);
