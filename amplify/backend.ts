@@ -5,11 +5,13 @@ import { Duration } from "aws-cdk-lib"
 import { data } from "./data/resource";
 import { priceTracker } from "./functions/price-tracker/resource";
 import { chatApiFunction } from "./functions/chat-api/resource";
+import { prestockTracker } from "./functions/prestock-tracker/resource";
 
 const backend = defineBackend({
   data,
   priceTracker,
   chatApiFunction,
+  prestockTracker,
 });
 
 const lambdaFunction = backend.chatApiFunction.resources.lambda as LambdaFunction;
