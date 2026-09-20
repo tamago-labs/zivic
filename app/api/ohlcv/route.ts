@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
+import getConfig from "next/config";
 
-const CMC_API_KEY = process.env.CMC_API_KEY;
+const { serverRuntimeConfig } = getConfig();
+const CMC_API_KEY = serverRuntimeConfig.CMC_API_KEY;
 const BASE_URL = "https://pro-api.coinmarketcap.com";
 
 export async function GET(request: Request) {

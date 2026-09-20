@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import getConfig from "next/config";
 import crypto from "crypto";
 
-const OKX_API_KEY = process.env.OKX_API_KEY;
-const OKX_SECRET_KEY = process.env.OKX_SECRET_KEY;
-const OKX_PASSPHRASE = process.env.OKX_PASSPHRASE;
+const { serverRuntimeConfig } = getConfig();
+const OKX_API_KEY = serverRuntimeConfig.OKX_API_KEY;
+const OKX_SECRET_KEY = serverRuntimeConfig.OKX_SECRET_KEY;
+const OKX_PASSPHRASE = serverRuntimeConfig.OKX_PASSPHRASE;
 
 function sign(timestamp: string, method: string, requestPath: string, body = ""): string {
   const prehash = timestamp + method + requestPath + body;
