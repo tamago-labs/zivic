@@ -13,20 +13,16 @@ export default function Hero() {
         <div>
           <Section>
             <h1 className="font-display text-3xl md:text-5xl font-bold tracking-tight leading-[1.1]">
-              Everyone sees the same tokenized stocks<br />
+              Your AI Risk Engine for<br />
               <span className="bg-gradient-to-r from-zenblue via-accent to-accent2 bg-clip-text text-transparent">
-                Zivic makes it yours
+                Tokenized Equities
               </span>
             </h1>
           </Section>
 
           <Section>
               <p className="mt-5 text-[15px] text-white/50 leading-relaxed">
-              Zivic is a hyper-personalized AI dashboard for tokenized stocks on{' '}
-              <a href="https://solana.com/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Solana</a>. Explore{' '}
-              <a href="https://xstocks.fi/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">xStocks</a>,{' '}
-              <a href="https://ondo.finance/ondo-stocks" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Ondo Stocks</a>,{' '}
-              <a href="https://prestocks.com" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">PreStocks</a> — with AI that finds, ranks, and explains what matters to you.
+              Hyper-personalized AI Risk Engine for tokenized equities on <a href="https://solana.com/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Solana</a>. Discover, rank, and understand risk on <a href="https://xstocks.fi/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">xStocks</a>, <a href="https://ondo.finance/ondo-stocks" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Ondo</a>, <a href="https://prestocks.com" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">PreStocks</a> then turn them into productive collateral and yield.
             </p>
           </Section>
 
