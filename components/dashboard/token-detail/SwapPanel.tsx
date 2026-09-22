@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSignAndSendTransaction } from "@solana/react";
+import type { UiWalletAccount } from "@wallet-standard/ui";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Token, Asset } from "@/lib/types/token";
-import { ArrowRight, ChevronDown, X, Loader2, RefreshCw } from "lucide-react";
+import { ArrowRight, ChevronDown, X, Loader2, RefreshCw, ExternalLink } from "lucide-react";
 import { BASE_TOKENS, type BaseToken } from "@/lib/tokens/base-tokens";
 import RouteVisualization from "./RouteVisualization";
 
@@ -36,7 +38,48 @@ function formatTokenAmount(raw: string, decimals: number): string {
   return num.toLocaleString(undefined, { maximumFractionDigits: 6 });
 }
 
-export default function SwapPanel({ token, asset }: { token: Token; asset: Asset }) {
+const B58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+function base58ToBytes(b58: string): Uint8Array {
+  let num = BigInt(0);
+  for (let i = 0; i < b58.length; i++) {
+    const idx = B58.indexOf(b58[i]);
+    if (idx === -1) throw new Error("Invalid base58 character");
+    num = num * BigInt(58) + BigInt(idx);
+  }
+  const bytes: number[] = [];
+  while (num > BigInt(0)) {
+    bytes.unshift(Number(num & BigInt(0xff)));
+    num = num >> BigInt(8);
+  }
+  let leadingZeros = 0;
+  for (let i = 0; i < b58.length && b58[i] === "1"; i++) leadingZeros++;
+  return new Uint8Array([...Array(leadingZeros).fill(0), ...bytes]);
+}
+
+function bytesToBase58(bytes: Uint8Array): string {
+  let num = BigInt(0);
+  for (let i = 0; i < bytes.length; i++) num = num * BigInt(256) + BigInt(bytes[i]);
+  let str = "";
+  while (num > BigInt(0)) {
+    str = B58[Number(num % BigInt(58))] + str;
+    num = num / BigInt(58);
+  }
+  for (let i = 0; i < bytes.length; i++) {
+    if (bytes[i] === 0) str = "1" + str;
+    else break;
+  }
+  return str;
+}
+
+export default function SwapPanel({
+  token,
+  asset,
+  walletAccount,
+}: {
+  token: Token;
+  asset: Asset;
+  walletAccount: UiWalletAccount | null;
+}) {
   const [tab, setTab] = useState<Tab>("Buy");
   const [fromAmount, setFromAmount] = useState("");
   const [baseToken, setBaseToken] = useState<BaseToken>(BASE_TOKENS[0]);
@@ -47,6 +90,39 @@ export default function SwapPanel({ token, asset }: { token: Token; asset: Asset
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [amountEdited, setAmountEdited] = useState(false);
+  const [swapStatus, setSwapStatus] = useState<"idle" | "swapping" | "success" | "failed">("idle");
+  const [swapSig, setSwapSig] = useState("");
+  const [balance, setBalance] = useState<number | null>(null);
+  const [balanceSymbol, setBalanceSymbol] = useState("");
+  const [allBalances, setAllBalances] = useState<Record<string, number>>({});
+  const [solBal, setSolBal] = useState(0);
+
+  const signAndSend = walletAccount ? useSignAndSendTransaction(walletAccount, "solana:mainnet") : null;
+  useEffect(() => {
+    if (!walletAccount) { setBalance(null); return; }
+    const mint = tab === "Buy" ? baseToken.address : (token.mint ?? "");
+    const symbol = tab === "Buy" ? baseToken.symbol : token.symbol;
+    setBalanceSymbol(symbol);
+
+    if (!mint || mint === "11111111111111111111111111111111") {
+      fetch(`/api/solana-balance?address=${walletAccount.address}`)
+        .then((r) => r.json())
+        .then((data) => {
+          setAllBalances(data.spl ?? {});
+          setSolBal(data.sol ?? 0);
+          setBalance(data.sol ?? 0);
+        })
+        .catch(() => setBalance(null));
+      return;
+    }
+    fetch(`/api/solana-balance?address=${walletAccount.address}`)
+      .then((r) => r.json())
+      .then((data) => {
+        setAllBalances(data.spl ?? {});
+        setBalance(data.spl?.[mint] ?? 0);
+      })
+      .catch(() => setBalance(null));
+  }, [walletAccount, baseToken, tab, token.mint]);
 
   async function fetchQuote(amount: string) {
     setLoading(true);
@@ -54,7 +130,7 @@ export default function SwapPanel({ token, asset }: { token: Token; asset: Asset
     setAmountEdited(false);
 
     const decimals = tab === "Buy" ? baseToken.decimals : token.decimals ?? 9;
-    const rawAmount = (Number(amount) * Math.pow(10, decimals)).toString();
+    const rawAmount = Math.round(Number(amount) * Math.pow(10, decimals)).toString();
 
     const fromAddr = tab === "Buy" ? baseToken.address : (token.mint ?? "");
     const toAddr = tab === "Buy" ? (token.mint ?? "") : baseToken.address;
@@ -96,8 +172,55 @@ export default function SwapPanel({ token, asset }: { token: Token; asset: Asset
     fetchQuote(quoteAmount);
   }
 
-  function handleSwap() {
-    console.log("Swap:", quote?.quoteId, quoteAmount);
+  async function handleSwap() {
+    if (!quote || !quoteAmount || !signAndSend) {
+      return;
+    }
+
+    const decimals = tab === "Buy" ? baseToken.decimals : token.decimals ?? 9;
+    const rawAmount = Math.round(Number(quoteAmount) * Math.pow(10, decimals)).toString();
+
+    const fromAddr = tab === "Buy" ? baseToken.address : (token.mint ?? "");
+    const toAddr = tab === "Buy" ? (token.mint ?? "") : baseToken.address;
+
+    setSwapStatus("swapping");
+    setSwapSig("");
+    setError("");
+
+    try {
+      const params = new URLSearchParams({
+        fromTokenAddress: fromAddr,
+        toTokenAddress: toAddr,
+        amount: rawAmount,
+        userWalletAddress: walletAccount!.address,
+        slippagePercent: "0.5",
+      });
+      const res = await fetch(`/api/swap-instruction?${params}`);
+      const json = await res.json();
+
+      if (!res.ok || json.error) {
+        throw new Error(json.error ?? "Failed to get swap data");
+      }
+      if (!json.base58Transaction) {
+        throw new Error("No transaction data");
+      }
+
+      const txBytes = base58ToBytes(json.base58Transaction);
+      const { signature } = await signAndSend({ transaction: txBytes });
+      const sigStr = bytesToBase58(signature);
+      setSwapSig(sigStr);
+      setSwapStatus("success");
+    } catch (err: any) {
+      console.error("[swap] error:", err?.message);
+      setError(err.message ?? "Swap failed");
+      setSwapStatus("failed");
+    }
+  }
+
+  function resetSwap() {
+    setSwapStatus("idle");
+    setSwapSig("");
+    setError("");
   }
 
   return (
@@ -108,9 +231,7 @@ export default function SwapPanel({ token, asset }: { token: Token; asset: Asset
             key={t}
             onClick={() => setTab(t)}
             className={`flex-1 py-1.5 rounded-lg text-[12px] font-medium transition-all relative ${
-              tab === t
-                ? "text-white"
-                : "text-white/30 hover:text-white/50"
+              tab === t ? "text-white" : "text-white/30 hover:text-white/50"
             }`}
           >
             {tab === t && (
@@ -161,10 +282,13 @@ export default function SwapPanel({ token, asset }: { token: Token; asset: Asset
 
       <div className="mt-3 pt-3 border-t border-white/[0.06]">
         <div className="flex items-center justify-between text-[11px] mb-3">
-          <span className="text-white/50 flex items-center gap-1.5">
-            Best price via{" "}
-            <img src="https://s2.coinmarketcap.com/static/img/exchanges/64x64/294.png" alt="OKX" className="w-3.5 h-3.5 rounded-full inline-block" />{" "}
-            OKX DEX Router
+          <span className="text-white/40">
+            Balance:{" "}
+            {balance != null ? (
+              <span className="text-white/70 font-medium">{balance.toLocaleString(undefined, { maximumFractionDigits: 6 })} {balanceSymbol}</span>
+            ) : (
+              <span className="text-white/25">—</span>
+            )}
           </span>
           {tab === "Sell" && (
             <button
@@ -185,6 +309,11 @@ export default function SwapPanel({ token, asset }: { token: Token; asset: Asset
         >
           Get Quote <ArrowRight className="w-4 h-4" />
         </button>
+        <div className="flex items-center justify-center gap-1.5 text-[11px] mt-2">
+          <span className="text-white/50">Best price via</span>
+          <img src="https://s2.coinmarketcap.com/static/img/exchanges/64x64/294.png" alt="OKX" className="w-3.5 h-3.5 rounded-full" />
+          <span className="text-white/50">OKX DEX Router</span>
+        </div>
       </div>
 
       {/* Token Selector Modal */}
@@ -235,8 +364,14 @@ export default function SwapPanel({ token, asset }: { token: Token; asset: Asset
                       <p className="text-[13px] font-medium text-white/90">{bt.symbol}</p>
                       <p className="text-[11px] text-white/40 truncate">{bt.name}</p>
                     </div>
+                    <span className="text-[11px] text-white/40 shrink-0">
+                      {bt.address === "11111111111111111111111111111111"
+                        ? solBal.toLocaleString(undefined, { maximumFractionDigits: 6 })
+                        : (allBalances[bt.address] ?? 0).toLocaleString(undefined, { maximumFractionDigits: 6 })
+                      }
+                    </span>
                     {baseToken.symbol === bt.symbol && (
-                      <div className="w-2 h-2 rounded-full bg-accent" />
+                      <div className="w-2 h-2 rounded-full bg-accent shrink-0" />
                     )}
                   </button>
                 ))}
@@ -324,7 +459,6 @@ export default function SwapPanel({ token, asset }: { token: Token; asset: Asset
                 {/* Quote Result */}
                 {quote && !loading && !error && (
                   <>
-                    {/* You Pay / You Receive */}
                     <div className="space-y-2">
                       <div className="flex items-center justify-between bg-white/[0.03] border border-white/[0.06] rounded-xl px-3 py-2.5">
                         <span className="text-[11px] text-white/40">{tab === "Buy" ? "You pay" : "You sell"}</span>
@@ -350,7 +484,6 @@ export default function SwapPanel({ token, asset }: { token: Token; asset: Asset
                       </div>
                     </div>
 
-                    {/* Price Impact */}
                     <div className="space-y-1.5 text-[11px]">
                       <div className="flex justify-between">
                         <span className="text-white/30">Price Impact</span>
@@ -364,14 +497,40 @@ export default function SwapPanel({ token, asset }: { token: Token; asset: Asset
                       </div>
                     </div>
 
-                    {/* DEX Route */}
                     <div>
                       <div className="text-[11px] text-white/30 mb-1.5">Route</div>
                       <RouteVisualization quote={quote} />
                     </div>
 
                     {/* Action Button */}
-                    {amountEdited ? (
+                    {swapStatus === "success" ? (
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 text-[12px] text-green-400 bg-green-400/10 rounded-lg px-3 py-2">
+                          <span>Swap confirmed</span>
+                          <a
+                            href={`https://solscan.io/tx/${swapSig}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-accent hover:underline"
+                          >
+                            View <ExternalLink className="w-3 h-3" />
+                          </a>
+                        </div>
+                        <button
+                          onClick={() => { setQuoteModalOpen(false); resetSwap(); }}
+                          className="w-full py-2 rounded-xl bg-white/[0.06] text-[12px] text-white/60 hover:text-white/80 transition-colors"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    ) : swapStatus === "swapping" ? (
+                      <button
+                        disabled
+                        className="w-full py-2.5 rounded-xl bg-accent text-sm font-medium text-white flex items-center justify-center gap-2 opacity-80"
+                      >
+                        <Loader2 className="w-4 h-4 animate-spin" /> Swapping…
+                      </button>
+                    ) : amountEdited ? (
                       <button
                         onClick={handleRefetch}
                         className="w-full py-2.5 rounded-xl bg-accent text-sm font-medium text-white hover:bg-accent/80 transition-colors flex items-center justify-center gap-2"
@@ -381,10 +540,23 @@ export default function SwapPanel({ token, asset }: { token: Token; asset: Asset
                     ) : (
                       <button
                         onClick={handleSwap}
-                        className="w-full py-2.5 rounded-xl bg-accent text-sm font-medium text-white hover:bg-accent/80 transition-colors flex items-center justify-center gap-2"
+                        disabled={!signAndSend}
+                        className="w-full py-2.5 rounded-xl bg-accent text-sm font-medium text-white hover:bg-accent/80 transition-colors flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
                       >
-                        Swap <ArrowRight className="w-4 h-4" />
+                        {!signAndSend ? "Connect Wallet" : "Swap"} <ArrowRight className="w-4 h-4" />
                       </button>
+                    )}
+
+                    {swapStatus === "failed" && error && (
+                      <div className="text-center mt-2">
+                        <p className="text-[12px] text-red-400">{error}</p>
+                        <button
+                          onClick={resetSwap}
+                          className="mt-1 text-[11px] text-accent hover:underline"
+                        >
+                          Try again
+                        </button>
+                      </div>
                     )}
                   </>
                 )}

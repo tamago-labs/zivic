@@ -2,6 +2,9 @@
 
 import type { Token, Asset } from "@/lib/types/token";
 import { usePrices } from "@/app/contexts/PriceContext";
+import { useClient } from "@solana/react";
+import { useConnectedWallet } from "@solana/kit-plugin-wallet/react";
+import type { AppClient } from "@/components/SolanaWalletProvider";
 import TokenDetailHeader from "./TokenDetailHeader";
 import TokenDetailPrice from "./TokenDetailPrice";
 import TokenDetailStats from "./TokenDetailStats";
@@ -24,14 +27,16 @@ export default function TokenDetailClient({
 }) {
   const { prices } = usePrices();
   const price = prices.find((p) => p.token_symbol === token.symbol);
+  const client = useClient<AppClient>();
+  const connected = useConnectedWallet(client);
 
   return (
       <div className="space-y-6">
         <TokenDetailHeader token={token} asset={asset} />
         <div className="grid grid-cols-5 gap-6">
-           <div className="col-span-2 space-y-6">
+            <div className="col-span-2 space-y-6">
             <TokenDetailStats token={token} price={price} />
-            <SwapPanel token={token} asset={asset} />
+            <SwapPanel token={token} asset={asset} walletAccount={connected?.account ?? null} />
             <TokenDetailInfo token={token} asset={asset} price={price} />
           </div>
           <div className="col-span-3 space-y-6">

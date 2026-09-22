@@ -2,7 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { generateClient } from 'aws-amplify/data';
+import { useClient } from '@solana/react';
+import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
 import type { Schema } from '@/amplify/data/resource';
+import type { AppClient } from '@/components/SolanaWalletProvider';
 import PreIpoPriceChart from './PreIpoPriceChart';
 import PreIpoAbout from './PreIpoAbout';
 import PreIpoStats from './PreIpoStats';
@@ -10,7 +13,7 @@ import PreIpoInfo from './PreIpoInfo';
 import PreIpoLinks from './PreIpoLinks';
 import PreIpoSwapPanel from './PreIpoSwapPanel';
 
-const client = generateClient<Schema>();
+const dataClient = generateClient<Schema>();
 
 interface Asset {
   symbol: string;
@@ -37,9 +40,11 @@ interface Snapshot {
 export default function PreIpoDetailClient({ asset }: { asset: Asset }) {
   const [snapshots, setSnapshots] = useState<Snapshot[]>([]);
   const [loading, setLoading] = useState(true);
+  const client = useClient<AppClient>();
+  const connected = useConnectedWallet(client);
 
   useEffect(() => {
-    client.models.PreStock.list({
+    dataClient.models.PreStock.list({
       filter: { symbol: { eq: asset.symbol } },
       limit: 1000,
     }).then((res) => {
@@ -111,6 +116,7 @@ export default function PreIpoDetailClient({ asset }: { asset: Asset }) {
             symbol={asset.symbol}
             image={asset.image}
             name={asset.name}
+            walletAccount={connected?.account ?? null}
           />
 
           <PreIpoInfo

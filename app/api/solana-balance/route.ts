@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const [solRes, splRes] = await Promise.all([
+    const [solRes, splRes, spl2022Res] = await Promise.all([
       fetch(RPC_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -36,14 +36,31 @@ export async function GET(request: NextRequest) {
           ],
         }),
       }).then((r) => r.json()),
+      fetch(RPC_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          id: 3,
+          method: 'getTokenAccountsByOwner',
+          params: [
+            address,
+            { programId: 'TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb' },
+            { encoding: 'jsonParsed' },
+          ],
+        }),
+      }).then((r) => r.json()),
     ]);
 
     const lamports = solRes?.result?.value ?? 0;
     const solBalance = lamports / 1e9;
 
     const splBalances: Record<string, number> = {};
-    const accounts = splRes?.result?.value ?? [];
-    for (const account of accounts) {
+    const allAccounts = [
+      ...(splRes?.result?.value ?? []),
+      ...(spl2022Res?.result?.value ?? []),
+    ];
+    for (const account of allAccounts) {
       const info = account.account?.data?.parsed?.info;
       if (info?.mint && info?.tokenAmount?.uiAmount != null) {
         splBalances[info.mint] = info.tokenAmount.uiAmount;
