@@ -3,6 +3,7 @@
 import { useClient } from '@solana/react';
 import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
 import { useSolanaBalances } from '@/hooks/useSolanaBalances';
+import { useKnownTokens } from '@/hooks/useKnownTokens';
 import { useBaseTokenPrices } from '../../../app/contexts/BaseTokenPriceProvider';
 import { BASE_TOKENS } from '@/lib/tokens/base-tokens';
 import type { AppClient } from '@/components/SolanaWalletProvider';
@@ -12,6 +13,7 @@ export default function HoldingsList() {
   const connected = useConnectedWallet(client);
   const walletAddress = connected ? String(connected.account.address) : null;
   const { balances, loading } = useSolanaBalances(walletAddress);
+  const { tokens: knownTokens, loading: knownLoading } = useKnownTokens(walletAddress);
   const { getPrice, getChange24h, loading: pricesLoading } = useBaseTokenPrices();
 
   const holdings = BASE_TOKENS.map((token) => {
@@ -84,6 +86,38 @@ export default function HoldingsList() {
             </div>
           );
         })}
+
+        {knownTokens.map((t) => (
+          <div
+            key={t.mint}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/[0.02] transition-colors"
+          >
+            {t.image ? (
+              <img src={t.image} alt={t.symbol} className="w-8 h-8 rounded-full" />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[7px] font-bold text-white/40">
+                {t.symbol.slice(0, 2)}
+              </div>
+            )}
+            <div className="min-w-0">
+              <p className="text-[13px] font-medium text-white/80">{t.symbol}</p>
+              <p className="text-[11px] text-white/40">
+                {t.balance > 0 && t.balance <= 1 ? t.balance.toFixed(6) : t.balance.toLocaleString()} {t.symbol}
+              </p>
+            </div>
+            <div className="ml-auto text-right">
+              <p className="text-[13px] font-medium text-white/80">
+                ${t.value.toLocaleString(undefined, { maximumFractionDigits: 2 })}
+              </p>
+              <p className="text-[11px] text-white/40">
+                <span className={t.change >= 0 ? 'text-accent2' : 'text-warn2'}>
+                  {t.change >= 0 ? '+' : ''}{t.change.toFixed(1)}%
+                </span>
+                {' · '}${t.price < 1 ? t.price.toFixed(6) : t.price.toFixed(2)}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

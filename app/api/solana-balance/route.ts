@@ -3,11 +3,19 @@ import { NextRequest, NextResponse } from 'next/server';
 const RPC_URL =
   process.env.NEXT_PUBLIC_SOLANA_RPC_URL ?? 'https://api.mainnet.solana.com';
 
+const cache = new Map<string, { data: any; ts: number }>();
+const CACHE_MS = 15_000;
+
 export async function GET(request: NextRequest) {
   const address = request.nextUrl.searchParams.get('address');
 
   if (!address) {
     return NextResponse.json({ error: 'address is required' }, { status: 400 });
+  }
+
+  const cached = cache.get(address);
+  if (cached && Date.now() - cached.ts < CACHE_MS) {
+    return NextResponse.json(cached.data);
   }
 
   try {
@@ -56,18 +64,19 @@ export async function GET(request: NextRequest) {
     const solBalance = lamports / 1e9;
 
     const splBalances: Record<string, number> = {};
-    const allAccounts = [
-      ...(splRes?.result?.value ?? []),
-      ...(spl2022Res?.result?.value ?? []),
-    ];
-    for (const account of allAccounts) {
+    const splAccounts = splRes?.result?.value ?? [];
+    const spl2022Accounts = spl2022Res?.result?.value ?? [];
+
+    for (const account of [...splAccounts, ...spl2022Accounts]) {
       const info = account.account?.data?.parsed?.info;
       if (info?.mint && info?.tokenAmount?.uiAmount != null) {
         splBalances[info.mint] = info.tokenAmount.uiAmount;
       }
     }
 
-    return NextResponse.json({ sol: solBalance, spl: splBalances });
+    const response = { sol: solBalance, spl: splBalances };
+    cache.set(address, { data: response, ts: Date.now() });
+    return NextResponse.json(response);
   } catch (err) {
     console.error('[solana-balance] error:', err);
     return NextResponse.json({ error: 'Failed to fetch balances' }, { status: 500 });
