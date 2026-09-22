@@ -121,7 +121,7 @@ async function chatStreamHandler(
       { type: "message" as const, role: "user" as const, content: [{ type: "input_text" as const, text: message }] },
     ];
 
-    const stream = await run(triageAgent, allMessages as any, { stream: true });
+    const stream = await run(triageAgent, allMessages as any, { stream: true, maxTurns: 20 });
 
     const STREAM_TIMEOUT_MS = 250000;
 
@@ -145,7 +145,10 @@ async function chatStreamHandler(
       ]);
     } catch (streamErr) {
       console.error("[stream] error or timeout:", streamErr);
-      responseStream.write(`data: ${JSON.stringify({ error: "Stream interrupted" })}\n\n`);
+      const msg = streamErr instanceof Error && streamErr.message.includes("Max turns")
+        ? "The agent took too many steps. Try rephrasing your question or being more specific."
+        : "Stream interrupted. Please try again.";
+      responseStream.write(`data: ${JSON.stringify({ error: msg })}\n\n`);
     }
 
     const finalItems = allMessages.concat(
