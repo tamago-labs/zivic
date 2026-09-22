@@ -5,6 +5,7 @@ import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '@/amplify/data/resource';
 import PreIpoPriceChart from './PreIpoPriceChart';
 import PreIpoAbout from './PreIpoAbout';
+import PreIpoStats from './PreIpoStats';
 
 const client = generateClient<Schema>();
 
@@ -94,31 +95,7 @@ export default function PreIpoDetailClient({ asset }: { asset: Asset }) {
       {/* Stats + Trade (left) | Chart + About + Info (right) */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
         <div className="md:col-span-2 space-y-6">
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-surface border border-border3/50 rounded-xl p-4">
-              <p className="text-[11px] text-white/30 uppercase tracking-wider mb-1">Mark Price</p>
-              <p className="text-[18px] font-semibold text-white/80">
-                {markPrice > 0 ? `$${markPrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '—'}
-              </p>
-            </div>
-            <div className="bg-surface border border-border3/50 rounded-xl p-4">
-              <p className="text-[11px] text-white/30 uppercase tracking-wider mb-1">Premium</p>
-              <p className={`text-[18px] font-semibold ${premium >= 0 ? 'text-warn2' : 'text-accent2'}`}>
-                {premium >= 0 ? '+' : ''}{premium.toFixed(2)}%
-              </p>
-            </div>
-            <div className="bg-surface border border-border3/50 rounded-xl p-4">
-              <p className="text-[11px] text-white/30 uppercase tracking-wider mb-1">24h Change</p>
-              <p className={`text-[18px] font-semibold ${change24h >= 0 ? 'text-accent2' : 'text-warn2'}`}>
-                {change24h >= 0 ? '+' : ''}{change24h.toFixed(2)}%
-              </p>
-            </div>
-            <div className="bg-surface border border-border3/50 rounded-xl p-4">
-              <p className="text-[11px] text-white/30 uppercase tracking-wider mb-1">Founded</p>
-              <p className="text-[18px] font-semibold text-white/80">{asset.founded}</p>
-            </div>
-          </div>
+          <PreIpoStats markPrice={markPrice} premium={premium} change24h={change24h} />
 
           {/* Trade */}
           <div className="bg-surface border border-border3/50 rounded-xl p-5">
