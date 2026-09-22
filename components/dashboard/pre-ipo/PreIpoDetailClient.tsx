@@ -6,6 +6,8 @@ import type { Schema } from '@/amplify/data/resource';
 import PreIpoPriceChart from './PreIpoPriceChart';
 import PreIpoAbout from './PreIpoAbout';
 import PreIpoStats from './PreIpoStats';
+import PreIpoInfo from './PreIpoInfo';
+import PreIpoLinks from './PreIpoLinks';
 
 const client = generateClient<Schema>();
 
@@ -19,12 +21,15 @@ interface Asset {
   industry: string;
   founded: number;
   employees: string;
-  contract_address: string;
+  mint: string;
 }
 
 interface Snapshot {
   tokenPrice: number;
   markPrice: number;
+  markValuation: number;
+  impliedValuation: number;
+  supply: number;
   createdAt?: string;
 }
 
@@ -42,6 +47,9 @@ export default function PreIpoDetailClient({ asset }: { asset: Asset }) {
         .map((s) => ({
           tokenPrice: s.tokenPrice ?? 0,
           markPrice: s.markPrice ?? 0,
+          markValuation: s.markValuation ?? 0,
+          impliedValuation: s.impliedValuation ?? 0,
+          supply: s.supply ?? 0,
           createdAt: s.createdAt,
         }));
       setSnapshots(sorted);
@@ -95,7 +103,7 @@ export default function PreIpoDetailClient({ asset }: { asset: Asset }) {
       {/* Stats + Trade (left) | Chart + About + Info (right) */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
         <div className="md:col-span-2 space-y-6">
-          <PreIpoStats markPrice={markPrice} premium={premium} change24h={change24h} />
+          <PreIpoStats tokenPrice={tokenPrice} markPrice={markPrice} change24h={change24h} />
 
           {/* Trade */}
           <div className="bg-surface border border-border3/50 rounded-xl p-5">
@@ -110,37 +118,27 @@ export default function PreIpoDetailClient({ asset }: { asset: Asset }) {
               Trade on PreStocks
             </a>
           </div>
+
+          <PreIpoInfo
+            industry={asset.industry}
+            employees={asset.employees}
+            website={asset.website}
+            mint={asset.mint}
+            tokenPrice={tokenPrice}
+            markPrice={markPrice}
+            premium={premium}
+            markValuation={latest?.markValuation ?? 0}
+            impliedValuation={latest?.impliedValuation ?? 0}
+            supply={latest?.supply ?? 0}
+            assetSymbol={asset.symbol}
+          />
         </div>
 
-        {/* Chart + About + Info (right) */}
+        {/* Chart + About (right) */}
         <div className="md:col-span-3 space-y-6">
           <PreIpoPriceChart data={chartData} />
-
           <PreIpoAbout name={asset.name} description={asset.description} />
-
-          <div className="bg-surface border border-border3/50 rounded-xl p-5">
-            <h3 className="text-[14px] font-semibold mb-3">Company Info</h3>
-            <div className="space-y-2">
-              <div className="flex justify-between text-[12px]">
-                <span className="text-white/30">Industry</span>
-                <span className="text-white/60">{asset.industry}</span>
-              </div>
-              <div className="flex justify-between text-[12px]">
-                <span className="text-white/30">Employees</span>
-                <span className="text-white/60">{asset.employees}</span>
-              </div>
-              <div className="flex justify-between text-[12px]">
-                <span className="text-white/30">Website</span>
-                <a href={asset.website} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
-                  {asset.website}
-                </a>
-              </div>
-              <div className="flex justify-between text-[12px]">
-                <span className="text-white/30">Contract</span>
-                <span className="text-white/40 font-mono text-[11px]">{asset.contract_address}</span>
-              </div>
-            </div>
-          </div>
+          <PreIpoLinks />
         </div>
       </div>
     </div>
