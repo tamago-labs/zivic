@@ -7,6 +7,8 @@ import { env } from "$amplify/env/chat-api";
 import type { Schema } from "../../../../data/resource";
 import listData from "./pre-ipo-list.json";
 
+const EXCLUDED_SYMBOLS = ["SPACEX"];
+
 function getAssetMeta(symbol: string) {
   const assets = (listData as any).assets || [];
   return assets.find((a: any) => a.symbol === symbol);
@@ -21,12 +23,16 @@ export const getPreIpoMarkets = tool({
     Amplify.configure(resourceConfig, libraryOptions);
     const client = generateClient<Schema>();
 
-    const { data: snapshots } = await client.models.PreStock.list({
+    const { data } = await client.models.PreStock.list({
       filter: { markPrice: { gt: 0 } },
       limit: 1000,
     });
 
-    if (!snapshots || snapshots.length === 0) {
+    const snapshots = data
+      ? data.filter((s) => !EXCLUDED_SYMBOLS.includes(s.symbol))
+      : [];
+
+    if (snapshots.length === 0) {
       return JSON.stringify([]);
     }
 

@@ -12,6 +12,8 @@ const dataClient = generateClient<Schema>();
 
 const PRESTOCKS_API = "https://prestocks.com/api/prestocks";
 
+const EXCLUDED_SYMBOLS = ["SPACEX"];
+
 interface PreStockData {
   symbol: string;
   markPrice: number;
@@ -30,14 +32,16 @@ export const handler = async () => {
     }
 
     const data: any[] = await res.json();
-    const stocks: PreStockData[] = data.map((item) => ({
-      symbol: item.symbol,
-      markPrice: item.markPrice ?? null,
-      markValuation: item.markValuation ?? null,
-      tokenPrice: item.tokenPrice ?? null,
-      impliedValuation: item.impliedValuation ?? null,
-      supply: item.supply ?? null,
-    }));
+    const stocks: PreStockData[] = data
+      .filter((item) => !EXCLUDED_SYMBOLS.includes(item.symbol))
+      .map((item) => ({
+        symbol: item.symbol,
+        markPrice: item.markPrice ?? null,
+        markValuation: item.markValuation ?? null,
+        tokenPrice: item.tokenPrice ?? null,
+        impliedValuation: item.impliedValuation ?? null,
+        supply: item.supply ?? null,
+      }));
 
     for (const stock of stocks) {
       await dataClient.models.PreStock.create(stock);
