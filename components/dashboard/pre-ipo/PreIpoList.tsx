@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '@/amplify/data/resource';
 import preIpoData from '@/lib/data/pre-ipo-list.json';
@@ -129,9 +130,10 @@ export default function PreIpoList() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {markets.map((market) => (
-        <div
+        <Link
           key={market.symbol}
-          className="group bg-surface border border-border3/50 rounded-xl p-5 hover:border-accent/30 transition-all"
+          href={`/dashboard/pre-ipo/${market.slug}`}
+          className="group bg-surface border border-border3/50 rounded-xl p-5 hover:border-accent/30 transition-all block"
         >
           <div className="flex items-start gap-3 mb-4">
             <img
@@ -192,7 +194,7 @@ export default function PreIpoList() {
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

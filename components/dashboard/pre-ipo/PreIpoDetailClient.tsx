@@ -1,0 +1,171 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { generateClient } from 'aws-amplify/data';
+import type { Schema } from '@/amplify/data/resource';
+import PreIpoPriceChart from './PreIpoPriceChart';
+import PreIpoAbout from './PreIpoAbout';
+
+const client = generateClient<Schema>();
+
+interface Asset {
+  symbol: string;
+  name: string;
+  slug: string;
+  image: string;
+  description: string;
+  website: string;
+  industry: string;
+  founded: number;
+  employees: string;
+  contract_address: string;
+}
+
+interface Snapshot {
+  tokenPrice: number;
+  markPrice: number;
+  createdAt?: string;
+}
+
+export default function PreIpoDetailClient({ asset }: { asset: Asset }) {
+  const [snapshots, setSnapshots] = useState<Snapshot[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    client.models.PreStock.list({
+      filter: { symbol: { eq: asset.symbol } },
+      limit: 1000,
+    }).then((res) => {
+      const sorted = (res.data ?? [])
+        .sort((a, b) => new Date(a.createdAt ?? '').getTime() - new Date(b.createdAt ?? '').getTime())
+        .map((s) => ({
+          tokenPrice: s.tokenPrice ?? 0,
+          markPrice: s.markPrice ?? 0,
+          createdAt: s.createdAt,
+        }));
+      setSnapshots(sorted);
+      setLoading(false);
+    }).catch(() => setLoading(false));
+  }, [asset.symbol]);
+
+  const latest = snapshots[snapshots.length - 1];
+  const first = snapshots[0];
+
+  const tokenPrice = latest?.tokenPrice ?? 0;
+  const markPrice = latest?.markPrice ?? 0;
+  const premium = markPrice > 0 ? ((tokenPrice - markPrice) / markPrice) * 100 : 0;
+  const change24h = first && latest && first.markPrice > 0
+    ? ((latest.markPrice - first.markPrice) / first.markPrice) * 100
+    : 0;
+
+  const chartData = snapshots.map((s) => ({
+    time: s.createdAt ?? '',
+    tokenPrice: s.tokenPrice,
+    markPrice: s.markPrice,
+  }));
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-start gap-4">
+        {asset.image ? (
+          <img src={asset.image} alt={asset.name} className="w-14 h-14 rounded-2xl" />
+        ) : (
+          <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white/40">
+            {asset.symbol.slice(0, 2)}
+          </div>
+        )}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-3 flex-wrap">
+            <h1 className="text-2xl font-display font-bold text-white/95">{asset.name} ({asset.symbol})</h1>
+          </div>
+          <p className="text-sm text-white/40 mt-1">
+            {asset.website && (
+              <a href={asset.website} target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors">
+                {asset.website}
+              </a>
+            )}
+            {asset.industry && <span className="text-white/30"> · {asset.industry}</span>}
+            {asset.employees && <span className="text-white/30"> · {asset.employees} employees</span>}
+          </p>
+        </div>
+      </div>
+
+      {/* Stats + Trade (left) | Chart + About + Info (right) */}
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+        <div className="md:col-span-2 space-y-6">
+          {/* Stats */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-surface border border-border3/50 rounded-xl p-4">
+              <p className="text-[11px] text-white/30 uppercase tracking-wider mb-1">Mark Price</p>
+              <p className="text-[18px] font-semibold text-white/80">
+                {markPrice > 0 ? `$${markPrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '—'}
+              </p>
+            </div>
+            <div className="bg-surface border border-border3/50 rounded-xl p-4">
+              <p className="text-[11px] text-white/30 uppercase tracking-wider mb-1">Premium</p>
+              <p className={`text-[18px] font-semibold ${premium >= 0 ? 'text-warn2' : 'text-accent2'}`}>
+                {premium >= 0 ? '+' : ''}{premium.toFixed(2)}%
+              </p>
+            </div>
+            <div className="bg-surface border border-border3/50 rounded-xl p-4">
+              <p className="text-[11px] text-white/30 uppercase tracking-wider mb-1">24h Change</p>
+              <p className={`text-[18px] font-semibold ${change24h >= 0 ? 'text-accent2' : 'text-warn2'}`}>
+                {change24h >= 0 ? '+' : ''}{change24h.toFixed(2)}%
+              </p>
+            </div>
+            <div className="bg-surface border border-border3/50 rounded-xl p-4">
+              <p className="text-[11px] text-white/30 uppercase tracking-wider mb-1">Founded</p>
+              <p className="text-[18px] font-semibold text-white/80">{asset.founded}</p>
+            </div>
+          </div>
+
+          {/* Trade */}
+          <div className="bg-surface border border-border3/50 rounded-xl p-5">
+            <h3 className="text-[14px] font-semibold mb-3">Trade</h3>
+            <p className="text-[12px] text-white/30 mb-4">Trading panel coming soon.</p>
+            <a
+              href={`https://prestocks.com/${asset.slug}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-center text-[13px] font-medium bg-accent text-white px-4 py-2.5 rounded-lg hover:bg-accent/80 transition-colors"
+            >
+              Trade on PreStocks
+            </a>
+          </div>
+        </div>
+
+        {/* Chart + About + Info (right) */}
+        <div className="md:col-span-3 space-y-6">
+          <PreIpoPriceChart data={chartData} />
+
+          <PreIpoAbout name={asset.name} description={asset.description} />
+
+          <div className="bg-surface border border-border3/50 rounded-xl p-5">
+            <h3 className="text-[14px] font-semibold mb-3">Company Info</h3>
+            <div className="space-y-2">
+              <div className="flex justify-between text-[12px]">
+                <span className="text-white/30">Industry</span>
+                <span className="text-white/60">{asset.industry}</span>
+              </div>
+              <div className="flex justify-between text-[12px]">
+                <span className="text-white/30">Employees</span>
+                <span className="text-white/60">{asset.employees}</span>
+              </div>
+              <div className="flex justify-between text-[12px]">
+                <span className="text-white/30">Website</span>
+                <a href={asset.website} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+                  {asset.website}
+                </a>
+              </div>
+              <div className="flex justify-between text-[12px]">
+                <span className="text-white/30">Contract</span>
+                <span className="text-white/40 font-mono text-[11px]">{asset.contract_address}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
