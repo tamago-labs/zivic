@@ -1,0 +1,53 @@
+{
+  "assets": [
+    {
+      "symbol": "ANDURIL",
+      "name": "Anduril",
+      "slug": "anduril",
+      "image": "https://www.prestocks.com/logos/anduril.png",
+      "description": "Anduril builds AI-driven defense systems, including autonomous drones and perimeter sensors."
+    },
+    {
+      "symbol": "ANTHROPIC",
+      "name": "Anthropic",
+      "slug": "anthropic",
+      "image": "https://www.prestocks.com/logos/anthropic.png",
+      "description": "Anthropic is an AI research company developing Claude, a language model built with a strong focus on safety."
+    },
+    {
+      "symbol": "FIGUREAI",
+      "name": "Figure AI",
+      "slug": "figure-ai",
+      "image": "https://www.prestocks.com/logos/figureai.png",
+      "description": "Figure AI builds general-purpose humanoid robots for homes and industrial work."
+    },
+    {
+      "symbol": "KALSHI",
+      "name": "Kalshi",
+      "slug": "kalshi",
+      "image": "https://www.prestocks.com/logos/kalshi.png",
+      "description": "Kalshi is a CFTC-regulated prediction market where users trade event contracts on real-world outcomes."
+    },
+    {
+      "symbol": "NEURALINK",
+      "name": "Neuralink",
+      "slug": "neuralink",
+      "image": "https://www.prestocks.com/logos/neuralink.png",
+      "description": "Neuralink develops implantable brain-computer interfaces designed to enable direct communication between the human brain and computers."
+    },
+    {
+      "symbol": "OPENAI",
+      "name": "OpenAI",
+      "slug": "openai",
+      "image": "https://www.prestocks.com/logos/openai.png",
+      "description": "OpenAI pioneers large-language models like GPT and DALL·E, enabling advanced AI applications."
+    },
+    {
+      "symbol": "POLYMARKET",
+      "name": "Polymarket",
+      "slug": "polymarket",
+      "image": "https://www.prestocks.com/logos/polymarket.png",
+      "description": "Polymarket is a decentralized prediction market for real-world events."
+    }
+  ]
+}
