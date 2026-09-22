@@ -8,6 +8,7 @@ import PreIpoAbout from './PreIpoAbout';
 import PreIpoStats from './PreIpoStats';
 import PreIpoInfo from './PreIpoInfo';
 import PreIpoLinks from './PreIpoLinks';
+import PreIpoSwapPanel from './PreIpoSwapPanel';
 
 const client = generateClient<Schema>();
 
@@ -105,19 +106,12 @@ export default function PreIpoDetailClient({ asset }: { asset: Asset }) {
         <div className="md:col-span-2 space-y-6">
           <PreIpoStats tokenPrice={tokenPrice} markPrice={markPrice} change24h={change24h} />
 
-          {/* Trade */}
-          <div className="bg-surface border border-border3/50 rounded-xl p-5">
-            <h3 className="text-[14px] font-semibold mb-3">Trade</h3>
-            <p className="text-[12px] text-white/30 mb-4">Trading panel coming soon.</p>
-            <a
-              href={`https://prestocks.com/${asset.slug}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-center text-[13px] font-medium bg-accent text-white px-4 py-2.5 rounded-lg hover:bg-accent/80 transition-colors"
-            >
-              Trade on PreStocks
-            </a>
-          </div>
+          <PreIpoSwapPanel
+            mint={asset.mint}
+            symbol={asset.symbol}
+            image={asset.image}
+            name={asset.name}
+          />
 
           <PreIpoInfo
             industry={asset.industry}
