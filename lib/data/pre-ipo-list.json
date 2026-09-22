@@ -4,50 +4,85 @@
       "symbol": "ANDURIL",
       "name": "Anduril",
       "slug": "anduril",
-      "image": "https://www.prestocks.com/logos/anduril.png",
-      "description": "Anduril builds AI-driven defense systems, including autonomous drones and perimeter sensors."
+      "website": "https://www.anduril.com",
+      "industry": "Aerospace & Defense / Defense Technology / Autonomous Systems & AI",
+      "founded": 2017,
+      "employees": "~7,000–8,500",
+      "description": "## Anduril Industries\n\n**Anduril Industries** is an American defense technology company specializing in advanced autonomous systems, artificial intelligence, and software-defined military capabilities.",
+      "contract_address": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
+      "image": "https://www.prestocks.com/logos/anduril.png"
     },
     {
       "symbol": "ANTHROPIC",
       "name": "Anthropic",
       "slug": "anthropic",
-      "image": "https://www.prestocks.com/logos/anthropic.png",
-      "description": "Anthropic is an AI research company developing Claude, a language model built with a strong focus on safety."
+      "website": "https://www.anthropic.com",
+      "industry": "Artificial Intelligence / AI Safety & Research / Generative AI",
+      "founded": 2021,
+      "employees": "~2,500–5,000",
+      "description": "## Anthropic\n\n**Anthropic** is an AI safety and research company focused on building reliable, interpretable, and steerable artificial intelligence systems.",
+      "contract_address": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
+      "image": "https://www.prestocks.com/logos/anthropic.png"
     },
     {
       "symbol": "FIGUREAI",
       "name": "Figure AI",
       "slug": "figure-ai",
-      "image": "https://www.prestocks.com/logos/figureai.png",
-      "description": "Figure AI builds general-purpose humanoid robots for homes and industrial work."
+      "website": "https://www.figure.ai",
+      "industry": "Robotics / Artificial Intelligence / Humanoid Robots",
+      "founded": 2022,
+      "employees": "~500–1,000",
+      "description": "## Figure AI\n\n**Figure AI** builds general-purpose humanoid robots for homes and industrial work. Their robots learn to operate in unstructured real-world environments using neural networks.",
+      "contract_address": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
+      "image": "https://www.prestocks.com/logos/figureai.png"
     },
     {
       "symbol": "KALSHI",
       "name": "Kalshi",
       "slug": "kalshi",
-      "image": "https://www.prestocks.com/logos/kalshi.png",
-      "description": "Kalshi is a CFTC-regulated prediction market where users trade event contracts on real-world outcomes."
+      "website": "https://kalshi.com",
+      "industry": "Financial Services / Prediction Markets / Event Contracts / Fintech",
+      "founded": 2018,
+      "employees": "~150–400+",
+      "description": "## Kalshi\n\n**Kalshi** is the first U.S. federally regulated prediction market exchange, operating as a Designated Contract Market under CFTC oversight.",
+      "contract_address": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
+      "image": "https://www.prestocks.com/logos/kalshi.png"
     },
     {
       "symbol": "NEURALINK",
       "name": "Neuralink",
       "slug": "neuralink",
-      "image": "https://www.prestocks.com/logos/neuralink.png",
-      "description": "Neuralink develops implantable brain-computer interfaces designed to enable direct communication between the human brain and computers."
+      "website": "https://neuralink.com",
+      "industry": "Neurotechnology / Biotechnology / Brain-Computer Interfaces / Medical Devices",
+      "founded": 2016,
+      "employees": "~400–700",
+      "description": "## Neuralink\n\n**Neuralink** develops implantable brain-computer interfaces designed to enable direct communication between the human brain and computers.",
+      "contract_address": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
+      "image": "https://www.prestocks.com/logos/neuralink.png"
     },
     {
       "symbol": "OPENAI",
       "name": "OpenAI",
       "slug": "openai",
-      "image": "https://www.prestocks.com/logos/openai.png",
-      "description": "OpenAI pioneers large-language models like GPT and DALL·E, enabling advanced AI applications."
+      "website": "https://openai.com",
+      "industry": "Artificial Intelligence / Generative AI / AI Research & Deployment",
+      "founded": 2015,
+      "employees": "~4,500–8,000+",
+      "description": "## OpenAI\n\n**OpenAI** is a leading artificial intelligence research and deployment company dedicated to ensuring that artificial general intelligence benefits all of humanity.",
+      "contract_address": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+      "image": "https://www.prestocks.com/logos/openai.png"
     },
     {
       "symbol": "POLYMARKET",
       "name": "Polymarket",
       "slug": "polymarket",
-      "image": "https://www.prestocks.com/logos/polymarket.png",
-      "description": "Polymarket is a decentralized prediction market for real-world events."
+      "website": "https://polymarket.com",
+      "industry": "Financial Services / Prediction Markets / Decentralized Markets / Fintech",
+      "founded": 2019,
+      "employees": "~100–300",
+      "description": "## Polymarket\n\n**Polymarket** is a decentralized prediction market for real-world events, leveraging blockchain technology and market-driven pricing.",
+      "contract_address": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
+      "image": "https://www.prestocks.com/logos/polymarket.png"
     }
   ]
 }
