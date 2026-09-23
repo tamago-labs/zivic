@@ -206,10 +206,10 @@ async function chatStreamHandler(
       console.error('[credits] failed to deduct:', creditErr);
     }
 
-    responseStream.write(`data: ${JSON.stringify({ done: true, sessionId: currentSessionId })}\n\n`);
+    responseStream.write("data: " + JSON.stringify({ done: true, sessionId: currentSessionId }) + "\n\n");
   } catch (error) {
     console.error("Chat error:", error);
-    responseStream.write(`data: ${JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error" })}\n\n`);
+    responseStream.write("data: " + JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error" }) + "\n\n");
   } finally {
     console.log("[stream] closing response stream");
     responseStream.end();
