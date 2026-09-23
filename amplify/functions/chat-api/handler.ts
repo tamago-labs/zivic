@@ -142,6 +142,7 @@ async function chatStreamHandler(
       await Promise.race([
         (async () => {
           for await (const event of stream) {
+            console.log("[stream] event:", JSON.stringify({ type: event.type, itemType: (event as any).item?.type, rawItemType: (event as any).item?.rawItem?.type }));
             if (event.type === "raw_model_stream_event" && event.data.type === "output_text_delta") {
               responseStream.write(`data: ${JSON.stringify({ chunk: event.data.delta })}\n\n`);
             }
