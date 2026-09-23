@@ -134,7 +134,7 @@ async function chatStreamHandler(
     const triageAgent = createTriageAgent(walletAddress);
     const stream = await run(triageAgent, allMessages as any, { stream: true, maxTurns: 20 });
 
-    const STREAM_TIMEOUT_MS = 250000;
+    const STREAM_TIMEOUT_MS = 90000;
 
     const timeoutPromise = new Promise<never>((_, reject) =>
       setTimeout(() => reject(new Error("Stream timeout")), STREAM_TIMEOUT_MS)
