@@ -3,7 +3,8 @@
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
 import { Send, MoreVertical, Trash2 } from 'lucide-react';
-import { useClient } from '@solana/react';
+import { useClient, useSignAndSendTransaction } from '@solana/react';
+import TradeBox from '@/components/dashboard/chats/TradeBox';
 import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
 import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '@/amplify/data/resource';
@@ -16,9 +17,20 @@ import 'highlight.js/styles/github-dark.css';
 const dataClient = generateClient<Schema>();
 const MIN_CREDITS = 1;
 
+interface TradeData {
+  tokenIn: string;
+  tokenOut: string;
+  amountIn: number;
+  estimatedOutput: number;
+  price: number;
+  priceImpact: string;
+  route: string[];
+}
+
 interface Message {
   role: 'user' | 'ai';
   content: string;
+  trade?: TradeData;
 }
 
 export default function ChatSession() {
@@ -28,6 +40,7 @@ export default function ChatSession() {
   const client = useClient<AppClient>();
   const connected = useConnectedWallet(client);
   const walletAddress = connected ? String(connected.account.address) : null;
+  const signAndSend = connected?.account ? useSignAndSendTransaction(connected.account, "solana:mainnet") : null;
   const id = params.id as string;
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -111,11 +124,21 @@ export default function ChatSession() {
                   return next;
                 });
               }
-              if (json.agent) {
+               if (json.agent) {
                 setActiveAgent(json.agent);
               }
               if (json.error) {
                 setError(json.error);
+              }
+              if (json.tool === "prepare_trade" && json.result && !json.result.error) {
+                setMessages((prev) => {
+                  const next = [...prev];
+                  const last = next[next.length - 1];
+                  if (last && last.role === 'ai') {
+                    next[next.length - 1] = { ...last, trade: json.result as TradeData };
+                  }
+                  return next;
+                });
               }
             } catch {}
           }
@@ -176,6 +199,16 @@ export default function ChatSession() {
             if (json.error) {
               setError(json.error);
             }
+            if (json.tool === "prepare_trade" && json.result && !json.result.error) {
+              setMessages((prev) => {
+                const next = [...prev];
+                const last = next[next.length - 1];
+                if (last && last.role === 'ai') {
+                  next[next.length - 1] = { ...last, trade: json.result as TradeData };
+                }
+                return next;
+              });
+            }
           } catch {}
         }
       }
@@ -235,7 +268,7 @@ export default function ChatSession() {
                 msg.role === 'user'
                   ? 'bg-accent text-white'
                   : 'bg-white/[0.03] border border-border3/50 text-white/80 prose prose-invert prose-sm prose-p:my-1.5 prose-ul:my-1.5 prose-ol:my-1.5 prose-li:my-0.5 prose-headings:my-2 prose-pre:my-2 prose-pre:bg-black/30 prose-pre:border prose-pre:border-border3/50 prose-code:text-accent prose-code:bg-white/[0.06] prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none'
-               }`}>
+              }`}>
                 {msg.role === 'ai' && activeAgent && i === messages.length - 1 && (
                   <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-wider text-accent mb-2 block">
                     <span className="relative flex items-center justify-center w-3 h-3">
@@ -250,6 +283,27 @@ export default function ChatSession() {
                     {msg.content}
                   </ReactMarkdown>
                 ) : msg.content}
+                {msg.trade && (
+                  <TradeBox
+                    trade={msg.trade}
+                    signAndSend={signAndSend}
+                    onExecuted={(sig) => {
+                      setMessages((prev) => {
+                        const next = [...prev];
+                        next[next.length - 1] = { ...next[next.length - 1], trade: undefined };
+                        return [...next, { role: 'ai', content: `Trade executed! Signature: \`${sig}\`` }];
+                      });
+                    }}
+                    onError={setError}
+                    onCancel={() => {
+                      setMessages((prev) => {
+                        const next = [...prev];
+                        next[next.length - 1] = { ...next[next.length - 1], trade: undefined };
+                        return next;
+                      });
+                    }}
+                  />
+                )}
               </div>
             </div>
           );

@@ -139,6 +139,16 @@ async function chatStreamHandler(
             if (event.type === "agent_updated_stream_event") {
               responseStream.write(`data: ${JSON.stringify({ agent: event.agent.name })}\n\n`);
             }
+            if (event.type === "run_item_stream_event" && event.item.type === "tool_call_item") {
+              const toolName = event.item.rawItem?.name ?? "unknown";
+              if (toolName === "prepare_trade" || toolName === "get_swap_route") {
+                try {
+                  const output = typeof event.item.output === "string" ? event.item.output : JSON.stringify(event.item.output);
+                  const parsed = JSON.parse(output);
+                  responseStream.write(`data: ${JSON.stringify({ tool: toolName, result: parsed })}\n\n`);
+                } catch {}
+              }
+            }
           }
         })(),
         timeoutPromise,
