@@ -110,11 +110,15 @@ async function chatStreamHandler(
     setDefaultOpenAIClient(openaiClient);
     setTracingDisabled(true);
 
-    const historyMessages = sessionItems.map((item: any) => ({
-      type: item.type ?? "message",
-      role: item.role ?? "user",
-      content: item.content ?? "",
-    }));
+    const historyMessages = sessionItems.map((item: any) => {
+      const role = item.role ?? "user";
+      let content = item.content ?? "";
+      if (typeof content === "string") {
+        const contentType = role === "assistant" ? "output_text" : "input_text";
+        content = [{ type: contentType, text: content }];
+      }
+      return { type: item.type ?? "message", role, content };
+    });
 
     const allMessages = [
       ...historyMessages,
