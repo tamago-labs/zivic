@@ -2,7 +2,8 @@
 
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
-import { Send, MoreVertical, Trash2 } from 'lucide-react';
+import { Send, MoreVertical, Trash2, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useClient, useSignAndSendTransaction } from '@solana/react';
 import TradeBox from '@/components/dashboard/chats/TradeBox';
 import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
@@ -280,25 +281,56 @@ export default function ChatSession() {
         })}
       </div>
 
-      {trades.filter((t) => t.status === "pending").length > 0 && (
-        <div className="px-6 py-3 space-y-3 border-t border-border3/50">
-          <p className="text-[11px] font-semibold tracking-wider text-accent uppercase">Pending Trades</p>
-          {trades.filter((t) => t.status === "pending").map((trade, i) => (
-            <TradeBox
-              key={i}
-              trade={trade}
-              signAndSend={signAndSend}
-              onExecuted={(sig) => {
-                setTrades((prev) => prev.map((t, j) => j === i ? { ...t, status: "executed", signature: sig } : t));
-              }}
-              onError={setError}
-              onCancel={() => {
-                setTrades((prev) => prev.map((t, j) => j === i ? { ...t, status: "cancelled" } : t));
-              }}
+      <AnimatePresence>
+        {trades.filter((t) => t.status === "pending").length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setTrades((prev) => prev.map((t) => ({ ...t, status: "cancelled" })))}
             />
-          ))}
-        </div>
-      )}
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-md rounded-2xl border border-border3/50 bg-surface p-6 shadow-2xl"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-[14px] font-semibold text-white/90">Confirm Trade</h3>
+                <button
+                  onClick={() => setTrades((prev) => prev.map((t) => ({ ...t, status: "cancelled" })))}
+                  className="p-1 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/[0.04] transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+              {trades.filter((t) => t.status === "pending").map((trade, i) => (
+                <TradeBox
+                  key={i}
+                  trade={trade}
+                  signAndSend={signAndSend}
+                  walletAddress={walletAddress ?? undefined}
+                  onExecuted={(sig) => {
+                    setTrades((prev) => prev.map((t, j) => j === i ? { ...t, status: "executed", signature: sig } : t));
+                  }}
+                  onError={setError}
+                  onCancel={() => {
+                    setTrades((prev) => prev.map((t, j) => j === i ? { ...t, status: "cancelled" } : t));
+                  }}
+                />
+              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="border-t border-border3/50 px-6 py-4">
         <div className="flex items-center gap-3">

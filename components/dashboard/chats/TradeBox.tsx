@@ -39,9 +39,10 @@ interface TradeBoxProps {
   onError: (msg: string) => void;
   onCancel: () => void;
   signAndSend: ((tx: { transaction: Uint8Array }) => Promise<{ signature: Uint8Array }>) | null;
+  walletAddress?: string;
 }
 
-export default function TradeBox({ trade, onExecuted, onError, onCancel, signAndSend }: TradeBoxProps) {
+export default function TradeBox({ trade, onExecuted, onError, onCancel, signAndSend, walletAddress }: TradeBoxProps) {
   const [executing, setExecuting] = useState(false);
 
   const handleConfirm = async () => {
@@ -70,6 +71,8 @@ export default function TradeBox({ trade, onExecuted, onError, onCancel, signAnd
         fromTokenAddress: fromAddr,
         toTokenAddress: toAddr,
         amount: rawAmount,
+        userWalletAddress: walletAddress ?? "",
+        slippagePercent: "0.5",
       });
       const res = await fetch(`/api/swap-instruction?${params}`);
       const json = await res.json();
@@ -92,7 +95,7 @@ export default function TradeBox({ trade, onExecuted, onError, onCancel, signAnd
   };
 
   return (
-    <div className="mt-3 rounded-xl border border-border3/50 bg-white/[0.02] p-4">
+    <div className="rounded-xl border border-border3/50 bg-white/[0.02] p-4">
       <div className="flex items-center gap-2 mb-3">
         <span className="text-[11px] font-semibold tracking-wider text-accent uppercase">Trade</span>
       </div>
