@@ -151,13 +151,16 @@ async function chatStreamHandler(
             }
             if (event.type === "run_item_stream_event" && event.item.type === "tool_call_output_item") {
               const item = event.item as any;
-              const toolName = item.name ?? "unknown";
+              console.log("[stream] tool_call_output_item:", JSON.stringify({ name: item.name, outputType: typeof item.output, rawItemKeys: Object.keys(item.rawItem ?? {}) }));
+              const toolName = item.name ?? item.rawItem?.name ?? "unknown";
               if (toolName === "prepare_trade" || toolName === "get_swap_route") {
                 try {
                   const output = typeof item.output === "string" ? item.output : JSON.stringify(item.output);
                   const parsed = JSON.parse(output);
-                  responseStream.write(`data: ${JSON.stringify({ tool: toolName, result: parsed })}\n\n`);
-                } catch {}
+                  responseStream.write(`data: ${JSON.stringify({ tool: toolName, result: parsed })}\n\n");
+                } catch (e) {
+                  console.log("[stream] tool output parse error:", e);
+                }
               }
             }
           }
