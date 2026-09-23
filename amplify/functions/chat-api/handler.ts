@@ -172,7 +172,7 @@ async function chatStreamHandler(
       const msg = streamErr instanceof Error && streamErr.message.includes("Max turns")
         ? "The agent took too many steps. Try rephrasing your question or being more specific."
         : "Stream interrupted. Please try again.";
-      responseStream.write(`data: ${JSON.stringify({ error: msg })}\n\n`);
+      responseStream.write("data: " + JSON.stringify({ error: msg }) + "\n\n");
     }
 
     const finalItems = allMessages.concat(
