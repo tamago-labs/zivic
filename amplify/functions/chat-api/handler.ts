@@ -134,7 +134,18 @@ async function chatStreamHandler(
     const triageAgent = createTriageAgent(walletAddress);
     const stream = await run(triageAgent, allMessages as any, { stream: true, maxTurns: 20 });
 
-    const STREAM_TIMEOUT_MS = 90000;
+    const STREAM_TIMEOUT_MS = 250000;
+    const NO_PROGRESS_TIMEOUT_MS = 45000;
+
+    let lastEventTime = Date.now();
+    const noProgressInterval = setInterval(() => {
+      if (Date.now() - lastEventTime > NO_PROGRESS_TIMEOUT_MS) {
+        console.error("[stream] no progress for", NO_PROGRESS_TIMEOUT_MS / 1000, "s — aborting");
+        responseStream.write("data: " + JSON.stringify({ error: "Agent is taking too long. Please try again with a shorter message." }) + "\n\n");
+        responseStream.end();
+        process.exit(1);
+      }
+    }, 5000);
 
     const timeoutPromise = new Promise<never>((_, reject) =>
       setTimeout(() => reject(new Error("Stream timeout")), STREAM_TIMEOUT_MS)
@@ -144,7 +155,7 @@ async function chatStreamHandler(
       await Promise.race([
         (async () => {
           for await (const event of stream) {
-            console.log("[stream] event:", JSON.stringify({ type: event.type, itemType: (event as any).item?.type, rawItemType: (event as any).item?.rawItem?.type }));
+            lastEventTime = Date.now();
             if (event.type === "raw_model_stream_event" && event.data.type === "output_text_delta") {
               responseStream.write("data: " + JSON.stringify({ chunk: event.data.delta }) + "\n\n");
             }
@@ -153,7 +164,6 @@ async function chatStreamHandler(
             }
             if (event.type === "run_item_stream_event" && event.item.type === "tool_call_output_item") {
               const item = event.item as any;
-              console.log("[stream] tool_call_output_item:", JSON.stringify({ name: item.name, outputType: typeof item.output, rawItemKeys: Object.keys(item.rawItem ?? {}) }));
               const toolName = item.name ?? item.rawItem?.name ?? "unknown";
               if (toolName === "prepare_trade" || toolName === "get_swap_route") {
                 try {
@@ -170,11 +180,14 @@ async function chatStreamHandler(
         timeoutPromise,
       ]);
     } catch (streamErr) {
+      clearInterval(noProgressInterval);
       console.error("[stream] error or timeout:", streamErr);
       const msg = streamErr instanceof Error && streamErr.message.includes("Max turns")
         ? "The agent took too many steps. Try rephrasing your question or being more specific."
         : "Stream interrupted. Please try again.";
       responseStream.write("data: " + JSON.stringify({ error: msg }) + "\n\n");
+    } finally {
+      clearInterval(noProgressInterval);
     }
 
     const finalItems = allMessages.concat(
