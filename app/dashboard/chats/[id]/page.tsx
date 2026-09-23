@@ -254,7 +254,7 @@ export default function ChatSession() {
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-6 space-y-4 min-h-0">
         {messages.map((msg, i) => {
           if (msg.role === 'ai' && !msg.content) {
-            return loading ? (
+            return loading && i === messages.length - 1 ? (
               <div key={i} className="flex justify-start">
                 <div className="max-w-[70%] rounded-2xl px-4 py-3 text-[14px] bg-white/[0.03] border border-border3/50 text-white/40">
                   Thinking…
