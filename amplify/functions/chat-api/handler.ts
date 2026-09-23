@@ -207,7 +207,7 @@ async function chatStreamHandler(
     if (currentSessionId && newTrades.length > 0) {
       try {
         const { data: session } = await dataClient.models.AgentSession.get({ id: currentSessionId });
-        const existingTransactions = session?.transactions ? JSON.parse(session.transactions) : [];
+        const existingTransactions = session?.transactions ? JSON.parse(session.transactions as string) : [];
         const updatedTransactions = [...existingTransactions, ...newTrades];
         await dataClient.models.AgentSession.update({
           id: currentSessionId,
