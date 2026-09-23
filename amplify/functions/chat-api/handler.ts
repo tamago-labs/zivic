@@ -120,6 +120,8 @@ async function chatStreamHandler(
       return { type: item.type ?? "message", role, content };
     });
 
+    console.log("[history] messages:", JSON.stringify(historyMessages.slice(0, 3)));
+
     const allMessages = [
       ...historyMessages,
       { type: "message" as const, role: "user" as const, content: [{ type: "input_text" as const, text: message }] },
