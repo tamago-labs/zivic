@@ -44,7 +44,7 @@ async function chatStreamHandler(
   try {
     body = event.body ? JSON.parse(event.body) : {};
   } catch {
-    responseStream.write(`data: ${JSON.stringify({ error: "Invalid JSON" })}\n\n`);
+    responseStream.write("data: " + JSON.stringify({ error: "Invalid JSON" }) + "\n\n");
     responseStream.end();
     return;
   }
@@ -52,7 +52,7 @@ async function chatStreamHandler(
   const { message, sessionName, sessionId, walletAddress } = body;
 
   if (!walletAddress) {
-    responseStream.write(`data: ${JSON.stringify({ error: "walletAddress is required" })}\n\n`);
+    responseStream.write("data: " + JSON.stringify({ error: "walletAddress is required" }) + "\n\n");
     responseStream.end();
     return;
   }
@@ -65,9 +65,9 @@ async function chatStreamHandler(
         items: JSON.stringify([]),
         walletAddress,
       });
-      responseStream.write(`data: ${JSON.stringify({ sessionId: newSession?.id ?? null })}\n\n`);
+      responseStream.write("data: " + JSON.stringify({ sessionId: newSession?.id ?? null }) + "\n\n");
     } catch (error) {
-      responseStream.write(`data: ${JSON.stringify({ error: error instanceof Error ? error.message : "Failed to create session" })}\n\n`);
+      responseStream.write("data: " + JSON.stringify({ error: error instanceof Error ? error.message : "Failed to create session" }) + "\n\n");
     }
     responseStream.end();
     return;
@@ -75,7 +75,7 @@ async function chatStreamHandler(
 
   // Mode 2: Stream chat
   if (!message || typeof message !== "string") {
-    responseStream.write(`data: ${JSON.stringify({ error: "Message is required" })}\n\n`);
+    responseStream.write("data: " + JSON.stringify({ error: "Message is required" }) + "\n\n");
     responseStream.end();
     return;
   }
@@ -144,10 +144,10 @@ async function chatStreamHandler(
           for await (const event of stream) {
             console.log("[stream] event:", JSON.stringify({ type: event.type, itemType: (event as any).item?.type, rawItemType: (event as any).item?.rawItem?.type }));
             if (event.type === "raw_model_stream_event" && event.data.type === "output_text_delta") {
-              responseStream.write(`data: ${JSON.stringify({ chunk: event.data.delta })}\n\n`);
+              responseStream.write("data: " + JSON.stringify({ chunk: event.data.delta }) + "\n\n");
             }
             if (event.type === "agent_updated_stream_event") {
-              responseStream.write(`data: ${JSON.stringify({ agent: event.agent.name })}\n\n`);
+              responseStream.write("data: " + JSON.stringify({ agent: event.agent.name }) + "\n\n");
             }
             if (event.type === "run_item_stream_event" && event.item.type === "tool_call_output_item") {
               const item = event.item as any;
@@ -157,7 +157,7 @@ async function chatStreamHandler(
                 try {
                   const output = typeof item.output === "string" ? item.output : JSON.stringify(item.output);
                   const parsed = JSON.parse(output);
-                  responseStream.write(`data: ${JSON.stringify({ tool: toolName, result: parsed })}\n\n");
+                  responseStream.write("data: " + JSON.stringify({ tool: toolName, result: parsed }) + "\n\n");
                 } catch (e) {
                   console.log("[stream] tool output parse error:", e);
                 }
