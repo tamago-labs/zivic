@@ -156,22 +156,42 @@ async function chatStreamHandler(
         (async () => {
           for await (const event of stream) {
             lastEventTime = Date.now();
+            console.log("[stream] event:", event.type, JSON.stringify({
+              itemType: (event as any).item?.type,
+              rawItemName: (event as any).item?.rawItem?.name,
+              hasOutput: !!(event as any).item?.output,
+              agentName: (event as any).agent?.name,
+            }));
+
             if (event.type === "raw_model_stream_event" && event.data.type === "output_text_delta") {
               responseStream.write("data: " + JSON.stringify({ chunk: event.data.delta }) + "\n\n");
             }
+
             if (event.type === "agent_updated_stream_event") {
               responseStream.write("data: " + JSON.stringify({ agent: event.agent.name }) + "\n\n");
             }
-            if (event.type === "run_item_stream_event" && event.item.type === "tool_call_output_item") {
+
+            if (event.type === "run_item_stream_event") {
               const item = event.item as any;
-              const toolName = item.name ?? item.rawItem?.name ?? "unknown";
-              if (toolName === "prepare_trade" || toolName === "get_swap_route") {
-                try {
-                  const output = typeof item.output === "string" ? item.output : JSON.stringify(item.output);
-                  const parsed = JSON.parse(output);
-                  responseStream.write("data: " + JSON.stringify({ tool: toolName, result: parsed }) + "\n\n");
-                } catch (e) {
-                  console.log("[stream] tool output parse error:", e);
+
+              if (item.type === "message_output_item") {
+                const text = item.content?.[0]?.text ?? item.output ?? "";
+                if (text) {
+                  responseStream.write("data: " + JSON.stringify({ chunk: text }) + "\n\n");
+                }
+              }
+
+              if (item.type === "tool_call_output_item") {
+                const toolName = item.name ?? item.rawItem?.name ?? "unknown";
+                console.log("[stream] TOOL RESULT:", toolName, "output:", JSON.stringify(item.output)?.slice(0, 200));
+                if (toolName === "prepare_trade" || toolName === "get_swap_route" || toolName === "get_user_balance") {
+                  try {
+                    const output = typeof item.output === "string" ? item.output : JSON.stringify(item.output);
+                    const parsed = JSON.parse(output);
+                    responseStream.write("data: " + JSON.stringify({ tool: toolName, result: parsed }) + "\n\n");
+                  } catch (e) {
+                    console.log("[stream] tool parse error:", e);
+                  }
                 }
               }
             }
