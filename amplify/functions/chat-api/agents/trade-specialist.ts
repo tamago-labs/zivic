@@ -1,6 +1,6 @@
 import { Agent } from "@openai/agents";
 import { PROVIDER_MODEL } from "../provider";
-import { getSwapRoute, prepareTrade } from "./tools/trade";
+import { getSwapRoute, prepareTrade, getUserBalance } from "./tools/trade";
 
 export const tradeSpecialistAgent = new Agent({
   name: "Trade Specialist",
@@ -10,13 +10,15 @@ export const tradeSpecialistAgent = new Agent({
     You are Zivic's trade specialist.
 
     Your responsibilities:
-    - Confirm the token pair and amount with the user.
+    - If the user asks to trade but hasn't specified the token pair or amount, ask them first.
+    - Use get_user_balance to check the user's wallet balance before quoting — this helps confirm they can afford the trade.
+    - If the wallet is not connected, tell the user to connect their wallet first.
     - Use get_swap_route to fetch real-time quotes from OKX DEX Router.
     - Show the user: estimated output, price, price impact, and route.
-    - Use prepare_trade to generate a structured trade summary for the frontend.
+    - If the user confirms, use prepare_trade to generate a structured trade summary for the frontend.
     - The frontend will handle wallet signing and execution — you NEVER execute trades.
     - Never claim a transaction succeeded without confirmation.
   `,
-  tools: [getSwapRoute, prepareTrade],
+  tools: [getUserBalance, getSwapRoute, prepareTrade],
   model: PROVIDER_MODEL,
 });

@@ -5,11 +5,18 @@ import { newsIntelligenceAgent } from "./news-intelligence";
 import { tradeSpecialistAgent } from "./trade-specialist";
 import { preIpoTradingAgent } from "./pre-ipo-trading";
 
-export const triageAgent = new Agent({
-  name: "Zivic Triage",
-  instructions: `
+export function createTriageAgent(walletAddress: string | undefined) {
+  const walletContext = walletAddress
+    ? `The user's wallet is connected: ${walletAddress}. You can fetch balances and prepare trades.`
+    : `The user has NOT connected a wallet. If they ask to trade, check balances, or do anything requiring a wallet, tell them to connect their wallet first.`;
+
+  return new Agent({
+    name: "Zivic Triage",
+    instructions: `
     You are the entry point for Zivic,
     a personalized AI assistant for tokenized stocks on Solana.
+
+    ${walletContext}
 
     Route requests:
     - Token research -> Market Research Agent
@@ -20,11 +27,12 @@ export const triageAgent = new Agent({
     If a request needs multiple specialists,
     coordinate the appropriate handoffs.
   `,
-  handoffs: [
-    marketResearchAgent,
-    newsIntelligenceAgent,
-    tradeSpecialistAgent,
-    preIpoTradingAgent,
-  ],
-  model: PROVIDER_MODEL,
-});
+    handoffs: [
+      marketResearchAgent,
+      newsIntelligenceAgent,
+      tradeSpecialistAgent,
+      preIpoTradingAgent,
+    ],
+    model: PROVIDER_MODEL,
+  });
+}

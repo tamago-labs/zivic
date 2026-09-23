@@ -7,7 +7,7 @@ import { env } from "$amplify/env/chat-api";
 import { Amplify } from "aws-amplify";
 import { getAmplifyDataClientConfig } from "@aws-amplify/backend/function/runtime";
 import { PROVIDER_BASE_URL } from "./provider";
-import { triageAgent } from "./agents";
+import { createTriageAgent } from "./agents";
 
 const { resourceConfig, libraryOptions } = await getAmplifyDataClientConfig(env as any);
 
@@ -121,6 +121,11 @@ async function chatStreamHandler(
       { type: "message" as const, role: "user" as const, content: [{ type: "input_text" as const, text: message }] },
     ];
 
+    const walletContext = walletAddress
+      ? `[WALLET_CONNECTED] ${walletAddress}`
+      : `[WALLET_DISCONNECTED] User has not connected a wallet. Tell them to connect before trading.`;
+
+    const triageAgent = createTriageAgent(walletAddress);
     const stream = await run(triageAgent, allMessages as any, { stream: true, maxTurns: 20 });
 
     const STREAM_TIMEOUT_MS = 250000;

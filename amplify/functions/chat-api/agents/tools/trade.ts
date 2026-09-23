@@ -1,6 +1,7 @@
 import { tool } from "@openai/agents";
 import { z } from "zod";
 import crypto from "crypto";
+import { KNOWN_MINTS, KNOWN_SYMBOLS } from "../config/tokens";
 
 const OKX_API_KEY = process.env.OKX_API_KEY ?? "";
 const OKX_SECRET_KEY = process.env.OKX_SECRET_KEY ?? "";
@@ -11,19 +12,83 @@ function okxSign(timestamp: string, method: string, requestPath: string, body = 
   return crypto.createHmac("sha256", OKX_SECRET_KEY).update(prehash).digest("base64");
 }
 
-const KNOWN_MINTS: Record<string, { mint: string; decimals: number }> = {
-  SOL: { mint: "11111111111111111111111111111111", decimals: 9 },
-  USDC: { mint: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", decimals: 6 },
-  USDT: { mint: "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB", decimals: 6 },
-  USDG: { mint: "2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH", decimals: 6 },
-  AAPL: { mint: "Ao4fdE3cGRjx9BC1UPqohTHbL7jT53jQEN3Pq4yiZ7qx", decimals: 6 },
-  TSLA: { mint: "3gFkku3Y2ibQ4yEnqnY6PkumWHGjYcN6bU8tUFpaHnXj", decimals: 6 },
-  NVDA: { mint: "FtX88mHh5LM9FKLfXs2RdWDJcDwfGpGCgLBXwzkqEWKC", decimals: 6 },
-  MSFT: { mint: "4pVVttJWyDzHUp3LaapEUD9d7kWXQvHZiemx7GAj8zGp", decimals: 6 },
-  GOOGL: { mint: "H2EQaLkYqvg6q7viQkVzXg6PbFFpSXh1DkqHCmKnTBgp", decimals: 6 },
-  AMZN: { mint: "Ck9tRRzM48SX7PgGApphKW1fwPwf4mQmBh2H6wY1WkTT", decimals: 6 },
-  META: { mint: "8iB38VmbkxFz1dNW4WBWY1Hd8VeSBLuqJUJYeYE2xz5G", decimals: 6 },
-};
+export const getUserBalance = tool({
+  name: "get_user_balance",
+  description: "Get the user's token balances for their connected wallet.",
+  parameters: z.object({
+    walletAddress: z.string().describe("User's wallet address"),
+  }),
+  execute: async ({ walletAddress }: { walletAddress: string }) => {
+    if (!walletAddress) {
+      return JSON.stringify({ error: "No wallet connected" });
+    }
+
+    const rpcUrl = process.env.SOLANA_RPC_URL ?? "https://api.mainnet.solana.com";
+
+    const solRes = await fetch(rpcUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        id: 1,
+        method: "getBalance",
+        params: [walletAddress],
+      }),
+    }).then((r) => r.json());
+
+    const solBalance = (solRes?.result?.value ?? 0) / 1e9;
+
+    const splRes = await fetch(rpcUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        id: 2,
+        method: "getTokenAccountsByOwner",
+        params: [
+          walletAddress,
+          { programId: "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA" },
+          { encoding: "jsonParsed" },
+        ],
+      }),
+    }).then((r) => r.json());
+
+    const spl2022Res = await fetch(rpcUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        id: 3,
+        method: "getTokenAccountsByOwner",
+        params: [
+          walletAddress,
+          { programId: "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb" },
+          { encoding: "jsonParsed" },
+        ],
+      }),
+    }).then((r) => r.json());
+
+    const splBalances: Record<string, number> = {};
+    for (const account of [...(splRes?.result?.value ?? []), ...(spl2022Res?.result?.value ?? [])]) {
+      const info = account.account?.data?.parsed?.info;
+      if (info?.mint && info?.tokenAmount?.uiAmount != null) {
+        splBalances[info.mint] = info.tokenAmount.uiAmount;
+      }
+    }
+
+    const balances: Record<string, number> = { SOL: solBalance };
+    for (const [mint, amount] of Object.entries(splBalances)) {
+      const symbol = Object.entries(KNOWN_SYMBOLS).find(([, m]) => m === mint)?.[0];
+      if (symbol) {
+        balances[symbol] = amount;
+      } else {
+        balances[mint.slice(0, 8)] = amount;
+      }
+    }
+
+    return JSON.stringify({ wallet: walletAddress, balances });
+  },
+});
 
 export const getSwapRoute = tool({
   name: "get_swap_route",
