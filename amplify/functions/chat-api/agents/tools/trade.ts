@@ -1,7 +1,7 @@
 import { tool } from "@openai/agents";
 import { z } from "zod";
 import crypto from "crypto";
-import { KNOWN_MINTS, KNOWN_SYMBOLS } from "../config/tokens";
+import { KNOWN_MINTS, KNOWN_SYMBOLS } from "../../config/tokens";
 
 const OKX_API_KEY = process.env.OKX_API_KEY ?? "";
 const OKX_SECRET_KEY = process.env.OKX_SECRET_KEY ?? "";

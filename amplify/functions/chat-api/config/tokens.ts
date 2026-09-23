@@ -32,7 +32,7 @@ for (const asset of (preIpoList as any).assets ?? []) {
 
 export const ALL_TOKENS: TokenConfig[] = Array.from(tokens.values());
 
-export const KNOWN_MINTS: Record<string, { mint: string; decimals: number }] = {};
+export const KNOWN_MINTS: Record<string, { mint: string; decimals: number }> = {};
 export const KNOWN_SYMBOLS: Record<string, string> = {};
 
 for (const t of ALL_TOKENS) {
