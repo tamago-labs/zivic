@@ -148,12 +148,11 @@ async function chatStreamHandler(
             if (event.type === "agent_updated_stream_event") {
               responseStream.write(`data: ${JSON.stringify({ agent: event.agent.name })}\n\n`);
             }
-            if (event.type === "run_item_stream_event" && event.item.type === "tool_call_item") {
-              const rawItem = event.item.rawItem as any;
-              const toolName = rawItem?.name ?? "unknown";
+            if (event.type === "run_item_stream_event" && event.item.type === "tool_call_output_item") {
+              const item = event.item as any;
+              const toolName = item.name ?? "unknown";
               if (toolName === "prepare_trade" || toolName === "get_swap_route") {
                 try {
-                  const item = event.item as any;
                   const output = typeof item.output === "string" ? item.output : JSON.stringify(item.output);
                   const parsed = JSON.parse(output);
                   responseStream.write(`data: ${JSON.stringify({ tool: toolName, result: parsed })}\n\n`);
