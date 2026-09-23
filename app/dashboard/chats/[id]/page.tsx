@@ -131,14 +131,18 @@ export default function ChatSession() {
                 setError(json.error);
               }
               if (json.tool === "prepare_trade" && json.result && !json.result.error) {
-                setMessages((prev) => {
-                  const next = [...prev];
-                  const last = next[next.length - 1];
-                  if (last && last.role === 'ai') {
-                    next[next.length - 1] = { ...last, trade: json.result as TradeData };
-                  }
-                  return next;
-                });
+                if (json.newMessage) {
+                  setMessages((prev) => [...prev, { role: 'ai', content: '', trade: json.result as TradeData }]);
+                } else {
+                  setMessages((prev) => {
+                    const next = [...prev];
+                    const last = next[next.length - 1];
+                    if (last && last.role === 'ai') {
+                      next[next.length - 1] = { ...last, trade: json.result as TradeData };
+                    }
+                    return next;
+                  });
+                }
               }
             } catch {}
           }
@@ -200,14 +204,18 @@ export default function ChatSession() {
               setError(json.error);
             }
             if (json.tool === "prepare_trade" && json.result && !json.result.error) {
-              setMessages((prev) => {
-                const next = [...prev];
-                const last = next[next.length - 1];
-                if (last && last.role === 'ai') {
-                  next[next.length - 1] = { ...last, trade: json.result as TradeData };
-                }
-                return next;
-              });
+              if (json.newMessage) {
+                setMessages((prev) => [...prev, { role: 'ai', content: '', trade: json.result as TradeData }]);
+              } else {
+                setMessages((prev) => {
+                  const next = [...prev];
+                  const last = next[next.length - 1];
+                  if (last && last.role === 'ai') {
+                    next[next.length - 1] = { ...last, trade: json.result as TradeData };
+                  }
+                  return next;
+                });
+              }
             }
           } catch {}
         }
