@@ -138,6 +138,8 @@ async function chatStreamHandler(
     const NO_PROGRESS_TIMEOUT_MS = 45000;
 
     let lastEventTime = Date.now();
+    const newTrades: any[] = [];
+
     const noProgressInterval = setInterval(() => {
       if (Date.now() - lastEventTime > NO_PROGRESS_TIMEOUT_MS) {
         console.error("[stream] no progress for", NO_PROGRESS_TIMEOUT_MS / 1000, "s — aborting");
@@ -156,12 +158,6 @@ async function chatStreamHandler(
         (async () => {
           for await (const event of stream) {
             lastEventTime = Date.now();
-            console.log("[stream] event:", event.type, JSON.stringify({
-              itemType: (event as any).item?.type,
-              rawItemName: (event as any).item?.rawItem?.name,
-              hasOutput: !!(event as any).item?.output,
-              agentName: (event as any).agent?.name,
-            }));
 
             if (event.type === "raw_model_stream_event" && event.data.type === "output_text_delta") {
               responseStream.write("data: " + JSON.stringify({ chunk: event.data.delta }) + "\n\n");
@@ -176,14 +172,19 @@ async function chatStreamHandler(
 
               if (item.type === "tool_call_output_item") {
                 const toolName = item.name ?? item.rawItem?.name ?? "unknown";
-                console.log("[stream] TOOL RESULT:", toolName, "output:", JSON.stringify(item.output)?.slice(0, 200));
-                if (toolName === "prepare_trade" || toolName === "get_swap_route") {
+                if (toolName === "prepare_trade") {
                   try {
                     const output = typeof item.output === "string" ? item.output : JSON.stringify(item.output);
                     const parsed = JSON.parse(output);
-                    responseStream.write("data: " + JSON.stringify({ tool: toolName, result: parsed, newMessage: true }) + "\n\n");
+                    const trade = {
+                      ...parsed,
+                      status: "pending",
+                      createdAt: new Date().toISOString(),
+                    };
+                    newTrades.push(trade);
+                    responseStream.write("data: " + JSON.stringify({ trade }) + "\n\n");
                   } catch (e) {
-                    console.log("[stream] tool parse error:", e);
+                    console.log("[stream] trade parse error:", e);
                   }
                 }
               }
@@ -201,6 +202,20 @@ async function chatStreamHandler(
       responseStream.write("data: " + JSON.stringify({ error: msg }) + "\n\n");
     } finally {
       clearInterval(noProgressInterval);
+    }
+
+    if (currentSessionId && newTrades.length > 0) {
+      try {
+        const { data: session } = await dataClient.models.AgentSession.get({ id: currentSessionId });
+        const existingTransactions = session?.transactions ? JSON.parse(session.transactions) : [];
+        const updatedTransactions = [...existingTransactions, ...newTrades];
+        await dataClient.models.AgentSession.update({
+          id: currentSessionId,
+          transactions: JSON.stringify(updatedTransactions),
+        });
+      } catch (e) {
+        console.error("[transactions] failed to save:", e);
+      }
     }
 
     const finalItems = allMessages.concat(

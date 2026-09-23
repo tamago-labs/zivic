@@ -17,7 +17,7 @@ import 'highlight.js/styles/github-dark.css';
 const dataClient = generateClient<Schema>();
 const MIN_CREDITS = 1;
 
-interface TradeData {
+interface Trade {
   tokenIn: string;
   tokenOut: string;
   amountIn: number;
@@ -25,12 +25,14 @@ interface TradeData {
   price: number;
   priceImpact: string;
   route: string[];
+  status: string;
+  createdAt: string;
+  signature?: string;
 }
 
 interface Message {
   role: 'user' | 'ai';
   content: string;
-  trade?: TradeData;
 }
 
 export default function ChatSession() {
@@ -43,6 +45,7 @@ export default function ChatSession() {
   const signAndSend = connected?.account ? useSignAndSendTransaction(connected.account, "solana:mainnet") : null;
   const id = params.id as string;
   const [messages, setMessages] = useState<Message[]>([]);
+  const [trades, setTrades] = useState<Trade[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [activeAgent, setActiveAgent] = useState<string | null>(null);
@@ -113,36 +116,26 @@ export default function ChatSession() {
           if (done) break;
           const text = decoder.decode(value);
           const lines = text.split('\n').filter((l) => l.startsWith('data: '));
-           for (const line of lines) {
+            for (const line of lines) {
             try {
               const json = JSON.parse(line.slice(6));
               if (json.chunk) {
                 aiContent += json.chunk;
                 setMessages((prev) => {
                   const next = [...prev];
-                  next[next.length - 1] = { role: 'ai', content: aiContent };
+                  const last = next[next.length - 1];
+                  next[next.length - 1] = { ...last, role: 'ai', content: aiContent };
                   return next;
                 });
               }
-               if (json.agent) {
+              if (json.agent) {
                 setActiveAgent(json.agent);
               }
               if (json.error) {
                 setError(json.error);
               }
-              if (json.tool === "prepare_trade" && json.result && !json.result.error) {
-                if (json.newMessage) {
-                  setMessages((prev) => [...prev, { role: 'ai', content: '', trade: json.result as TradeData }]);
-                } else {
-                  setMessages((prev) => {
-                    const next = [...prev];
-                    const last = next[next.length - 1];
-                    if (last && last.role === 'ai') {
-                      next[next.length - 1] = { ...last, trade: json.result as TradeData };
-                    }
-                    return next;
-                  });
-                }
+              if (json.trade) {
+                setTrades((prev) => [...prev, json.trade as Trade]);
               }
             } catch {}
           }
@@ -193,7 +186,8 @@ export default function ChatSession() {
               aiContent += json.chunk;
               setMessages((prev) => {
                 const next = [...prev];
-                next[next.length - 1] = { role: 'ai', content: aiContent };
+                const last = next[next.length - 1];
+                next[next.length - 1] = { ...last, role: 'ai', content: aiContent };
                 return next;
               });
             }
@@ -203,19 +197,8 @@ export default function ChatSession() {
             if (json.error) {
               setError(json.error);
             }
-            if (json.tool === "prepare_trade" && json.result && !json.result.error) {
-              if (json.newMessage) {
-                setMessages((prev) => [...prev, { role: 'ai', content: '', trade: json.result as TradeData }]);
-              } else {
-                setMessages((prev) => {
-                  const next = [...prev];
-                  const last = next[next.length - 1];
-                  if (last && last.role === 'ai') {
-                    next[next.length - 1] = { ...last, trade: json.result as TradeData };
-                  }
-                  return next;
-                });
-              }
+            if (json.trade) {
+              setTrades((prev) => [...prev, json.trade as Trade]);
             }
           } catch {}
         }
@@ -261,7 +244,7 @@ export default function ChatSession() {
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-6 space-y-4 min-h-0">
         {messages.map((msg, i) => {
-          if (msg.role === 'ai' && !msg.content && !msg.trade) {
+          if (msg.role === 'ai' && !msg.content) {
             return loading && i === messages.length - 1 ? (
               <div key={i} className="flex justify-start">
                 <div className="max-w-[70%] rounded-2xl px-4 py-3 text-[14px] bg-white/[0.03] border border-border3/50 text-white/40">
@@ -290,33 +273,32 @@ export default function ChatSession() {
                   <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
                     {msg.content}
                   </ReactMarkdown>
-                ) : msg.content}
-                {msg.trade && (
-                  <TradeBox
-                    trade={msg.trade}
-                    signAndSend={signAndSend}
-                    onExecuted={(sig) => {
-                      setMessages((prev) => {
-                        const next = [...prev];
-                        next[next.length - 1] = { ...next[next.length - 1], trade: undefined };
-                        return [...next, { role: 'ai', content: `Trade executed! Signature: \`${sig}\`` }];
-                      });
-                    }}
-                    onError={setError}
-                    onCancel={() => {
-                      setMessages((prev) => {
-                        const next = [...prev];
-                        next[next.length - 1] = { ...next[next.length - 1], trade: undefined };
-                        return next;
-                      });
-                    }}
-                  />
-                )}
-              </div>
+                 ) : msg.content}
+               </div>
             </div>
           );
         })}
       </div>
+
+      {trades.filter((t) => t.status === "pending").length > 0 && (
+        <div className="px-6 py-3 space-y-3 border-t border-border3/50">
+          <p className="text-[11px] font-semibold tracking-wider text-accent uppercase">Pending Trades</p>
+          {trades.filter((t) => t.status === "pending").map((trade, i) => (
+            <TradeBox
+              key={i}
+              trade={trade}
+              signAndSend={signAndSend}
+              onExecuted={(sig) => {
+                setTrades((prev) => prev.map((t, j) => j === i ? { ...t, status: "executed", signature: sig } : t));
+              }}
+              onError={setError}
+              onCancel={() => {
+                setTrades((prev) => prev.map((t, j) => j === i ? { ...t, status: "cancelled" } : t));
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       <div className="border-t border-border3/50 px-6 py-4">
         <div className="flex items-center gap-3">

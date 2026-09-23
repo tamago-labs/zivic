@@ -20,7 +20,7 @@ function base58ToBytes(b58: string): Uint8Array {
   return new Uint8Array([...Array(leadingZeros).fill(0), ...bytes]);
 }
 
-interface TradeData {
+export interface TradeData {
   tokenIn: string;
   tokenOut: string;
   amountIn: number;
@@ -28,6 +28,9 @@ interface TradeData {
   price: number;
   priceImpact: string;
   route: string[];
+  status?: string;
+  createdAt?: string;
+  signature?: string;
 }
 
 interface TradeBoxProps {
