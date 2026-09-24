@@ -166,13 +166,13 @@ function buildUserPrompt(
   const base = holdings.filter((h) => h.type === "base");
 
   const formatBase = (h: Holding) =>
-    `- ${h.symbol}: balance=${h.balance.toFixed(4)}, price=$${h.price.toFixed(2)}, 24h change=${h.change24h.toFixed(2)}%, value=$${(h.balance * h.price).toFixed(2)}`;
+    "- " + h.symbol + ": balance=" + h.balance.toFixed(4) + ", price=$" + h.price.toFixed(2) + ", 24h change=" + h.change24h.toFixed(2) + "%, value=$" + (h.balance * h.price).toFixed(2);
 
   const formatTokenized = (ctx: any) =>
-    `- ${ctx.symbol} (${ctx.ticker}): balance=${ctx.balance.toFixed(4)}, price=$${ctx.price.toFixed(2)}, value=$${ctx.value.toFixed(2)}, volatility=${ctx.volatility.toFixed(1)}%, sector="${ctx.sector || "N/A"}", liquidityTier="${ctx.liquidityTier}", issuer="${ctx.issuer}", issuerRisk="${ctx.issuerRiskLevel}", marketCap=$${ctx.marketCap?.toLocaleString() || "N/A"}`;
+    "- " + ctx.symbol + " (" + ctx.ticker + "): balance=" + ctx.balance.toFixed(4) + ", price=$" + ctx.price.toFixed(2) + ", value=$" + ctx.value.toFixed(2) + ", volatility=" + ctx.volatility.toFixed(1) + "%, sector=\"" + (ctx.sector || "N/A") + "\", liquidityTier=\"" + ctx.liquidityTier + "\", issuer=\"" + ctx.issuer + "\", issuerRisk=\"" + ctx.issuerRiskLevel + "\", marketCap=$" + (ctx.marketCap?.toLocaleString() || "N/A");
 
   const formatPreIpo = (ctx: any) =>
-    `- ${ctx.symbol}: balance=${ctx.balance.toFixed(4)}, price=$${ctx.price.toFixed(2)}, value=$${ctx.value.toFixed(2)}, markPrice=$${ctx.markPrice?.toFixed(2) || "N/A"}, markValuation=$${ctx.markValuation?.toLocaleString() || "N/A}", issuer="${ctx.issuer}", issuerRisk="${ctx.issuerRiskLevel}"`;
+    "- " + ctx.symbol + ": balance=" + ctx.balance.toFixed(4) + ", price=$" + ctx.price.toFixed(2) + ", value=$" + ctx.value.toFixed(2) + ", markPrice=$" + (ctx.markPrice?.toFixed(2) || "N/A") + ", markValuation=$" + (ctx.markValuation?.toLocaleString() || "N/A") + ", issuer=\"" + ctx.issuer + "\", issuerRisk=\"" + ctx.issuerRiskLevel + "\"";
 
   return `Analyze the following portfolio for risk evaluation.
 
