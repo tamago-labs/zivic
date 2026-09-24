@@ -9,6 +9,7 @@ export interface TokenMeta {
   crypto_id?: number;
   type: "tokenized" | "pre-ipo";
   sector?: string;
+  industry?: string;
   description?: string;
   website?: string;
   tags?: string[];
