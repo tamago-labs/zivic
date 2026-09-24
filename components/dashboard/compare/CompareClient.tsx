@@ -181,13 +181,15 @@ function TokenCard({ data, onNavigate }: { data: CompareData; onNavigate: () => 
         {data.token.description && (
           <p className="text-[12px] text-white/50 leading-relaxed line-clamp-3">{data.token.description.replace(/##?\s*/g, "").slice(0, 300)}</p>
         )}
-        {data.token.industry && (
-          <p className="text-[11px] text-white/35">{data.token.industry}</p>
-        )}
+        <div className="flex items-center justify-between gap-2">
+          {data.token.industry && (
+            <p className="text-[11px] text-white/35 truncate flex-1">{data.token.industry}</p>
+          )}
+          {data.token.website && (
+            <a href={data.token.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] text-accent hover:text-accent/80 shrink-0"><ExternalLink className="w-3 h-3" />Website</a>
+          )}
+        </div>
       </div>
-      {data.token.website && (
-        <a href={data.token.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] text-accent hover:text-accent/80"><ExternalLink className="w-3 h-3" />Website</a>
-      )}
       <div className="bg-white/[0.02] border border-border3/30 rounded-lg p-4">
         <p className="text-[11px] text-white/40 mb-1">Price</p>
         <p className="text-[20px] font-display font-bold text-white/90">{formatPrice(data.price)}</p>
