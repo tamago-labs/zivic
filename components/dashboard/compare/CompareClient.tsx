@@ -175,17 +175,11 @@ function TokenCard({ data, onNavigate }: { data: CompareData; onNavigate: () => 
   return (
     <div className="bg-surface border border-border3/50 rounded-xl p-5 space-y-4">
       <div className="space-y-2">
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-[16px] font-semibold text-white/90">{data.token.symbol}</span>
-          <span className={`text-[9px] px-1.5 py-0.5 rounded-full ${data.token.type === "tokenized" ? "bg-blue-500/10 text-blue-400" : "bg-purple-500/10 text-purple-400"}`}>
-            {data.token.type === "tokenized" ? "Tokenized" : "Pre-IPO"}
-          </span>
-          {data.token.issuer && (
-            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-white/[0.06] text-white/50">{data.token.issuer}</span>
-          )}
-        </div>
+        {data.token.description && (
+          <p className="text-[12px] text-white/50 leading-relaxed line-clamp-3">{data.token.description.replace(/##?\s*/g, "").slice(0, 300)}</p>
+        )}
         {data.token.industry && (
-          <p className="text-[11px] text-white/40 leading-relaxed">{data.token.industry}</p>
+          <p className="text-[11px] text-white/35">{data.token.industry}</p>
         )}
       </div>
       {data.token.website && (
