@@ -125,7 +125,7 @@ const schema = a.schema({
     })
     .authorization((allow) => [allow.publicApiKey().to(["read", "create"])])
     .secondaryIndexes((index) => [
-      index("walletAddress").queryField("byWallet"),
+      index("walletAddress").queryField("byRiskWallet"),
     ]),
 
 }).authorization((allow) => [
