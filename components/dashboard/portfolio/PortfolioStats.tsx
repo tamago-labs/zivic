@@ -88,16 +88,23 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
 
       const portfolioValue = holdings.reduce((sum, h) => sum + h.balance * h.price, 0);
 
-      await dataClient.mutations.evaluateRisk({
+      dataClient.mutations.evaluateRisk({
         walletAddress,
         holdings: JSON.stringify(holdings),
         portfolioValue,
       }).catch(() => {});
 
-      await new Promise((r) => setTimeout(r, 3000));
+      let dbRes;
+      for (let i = 0; i < 30; i++) {
+        await new Promise((r) => setTimeout(r, 3000));
+        dbRes = await dataClient.models.RiskEvaluation.get({ id: walletAddress });
+        if (dbRes.data?.report) {
+          const parsed = typeof dbRes.data.report === "string" ? JSON.parse(dbRes.data.report) : dbRes.data.report;
+          if (parsed?.overallScore != null) break;
+        }
+      }
 
-      const dbRes = await dataClient.models.RiskEvaluation.get({ id: walletAddress });
-      if (dbRes.data?.report) {
+      if (dbRes?.data?.report) {
         const dbReport = typeof dbRes.data.report === "string" ? JSON.parse(dbRes.data.report) : dbRes.data.report;
         if (dbRes.data.rebalanceSuggestions) {
           try {
@@ -112,7 +119,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         setRiskReport({ ...dbReport, updatedAt: dbRes.data.updatedAt });
         setDrawerOpen(true);
       } else {
-        setEvalError('Risk evaluation returned empty response. Please try again.');
+        setEvalError('Risk evaluation timed out. Please try again.');
         setDrawerOpen(true);
       }
     } catch (err) {
