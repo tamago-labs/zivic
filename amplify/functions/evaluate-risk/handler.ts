@@ -1,5 +1,5 @@
 import type { Schema } from "../../data/resource";
-import { run } from "@openai/agents";
+import { run, Agent } from "@openai/agents";
 import { generateClient } from "aws-amplify/data";
 import { Amplify } from "aws-amplify";
 import { getAmplifyDataClientConfig } from "@aws-amplify/backend/function/runtime";
@@ -310,10 +310,15 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       { largestPct, top2Pct, score: concentrationScore, label: concentrationLabel }
     );
 
+    const agent = new Agent({
+      name: "Risk Evaluator",
+      model: PROVIDER_MODEL,
+      instructions: RISK_SYSTEM_PROMPT,
+    });
+
     const result = await run(
-      { model: PROVIDER_MODEL },
+      agent,
       [
-        { role: "system", content: RISK_SYSTEM_PROMPT },
         { role: "user", content: userPrompt },
       ],
       { responseFormat: {
