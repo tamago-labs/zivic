@@ -12,6 +12,7 @@ import { useClient } from '@solana/react';
 import { useSolanaBalances } from '@/hooks/useSolanaBalances';
 import { useKnownTokens } from '@/hooks/useKnownTokens';
 import RiskDrawer from './RiskDrawer';
+import RebalanceDrawer from './RebalanceDrawer';
 import type { AppClient } from '@/components/SolanaWalletProvider';
 
 interface PortfolioStatsProps {
@@ -31,6 +32,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
   const [riskReport, setRiskReport] = useState<any>(null);
   const [riskLoading, setRiskLoading] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [rebalanceDrawerOpen, setRebalanceDrawerOpen] = useState(false);
   const [evalError, setEvalError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -38,6 +40,11 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
     dataClient.models.RiskEvaluation.get({ id: walletAddress }).then((res) => {
       if (res.data) {
         const report = typeof res.data.report === "string" ? JSON.parse(res.data.report) : res.data.report;
+        if (res.data.rebalanceSuggestions) {
+          try {
+            report.rebalanceSuggestions = typeof res.data.rebalanceSuggestions === "string" ? JSON.parse(res.data.rebalanceSuggestions) : res.data.rebalanceSuggestions;
+          } catch {}
+        }
         setRiskReport({ ...report, updatedAt: res.data.updatedAt });
       }
     }).catch(() => {});
@@ -99,6 +106,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         concentration: typeof (data as any).concentration === "string" ? JSON.parse((data as any).concentration) : (data as any).concentration,
         marketRisk: typeof (data as any).marketRisk === "string" ? JSON.parse((data as any).marketRisk) : (data as any).marketRisk,
         tokenRisk: typeof (data as any).tokenRisk === "string" ? JSON.parse((data as any).tokenRisk) : (data as any).tokenRisk,
+        rebalanceSuggestions: typeof (data as any).rebalanceSuggestions === "string" ? JSON.parse((data as any).rebalanceSuggestions) : (data as any).rebalanceSuggestions,
       };
       setRiskReport(report);
       setDrawerOpen(true);
@@ -143,6 +151,19 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
   const knownChange = knownTokens.reduce((sum, t) => sum + (t.value ?? 0) * (t.change ?? 0) / 100, 0);
   const portfolioChange = totalValue > 0 ? (baseChange + knownChange) / totalValue * 100 : 0;
 
+  const industryMap = new Map<string, number>();
+  for (const t of knownTokens) {
+    if (t.value > 0 && t.industry) {
+      const current = industryMap.get(t.industry) ?? 0;
+      industryMap.set(t.industry, current + t.value);
+    }
+  }
+  const knownTokensTotalValue = knownTokens.reduce((sum, t) => sum + (t.value ?? 0), 0);
+  const industries = Array.from(industryMap.entries())
+    .map(([name, value]) => ({ name, pct: knownTokensTotalValue > 0 ? Math.round((value / knownTokensTotalValue) * 100) : 0 }))
+    .sort((a, b) => b.pct - a.pct)
+    .slice(0, 5);
+
   console.log("riskReport:", riskReport)
 
   return (
@@ -186,6 +207,37 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
             </p>
           )}
         </div>
+          {industries.length > 0 && (
+          <div className="mt-auto">
+            <p className="text-[12px] text-white/40 mb-3">Underlying Exposure</p>
+            <div className="space-y-3">
+              {industries.map((ind) => (
+                <div key={ind.name}>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[12px] text-white/60">{ind.name}</span>
+                    <span className="text-[12px] font-medium text-white/80">{ind.pct}%</span>
+                  </div>
+                  <div className="h-1.5 bg-white/[0.05] rounded-full overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-accent"
+                      style={{ width: `${ind.pct}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        {riskReport?.rebalanceSuggestions && (
+          <div className="mt-3">
+            <button
+              onClick={() => setRebalanceDrawerOpen(true)}
+              className="w-full px-3 py-2 rounded-lg text-[12px] font-medium bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors"
+            >
+              Rebalance Suggestions
+            </button>
+          </div>
+        )}
       </div>
 
       <RiskDrawer
@@ -196,12 +248,13 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         evalError={evalError}
         onEvaluate={handleEvaluate}
       />
+      <RebalanceDrawer
+        open={rebalanceDrawerOpen}
+        onClose={() => setRebalanceDrawerOpen(false)}
+        suggestions={riskReport?.rebalanceSuggestions ?? null}
+      />
     </>
   );
 }
 
-const themes = [
-  { name: 'AI / Tech', pct: 70, color: '#6C5CE7' },
-  { name: 'Finance', pct: 15, color: '#3B82F6' },
-  { name: 'Consumer', pct: 15, color: '#00D2A0' },
-];
+

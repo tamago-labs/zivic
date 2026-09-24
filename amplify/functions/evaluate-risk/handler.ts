@@ -1,5 +1,5 @@
 import type { Schema } from "../../data/resource";
-import { run, Agent } from "@openai/agents";
+import { run, Agent, MemorySession } from "@openai/agents";
 import { z } from "zod";
 import { generateClient } from "aws-amplify/data";
 import { Amplify } from "aws-amplify";
@@ -158,6 +158,53 @@ Score range: 0-100 where:
 - 81-100: Very high risk (extreme concentration, illiquid, or highly volatile)
 
 You MUST respond with ONLY valid JSON matching the requested schema. No markdown, no extra text.`;
+
+const REBALANCE_SYSTEM_PROMPT = `You are Zivic's portfolio rebalancing advisor. Based on a risk evaluation you just performed, provide specific, actionable rebalancing suggestions.
+
+Your suggestions must be:
+- Specific: name exact tokens to reduce or add
+- Data-driven: reference concentration, sector exposure, and risk scores
+- Practical: suggest concrete allocation targets
+- Concise: 2-4 suggestions, each 1-2 sentences
+
+You MUST respond with ONLY valid JSON in this format:
+{
+  "suggestions": [
+    {
+      "action": "reduce" | "add" | "diversify" | "hedge",
+      "symbol": "TOKEN",
+      "reason": "why this suggestion",
+      "suggestedAllocation": number (percentage, 0-100)
+    }
+  ]
+}`;
+
+function buildRebalancePrompt(
+  holdings: Holding[],
+  concentration: { largestPct: number; top2Pct: number; score: number; label: string },
+  sectorExposure: { sector: string; pct: number }[]
+): string {
+  const formatHolding = (h: Holding) =>
+    "- " + h.symbol + ": balance=" + h.balance.toFixed(4) + ", price=$" + h.price.toFixed(2) + ", value=$" + (h.balance * h.price).toFixed(2);
+
+  const formatSector = (s: { sector: string; pct: number }) =>
+    "- " + s.sector + ": " + s.pct.toFixed(1) + "%";
+
+  return `Based on your risk analysis above, suggest portfolio rebalancing actions.
+
+Current Portfolio:
+${holdings.filter(h => h.balance > 0 && h.type !== "base").map(formatHolding).join("\n") || "None"}
+
+Concentration:
+- Largest position: ${concentration.largestPct.toFixed(1)}%
+- Top 2 positions: ${concentration.top2Pct.toFixed(1)}%
+- Concentration score: ${concentration.score}/100 (${concentration.label})
+
+Sector Exposure:
+${sectorExposure.map(formatSector).join("\n") || "N/A"}
+
+Suggest 2-4 specific rebalancing actions to improve the portfolio's risk profile.`;
+}
 
 function buildUserPrompt(
   holdings: Holding[],
@@ -351,8 +398,17 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
           })
         ),
       }),
+      rebalanceSuggestions: z.array(
+        z.object({
+          action: z.enum(["reduce", "add", "diversify", "hedge"]),
+          symbol: z.string(),
+          reason: z.string(),
+          suggestedAllocation: z.number(),
+        })
+      ).optional(),
     });
 
+    const session = new MemorySession();
     const agent = new Agent({
       name: "Risk Evaluator",
       model: PROVIDER_MODEL,
@@ -363,27 +419,80 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
     const result = await run(
       agent,
       [{ role: "user", content: userPrompt }],
+      { session },
     );
 
     console.log("[evaluate-risk] raw result:", { finalOutput: result.finalOutput, type: typeof result.finalOutput });
     const report: RiskReport = { ...(result.finalOutput as RiskReport), updatedAt: new Date().toISOString() };
     console.log("[evaluate-risk] report generated:", { overallScore: report.overallScore, overallLabel: report.overallLabel });
 
+    let rebalanceSuggestions: any[] | null = null;
     try {
+      const sectorExposure = tokenizedContext
+        .filter((t) => t.sector && t.sector !== "N/A")
+        .reduce((acc: { sector: string; pct: number }[], t) => {
+          const existing = acc.find((s) => s.sector === t.sector);
+          const pct = portfolioValue > 0 ? (t.value / portfolioValue) * 100 : 0;
+          if (existing) {
+            existing.pct += pct;
+          } else {
+            acc.push({ sector: t.sector, pct });
+          }
+          return acc;
+        }, [])
+        .sort((a, b) => b.pct - a.pct);
+
+      const rebalanceAgent = new Agent({
+        name: "Rebalance Advisor",
+        model: PROVIDER_MODEL,
+        instructions: REBALANCE_SYSTEM_PROMPT,
+        outputType: z.object({
+          suggestions: z.array(
+            z.object({
+              action: z.enum(["reduce", "add", "diversify", "hedge"]),
+              symbol: z.string(),
+              reason: z.string(),
+              suggestedAllocation: z.number(),
+            })
+          ),
+        }),
+      });
+
+      const rebalancePrompt = buildRebalancePrompt(
+        holdings,
+        { largestPct, top2Pct, score: concentrationScore, label: concentrationLabel },
+        sectorExposure
+      );
+
+      const rebalanceResult = await run(
+        rebalanceAgent,
+        [{ role: "user", content: rebalancePrompt }],
+        { session },
+      );
+
+      console.log("[evaluate-risk] rebalance result:", rebalanceResult.finalOutput);
+      const rebalanceOutput = rebalanceResult.finalOutput as any;
+      if (rebalanceOutput?.suggestions) {
+        rebalanceSuggestions = rebalanceOutput.suggestions;
+        report.rebalanceSuggestions = rebalanceSuggestions;
+      }
+    } catch (rebalErr) {
+      console.error("[evaluate-risk] rebalance step failed:", rebErr);
+    }
+
+    try {
+      const saveData = {
+        id: walletAddress,
+        report: JSON.stringify(report),
+        overallScore: report.overallScore,
+        ...(rebalanceSuggestions ? { rebalanceSuggestions: JSON.stringify(rebalanceSuggestions) } : {}),
+      };
       const existing = await dataClient.models.RiskEvaluation.get({ id: walletAddress });
       if (existing.data) {
-        await dataClient.models.RiskEvaluation.update({
-          id: walletAddress,
-          report: JSON.stringify(report),
-          overallScore: report.overallScore,
-        });
+        await dataClient.models.RiskEvaluation.update(saveData);
         console.log("[evaluate-risk] report updated in DB");
       } else {
-        await dataClient.models.RiskEvaluation.create({
-          id: walletAddress,
-          report: JSON.stringify(report),
-          overallScore: report.overallScore,
-        });
+        await dataClient.models.RiskEvaluation.create(saveData);
         console.log("[evaluate-risk] report created in DB");
       }
     } catch (saveErr) {
@@ -398,7 +507,9 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       if (profile) {
         const inputTokens = Math.ceil(userPrompt.length / 4);
         const outputTokens = Math.ceil(JSON.stringify(result.finalOutput ?? {}).length / 4);
-        const creditsUsed = (inputTokens + outputTokens) * CREDIT_RATE;
+        const rebalanceInputTokens = rebalanceSuggestions ? Math.ceil(JSON.stringify(rebalanceSuggestions).length / 4) : 0;
+        const rebalanceOutputTokens = rebalanceSuggestions ? Math.ceil(JSON.stringify(rebalanceSuggestions).length / 4) : 0;
+        const creditsUsed = (inputTokens + outputTokens + rebalanceInputTokens + rebalanceOutputTokens) * CREDIT_RATE;
         const newCredits = Math.max(0, (profile.credits ?? 0) - creditsUsed);
         await dataClient.models.UserProfile.update({
           id: profile.id,

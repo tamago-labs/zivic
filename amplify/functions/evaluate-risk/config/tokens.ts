@@ -58,7 +58,7 @@ for (const asset of (rwaList as any).assets ?? []) {
         mint: token.mint,
         crypto_id: token.crypto_id,
         type: "tokenized",
-        sector: asset.sector,
+        sector: asset.industry,
         description: token.description ?? asset.description,
         website: token.website ?? asset.website,
         tags: token.tags ?? asset.tags,

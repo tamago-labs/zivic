@@ -20,6 +20,7 @@ export interface KnownToken {
   type: 'pre-ipo' | 'tokenized';
   slug: string;
   crypto_id?: string;
+  industry?: string;
 }
 
 interface TokenMeta {
@@ -29,6 +30,7 @@ interface TokenMeta {
   type: 'pre-ipo' | 'tokenized';
   slug: string;
   crypto_id?: string;
+  industry?: string;
 }
 
 function buildTokenIndex(): Record<string, TokenMeta> {
@@ -44,6 +46,7 @@ function buildTokenIndex(): Record<string, TokenMeta> {
           type: 'tokenized',
           slug: asset.slug ?? '',
           crypto_id: token.crypto_id != null ? String(token.crypto_id) : undefined,
+          industry: asset.industry ?? undefined,
         };
       }
     }
@@ -57,6 +60,7 @@ function buildTokenIndex(): Record<string, TokenMeta> {
         image: asset.image ?? asset.logo ?? '',
         type: 'pre-ipo',
         slug: asset.slug ?? '',
+        industry: asset.industry ?? undefined,
       };
     }
   }
@@ -136,6 +140,7 @@ export function useKnownTokens(address: string | null) {
               type: meta.type,
               slug: meta.slug,
               crypto_id: meta.crypto_id,
+              industry: meta.industry,
             });
           }
         }
