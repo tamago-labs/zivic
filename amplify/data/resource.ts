@@ -90,14 +90,23 @@ const schema = a.schema({
       index("walletAddress").queryField("bySessionWallet"),
     ]),
 
+  RiskReportType: a.customType({
+    overallScore: a.integer(),
+    overallLabel: a.string(),
+    overallDescription: a.string(),
+    concentration: a.json(),
+    marketRisk: a.json(),
+    tokenRisk: a.json(),
+  }),
+
   evaluateRisk: a
     .query()
     .arguments({
       walletAddress: a.string(),
-      holdings: a.json(),
+      holdings: a.string(),
       portfolioValue: a.float(),
     })
-    .returns(a.json())
+    .returns(a.ref("RiskReportType"))
     .authorization((allow) => [allow.publicApiKey()])
     .handler(a.handler.function(evaluateRiskFunction)),
 

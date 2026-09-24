@@ -36,6 +36,7 @@ interface RiskDrawerProps {
   onClose: () => void;
   report: RiskReport | null;
   loading: boolean;
+  evalError?: string | null;
 }
 
 function ScoreBar({ score, label }: { score: number; label: string }) {
@@ -62,7 +63,7 @@ function SectionTitle({ icon: Icon, title }: { icon: any; title: string }) {
   );
 }
 
-export default function RiskDrawer({ open, onClose, report, loading }: RiskDrawerProps) {
+export default function RiskDrawer({ open, onClose, report, loading, evalError }: RiskDrawerProps) {
   return (
     <AnimatePresence>
       {open && (
@@ -100,6 +101,12 @@ export default function RiskDrawer({ open, onClose, report, loading }: RiskDrawe
                   <div className="h-4 w-3/4 bg-white/[0.05] rounded animate-pulse" />
                   <div className="h-4 w-1/2 bg-white/[0.05] rounded animate-pulse" />
                   <div className="h-20 w-full bg-white/[0.05] rounded-lg animate-pulse" />
+                </div>
+              )}
+
+              {!loading && evalError && (
+                <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 mb-4">
+                  <p className="text-[12px] text-red-400">{evalError}</p>
                 </div>
               )}
 

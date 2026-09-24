@@ -30,7 +30,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
   const [riskReport, setRiskReport] = useState<any>(null);
   const [riskLoading, setRiskLoading] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const router = useRouter();
+  const [evalError, setEvalError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!walletAddress) return;
@@ -39,10 +39,11 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
     }).catch(() => {});
   }, [walletAddress]);
 
-  const handleEvaluate = async () => {
+  const handleEvaluate = async () => { 
     if (!walletAddress) return;
     setRiskLoading(true);
     try {
+      console.log("here 1")
       const holdings = [
         ...BASE_TOKENS.map((t) => {
           const balance = parseFloat(balances[t.symbol] ?? '0');
@@ -64,18 +65,25 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         })),
       ].filter((h) => h.balance > 0);
 
+
+      console.log("here 2", holdings)
+
       const portfolioValue = holdings.reduce((sum, h) => sum + h.balance * h.price, 0);
 
+      console.log('[PortfolioStats] calling evaluateRisk with:', { walletAddress, holdingsCount: holdings.length, portfolioValue });
       const { data } = await dataClient.queries.evaluateRisk({
         walletAddress,
         holdings,
         portfolioValue,
       });
+      console.log('[PortfolioStats] evaluateRisk result:', data);
 
       setRiskReport((data as any)?.report ?? null);
       setDrawerOpen(true);
     } catch (err) {
       console.error('[PortfolioStats] risk eval failed:', err);
+      setEvalError(err instanceof Error ? err.message : 'Risk evaluation failed');
+      setDrawerOpen(true);
     } finally {
       setRiskLoading(false);
     }
@@ -174,6 +182,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         onClose={() => setDrawerOpen(false)}
         report={riskReport}
         loading={riskLoading}
+        evalError={evalError}
       />
     </>
   );
