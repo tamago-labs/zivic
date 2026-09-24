@@ -143,6 +143,8 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
   const knownChange = knownTokens.reduce((sum, t) => sum + (t.value ?? 0) * (t.change ?? 0) / 100, 0);
   const portfolioChange = totalValue > 0 ? (baseChange + knownChange) / totalValue * 100 : 0;
 
+  console.log("riskReport:", riskReport)
+
   return (
     <>
       <div className="w-72 shrink-0 bg-surface border border-border3/50 rounded-xl p-5 flex flex-col gap-4">
@@ -156,31 +158,31 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
           </p>
         </div>
         <div>
-          <div className="flex items-center justify-between mb-1">
-            <p className="text-[12px] text-white/40">Risk Score</p>
-            <button
-              onClick={handleEvaluate}
-              disabled={riskLoading}
-              className="text-[10px] text-accent hover:text-accent/80 transition-colors"
-            >
-              {riskLoading ? 'Evaluating...' : 'Evaluate'}
-            </button>
-          </div>
+          <p className="text-[12px] text-white/40 mb-1">Risk Score</p>
           <p className="text-[20px] font-display font-bold">
             {riskReport ? riskReport.overallScore : '--'}<span className="text-[14px] text-white/30">/100</span>
           </p>
-          {riskReport && (
-            <div className="flex items-center justify-between mt-0.5">
-              <button
-                onClick={() => setDrawerOpen(true)}
-                className="text-[12px] text-accent hover:text-accent/80 transition-colors inline-flex items-center gap-1"
-              >
-                View Risk Analysis <ArrowRight className="w-3 h-3" />
-              </button>
+          <div className="flex items-center justify-between mt-1">
+            <button
+              onClick={handleEvaluate}
+              disabled={riskLoading}
+              className="text-[11px] text-accent hover:text-accent/80 transition-colors"
+            >
+              {riskLoading ? 'Evaluating...' : riskReport ? 'Evaluate Again' : 'Evaluate'}
+            </button>
+            {riskReport?.updatedAt && (
               <span className="text-[11px] text-white/30">
-                {new Date(riskReport.updatedAt ?? Date.now()).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                Updated {new Date(riskReport.updatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
               </span>
-            </div>
+            )}
+          </div>
+          {riskReport && (
+            <button
+              onClick={() => setDrawerOpen(true)}
+              className="text-[12px] text-accent hover:text-accent/80 transition-colors mt-1 inline-flex items-center gap-1"
+            >
+              View Risk Analysis <ArrowRight className="w-3 h-3" />
+            </button>
           )}
         </div>
         <div className="mt-auto">
