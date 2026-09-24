@@ -223,8 +223,8 @@ function TokenCard({ data, onNavigate }: { data: CompareData; onNavigate: () => 
         <div className="grid grid-cols-3 gap-4 py-3 border-b border-border3/20"><div className="text-[12px] text-white/50">Byreal APR</div><div className="text-[13px] text-white/80 text-right col-span-2">{data.byrealApr != null ? `${data.byrealApr.toFixed(2)}%` : "—"}</div></div>
         <div className="grid grid-cols-3 gap-4 py-3"><div className="text-[12px] text-white/50">Byreal TVL</div><div className="text-[13px] text-white/80 text-right col-span-2">{formatNumber(data.byrealTvl, "$")}</div></div>
       </div>
-      <button onClick={onNavigate} className="w-full px-3 py-2 rounded-lg text-[12px] font-medium bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 inline-flex items-center justify-center gap-1">
-        View Details <ExternalLink className="w-3 h-3" />
+      <button onClick={onNavigate} className="w-full py-2.5 rounded-xl bg-accent text-sm font-medium text-white hover:bg-accent/80 transition-colors flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+        View Details <ExternalLink className="w-4 h-4" />
       </button>
     </div>
   );
