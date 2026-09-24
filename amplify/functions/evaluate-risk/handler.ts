@@ -8,6 +8,9 @@ import { PROVIDER_MODEL } from "./provider";
 import { getTokenMeta, toTicker, getCryptoId, getIssuerRisk } from "./config/tokens";
 
 const { resourceConfig, libraryOptions } = await getAmplifyDataClientConfig(env as any);
+
+const CREDIT_RATE = 0.05;
+
 Amplify.configure(resourceConfig, libraryOptions);
 
 const dataClient = generateClient<Schema>();
@@ -384,6 +387,26 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
 
     const report: RiskReport = JSON.parse(result.finalOutput);
     console.log("[evaluate-risk] report generated:", { overallScore: report.overallScore, overallLabel: report.overallLabel });
+
+    try {
+      const { data: profiles } = await dataClient.models.UserProfile.list({
+        filter: { walletAddress: { eq: walletAddress } },
+      });
+      const profile = profiles?.[0];
+      if (profile) {
+        const inputTokens = Math.ceil(userPrompt.length / 4);
+        const outputTokens = Math.ceil((result.finalOutput ?? "").length / 4);
+        const creditsUsed = (inputTokens + outputTokens) * CREDIT_RATE;
+        const newCredits = Math.max(0, (profile.credits ?? 0) - creditsUsed);
+        await dataClient.models.UserProfile.update({
+          id: profile.id,
+          credits: newCredits,
+        });
+        console.log("[evaluate-risk] credits deducted:", creditsUsed, "remaining:", newCredits);
+      }
+    } catch (creditErr) {
+      console.error("[evaluate-risk] credits deduction failed:", creditErr);
+    }
 
     return { report };
   } catch (err) {
