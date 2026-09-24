@@ -433,7 +433,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
     const report: RiskReport = { ...(result.finalOutput as RiskReport), updatedAt: new Date().toISOString() };
     console.log("[evaluate-risk] report generated:", { overallScore: report.overallScore, overallLabel: report.overallLabel });
 
-    let rebalanceSuggestions: any[] | null = null;
+    let rebalanceSuggestions: Array<{ action: string; symbol: string; reason: string; suggestedAllocation: number }> | undefined;
     try {
       const sectorExposure = tokenizedContext
         .filter((t) => t.sector && t.sector !== "N/A")
@@ -492,7 +492,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
         id: walletAddress,
         report: JSON.stringify(report),
         overallScore: report.overallScore,
-        ...(rebalanceSuggestions ? { rebalanceSuggestions: JSON.stringify(rebalanceSuggestions) } : {}),
+        ...(rebalanceSuggestions ? { rebalanceSuggestions: JSON.stringify(rebalanceSuggestions!) } : {}),
       };
       const existing = await dataClient.models.RiskEvaluation.get({ id: walletAddress });
       if (existing.data) {
@@ -514,8 +514,8 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       if (profile) {
         const inputTokens = Math.ceil(userPrompt.length / 4);
         const outputTokens = Math.ceil(JSON.stringify(result.finalOutput ?? {}).length / 4);
-        const rebalanceInputTokens = rebalanceSuggestions ? Math.ceil(JSON.stringify(rebalanceSuggestions).length / 4) : 0;
-        const rebalanceOutputTokens = rebalanceSuggestions ? Math.ceil(JSON.stringify(rebalanceSuggestions).length / 4) : 0;
+        const rebalanceInputTokens = rebalanceSuggestions ? Math.ceil(JSON.stringify(rebalanceSuggestions!).length / 4) : 0;
+        const rebalanceOutputTokens = rebalanceSuggestions ? Math.ceil(JSON.stringify(rebalanceSuggestions!).length / 4) : 0;
         const creditsUsed = (inputTokens + outputTokens + rebalanceInputTokens + rebalanceOutputTokens) * CREDIT_RATE;
         const newCredits = Math.max(0, (profile.credits ?? 0) - creditsUsed);
         await dataClient.models.UserProfile.update({
