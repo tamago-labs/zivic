@@ -89,12 +89,22 @@ export default function RiskDrawer({ open, onClose, report, loading, evalError }
                   <h2 className="text-[18px] font-display font-bold text-white/90">Portfolio Risk Analysis</h2>
                   <p className="text-[12px] text-white/40 mt-0.5">How Zivic evaluates your tokenized equity exposure</p>
                 </div>
-                <button
-                  onClick={onClose}
-                  className="p-2 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/[0.04] transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                </button>
+                <div className="flex items-center gap-2">
+                  {report && (
+                    <button
+                      onClick={onEvaluate}
+                      className="px-3 py-1.5 rounded-lg text-[12px] font-medium bg-accent text-white hover:bg-accent/80 transition-colors"
+                    >
+                      Evaluate Again
+                    </button>
+                  )}
+                  <button
+                    onClick={onClose}
+                    className="p-2 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/[0.04] transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
 
               {loading && (

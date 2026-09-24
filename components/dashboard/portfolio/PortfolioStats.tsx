@@ -38,7 +38,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
     dataClient.models.RiskEvaluation.get({ id: walletAddress }).then((res) => {
       if (res.data) {
         const report = typeof res.data.report === "string" ? JSON.parse(res.data.report) : res.data.report;
-        setRiskReport(report);
+        setRiskReport({ ...report, updatedAt: res.data.updatedAt });
       }
     }).catch(() => {});
   }, [walletAddress]);
@@ -158,31 +158,31 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
           </p>
         </div>
         <div>
-          <p className="text-[12px] text-white/40 mb-1">Risk Score</p>
-          <p className="text-[20px] font-display font-bold">
-            {riskReport ? riskReport.overallScore : '--'}<span className="text-[14px] text-white/30">/100</span>
-          </p>
-          <div className="flex items-center justify-between mt-1">
+          <div className="flex items-center justify-between mb-1">
+            <p className="text-[12px] text-white/40">Risk Score</p>
             <button
               onClick={handleEvaluate}
               disabled={riskLoading}
-              className="text-[11px] text-accent hover:text-accent/80 transition-colors"
+              className="text-[10px] text-accent hover:text-accent/80 transition-colors"
             >
-              {riskLoading ? 'Evaluating...' : riskReport ? 'Evaluate Again' : 'Evaluate'}
+              {riskLoading ? 'Evaluating...' : 'Evaluate'}
             </button>
-            {riskReport?.updatedAt && (
+          </div>
+          <p className="text-[20px] font-display font-bold">
+            {riskReport ? riskReport.overallScore : '--'}<span className="text-[14px] text-white/30">/100</span>
+          </p>
+          {riskReport && (
+            <div className="flex items-center justify-between mt-0.5">
+              <button
+                onClick={() => setDrawerOpen(true)}
+                className="text-[12px] text-accent hover:text-accent/80 transition-colors inline-flex items-center gap-1"
+              >
+                View Risk Analysis <ArrowRight className="w-3 h-3" />
+              </button>
               <span className="text-[11px] text-white/30">
                 Updated {new Date(riskReport.updatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
               </span>
-            )}
-          </div>
-          {riskReport && (
-            <button
-              onClick={() => setDrawerOpen(true)}
-              className="text-[12px] text-accent hover:text-accent/80 transition-colors mt-1 inline-flex items-center gap-1"
-            >
-              View Risk Analysis <ArrowRight className="w-3 h-3" />
-            </button>
+            </div>
           )}
         </div>
         <div className="mt-auto">
