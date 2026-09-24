@@ -95,9 +95,21 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
       const { data } = raw
       console.log('[PortfolioStats] evaluateRisk result:', data);
       if (!data || (data as any)?.overallScore == null) {
-        console.error('[PortfolioStats] evaluateRisk returned empty response');
-        setEvalError('Risk evaluation returned empty response. Please try again.');
-        setDrawerOpen(true);
+        console.log('[PortfolioStats] mutation returned empty, trying DB fallback...');
+        const dbRes = await dataClient.models.RiskEvaluation.get({ id: walletAddress });
+        if (dbRes.data?.report) {
+          const dbReport = typeof dbRes.data.report === "string" ? JSON.parse(dbRes.data.report) : dbRes.data.report;
+          if (dbRes.data.rebalanceSuggestions) {
+            try {
+              dbReport.rebalanceSuggestions = typeof dbRes.data.rebalanceSuggestions === "string" ? JSON.parse(dbRes.data.rebalanceSuggestions) : dbRes.data.rebalanceSuggestions;
+            } catch {}
+          }
+          setRiskReport({ ...dbReport, updatedAt: dbRes.data.updatedAt });
+          setDrawerOpen(true);
+        } else {
+          setEvalError('Risk evaluation returned empty response. Please try again.');
+          setDrawerOpen(true);
+        }
         setRiskLoading(false);
         return;
       }
