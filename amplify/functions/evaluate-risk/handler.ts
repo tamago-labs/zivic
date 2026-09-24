@@ -410,7 +410,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       console.error("[evaluate-risk] credits deduction failed:", creditErr);
     }
 
-    return report;
+    return { report };
   } catch (err) {
     console.error("[evaluate-risk] error:", err);
     if (err instanceof Error) {

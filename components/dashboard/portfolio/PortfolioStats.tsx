@@ -81,12 +81,18 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         portfolioValue,
       });
       console.log('[PortfolioStats] evaluateRisk result:', data);
-
+      if (!data || (data as any)?.overallScore == null) {
+        console.error('[PortfolioStats] evaluateRisk returned empty response');
+        setEvalError('Risk evaluation returned empty response. Please try again.');
+        setDrawerOpen(true);
+        setRiskLoading(false);
+        return;
+      }
       setRiskReport(data as any);
       setDrawerOpen(true);
     } catch (err) {
       console.error('[PortfolioStats] risk eval failed:', err);
-      setEvalError(err instanceof Error ? err.message : 'Risk evaluation failed');
+      setEvalError(err instanceof Error ? err.message : 'Unknown error');
       setDrawerOpen(true);
     } finally {
       setRiskLoading(false);
