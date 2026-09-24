@@ -73,12 +73,12 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
       console.log('[PortfolioStats] calling evaluateRisk with:', { walletAddress, holdingsCount: holdings.length, portfolioValue });
       const { data } = await dataClient.queries.evaluateRisk({
         walletAddress,
-        holdings,
+        holdings: JSON.stringify(holdings),
         portfolioValue,
       });
       console.log('[PortfolioStats] evaluateRisk result:', data);
 
-      setRiskReport((data as any)?.report ?? null);
+      setRiskReport(data as any);
       setDrawerOpen(true);
     } catch (err) {
       console.error('[PortfolioStats] risk eval failed:', err);
