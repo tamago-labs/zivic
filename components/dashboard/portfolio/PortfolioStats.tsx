@@ -71,7 +71,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
       const portfolioValue = holdings.reduce((sum, h) => sum + h.balance * h.price, 0);
 
       console.log('[PortfolioStats] calling evaluateRisk with:', { walletAddress, holdingsCount: holdings.length, portfolioValue });
-      const { data } = await dataClient.queries.evaluateRisk({
+      const { data } = await dataClient.mutations.evaluateRisk({
         walletAddress,
         holdings: JSON.stringify(holdings),
         portfolioValue,

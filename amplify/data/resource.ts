@@ -100,7 +100,7 @@ const schema = a.schema({
   }),
 
   evaluateRisk: a
-    .query()
+    .mutation()
     .arguments({
       walletAddress: a.string(),
       holdings: a.string(),
