@@ -19,19 +19,7 @@ const dataClient = generateClient<Schema>();
 const CMC_API_KEY = env.CMC_API_KEY ?? "";
 const CMC_BASE_URL = "https://pro-api.coinmarketcap.com";
 
-let openaiClient: any;
-try {
-  const OpenAI = (await import("openai")).default;
-  openaiClient = new OpenAI({
-    apiKey: env.OPENAI_API_KEY,
-    baseURL: PROVIDER_BASE_URL,
-  });
-  const { setDefaultOpenAIClient } = await import("@openai/agents");
-  setDefaultOpenAIClient(openaiClient);
-  console.log("[evaluate-risk] OpenAI client configured with LongCat provider");
-} catch (setupErr) {
-  console.error("[evaluate-risk] failed to configure OpenAI client:", setupErr);
-}
+
 
 interface Holding {
   symbol: string;
@@ -228,6 +216,15 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       console.log("[evaluate-risk] missing arguments, returning null");
       return null;
     }
+
+    const OpenAI = (await import("openai")).default;
+    const openaiClient = new OpenAI({
+      apiKey: env.OPENAI_API_KEY,
+      baseURL: PROVIDER_BASE_URL,
+    });
+    const { setDefaultOpenAIClient, setTracingDisabled } = await import("@openai/agents");
+    setDefaultOpenAIClient(openaiClient);
+    setTracingDisabled(true);
 
     const tokenized = holdings.filter((h) => h.type === "tokenized" && h.balance > 0);
     const preIpo = holdings.filter((h) => h.type === "pre-ipo" && h.balance > 0);
