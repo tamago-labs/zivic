@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { ArrowRight } from 'lucide-react';
 import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '@/amplify/data/resource';
 import { useBaseTokenPrices } from '../../../app/contexts/BaseTokenPriceProvider';
@@ -169,12 +170,17 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
             {riskReport ? riskReport.overallScore : '--'}<span className="text-[14px] text-white/30">/100</span>
           </p>
           {riskReport && (
-            <button
-              onClick={() => setDrawerOpen(true)}
-              className="text-[12px] text-white/40 hover:text-white/60 transition-colors mt-0.5"
-            >
-              View Risk Analysis →
-            </button>
+            <div className="flex items-center justify-between mt-0.5">
+              <button
+                onClick={() => setDrawerOpen(true)}
+                className="text-[12px] text-accent hover:text-accent/80 transition-colors inline-flex items-center gap-1"
+              >
+                View Risk Analysis <ArrowRight className="w-3 h-3" />
+              </button>
+              <span className="text-[11px] text-white/30">
+                {new Date(riskReport.updatedAt ?? Date.now()).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+              </span>
+            </div>
           )}
         </div>
         <div className="mt-auto">

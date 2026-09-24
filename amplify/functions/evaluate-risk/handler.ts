@@ -366,7 +366,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
     );
 
     console.log("[evaluate-risk] raw result:", { finalOutput: result.finalOutput, type: typeof result.finalOutput });
-    const report: RiskReport = result.finalOutput as RiskReport;
+    const report: RiskReport = { ...(result.finalOutput as RiskReport), updatedAt: new Date().toISOString() };
     console.log("[evaluate-risk] report generated:", { overallScore: report.overallScore, overallLabel: report.overallLabel });
 
     try {
