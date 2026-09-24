@@ -88,7 +88,7 @@ export default function RiskDrawer({ open, onClose, report, loading, evalError, 
               <div className="flex items-center justify-between mb-2">
                 <div>
                   <h2 className="text-[18px] font-display font-bold text-white/90">Portfolio Risk Analysis</h2>
-                  <p className="text-[12px] text-white/40 mt-0.5">How Zivic evaluates your tokenized equity exposure</p>
+                  <p className="text-[12px] text-white/40 mt-0.5">Portfolio risk insights driven by real-time market data</p>
                 </div>
                 <button
                   onClick={onClose}
