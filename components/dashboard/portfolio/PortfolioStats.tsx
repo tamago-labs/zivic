@@ -88,47 +88,33 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
 
       const portfolioValue = holdings.reduce((sum, h) => sum + h.balance * h.price, 0);
 
-      const raw = await dataClient.mutations.evaluateRisk({
+      await dataClient.mutations.evaluateRisk({
         walletAddress,
         holdings: JSON.stringify(holdings),
         portfolioValue,
-      });
-      const { data } = raw
-      if (!data || (data as any)?.overallScore == null) {
-        console.log('[PortfolioStats] mutation returned empty, waiting for Lambda to finish...');
-        await new Promise((r) => setTimeout(r, 5000));
-        const dbRes = await dataClient.models.RiskEvaluation.get({ id: walletAddress });
-        if (dbRes.data?.report) {
-          const dbReport = typeof dbRes.data.report === "string" ? JSON.parse(dbRes.data.report) : dbRes.data.report;
-          if (dbRes.data.rebalanceSuggestions) {
-            try {
-              dbReport.rebalanceSuggestions = typeof dbRes.data.rebalanceSuggestions === "string" ? JSON.parse(dbRes.data.rebalanceSuggestions) : dbRes.data.rebalanceSuggestions;
-            } catch {}
-          }
-          if (dbRes.data.yieldStrategies) {
-            try {
-              dbReport.yieldStrategies = typeof dbRes.data.yieldStrategies === "string" ? JSON.parse(dbRes.data.yieldStrategies) : dbRes.data.yieldStrategies;
-            } catch {}
-          }
-          setRiskReport({ ...dbReport, updatedAt: dbRes.data.updatedAt });
-          setDrawerOpen(true);
-        } else {
-          setEvalError('Risk evaluation returned empty response. Please try again.');
-          setDrawerOpen(true);
+      }).catch(() => {});
+
+      await new Promise((r) => setTimeout(r, 3000));
+
+      const dbRes = await dataClient.models.RiskEvaluation.get({ id: walletAddress });
+      if (dbRes.data?.report) {
+        const dbReport = typeof dbRes.data.report === "string" ? JSON.parse(dbRes.data.report) : dbRes.data.report;
+        if (dbRes.data.rebalanceSuggestions) {
+          try {
+            dbReport.rebalanceSuggestions = typeof dbRes.data.rebalanceSuggestions === "string" ? JSON.parse(dbRes.data.rebalanceSuggestions) : dbRes.data.rebalanceSuggestions;
+          } catch {}
         }
-        setRiskLoading(false);
-        return;
+        if (dbRes.data.yieldStrategies) {
+          try {
+            dbReport.yieldStrategies = typeof dbRes.data.yieldStrategies === "string" ? JSON.parse(dbRes.data.yieldStrategies) : dbRes.data.yieldStrategies;
+          } catch {}
+        }
+        setRiskReport({ ...dbReport, updatedAt: dbRes.data.updatedAt });
+        setDrawerOpen(true);
+      } else {
+        setEvalError('Risk evaluation returned empty response. Please try again.');
+        setDrawerOpen(true);
       }
-      const report = {
-        ...(data as any),
-        concentration: typeof (data as any).concentration === "string" ? JSON.parse((data as any).concentration) : (data as any).concentration,
-        marketRisk: typeof (data as any).marketRisk === "string" ? JSON.parse((data as any).marketRisk) : (data as any).marketRisk,
-        tokenRisk: typeof (data as any).tokenRisk === "string" ? JSON.parse((data as any).tokenRisk) : (data as any).tokenRisk,
-        rebalanceSuggestions: typeof (data as any).rebalanceSuggestions === "string" ? JSON.parse((data as any).rebalanceSuggestions) : (data as any).rebalanceSuggestions,
-        yieldStrategies: typeof (data as any).yieldStrategies === "string" ? JSON.parse((data as any).yieldStrategies) : (data as any).yieldStrategies,
-      };
-      setRiskReport(report);
-      setDrawerOpen(true);
     } catch (err) {
       console.error('[PortfolioStats] risk eval failed:', err);
       setEvalError(err instanceof Error ? err.message : 'Unknown error');
