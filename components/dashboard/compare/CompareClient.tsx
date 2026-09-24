@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, ArrowRightLeft, ExternalLink, TrendingUp, TrendingDown, Minus } from "lucide-react";
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/amplify/data/resource";
@@ -136,40 +137,55 @@ function TokenSelector({ selected, onSelect, options, label }: {
       ) : (
         <button onClick={() => setOpen(true)} className="w-full bg-surface border border-border3/50 rounded-xl p-4 text-center text-[13px] text-white/40 hover:text-white/60 hover:border-accent/30 transition-colors">+ Select Token</button>
       )}
-      {open && (
-        <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-surface border border-border3/50 rounded-xl shadow-2xl overflow-hidden">
-          <div className="p-3 border-b border-border3/30">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
-              <input autoFocus value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search tokens..." className="w-full bg-white/[0.03] border border-border3/50 rounded-lg pl-10 pr-4 py-2 text-[13px] text-white placeholder:text-white/25 outline-none focus:border-accent/50" />
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -4 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -4 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute top-full left-0 right-0 mt-2 z-50 bg-surface border border-border3/50 rounded-xl shadow-2xl overflow-hidden"
+          >
+            <div className="p-3 border-b border-border3/30">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+                <input autoFocus value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search tokens..." className="w-full bg-white/[0.03] border border-border3/50 rounded-lg pl-10 pr-4 py-2 text-[13px] text-white placeholder:text-white/25 outline-none focus:border-accent/50" />
+              </div>
             </div>
-          </div>
-          <div className="max-h-60 overflow-y-auto">
-            {filtered.length === 0 ? (
-              <div className="p-4 text-center text-[12px] text-white/30">No tokens found</div>
-            ) : (
-              filtered.map((opt) => (
-                <button key={`${opt.symbol}-${opt.mint}`} onClick={() => { onSelect(opt); setOpen(false); setSearch(""); }} className="w-full px-4 py-3 flex items-center gap-3 hover:bg-white/[0.03] transition-colors text-left">
-                  {opt.logo || opt.image ? (
-                    <img src={opt.logo || opt.image} alt="" className="w-7 h-7 rounded-full bg-white/10" />
-                  ) : (
-                    <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-[9px] text-white/60">{opt.symbol.slice(0, 2)}</div>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[13px] font-medium text-white/90">{opt.symbol}</span>
-                      <span className={`text-[9px] px-1.5 py-0.5 rounded-full ${opt.type === "tokenized" ? "bg-blue-500/10 text-blue-400" : "bg-purple-500/10 text-purple-400"}`}>
-                        {opt.type === "tokenized" ? "Tokenized" : "Pre-IPO"}
-                      </span>
+            <div className="max-h-60 overflow-y-auto">
+              {filtered.length === 0 ? (
+                <div className="p-4 text-center text-[12px] text-white/30">No tokens found</div>
+              ) : (
+                filtered.map((opt, i) => (
+                  <motion.button
+                    key={`${opt.symbol}-${opt.mint}`}
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.1, delay: Math.min(i * 0.02, 0.3) }}
+                    onClick={() => { onSelect(opt); setOpen(false); setSearch(""); }}
+                    className="w-full px-4 py-3 flex items-center gap-3 hover:bg-white/[0.03] transition-colors text-left"
+                  >
+                    {opt.logo || opt.image ? (
+                      <img src={opt.logo || opt.image} alt="" className="w-7 h-7 rounded-full bg-white/10" />
+                    ) : (
+                      <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-[9px] text-white/60">{opt.symbol.slice(0, 2)}</div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[13px] font-medium text-white/90">{opt.symbol}</span>
+                        <span className={`text-[9px] px-1.5 py-0.5 rounded-full ${opt.type === "tokenized" ? "bg-blue-500/10 text-blue-400" : "bg-purple-500/10 text-purple-400"}`}>
+                          {opt.type === "tokenized" ? "Tokenized" : "Pre-IPO"}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-white/40 truncate">{opt.name}</p>
                     </div>
-                    <p className="text-[11px] text-white/40 truncate">{opt.name}</p>
-                  </div>
-                </button>
-              ))
-            )}
-          </div>
-        </div>
-      )}
+                  </motion.button>
+                ))
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
