@@ -56,6 +56,13 @@ interface RiskReport {
       issuerRisk: string;
     }>;
   };
+  updatedAt?: string;
+  rebalanceSuggestions?: Array<{
+    action: string;
+    symbol: string;
+    reason: string;
+    suggestedAllocation: number;
+  }>;
 }
 
 async function fetchCMCMetadata(symbols: string[]): Promise<Record<string, any>> {
@@ -477,7 +484,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
         report.rebalanceSuggestions = rebalanceSuggestions;
       }
     } catch (rebalErr) {
-      console.error("[evaluate-risk] rebalance step failed:", rebErr);
+      console.error("[evaluate-risk] rebalance step failed:", rebalErr);
     }
 
     try {
