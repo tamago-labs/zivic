@@ -314,14 +314,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       name: "Risk Evaluator",
       model: PROVIDER_MODEL,
       instructions: RISK_SYSTEM_PROMPT,
-    });
-
-    const result = await run(
-      agent,
-      [
-        { role: "user", content: userPrompt },
-      ],
-      { responseFormat: {
+      responseFormat: {
         type: "json_schema",
         jsonSchema: {
           name: "risk_report",
@@ -390,7 +383,12 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       },
     });
 
-    const report: RiskReport = JSON.parse(result.finalOutput);
+    const result = await run(
+      agent,
+      [{ role: "user", content: userPrompt }],
+    );
+
+    const report: RiskReport = JSON.parse(result.finalOutput ?? "{}");
     console.log("[evaluate-risk] report generated:", { overallScore: report.overallScore, overallLabel: report.overallLabel });
 
     try {
