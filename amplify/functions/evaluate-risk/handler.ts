@@ -206,7 +206,8 @@ Calculate:
 
 export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) => {
   try {
-    const { walletAddress, holdings, portfolioValue = 0 } = event.arguments as any;
+    const { walletAddress, holdings: rawHoldings, portfolioValue = 0 } = event.arguments as any;
+    const holdings = typeof rawHoldings === "string" ? JSON.parse(rawHoldings) : rawHoldings;
     console.log("[evaluate-risk] called with:", { walletAddress, holdingsCount: Array.isArray(holdings) ? holdings.length : 0, portfolioValue });
 
     if (!walletAddress || !holdings || !Array.isArray(holdings)) {
@@ -353,6 +354,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       [{ role: "user", content: userPrompt }],
     );
 
+    console.log("[evaluate-risk] raw result:", { finalOutput: result.finalOutput, type: typeof result.finalOutput });
     const report: RiskReport = result.finalOutput as RiskReport;
     console.log("[evaluate-risk] report generated:", { overallScore: report.overallScore, overallLabel: report.overallLabel });
 
@@ -400,6 +402,11 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
     return report;
   } catch (err) {
     console.error("[evaluate-risk] error:", err);
+    if (err instanceof Error) {
+      console.error("[evaluate-risk] error name:", err.name);
+      console.error("[evaluate-risk] error message:", err.message);
+      console.error("[evaluate-risk] error stack:", err.stack);
+    }
     return null;
   }
 };
