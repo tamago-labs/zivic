@@ -17,10 +17,22 @@ export interface KnownToken {
   balance: number;
   value: number;
   change: number;
+  type: 'pre-ipo' | 'tokenized';
+  slug: string;
+  crypto_id?: string;
 }
 
-function buildTokenIndex(): Record<string, { symbol: string; name: string; image: string }> {
-  const index: Record<string, { symbol: string; name: string; image: string }> = {};
+interface TokenMeta {
+  symbol: string;
+  name: string;
+  image: string;
+  type: 'pre-ipo' | 'tokenized';
+  slug: string;
+  crypto_id?: string;
+}
+
+function buildTokenIndex(): Record<string, TokenMeta> {
+  const index: Record<string, TokenMeta> = {};
 
   for (const asset of (rwaList as any).assets ?? []) {
     for (const token of asset.tokens ?? []) {
@@ -29,6 +41,9 @@ function buildTokenIndex(): Record<string, { symbol: string; name: string; image
           symbol: token.symbol ?? asset.symbol,
           name: token.name ?? asset.name,
           image: token.logo ?? asset.logo ?? '',
+          type: 'tokenized',
+          slug: asset.slug ?? '',
+          crypto_id: token.crypto_id != null ? String(token.crypto_id) : undefined,
         };
       }
     }
@@ -40,6 +55,8 @@ function buildTokenIndex(): Record<string, { symbol: string; name: string; image
         symbol: asset.symbol,
         name: asset.name,
         image: asset.image ?? asset.logo ?? '',
+        type: 'pre-ipo',
+        slug: asset.slug ?? '',
       };
     }
   }
@@ -116,6 +133,9 @@ export function useKnownTokens(address: string | null) {
               balance: bal,
               value: bal * price,
               change,
+              type: meta.type,
+              slug: meta.slug,
+              crypto_id: meta.crypto_id,
             });
           }
         }

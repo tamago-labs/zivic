@@ -29,6 +29,7 @@ export default function Portfolio() {
           knownTokens={knownTokens}
           loading={loading}
           knownLoading={knownLoading}
+          walletAddress={walletAddress}
         />
       </div>
     </div>

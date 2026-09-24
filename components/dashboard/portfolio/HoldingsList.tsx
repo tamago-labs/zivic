@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useBaseTokenPrices } from '../../../app/contexts/BaseTokenPriceProvider';
 import { BASE_TOKENS } from '@/lib/tokens/base-tokens';
 import type { KnownToken } from '@/hooks/useKnownTokens';
@@ -9,24 +10,28 @@ interface HoldingsListProps {
   knownTokens: KnownToken[];
   loading: boolean;
   knownLoading: boolean;
+  walletAddress: string | null;
 }
 
-export default function HoldingsList({ balances, knownTokens, loading, knownLoading }: HoldingsListProps) {
+export default function HoldingsList({ balances, knownTokens, loading, knownLoading, walletAddress }: HoldingsListProps) {
+  const router = useRouter();
   const { getPrice, getChange24h, loading: pricesLoading } = useBaseTokenPrices();
 
-  const holdings = BASE_TOKENS.map((token) => {
-    const balance = parseFloat(balances[token.symbol] ?? '0');
-    const price = getPrice(token.symbol);
-    return {
-      symbol: token.symbol,
-      name: token.name,
-      logo: token.logo,
-      balance,
-      value: balance * price,
-      price,
-      change: getChange24h(token.symbol),
-    };
-  });
+  const holdings = BASE_TOKENS
+    .map((token) => {
+      const balance = parseFloat(balances[token.symbol] ?? '0');
+      const price = getPrice(token.symbol);
+      return {
+        symbol: token.symbol,
+        name: token.name,
+        logo: token.logo,
+        balance,
+        value: balance * price,
+        price,
+        change: getChange24h(token.symbol),
+      };
+    })
+    .filter((h) => walletAddress === null || h.balance > 0);
 
   if (loading || pricesLoading) {
     return (
@@ -85,10 +90,15 @@ export default function HoldingsList({ balances, knownTokens, loading, knownLoad
           );
         })}
 
-        {knownTokens.map((t) => (
+        {knownTokens.map((t) => {
+          const href = t.type === 'pre-ipo'
+            ? `/dashboard/pre-ipo/${t.slug}`
+            : `/dashboard/token/${t.slug}/${t.crypto_id}`;
+          return (
           <div
             key={t.mint}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/[0.02] transition-colors"
+            onClick={() => router.push(href)}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/[0.02] transition-colors cursor-pointer"
           >
             {t.image ? (
               <img src={t.image} alt={t.symbol} className="w-8 h-8 rounded-full" />
@@ -115,7 +125,8 @@ export default function HoldingsList({ balances, knownTokens, loading, knownLoad
               </p>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
