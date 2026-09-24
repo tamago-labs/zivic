@@ -95,7 +95,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
       }).catch(() => {});
 
       let dbRes;
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 60; i++) {
         await new Promise((r) => setTimeout(r, 3000));
         dbRes = await dataClient.models.RiskEvaluation.get({ id: walletAddress });
         if (dbRes.data?.report) {
