@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, TrendingUp, AlertTriangle, Coins, BarChart3 } from "lucide-react";
+import { X, TrendingUp, Coins, BarChart3 } from "lucide-react";
 
 interface RiskReport {
   overallScore: number;
@@ -35,6 +35,13 @@ interface RiskReport {
     symbol: string;
     reason: string;
     suggestedAllocation: number;
+  }>;
+  yieldStrategies?: Array<{
+    token: string;
+    action: string;
+    reason: string;
+    platform: string;
+    apy: number;
   }>;
 }
 
@@ -200,6 +207,7 @@ export default function RiskDrawer({ open, onClose, report, loading, evalError, 
                       </div>
                     </div>
                   </div>
+
                 </div>
               )}
             </div>

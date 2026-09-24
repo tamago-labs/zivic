@@ -98,6 +98,7 @@ const schema = a.schema({
     marketRisk: a.json(),
     tokenRisk: a.json(),
     rebalanceSuggestions: a.json(),
+    yieldStrategies: a.json(),
   }),
 
   evaluateRisk: a
@@ -132,6 +133,7 @@ const schema = a.schema({
       report: a.string().required(),
       overallScore: a.integer().required(),
       rebalanceSuggestions: a.string(),
+      yieldStrategies: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey().to(["read", "create", "update"])]),
 

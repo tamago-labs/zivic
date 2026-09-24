@@ -7,6 +7,8 @@ import { getAmplifyDataClientConfig } from "@aws-amplify/backend/function/runtim
 import { env } from "$amplify/env/evaluate-risk";
 import { PROVIDER_MODEL, PROVIDER_BASE_URL } from "./provider";
 import { getTokenMeta, toTicker, getCryptoId, getIssuerRisk } from "./config/tokens";
+import kaminoData from "./config/kamino-apy-results.json";
+import byrealData from "./config/byreal-pool-results.json";
 
 const { resourceConfig, libraryOptions } = await getAmplifyDataClientConfig(env as any);
 
@@ -62,6 +64,13 @@ interface RiskReport {
     symbol: string;
     reason: string;
     suggestedAllocation: number;
+  }>;
+  yieldStrategies?: Array<{
+    token: string;
+    action: string;
+    reason: string;
+    platform: string;
+    apy: number;
   }>;
 }
 
@@ -487,12 +496,103 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       console.error("[evaluate-risk] rebalance step failed:", rebalErr);
     }
 
+    let yieldStrategies: any[] | undefined;
+    try {
+      const kaminoMap = new Map<string, any>();
+      for (const item of (kaminoData as any).results ?? []) {
+        if (item.symbol) kaminoMap.set(item.symbol.toUpperCase(), item);
+      }
+      const byrealMap = new Map<string, any[]>();
+      for (const item of (byrealData as any).matches ?? []) {
+        if (item.symbol) {
+          const key = item.symbol.toUpperCase();
+          if (!byrealMap.has(key)) byrealMap.set(key, []);
+          byrealMap.get(key)!.push(item);
+        }
+      }
+
+      const heldSymbols = new Set(holdings.filter(h => h.balance > 0 && h.type !== "base").map(h => h.symbol.toUpperCase()));
+      const allYieldSymbols = new Set([...kaminoMap.keys(), ...byrealMap.keys()]);
+
+      const yieldContext: string[] = [];
+      for (const symbol of allYieldSymbols) {
+        const kamino = kaminoMap.get(symbol);
+        const byrealPools = byrealMap.get(symbol) ?? [];
+        const held = heldSymbols.has(symbol);
+
+        let entry = `- ${symbol}${held ? " (HELD)" : ""}: `;
+
+        if (kamino) {
+          const supplyApy = parseFloat(kamino.market?.supplyApy ?? "0") * 100;
+          const borrowApy = parseFloat(kamino.market?.borrowApy ?? "0") * 100;
+          entry += `Kamino supply=${supplyApy.toFixed(2)}%, borrow=${borrowApy.toFixed(2)}%. `;
+        }
+
+        if (byrealPools.length > 0) {
+          const bestPool = byrealPools.reduce((a, b) => (b.apr24h > a.apr24h ? b : a));
+          entry += `Byreal best APR=${bestPool.apr24h.toFixed(2)}% (TVL=$${bestPool.tvl.toLocaleString()}).`;
+        }
+
+        yieldContext.push(entry);
+      }
+
+      if (yieldContext.length > 0) {
+        const yieldStrategyAgent = new Agent({
+          name: "Yield Strategist",
+          model: PROVIDER_MODEL,
+          instructions: `You are Zivic's yield and DeFi strategy advisor. Based on yield data and what the user holds, suggest practical DeFi strategies.
+
+Rules:
+- Only suggest strategies for tokens in the data
+- If user holds a token: suggest earning yield (supply/LP) or borrow-to-accumulate if bullish
+- If user doesn't hold a token: only mention if it has exceptional yield opportunities
+- Be specific: mention exact APY/APR percentages and platforms
+- Keep it concise: 2-4 suggestions max
+- Output ONLY valid JSON: { "strategies": [{ "token": "SYM", "action": "earn" | "borrow_accumulate", "reason": "why", "platform": "Kamino | Byreal | both", "apy": number }] }`,
+          outputType: z.object({
+            strategies: z.array(
+              z.object({
+                token: z.string(),
+                action: z.enum(["earn", "borrow_accumulate"]),
+                reason: z.string(),
+                platform: z.string(),
+                apy: z.number(),
+              })
+            ),
+          }),
+        });
+
+        const yieldPrompt = `User holds: ${[...heldSymbols].join(", ") || "no tokenized stocks"}.
+
+Available yield opportunities:
+${yieldContext.join("\n")}
+
+Suggest DeFi strategies for this user.`;
+
+        const yieldResult = await run(
+          yieldStrategyAgent,
+          [{ role: "user", content: yieldPrompt }],
+          { session },
+        );
+
+        console.log("[evaluate-risk] yield result:", yieldResult.finalOutput);
+        const yieldOutput = yieldResult.finalOutput as any;
+        if (yieldOutput?.strategies) {
+          yieldStrategies = yieldOutput.strategies;
+          report.yieldStrategies = yieldStrategies;
+        }
+      }
+    } catch (yieldErr) {
+      console.error("[evaluate-risk] yield strategy step failed:", yieldErr);
+    }
+
     try {
       const saveData = {
         id: walletAddress,
         report: JSON.stringify(report),
         overallScore: report.overallScore,
         ...(rebalanceSuggestions ? { rebalanceSuggestions: JSON.stringify(rebalanceSuggestions!) } : {}),
+        ...(yieldStrategies ? { yieldStrategies: JSON.stringify(yieldStrategies!) } : {}),
       };
       const existing = await dataClient.models.RiskEvaluation.get({ id: walletAddress });
       if (existing.data) {
@@ -516,7 +616,9 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
         const outputTokens = Math.ceil(JSON.stringify(result.finalOutput ?? {}).length / 4);
         const rebalanceInputTokens = rebalanceSuggestions ? Math.ceil(JSON.stringify(rebalanceSuggestions!).length / 4) : 0;
         const rebalanceOutputTokens = rebalanceSuggestions ? Math.ceil(JSON.stringify(rebalanceSuggestions!).length / 4) : 0;
-        const creditsUsed = (inputTokens + outputTokens + rebalanceInputTokens + rebalanceOutputTokens) * CREDIT_RATE;
+        const yieldInputTokens = yieldStrategies ? Math.ceil(JSON.stringify(yieldStrategies!).length / 4) : 0;
+        const yieldOutputTokens = yieldStrategies ? Math.ceil(JSON.stringify(yieldStrategies!).length / 4) : 0;
+        const creditsUsed = (inputTokens + outputTokens + rebalanceInputTokens + rebalanceOutputTokens + yieldInputTokens + yieldOutputTokens) * CREDIT_RATE;
         const newCredits = Math.max(0, (profile.credits ?? 0) - creditsUsed);
         await dataClient.models.UserProfile.update({
           id: profile.id,
