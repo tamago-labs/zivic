@@ -424,7 +424,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       ).optional(),
     });
 
-    const session = new MemorySession();
+    const riskSession = new MemorySession();
     const agent = new Agent({
       name: "Risk Evaluator",
       model: PROVIDER_MODEL,
@@ -435,7 +435,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
     const result = await run(
       agent,
       [{ role: "user", content: userPrompt }],
-      { session },
+      { session: riskSession, maxTurns: 20 },
     );
 
     console.log("[evaluate-risk] raw result:", { finalOutput: result.finalOutput, type: typeof result.finalOutput });
@@ -480,11 +480,11 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
         sectorExposure
       );
 
-      const rebalanceResult = await run(
-        rebalanceAgent,
-        [{ role: "user", content: rebalancePrompt }],
-        { session },
-      );
+        const rebalanceResult = await run(
+          rebalanceAgent,
+          [{ role: "user", content: rebalancePrompt }],
+          { session: new MemorySession(), maxTurns: 20 },
+        );
 
       console.log("[evaluate-risk] rebalance result:", rebalanceResult.finalOutput);
       const rebalanceOutput = rebalanceResult.finalOutput as any;
@@ -572,7 +572,7 @@ Suggest DeFi strategies for this user.`;
         const yieldResult = await run(
           yieldStrategyAgent,
           [{ role: "user", content: yieldPrompt }],
-          { session },
+          { session: new MemorySession(), maxTurns: 20 },
         );
 
         console.log("[evaluate-risk] yield result:", yieldResult.finalOutput);
