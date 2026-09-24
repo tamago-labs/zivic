@@ -78,11 +78,13 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
       const portfolioValue = holdings.reduce((sum, h) => sum + h.balance * h.price, 0);
 
       console.log('[PortfolioStats] calling evaluateRisk with:', { walletAddress, holdingsCount: holdings.length, portfolioValue });
-      const { data } = await dataClient.mutations.evaluateRisk({
+      const raw = await dataClient.mutations.evaluateRisk({
         walletAddress,
         holdings: JSON.stringify(holdings),
         portfolioValue,
       });
+      console.log("raw:", raw)
+      const { data } = raw
       console.log('[PortfolioStats] evaluateRisk result:', data);
       if (!data || (data as any)?.overallScore == null) {
         console.error('[PortfolioStats] evaluateRisk returned empty response');
@@ -91,7 +93,13 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         setRiskLoading(false);
         return;
       }
-      setRiskReport(data as any);
+      const report = {
+        ...(data as any),
+        concentration: typeof (data as any).concentration === "string" ? JSON.parse((data as any).concentration) : (data as any).concentration,
+        marketRisk: typeof (data as any).marketRisk === "string" ? JSON.parse((data as any).marketRisk) : (data as any).marketRisk,
+        tokenRisk: typeof (data as any).tokenRisk === "string" ? JSON.parse((data as any).tokenRisk) : (data as any).tokenRisk,
+      };
+      setRiskReport(report);
       setDrawerOpen(true);
     } catch (err) {
       console.error('[PortfolioStats] risk eval failed:', err);
