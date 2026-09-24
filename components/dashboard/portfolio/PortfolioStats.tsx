@@ -54,9 +54,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
     if (!walletAddress) return;
     setRiskLoading(true);
     try {
-      console.log("here 1", { balances, knownTokens, loading, knownLoading });
       if (loading || knownLoading) {
-        console.log("[PortfolioStats] data not loaded yet");
         return;
       }
       const holdings = [
@@ -81,19 +79,14 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
       ].filter((h) => h.balance > 0);
 
 
-      console.log("here 2", holdings)
-
       const portfolioValue = holdings.reduce((sum, h) => sum + h.balance * h.price, 0);
 
-      console.log('[PortfolioStats] calling evaluateRisk with:', { walletAddress, holdingsCount: holdings.length, portfolioValue });
       const raw = await dataClient.mutations.evaluateRisk({
         walletAddress,
         holdings: JSON.stringify(holdings),
         portfolioValue,
       });
-      console.log("raw:", raw)
       const { data } = raw
-      console.log('[PortfolioStats] evaluateRisk result:', data);
       if (!data || (data as any)?.overallScore == null) {
         console.log('[PortfolioStats] mutation returned empty, trying DB fallback...');
         const dbRes = await dataClient.models.RiskEvaluation.get({ id: walletAddress });
@@ -175,8 +168,6 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
     .map(([name, value]) => ({ name, pct: knownTokensTotalValue > 0 ? Math.round((value / knownTokensTotalValue) * 100) : 0 }))
     .sort((a, b) => b.pct - a.pct)
     .slice(0, 5);
-
-  console.log("riskReport:", riskReport)
 
   return (
     <>

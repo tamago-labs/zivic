@@ -35,8 +35,8 @@ const ISSUER_RISK_TABLE: Record<string, IssuerRisk> = {
   },
   "PreStocks": {
     level: "Moderate-High",
-    custody: "Varies",
-    description: "Pre-IPO tokens have limited liquidity, valuation uncertainty, and lock-up periods.",
+    custody: "Attested (independent review)",
+    description: "PreStocks tokens have independently attested supply verification. Each token's minted supply is verified by BlockOffice (ACCA-certified) against offchain backing. Pre-IPO tokens still carry limited liquidity, valuation uncertainty, and lock-up period risks.",
   },
 };
 
@@ -71,22 +71,24 @@ for (const asset of (rwaList as any).assets ?? []) {
   }
 }
 
-for (const asset of (preIpoList as any).assets ?? []) {
-  if (asset.mint && asset.symbol) {
-    const meta: TokenMeta = {
-      symbol: asset.symbol,
-      name: asset.name,
-      slug: asset.slug ?? "",
-      mint: asset.mint,
-      type: "pre-ipo",
-      description: asset.description,
-      website: asset.website,
-      tags: asset.tags,
-    };
-    tokenIndex.set(asset.symbol.toUpperCase(), meta);
-    mintIndex.set(asset.mint, meta);
+  for (const asset of (preIpoList as any).assets ?? []) {
+    if (asset.mint && asset.symbol) {
+      const meta: TokenMeta = {
+        symbol: asset.symbol,
+        name: asset.name,
+        slug: asset.slug ?? "",
+        mint: asset.mint,
+        type: "pre-ipo",
+        industry: asset.industry ?? undefined,
+        description: asset.description,
+        website: asset.website,
+        tags: asset.tags,
+        issuer_name: "PreStocks",
+      };
+      tokenIndex.set(asset.symbol.toUpperCase(), meta);
+      mintIndex.set(asset.mint, meta);
+    }
   }
-}
 
 export function getTokenMeta(symbol: string): TokenMeta | undefined {
   return tokenIndex.get(symbol.toUpperCase());
