@@ -205,8 +205,8 @@ Calculate:
 
 export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) => {
   try {
-    const { walletAddress, holdings, portfolioValue } = event.arguments;
-    console.log("[evaluate-risk] called with:", { walletAddress, holdingsCount: holdings?.length, portfolioValue });
+    const { walletAddress, holdings, portfolioValue = 0 } = event.arguments as any;
+    console.log("[evaluate-risk] called with:", { walletAddress, holdingsCount: Array.isArray(holdings) ? holdings.length : 0, portfolioValue });
 
     if (!walletAddress || !holdings || !Array.isArray(holdings)) {
       console.log("[evaluate-risk] missing arguments, returning null");
@@ -310,13 +310,13 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       { largestPct, top2Pct, score: concentrationScore, label: concentrationLabel }
     );
 
-    const result = await run({
-      model: PROVIDER_MODEL,
-      input: [
+    const result = await run(
+      { model: PROVIDER_MODEL },
+      [
         { role: "system", content: RISK_SYSTEM_PROMPT },
         { role: "user", content: userPrompt },
       ],
-      responseFormat: {
+      { responseFormat: {
         type: "json_schema",
         jsonSchema: {
           name: "risk_report",
