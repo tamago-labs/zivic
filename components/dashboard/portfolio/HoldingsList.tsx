@@ -1,19 +1,17 @@
 'use client';
 
-import { useClient } from '@solana/react';
-import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
-import { useSolanaBalances } from '@/hooks/useSolanaBalances';
-import { useKnownTokens } from '@/hooks/useKnownTokens';
 import { useBaseTokenPrices } from '../../../app/contexts/BaseTokenPriceProvider';
 import { BASE_TOKENS } from '@/lib/tokens/base-tokens';
-import type { AppClient } from '@/components/SolanaWalletProvider';
+import type { KnownToken } from '@/hooks/useKnownTokens';
 
-export default function HoldingsList() {
-  const client = useClient<AppClient>();
-  const connected = useConnectedWallet(client);
-  const walletAddress = connected ? String(connected.account.address) : null;
-  const { balances, loading } = useSolanaBalances(walletAddress);
-  const { tokens: knownTokens, loading: knownLoading } = useKnownTokens(walletAddress);
+interface HoldingsListProps {
+  balances: Record<string, string>;
+  knownTokens: KnownToken[];
+  loading: boolean;
+  knownLoading: boolean;
+}
+
+export default function HoldingsList({ balances, knownTokens, loading, knownLoading }: HoldingsListProps) {
   const { getPrice, getChange24h, loading: pricesLoading } = useBaseTokenPrices();
 
   const holdings = BASE_TOKENS.map((token) => {

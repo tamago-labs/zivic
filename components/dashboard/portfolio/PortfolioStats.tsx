@@ -2,36 +2,54 @@
 
 import { useClient } from '@solana/react';
 import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
-import { useSolanaBalances } from '@/hooks/useSolanaBalances';
 import { useBaseTokenPrices } from '../../../app/contexts/BaseTokenPriceProvider';
 import { BASE_TOKENS } from '@/lib/tokens/base-tokens';
 import type { AppClient } from '@/components/SolanaWalletProvider';
+import type { KnownToken } from '@/hooks/useKnownTokens';
 
-const riskScore = 68;
+interface PortfolioStatsProps {
+  balances: Record<string, string>;
+  knownTokens: KnownToken[];
+  loading: boolean;
+  knownLoading: boolean;
+}
 
-const themes = [
-  { name: 'AI / Tech', pct: 70, color: '#6C5CE7' },
-  { name: 'Finance', pct: 15, color: '#3B82F6' },
-  { name: 'Consumer', pct: 15, color: '#00D2A0' },
-];
-
-export default function PortfolioStats() {
-  const client = useClient<AppClient>();
-  const connected = useConnectedWallet(client);
-  const walletAddress = connected ? String(connected.account.address) : null;
-  const { balances } = useSolanaBalances(walletAddress);
+export default function PortfolioStats({ balances, knownTokens, loading, knownLoading }: PortfolioStatsProps) {
   const { getPrice, getChange24h } = useBaseTokenPrices();
 
-  const totalValue = BASE_TOKENS.reduce((sum, token) => {
+  if (loading || knownLoading) {
+    return (
+      <div className="w-72 shrink-0 bg-surface border border-border3/50 rounded-xl p-5 flex flex-col gap-4">
+        <div>
+          <p className="text-[12px] text-white/40 mb-1">Portfolio Value</p>
+          <div className="h-6 w-24 bg-white/[0.05] rounded animate-pulse" />
+          <div className="h-3 w-16 bg-white/[0.05] rounded animate-pulse mt-2" />
+        </div>
+        <div>
+          <p className="text-[12px] text-white/40 mb-1">Risk Score</p>
+          <div className="h-5 w-20 bg-white/[0.05] rounded animate-pulse" />
+        </div>
+      </div>
+    );
+  }
+
+  const baseValue = BASE_TOKENS.reduce((sum, token) => {
     const balance = parseFloat(balances[token.symbol] ?? '0');
     return sum + balance * getPrice(token.symbol);
   }, 0);
 
+  const knownValue = knownTokens.reduce((sum, t) => sum + (t.value ?? 0), 0);
+  const totalValue = baseValue + knownValue;
+
+  const baseChange = BASE_TOKENS.reduce((sum, token) => {
+    const balance = parseFloat(balances[token.symbol] ?? '0');
+    return sum + balance * getChange24h(token.symbol);
+  }, 0);
+
+  const knownChange = knownTokens.reduce((sum, t) => sum + (t.value ?? 0) * (t.change ?? 0) / 100, 0);
+
   const portfolioChange = totalValue > 0
-    ? BASE_TOKENS.reduce((sum, token) => {
-        const balance = parseFloat(balances[token.symbol] ?? '0');
-        return sum + balance * getChange24h(token.symbol);
-      }, 0) / totalValue
+    ? (baseChange + knownChange) / totalValue * 100
     : 0;
 
   return (
@@ -74,3 +92,11 @@ export default function PortfolioStats() {
     </div>
   );
 }
+
+const riskScore = 68;
+
+const themes = [
+  { name: 'AI / Tech', pct: 70, color: '#6C5CE7' },
+  { name: 'Finance', pct: 15, color: '#3B82F6' },
+  { name: 'Consumer', pct: 15, color: '#00D2A0' },
+];
