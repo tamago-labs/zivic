@@ -43,7 +43,11 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
     if (!walletAddress) return;
     setRiskLoading(true);
     try {
-      console.log("here 1")
+      console.log("here 1", { balances, knownTokens, loading, knownLoading });
+      if (loading || knownLoading) {
+        console.log("[PortfolioStats] data not loaded yet");
+        return;
+      }
       const holdings = [
         ...BASE_TOKENS.map((t) => {
           const balance = parseFloat(balances[t.symbol] ?? '0');
