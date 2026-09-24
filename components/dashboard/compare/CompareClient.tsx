@@ -26,6 +26,7 @@ interface TokenOption {
   image?: string;
   industry?: string;
   website?: string;
+  description?: string;
 }
 
 interface CompareData {
@@ -61,6 +62,7 @@ function buildTokenOptions(): TokenOption[] {
           logo: token.logo,
           industry: asset.industry,
           website: asset.website,
+          description: token.description ?? asset.description,
         });
       }
     }
@@ -76,6 +78,7 @@ function buildTokenOptions(): TokenOption[] {
         issuer: "PreStocks",
         image: asset.image,
         industry: asset.industry,
+        description: asset.description,
         website: asset.website,
       });
     }
