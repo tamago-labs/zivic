@@ -207,12 +207,22 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
             {riskReport ? riskReport.overallScore : '--'}<span className="text-[14px] text-white/30">/100</span>
           </p>
           {riskReport ? (
-            <button
-              onClick={() => setDrawerOpen(true)}
-              className="text-[12px] text-accent hover:text-accent/80 transition-colors mt-1 inline-flex items-center gap-1"
-            >
-              View Risk Analysis <ArrowRight className="w-3 h-3" />
-            </button>
+            <div className="space-y-1">
+              <button
+                onClick={() => setDrawerOpen(true)}
+                className="text-[12px] text-accent hover:text-accent/80 transition-colors inline-flex items-center gap-1"
+              >
+                View Risk Analysis <ArrowRight className="w-3 h-3" />
+              </button>
+              {riskReport?.rebalanceSuggestions && (
+                <button
+                  onClick={() => setRebalanceDrawerOpen(true)}
+                  className="text-[12px] text-accent hover:text-accent/80 transition-colors inline-flex items-center gap-1"
+                >
+                  Rebalance Suggestions <ArrowRight className="w-3 h-3" />
+                </button>
+              )}
+            </div>
           ) : (
             <p className="text-[11px] text-white/30 mt-1">
               Evaluate your portfolio to see risk insights. Requires AI credits.
@@ -226,8 +236,8 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
               {industries.map((ind) => (
                 <div key={ind.name}>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[12px] text-white/60">{ind.name}</span>
-                    <span className="text-[12px] font-medium text-white/80">{ind.pct}%</span>
+                    <span className="text-[12px] text-white/60 truncate max-w-[160px]" title={ind.name}>{ind.name}</span>
+                    <span className="text-[12px] font-medium text-white/80 shrink-0 ml-2">{ind.pct}%</span>
                   </div>
                   <div className="h-1.5 bg-white/[0.05] rounded-full overflow-hidden">
                     <div
@@ -238,16 +248,6 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
                 </div>
               ))}
             </div>
-          </div>
-        )}
-        {riskReport?.rebalanceSuggestions && (
-          <div className="mt-3">
-            <button
-              onClick={() => setRebalanceDrawerOpen(true)}
-              className="w-full px-3 py-2 rounded-lg text-[12px] font-medium bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors"
-            >
-              Rebalance Suggestions
-            </button>
           </div>
         )}
       </div>
