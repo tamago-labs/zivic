@@ -12,7 +12,7 @@ import { useClient } from '@solana/react';
 import { useSolanaBalances } from '@/hooks/useSolanaBalances';
 import { useKnownTokens } from '@/hooks/useKnownTokens';
 import RiskDrawer from './RiskDrawer';
-import RebalanceDrawer from './RebalanceDrawer';
+import RebalanceDrawer from '../../portfolio/RebalanceDrawer';
 import type { AppClient } from '@/components/SolanaWalletProvider';
 
 interface PortfolioStatsProps {

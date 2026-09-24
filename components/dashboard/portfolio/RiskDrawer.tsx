@@ -29,6 +29,13 @@ interface RiskReport {
       issuerRisk: string;
     }>;
   };
+  updatedAt?: string;
+  rebalanceSuggestions?: Array<{
+    action: string;
+    symbol: string;
+    reason: string;
+    suggestedAllocation: number;
+  }>;
 }
 
 
