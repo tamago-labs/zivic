@@ -2,6 +2,7 @@ import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 import { priceTracker } from "../functions/price-tracker/resource";
 import { chatApiFunction } from "../functions/chat-api/resource";
 import { prestockTracker } from "../functions/prestock-tracker/resource";
+import { evaluateRiskFunction } from "../functions/evaluate-risk/resource";
 
 const schema = a.schema({
   PriceSnapshot: a
@@ -89,6 +90,17 @@ const schema = a.schema({
       index("walletAddress").queryField("bySessionWallet"),
     ]),
 
+  evaluateRisk: a
+    .query()
+    .arguments({
+      walletAddress: a.string(),
+      holdings: a.json(),
+      portfolioValue: a.float(),
+    })
+    .returns(a.json())
+    .authorization((allow) => [allow.guest()])
+    .handler(a.handler.function(evaluateRiskFunction)),
+
   NewsArticle: a
     .model({
       title: a.string().required(),
@@ -104,10 +116,23 @@ const schema = a.schema({
       index("publishedAt").queryField("byPublishedAt"),
     ]),
 
+  RiskEvaluation: a
+    .model({
+      walletAddress: a.string().required(),
+      report: a.json().required(),
+      overallScore: a.integer().required(),
+      createdAt: a.datetime().required(),
+    })
+    .authorization((allow) => [allow.publicApiKey().to(["read", "create"])])
+    .secondaryIndexes((index) => [
+      index("walletAddress").queryField("byWallet"),
+    ]),
+
 }).authorization((allow) => [
   allow.resource(priceTracker),
   allow.resource(chatApiFunction),
   allow.resource(prestockTracker),
+  allow.resource(evaluateRiskFunction),
 ]);
 
 export type Schema = ClientSchema<typeof schema>;

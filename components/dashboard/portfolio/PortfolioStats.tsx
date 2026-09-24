@@ -1,21 +1,88 @@
 'use client';
 
-import { useClient } from '@solana/react';
-import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { generateClient } from 'aws-amplify/data';
+import type { Schema } from '@/amplify/data/resource';
 import { useBaseTokenPrices } from '../../../app/contexts/BaseTokenPriceProvider';
 import { BASE_TOKENS } from '@/lib/tokens/base-tokens';
+import { useConnectedWallet } from '@solana/kit-plugin-wallet/react';
+import { useClient } from '@solana/react';
+import { useSolanaBalances } from '@/hooks/useSolanaBalances';
+import { useKnownTokens } from '@/hooks/useKnownTokens';
+import RiskDrawer from './RiskDrawer';
 import type { AppClient } from '@/components/SolanaWalletProvider';
-import type { KnownToken } from '@/hooks/useKnownTokens';
 
 interface PortfolioStatsProps {
   balances: Record<string, string>;
-  knownTokens: KnownToken[];
+  knownTokens: any[];
   loading: boolean;
   knownLoading: boolean;
 }
 
+const dataClient = generateClient<Schema>();
+
 export default function PortfolioStats({ balances, knownTokens, loading, knownLoading }: PortfolioStatsProps) {
+  const client = useClient<AppClient>();
+  const connected = useConnectedWallet(client);
+  const walletAddress = connected ? String(connected.account.address) : null;
   const { getPrice, getChange24h } = useBaseTokenPrices();
+  const [riskReport, setRiskReport] = useState<any>(null);
+  const [riskLoading, setRiskLoading] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!walletAddress) return;
+    dataClient.models.RiskEvaluation.list({
+      filter: { walletAddress: { eq: walletAddress } },
+      limit: 1,
+    }).then((res) => {
+      if (res.data?.[0]) setRiskReport(res.data[0].report);
+    });
+  }, [walletAddress]);
+
+  const handleEvaluate = async () => {
+    if (!walletAddress) return;
+    setRiskLoading(true);
+    try {
+      const holdings = [
+        ...BASE_TOKENS.map((t) => {
+          const balance = parseFloat(balances[t.symbol] ?? '0');
+          return {
+            symbol: t.symbol,
+            balance,
+            price: getPrice(t.symbol),
+            change24h: getChange24h(t.symbol),
+            type: 'base' as const,
+          };
+        }),
+        ...knownTokens.map((t) => ({
+          symbol: t.symbol,
+          balance: t.balance,
+          price: t.price,
+          change24h: t.change,
+          type: t.type,
+          mint: t.mint,
+        })),
+      ].filter((h) => h.balance > 0);
+
+      const portfolioValue = holdings.reduce((sum, h) => sum + h.balance * h.price, 0);
+
+      const { data } = await dataClient.queries.evaluateRisk({
+        walletAddress,
+        holdings,
+        portfolioValue,
+      });
+
+      setRiskReport((data as any)?.report ?? null);
+      setDrawerOpen(true);
+    } catch (err) {
+      console.error('[PortfolioStats] risk eval failed:', err);
+    } finally {
+      setRiskLoading(false);
+    }
+  };
 
   if (loading || knownLoading) {
     return (
@@ -47,53 +114,73 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
   }, 0);
 
   const knownChange = knownTokens.reduce((sum, t) => sum + (t.value ?? 0) * (t.change ?? 0) / 100, 0);
-
-  const portfolioChange = totalValue > 0
-    ? (baseChange + knownChange) / totalValue * 100
-    : 0;
+  const portfolioChange = totalValue > 0 ? (baseChange + knownChange) / totalValue * 100 : 0;
 
   return (
-    <div className="w-72 shrink-0 bg-surface border border-border3/50 rounded-xl p-5 flex flex-col gap-4">
-      <div>
-        <p className="text-[12px] text-white/40 mb-1">Portfolio Value</p>
-        <p className="text-[24px] font-display font-bold">
-          ${totalValue.toLocaleString(undefined, { maximumFractionDigits: 2 })}
-        </p>
-        <p className={`text-[13px] mt-1 ${portfolioChange >= 0 ? 'text-accent2' : 'text-warn2'}`}>
-          {portfolioChange >= 0 ? '+' : ''}{portfolioChange.toFixed(2)}% today
-        </p>
-      </div>
-      <div>
-        <p className="text-[12px] text-white/40 mb-1">Risk Score</p>
-        <p className="text-[20px] font-display font-bold">
-          {riskScore}<span className="text-[14px] text-white/30">/100</span>
-        </p>
-        <p className="text-[12px] text-white/40 mt-0.5">Balanced</p>
-      </div>
-      <div className="mt-auto">
-        <p className="text-[12px] text-white/40 mb-3">Theme Exposure</p>
-        <div className="space-y-3">
-          {themes.map((theme) => (
-            <div key={theme.name}>
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-[12px] text-white/60">{theme.name}</span>
-                <span className="text-[12px] font-medium text-white/80">{theme.pct}%</span>
+    <>
+      <div className="w-72 shrink-0 bg-surface border border-border3/50 rounded-xl p-5 flex flex-col gap-4">
+        <div>
+          <p className="text-[12px] text-white/40 mb-1">Portfolio Value</p>
+          <p className="text-[24px] font-display font-bold">
+            ${totalValue.toLocaleString(undefined, { maximumFractionDigits: 2 })}
+          </p>
+          <p className={`text-[13px] mt-1 ${portfolioChange >= 0 ? 'text-accent2' : 'text-warn2'}`}>
+            {portfolioChange >= 0 ? '+' : ''}{portfolioChange.toFixed(2)}% today
+          </p>
+        </div>
+        <div>
+          <div className="flex items-center justify-between mb-1">
+            <p className="text-[12px] text-white/40">Risk Score</p>
+            <button
+              onClick={handleEvaluate}
+              disabled={riskLoading}
+              className="text-[10px] text-accent hover:text-accent/80 transition-colors"
+            >
+              {riskLoading ? 'Evaluating...' : 'Evaluate'}
+            </button>
+          </div>
+          <p className="text-[20px] font-display font-bold">
+            {riskReport ? riskReport.overallScore : '--'}<span className="text-[14px] text-white/30">/100</span>
+          </p>
+          {riskReport && (
+            <button
+              onClick={() => setDrawerOpen(true)}
+              className="text-[12px] text-white/40 hover:text-white/60 transition-colors mt-0.5"
+            >
+              View Risk Analysis →
+            </button>
+          )}
+        </div>
+        <div className="mt-auto">
+          <p className="text-[12px] text-white/40 mb-3">Theme Exposure</p>
+          <div className="space-y-3">
+            {themes.map((theme) => (
+              <div key={theme.name}>
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-[12px] text-white/60">{theme.name}</span>
+                  <span className="text-[12px] font-medium text-white/80">{theme.pct}%</span>
+                </div>
+                <div className="h-1.5 bg-white/[0.05] rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${theme.pct}%`, backgroundColor: theme.color }}
+                  />
+                </div>
               </div>
-              <div className="h-1.5 bg-white/[0.05] rounded-full overflow-hidden">
-                <div
-                  className="h-full rounded-full"
-                  style={{ width: `${theme.pct}%`, backgroundColor: theme.color }}
-                />
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+
+      <RiskDrawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        report={riskReport}
+        loading={riskLoading}
+      />
+    </>
   );
 }
-
-const riskScore = 68;
 
 const themes = [
   { name: 'AI / Tech', pct: 70, color: '#6C5CE7' },

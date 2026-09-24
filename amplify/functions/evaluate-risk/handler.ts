@@ -1,0 +1,393 @@
+import type { Schema } from "../../data/resource";
+import { run } from "@openai/agents";
+import { generateClient } from "aws-amplify/data";
+import { Amplify } from "aws-amplify";
+import { getAmplifyDataClientConfig } from "@aws-amplify/backend/function/runtime";
+import { env } from "$amplify/env/evaluate-risk";
+import { PROVIDER_MODEL } from "./provider";
+import { getTokenMeta, toTicker, getCryptoId, getIssuerRisk } from "./config/tokens";
+
+const { resourceConfig, libraryOptions } = await getAmplifyDataClientConfig(env as any);
+Amplify.configure(resourceConfig, libraryOptions);
+
+const dataClient = generateClient<Schema>();
+
+const CMC_API_KEY = process.env.CMC_API_KEY ?? "";
+const CMC_BASE_URL = "https://pro-api.coinmarketcap.com";
+
+interface Holding {
+  symbol: string;
+  balance: number;
+  price: number;
+  change24h: number;
+  type: "tokenized" | "pre-ipo" | "base";
+  mint?: string;
+}
+
+interface RiskReport {
+  overallScore: number;
+  overallLabel: string;
+  overallDescription: string;
+  concentration: {
+    score: number;
+    label: string;
+    largestPosition: { symbol: string; percentage: number } | null;
+    top2Percentage: number;
+  };
+  marketRisk: {
+    score: number;
+    label: string;
+    equityVolatility: { score: number; label: string };
+    sectorConcentration: { score: number; label: string };
+    marketCorrelation: { score: number; label: string };
+  };
+  tokenRisk: {
+    score: number;
+    label: string;
+    tokens: Array<{
+      symbol: string;
+      liquidityTier: string;
+      issuerRisk: string;
+    }>;
+  };
+}
+
+async function fetchCMCMetadata(symbols: string[]): Promise<Record<string, any>> {
+  if (!symbols.length || !CMC_API_KEY) return {};
+  try {
+    const url = new URL(`${CMC_BASE_URL}/v2/cryptocurrency/info`);
+    url.searchParams.set("symbol", symbols.join(","));
+    const res = await fetch(url.toString(), {
+      headers: { "X-CMC_PRO_API_KEY": CMC_API_KEY, Accept: "application/json" },
+    });
+    const json = await res.json();
+    return json.data ?? {};
+  } catch (err) {
+    console.error("[evaluate-risk] CMC metadata fetch failed:", err);
+    return {};
+  }
+}
+
+async function fetchCMCMarketData(cryptoIds: number[]): Promise<Record<number, any>> {
+  if (!cryptoIds.length || !CMC_API_KEY) return {};
+  try {
+    const url = new URL(`${CMC_BASE_URL}/v2/cryptocurrency/quotes/latest`);
+    url.searchParams.set("id", cryptoIds.join(","));
+    url.searchParams.set("convert", "USD");
+    const res = await fetch(url.toString(), {
+      headers: { "X-CMC_PRO_API_KEY": CMC_API_KEY, Accept: "application/json" },
+    });
+    const json = await res.json();
+    return json.data ?? {};
+  } catch (err) {
+    console.error("[evaluate-risk] CMC market data fetch failed:", err);
+    return {};
+  }
+}
+
+async function fetchCMCOHLCV(cryptoId: number, interval: string = "1d", limit: number = 30): Promise<any[]> {
+  if (!CMC_API_KEY) return [];
+  try {
+    const end = new Date();
+    const start = new Date(end.getTime() - 30 * 24 * 60 * 60 * 1000);
+    const url = new URL(`${CMC_BASE_URL}/v2/cryptocurrency/ohlcv/historical`);
+    url.searchParams.set("id", String(cryptoId));
+    url.searchParams.set("convert", "USD");
+    url.searchParams.set("time_start", start.toISOString());
+    url.searchParams.set("time_end", end.toISOString());
+    url.searchParams.set("interval", interval);
+    url.searchParams.set("count", String(limit));
+    const res = await fetch(url.toString(), {
+      headers: { "X-CMC_PRO_API_KEY": CMC_API_KEY, Accept: "application/json" },
+    });
+    const json = await res.json();
+    const data = json.data;
+    if (!data?.quotes) return [];
+    return data.quotes;
+  } catch (err) {
+    console.error("[evaluate-risk] CMC OHLCV fetch failed:", err);
+    return [];
+  }
+}
+
+async function fetchPreStockData(): Promise<Record<string, any>> {
+  try {
+    const res = await dataClient.models.PreStock.list({});
+    const map: Record<string, any> = {};
+    for (const item of res.data ?? []) {
+      if (item.symbol) map[item.symbol] = item;
+    }
+    return map;
+  } catch (err) {
+    console.error("[evaluate-risk] PreStock DB fetch failed:", err);
+    return {};
+  }
+}
+
+function calculateVolatility(ohlcv: any[]): number {
+  if (ohlcv.length < 2) return 0;
+  const closes = ohlcv.map((q: any) => q.quote?.USD?.close ?? 0).filter((c: number) => c > 0);
+  if (closes.length < 2) return 0;
+  const returns: number[] = [];
+  for (let i = 1; i < closes.length; i++) {
+    returns.push((closes[i] - closes[i - 1]) / closes[i - 1]);
+  }
+  const mean = returns.reduce((a, b) => a + b, 0) / returns.length;
+  const variance = returns.reduce((sum, r) => sum + (r - mean) ** 2, 0) / returns.length;
+  return Math.sqrt(variance) * 100;
+}
+
+const RISK_SYSTEM_PROMPT = `You are Zivic's portfolio risk analysis engine. You analyze tokenized stock portfolios on Solana and produce professional, structured risk evaluations.
+
+Your analysis must be:
+- Data-driven: base all scores on the actual portfolio data provided
+- Professional: use institutional-grade risk terminology
+- Concise: descriptions should be 1-2 sentences, not paragraphs
+- Actionable: highlight specific concerns a user should understand
+
+Score range: 0-100 where:
+- 0-30: Low risk (stable, well-diversified)
+- 31-60: Moderate risk (some concentration or volatility concerns)
+- 61-80: High risk (significant concentration, high volatility, or liquidity concerns)
+- 81-100: Very high risk (extreme concentration, illiquid, or highly volatile)
+
+You MUST respond with ONLY valid JSON matching the requested schema. No markdown, no extra text.`;
+
+function buildUserPrompt(
+  holdings: Holding[],
+  tokenizedContext: any[],
+  preIpoContext: any[],
+  portfolioValue: number,
+  concentration: { largestPct: number; top2Pct: number; score: number; label: string }
+): string {
+  const base = holdings.filter((h) => h.type === "base");
+
+  const formatBase = (h: Holding) =>
+    `- ${h.symbol}: balance=${h.balance.toFixed(4)}, price=$${h.price.toFixed(2)}, 24h change=${h.change24h.toFixed(2)}%, value=$${(h.balance * h.price).toFixed(2)}`;
+
+  const formatTokenized = (ctx: any) =>
+    `- ${ctx.symbol} (${ctx.ticker}): balance=${ctx.balance.toFixed(4)}, price=$${ctx.price.toFixed(2)}, value=$${ctx.value.toFixed(2)}, volatility=${ctx.volatility.toFixed(1)}%, sector="${ctx.sector || "N/A"}", liquidityTier="${ctx.liquidityTier}", issuer="${ctx.issuer}", issuerRisk="${ctx.issuerRiskLevel}", marketCap=$${ctx.marketCap?.toLocaleString() || "N/A"}`;
+
+  const formatPreIpo = (ctx: any) =>
+    `- ${ctx.symbol}: balance=${ctx.balance.toFixed(4)}, price=$${ctx.price.toFixed(2)}, value=$${ctx.value.toFixed(2)}, markPrice=$${ctx.markPrice?.toFixed(2) || "N/A"}, markValuation=$${ctx.markValuation?.toLocaleString() || "N/A}", issuer="${ctx.issuer}", issuerRisk="${ctx.issuerRiskLevel}"`;
+
+  return `Analyze the following portfolio for risk evaluation.
+
+Portfolio Value: $${portfolioValue.toFixed(2)}
+
+CONCENTRATION (pre-computed, use these exact values):
+- Largest position: ${concentration.largestPct.toFixed(1)}%
+- Top 2 positions: ${concentration.top2Pct.toFixed(1)}%
+- Concentration score: ${concentration.score}/100 (${concentration.label})
+
+TOKENIZED STOCKS (Solana tokens backed by real equities):
+${tokenizedContext.map(formatTokenized).join("\n") || "None"}
+
+PRE-IPO TOKENS (pre-IPO equity tokens, limited market data):
+${preIpoContext.map(formatPreIpo).join("\n") || "None"}
+
+BASE TOKENS (SOL, USDC, USDT, USDG):
+${base.map(formatBase).join("\n") || "None"}
+
+Use the pre-computed concentration values above. Do NOT recalculate them.
+For tokenized stocks, consider: equity volatility, sector concentration, market cap, liquidity tier, and issuer risk.
+For pre-IPO tokens, consider: limited liquidity, valuation uncertainty, and issuer risk.
+For base tokens, consider: stablecoin depeg risk and SOL volatility.
+
+Calculate:
+1. Overall risk score (weighted by position size, using the concentration score above)
+2. Market risk (equity volatility from OHLCV, sector concentration, correlation)
+3. Token/liquidity risk (per-token liquidity tier and issuer risk assessment)`;
+}
+
+export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) => {
+  try {
+    const { walletAddress, holdings, portfolioValue } = event.arguments;
+    console.log("[evaluate-risk] called with:", { walletAddress, holdingsCount: holdings?.length, portfolioValue });
+
+    if (!walletAddress || !holdings || !Array.isArray(holdings)) {
+      console.log("[evaluate-risk] missing arguments, returning null");
+      return { report: null };
+    }
+
+    const tokenized = holdings.filter((h) => h.type === "tokenized" && h.balance > 0);
+    const preIpo = holdings.filter((h) => h.type === "pre-ipo" && h.balance > 0);
+    console.log("[evaluate-risk] tokenized:", tokenized.map((h) => h.symbol));
+    console.log("[evaluate-risk] preIpo:", preIpo.map((h) => h.symbol));
+
+    const tokenizedSymbols = tokenized.map((h) => h.symbol);
+    const [cmcMetadata, preStockData] = await Promise.all([
+      fetchCMCMetadata(tokenizedSymbols),
+      fetchPreStockData(),
+    ]);
+    console.log("[evaluate-risk] cmcMetadata keys:", Object.keys(cmcMetadata));
+    console.log("[evaluate-risk] preStockData keys:", Object.keys(preStockData));
+
+    const cryptoIds = tokenizedSymbols
+      .map((s) => getCryptoId(s))
+      .filter((id): id is number => id != null);
+    console.log("[evaluate-risk] cryptoIds:", cryptoIds);
+
+    const [cmcMarketData, ...ohlcvResults] = await Promise.all([
+      fetchCMCMarketData(cryptoIds),
+      ...cryptoIds.map((id) => fetchCMCOHLCV(id, "1d", 30)),
+    ]);
+    console.log("[evaluate-risk] cmcMarketData keys:", Object.keys(cmcMarketData));
+    console.log("[evaluate-risk] ohlcv counts:", ohlcvResults.map((r) => r.length));
+
+    const allHoldings = holdings.filter((h) => h.balance > 0);
+    const totalVal = allHoldings.reduce((sum, h) => sum + h.balance * h.price, 0);
+
+    const sortedByValue = [...allHoldings].sort((a, b) => b.balance * b.price - a.balance * a.price);
+    const largestHolding = sortedByValue[0];
+    const top2Value = sortedByValue.slice(0, 2).reduce((sum, h) => sum + h.balance * h.price, 0);
+    const largestPct = totalVal > 0 && largestHolding ? (largestHolding.balance * largestHolding.price / totalVal) * 100 : 0;
+    const top2Pct = totalVal > 0 ? (top2Value / totalVal) * 100 : 0;
+
+    const concentrationScore = Math.min(100, Math.round(largestPct * 0.6 + top2Pct * 0.4));
+    const concentrationLabel = concentrationScore <= 20 ? "Low" : concentrationScore <= 40 ? "Moderate" : concentrationScore <= 60 ? "High" : "Very High";
+
+    const tokenizedContext = tokenized.map((h, i) => {
+      const meta = getTokenMeta(h.symbol);
+      const ticker = toTicker(h.symbol);
+      const cmcId = getCryptoId(h.symbol);
+      const marketData = cmcId ? cmcMarketData[cmcId] : null;
+      const metadata = cmcMetadata[h.symbol] ?? cmcMetadata[ticker];
+      const ohlcv = ohlcvResults[i] ?? [];
+      const volatility = calculateVolatility(ohlcv);
+      const volume24h = marketData?.quote?.USD?.volume_24h ?? 0;
+      const liquidityTier = volume24h > 5000000 ? "High" : volume24h > 500000 ? "Moderate" : "Low";
+      const issuerRisk = getIssuerRisk(meta?.issuer_name);
+
+      return {
+        symbol: h.symbol,
+        ticker,
+        balance: h.balance,
+        price: h.price,
+        value: h.balance * h.price,
+        volatility,
+        sector: metadata?.sector ?? meta?.sector ?? "N/A",
+        liquidityTier,
+        marketCap: marketData?.quote?.USD?.market_cap,
+        description: metadata?.description ?? meta?.description,
+        issuer: meta?.issuer_name ?? "Unknown",
+        issuerRiskLevel: issuerRisk?.level ?? "Unknown",
+        issuerDescription: issuerRisk?.description,
+      };
+    });
+
+    const preIpoContext = preIpo.map((h) => {
+      const meta = getTokenMeta(h.symbol);
+      const dbData = preStockData[h.symbol];
+      const markPrice = dbData?.markPrice ?? 0;
+      const tokenPrice = h.price;
+      const issuerRisk = getIssuerRisk(meta?.issuer_name);
+
+      return {
+        symbol: h.symbol,
+        balance: h.balance,
+        price: tokenPrice,
+        value: h.balance * tokenPrice,
+        markPrice,
+        markValuation: dbData?.markValuation,
+        impliedValuation: dbData?.impliedValuation,
+        description: meta?.description,
+        liquidityTier: "Low",
+        issuer: meta?.issuer_name ?? "Unknown",
+        issuerRiskLevel: issuerRisk?.level ?? "Unknown",
+        issuerDescription: issuerRisk?.description,
+      };
+    });
+
+    const userPrompt = buildUserPrompt(
+      holdings,
+      tokenizedContext,
+      preIpoContext,
+      portfolioValue,
+      { largestPct, top2Pct, score: concentrationScore, label: concentrationLabel }
+    );
+
+    const result = await run({
+      model: PROVIDER_MODEL,
+      input: [
+        { role: "system", content: RISK_SYSTEM_PROMPT },
+        { role: "user", content: userPrompt },
+      ],
+      responseFormat: {
+        type: "json_schema",
+        jsonSchema: {
+          name: "risk_report",
+          schema: {
+            type: "object",
+            properties: {
+              overallScore: { type: "number" },
+              overallLabel: { type: "string" },
+              overallDescription: { type: "string" },
+              concentration: {
+                type: "object",
+                properties: {
+                  score: { type: "number" },
+                  label: { type: "string" },
+                  largestPosition: {
+                    type: ["object", "null"],
+                    properties: {
+                      symbol: { type: "string" },
+                      percentage: { type: "number" },
+                    },
+                  },
+                  top2Percentage: { type: "number" },
+                },
+              },
+              marketRisk: {
+                type: "object",
+                properties: {
+                  score: { type: "number" },
+                  label: { type: "string" },
+                  equityVolatility: {
+                    type: "object",
+                    properties: { score: { type: "number" }, label: { type: "string" } },
+                  },
+                  sectorConcentration: {
+                    type: "object",
+                    properties: { score: { type: "number" }, label: { type: "string" } },
+                  },
+                  marketCorrelation: {
+                    type: "object",
+                    properties: { score: { type: "number" }, label: { type: "string" } },
+                  },
+                },
+              },
+              tokenRisk: {
+                type: "object",
+                properties: {
+                  score: { type: "number" },
+                  label: { type: "string" },
+                  tokens: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                      properties: {
+                        symbol: { type: "string" },
+                        liquidityTier: { type: "string" },
+                        issuerRisk: { type: "string" },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            required: ["overallScore", "overallLabel", "overallDescription", "concentration", "marketRisk", "tokenRisk"],
+          },
+        },
+      },
+    });
+
+    const report: RiskReport = JSON.parse(result.finalOutput);
+    console.log("[evaluate-risk] report generated:", { overallScore: report.overallScore, overallLabel: report.overallLabel });
+
+    return { report };
+  } catch (err) {
+    console.error("[evaluate-risk] error:", err);
+    return { report: null };
+  }
+};
