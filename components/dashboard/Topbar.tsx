@@ -38,6 +38,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/dashboard/portfolio": "Your AI-Powered Portfolio",
   "/dashboard/explore": "Explore Tokenized Stocks on Solana",
   "/dashboard/pre-ipo": "Pre-IPO Markets via PreStocks",
+  "/dashboard/compare": "Side-by-Side Token Comparison",
   "/dashboard/alerts": "Stay Notified",
 };
 
