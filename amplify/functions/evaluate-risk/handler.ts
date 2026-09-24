@@ -1,5 +1,6 @@
 import type { Schema } from "../../data/resource";
 import { run, Agent } from "@openai/agents";
+import { z } from "zod";
 import { generateClient } from "aws-amplify/data";
 import { Amplify } from "aws-amplify";
 import { getAmplifyDataClientConfig } from "@aws-amplify/backend/function/runtime";
@@ -310,77 +311,41 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       { largestPct, top2Pct, score: concentrationScore, label: concentrationLabel }
     );
 
+    const riskReportSchema = z.object({
+      overallScore: z.number(),
+      overallLabel: z.string(),
+      overallDescription: z.string(),
+      concentration: z.object({
+        score: z.number(),
+        label: z.string(),
+        largestPosition: z.object({ symbol: z.string(), percentage: z.number() }).nullable(),
+        top2Percentage: z.number(),
+      }),
+      marketRisk: z.object({
+        score: z.number(),
+        label: z.string(),
+        equityVolatility: z.object({ score: z.number(), label: z.string() }),
+        sectorConcentration: z.object({ score: z.number(), label: z.string() }),
+        marketCorrelation: z.object({ score: z.number(), label: z.string() }),
+      }),
+      tokenRisk: z.object({
+        score: z.number(),
+        label: z.string(),
+        tokens: z.array(
+          z.object({
+            symbol: z.string(),
+            liquidityTier: z.string(),
+            issuerRisk: z.string(),
+          })
+        ),
+      }),
+    });
+
     const agent = new Agent({
       name: "Risk Evaluator",
       model: PROVIDER_MODEL,
       instructions: RISK_SYSTEM_PROMPT,
-      responseFormat: {
-        type: "json_schema",
-        jsonSchema: {
-          name: "risk_report",
-          schema: {
-            type: "object",
-            properties: {
-              overallScore: { type: "number" },
-              overallLabel: { type: "string" },
-              overallDescription: { type: "string" },
-              concentration: {
-                type: "object",
-                properties: {
-                  score: { type: "number" },
-                  label: { type: "string" },
-                  largestPosition: {
-                    type: ["object", "null"],
-                    properties: {
-                      symbol: { type: "string" },
-                      percentage: { type: "number" },
-                    },
-                  },
-                  top2Percentage: { type: "number" },
-                },
-              },
-              marketRisk: {
-                type: "object",
-                properties: {
-                  score: { type: "number" },
-                  label: { type: "string" },
-                  equityVolatility: {
-                    type: "object",
-                    properties: { score: { type: "number" }, label: { type: "string" } },
-                  },
-                  sectorConcentration: {
-                    type: "object",
-                    properties: { score: { type: "number" }, label: { type: "string" } },
-                  },
-                  marketCorrelation: {
-                    type: "object",
-                    properties: { score: { type: "number" }, label: { type: "string" } },
-                  },
-                },
-              },
-              tokenRisk: {
-                type: "object",
-                properties: {
-                  score: { type: "number" },
-                  label: { type: "string" },
-                  tokens: {
-                    type: "array",
-                    items: {
-                      type: "object",
-                      properties: {
-                        symbol: { type: "string" },
-                        liquidityTier: { type: "string" },
-                        issuerRisk: { type: "string" },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-            required: ["overallScore", "overallLabel", "overallDescription", "concentration", "marketRisk", "tokenRisk"],
-          },
-        },
-      },
+      outputType: riskReportSchema,
     });
 
     const result = await run(
