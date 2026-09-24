@@ -97,6 +97,7 @@ const schema = a.schema({
     concentration: a.json(),
     marketRisk: a.json(),
     tokenRisk: a.json(),
+    updatedAt: a.string(),
   }),
 
   evaluateRisk: a
