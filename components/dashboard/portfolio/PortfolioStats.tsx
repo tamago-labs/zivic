@@ -160,49 +160,31 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         <div>
           <div className="flex items-center justify-between mb-1">
             <p className="text-[12px] text-white/40">Risk Score</p>
-            <button
-              onClick={handleEvaluate}
-              disabled={riskLoading}
-              className="text-[10px] text-accent hover:text-accent/80 transition-colors"
-            >
-              {riskLoading ? 'Evaluating...' : 'Evaluate'}
-            </button>
+            {!riskReport && (
+              <button
+                onClick={handleEvaluate}
+                disabled={riskLoading}
+                className="text-[10px] text-accent hover:text-accent/80 transition-colors"
+              >
+                {riskLoading ? 'Evaluating...' : 'Evaluate'}
+              </button>
+            )}
           </div>
           <p className="text-[20px] font-display font-bold">
             {riskReport ? riskReport.overallScore : '--'}<span className="text-[14px] text-white/30">/100</span>
           </p>
-          {riskReport && (
-            <div className="flex items-center justify-between mt-0.5">
-              <button
-                onClick={() => setDrawerOpen(true)}
-                className="text-[12px] text-accent hover:text-accent/80 transition-colors inline-flex items-center gap-1"
-              >
-                View Risk Analysis <ArrowRight className="w-3 h-3" />
-              </button>
-              <span className="text-[11px] text-white/30">
-                Updated {new Date(riskReport.updatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-              </span>
-            </div>
+          {riskReport ? (
+            <button
+              onClick={() => setDrawerOpen(true)}
+              className="text-[12px] text-accent hover:text-accent/80 transition-colors mt-1 inline-flex items-center gap-1"
+            >
+              View Risk Analysis <ArrowRight className="w-3 h-3" />
+            </button>
+          ) : (
+            <p className="text-[11px] text-white/30 mt-1">
+              Evaluate your portfolio to see risk insights. Requires AI credits.
+            </p>
           )}
-        </div>
-        <div className="mt-auto">
-          <p className="text-[12px] text-white/40 mb-3">Theme Exposure</p>
-          <div className="space-y-3">
-            {themes.map((theme) => (
-              <div key={theme.name}>
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-[12px] text-white/60">{theme.name}</span>
-                  <span className="text-[12px] font-medium text-white/80">{theme.pct}%</span>
-                </div>
-                <div className="h-1.5 bg-white/[0.05] rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full"
-                    style={{ width: `${theme.pct}%`, backgroundColor: theme.color }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -212,6 +194,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         report={riskReport}
         loading={riskLoading}
         evalError={evalError}
+        onEvaluate={handleEvaluate}
       />
     </>
   );

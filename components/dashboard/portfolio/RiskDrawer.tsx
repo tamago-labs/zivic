@@ -39,6 +39,7 @@ interface RiskDrawerProps {
   report: RiskReport | null;
   loading: boolean;
   evalError?: string | null;
+  onEvaluate?: () => void;
 }
 
 function ScoreBar({ score, label }: { score: number; label: string }) {
@@ -65,7 +66,7 @@ function SectionTitle({ icon: Icon, title }: { icon: any; title: string }) {
   );
 }
 
-export default function RiskDrawer({ open, onClose, report, loading, evalError }: RiskDrawerProps) {
+export default function RiskDrawer({ open, onClose, report, loading, evalError, onEvaluate }: RiskDrawerProps) {
   return (
     <AnimatePresence>
       {open && (
@@ -84,28 +85,33 @@ export default function RiskDrawer({ open, onClose, report, loading, evalError }
             className="absolute right-0 top-0 h-full w-full max-w-md bg-surface border-l border-border3/50 overflow-y-auto"
           >
             <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between mb-2">
                 <div>
                   <h2 className="text-[18px] font-display font-bold text-white/90">Portfolio Risk Analysis</h2>
                   <p className="text-[12px] text-white/40 mt-0.5">How Zivic evaluates your tokenized equity exposure</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  {report && (
-                    <button
-                      onClick={onEvaluate}
-                      className="px-3 py-1.5 rounded-lg text-[12px] font-medium bg-accent text-white hover:bg-accent/80 transition-colors"
-                    >
-                      Evaluate Again
-                    </button>
-                  )}
-                  <button
-                    onClick={onClose}
-                    className="p-2 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/[0.04] transition-colors"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
+                <button
+                  onClick={onClose}
+                  className="p-2 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/[0.04] transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
+              {report && (
+                <div className="flex items-center justify-between mb-4">
+                  <button
+                    onClick={onEvaluate}
+                    className="px-3 py-1.5 rounded-lg text-[12px] font-medium bg-accent text-white hover:bg-accent/80 transition-colors"
+                  >
+                    Evaluate Again
+                  </button>
+                  {report?.updatedAt && (
+                    <span className="text-[11px] text-white/30">
+                      Updated {new Date(report.updatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                    </span>
+                  )}
+                </div>
+              )}
 
               {loading && (
                 <div className="space-y-4">
@@ -185,16 +191,6 @@ export default function RiskDrawer({ open, onClose, report, loading, evalError }
                           </div>
                         ))}
                       </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <SectionTitle icon={AlertTriangle} title="Collateral Capacity" />
-                    <div className="bg-white/[0.03] border border-border3/50 rounded-xl p-4">
-                      <p className="text-[12px] text-white/40 leading-relaxed">
-                        Collateral capacity analysis is coming soon. This section will show your portfolio's
-                        estimated collateral value and LTV ratio based on asset volatility, liquidity, and market conditions.
-                      </p>
                     </div>
                   </div>
                 </div>
