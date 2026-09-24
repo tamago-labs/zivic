@@ -151,9 +151,9 @@ export default function RiskDrawer({ open, onClose, report, loading, evalError }
                   <div>
                     <SectionTitle icon={TrendingUp} title="Market Risk" />
                     <div className="bg-white/[0.03] border border-border3/50 rounded-xl p-4 space-y-3">
-                      <ScoreBar score={report.marketRisk.equityVolatility.score} label="Equity volatility" />
-                      <ScoreBar score={report.marketRisk.sectorConcentration.score} label="Sector concentration" />
-                      <ScoreBar score={report.marketRisk.marketCorrelation.score} label="Market correlation" />
+                      <ScoreBar score={report.marketRisk?.equityVolatility?.score ?? 0} label="Equity volatility" />
+                      <ScoreBar score={report.marketRisk?.sectorConcentration?.score ?? 0} label="Sector concentration" />
+                      <ScoreBar score={report.marketRisk?.marketCorrelation?.score ?? 0} label="Market correlation" />
                     </div>
                   </div>
 

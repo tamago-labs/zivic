@@ -35,7 +35,10 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
   useEffect(() => {
     if (!walletAddress) return;
     dataClient.models.RiskEvaluation.get({ id: walletAddress }).then((res) => {
-      if (res.data) setRiskReport(res.data.report);
+      if (res.data) {
+        const report = typeof res.data.report === "string" ? JSON.parse(res.data.report) : res.data.report;
+        setRiskReport(report);
+      }
     }).catch(() => {});
   }, [walletAddress]);
 

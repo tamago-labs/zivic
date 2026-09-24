@@ -128,7 +128,7 @@ const schema = a.schema({
   RiskEvaluation: a
     .model({
       id: a.string().required(),
-      report: a.json().required(),
+      report: a.string().required(),
       overallScore: a.integer().required(),
     })
     .authorization((allow) => [allow.publicApiKey().to(["read", "create", "update"])]),

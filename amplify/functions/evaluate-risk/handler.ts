@@ -374,14 +374,14 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       if (existing.data) {
         await dataClient.models.RiskEvaluation.update({
           id: walletAddress,
-          report: report as any,
+          report: JSON.stringify(report),
           overallScore: report.overallScore,
         });
         console.log("[evaluate-risk] report updated in DB");
       } else {
         await dataClient.models.RiskEvaluation.create({
           id: walletAddress,
-          report: report as any,
+          report: JSON.stringify(report),
           overallScore: report.overallScore,
         });
         console.log("[evaluate-risk] report created in DB");
