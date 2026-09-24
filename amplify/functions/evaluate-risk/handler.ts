@@ -353,7 +353,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       [{ role: "user", content: userPrompt }],
     );
 
-    const report: RiskReport = JSON.parse(result.finalOutput ?? "{}");
+    const report: RiskReport = result.finalOutput as RiskReport;
     console.log("[evaluate-risk] report generated:", { overallScore: report.overallScore, overallLabel: report.overallLabel });
 
     try {
@@ -363,7 +363,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
       const profile = profiles?.[0];
       if (profile) {
         const inputTokens = Math.ceil(userPrompt.length / 4);
-        const outputTokens = Math.ceil((result.finalOutput ?? "").length / 4);
+        const outputTokens = Math.ceil(JSON.stringify(result.finalOutput ?? {}).length / 4);
         const creditsUsed = (inputTokens + outputTokens) * CREDIT_RATE;
         const newCredits = Math.max(0, (profile.credits ?? 0) - creditsUsed);
         await dataClient.models.UserProfile.update({
