@@ -211,7 +211,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
 
     if (!walletAddress || !holdings || !Array.isArray(holdings)) {
       console.log("[evaluate-risk] missing arguments, returning null");
-      return { report: null };
+      return null;
     }
 
     const tokenized = holdings.filter((h) => h.type === "tokenized" && h.balance > 0);
