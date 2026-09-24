@@ -357,6 +357,27 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
     console.log("[evaluate-risk] report generated:", { overallScore: report.overallScore, overallLabel: report.overallLabel });
 
     try {
+      const existing = await dataClient.models.RiskEvaluation.get({ id: walletAddress });
+      if (existing.data) {
+        await dataClient.models.RiskEvaluation.update({
+          id: walletAddress,
+          report: report as any,
+          overallScore: report.overallScore,
+        });
+        console.log("[evaluate-risk] report updated in DB");
+      } else {
+        await dataClient.models.RiskEvaluation.create({
+          id: walletAddress,
+          report: report as any,
+          overallScore: report.overallScore,
+        });
+        console.log("[evaluate-risk] report created in DB");
+      }
+    } catch (saveErr) {
+      console.error("[evaluate-risk] failed to save report:", saveErr);
+    }
+
+    try {
       const { data: profiles } = await dataClient.models.UserProfile.list({
         filter: { walletAddress: { eq: walletAddress } },
       });

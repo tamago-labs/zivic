@@ -98,7 +98,7 @@ const schema = a.schema({
       portfolioValue: a.float(),
     })
     .returns(a.json())
-    .authorization((allow) => [allow.guest()])
+    .authorization((allow) => [allow.publicApiKey()])
     .handler(a.handler.function(evaluateRiskFunction)),
 
   NewsArticle: a
@@ -118,15 +118,11 @@ const schema = a.schema({
 
   RiskEvaluation: a
     .model({
-      walletAddress: a.string().required(),
+      id: a.string().required(),
       report: a.json().required(),
       overallScore: a.integer().required(),
-      createdAt: a.datetime().required(),
     })
-    .authorization((allow) => [allow.publicApiKey().to(["read", "create"])])
-    .secondaryIndexes((index) => [
-      index("walletAddress").queryField("byRiskWallet"),
-    ]),
+    .authorization((allow) => [allow.publicApiKey().to(["read", "create", "update"])]),
 
 }).authorization((allow) => [
   allow.resource(priceTracker),
