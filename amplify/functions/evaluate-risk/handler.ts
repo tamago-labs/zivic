@@ -5,7 +5,7 @@ import { generateClient } from "aws-amplify/data";
 import { Amplify } from "aws-amplify";
 import { getAmplifyDataClientConfig } from "@aws-amplify/backend/function/runtime";
 import { env } from "$amplify/env/evaluate-risk";
-import { PROVIDER_MODEL } from "./provider";
+import { PROVIDER_MODEL, PROVIDER_BASE_URL } from "./provider";
 import { getTokenMeta, toTicker, getCryptoId, getIssuerRisk } from "./config/tokens";
 
 const { resourceConfig, libraryOptions } = await getAmplifyDataClientConfig(env as any);
@@ -16,8 +16,22 @@ Amplify.configure(resourceConfig, libraryOptions);
 
 const dataClient = generateClient<Schema>();
 
-const CMC_API_KEY = process.env.CMC_API_KEY ?? "";
+const CMC_API_KEY = env.CMC_API_KEY ?? "";
 const CMC_BASE_URL = "https://pro-api.coinmarketcap.com";
+
+let openaiClient: any;
+try {
+  const OpenAI = (await import("openai")).default;
+  openaiClient = new OpenAI({
+    apiKey: env.OPENAI_API_KEY,
+    baseURL: PROVIDER_BASE_URL,
+  });
+  const { setDefaultOpenAIClient } = await import("@openai/agents");
+  setDefaultOpenAIClient(openaiClient);
+  console.log("[evaluate-risk] OpenAI client configured with LongCat provider");
+} catch (setupErr) {
+  console.error("[evaluate-risk] failed to configure OpenAI client:", setupErr);
+}
 
 interface Holding {
   symbol: string;
