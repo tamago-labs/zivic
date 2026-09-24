@@ -13,6 +13,7 @@ import { useSolanaBalances } from '@/hooks/useSolanaBalances';
 import { useKnownTokens } from '@/hooks/useKnownTokens';
 import RiskDrawer from './RiskDrawer';
 import RebalanceDrawer from '../../portfolio/RebalanceDrawer';
+import YieldDrawer from '../../portfolio/YieldDrawer';
 import type { AppClient } from '@/components/SolanaWalletProvider';
 
 interface PortfolioStatsProps {
@@ -33,6 +34,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
   const [riskLoading, setRiskLoading] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [rebalanceDrawerOpen, setRebalanceDrawerOpen] = useState(false);
+  const [yieldDrawerOpen, setYieldDrawerOpen] = useState(false);
   const [evalError, setEvalError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -43,6 +45,11 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         if (res.data.rebalanceSuggestions) {
           try {
             report.rebalanceSuggestions = typeof res.data.rebalanceSuggestions === "string" ? JSON.parse(res.data.rebalanceSuggestions) : res.data.rebalanceSuggestions;
+          } catch {}
+        }
+        if (res.data.yieldStrategies) {
+          try {
+            report.yieldStrategies = typeof res.data.yieldStrategies === "string" ? JSON.parse(res.data.yieldStrategies) : res.data.yieldStrategies;
           } catch {}
         }
         setRiskReport({ ...report, updatedAt: res.data.updatedAt });
@@ -112,6 +119,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         marketRisk: typeof (data as any).marketRisk === "string" ? JSON.parse((data as any).marketRisk) : (data as any).marketRisk,
         tokenRisk: typeof (data as any).tokenRisk === "string" ? JSON.parse((data as any).tokenRisk) : (data as any).tokenRisk,
         rebalanceSuggestions: typeof (data as any).rebalanceSuggestions === "string" ? JSON.parse((data as any).rebalanceSuggestions) : (data as any).rebalanceSuggestions,
+        yieldStrategies: typeof (data as any).yieldStrategies === "string" ? JSON.parse((data as any).yieldStrategies) : (data as any).yieldStrategies,
       };
       setRiskReport(report);
       setDrawerOpen(true);
@@ -188,9 +196,9 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
               <button
                 onClick={handleEvaluate}
                 disabled={riskLoading}
-                className="text-[10px] text-accent hover:text-accent/80 transition-colors"
+                className={`text-[11px] font-medium text-white px-3 py-1.5 rounded-lg btn-gradient ${riskLoading ? 'loading-dots' : ''}`}
               >
-                {riskLoading ? 'Evaluating...' : 'Evaluate'}
+                {riskLoading ? 'Evaluating' : 'Evaluate'}
               </button>
             )}
           </div>
@@ -211,6 +219,14 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
                   className="text-[12px] text-accent hover:text-accent/80 transition-colors inline-flex items-center gap-1"
                 >
                   Rebalance Suggestions <ArrowRight className="w-3 h-3" />
+                </button>
+              )}
+              {riskReport?.yieldStrategies && (
+                <button
+                  onClick={() => setYieldDrawerOpen(true)}
+                  className="text-[12px] text-accent hover:text-accent/80 transition-colors inline-flex items-center gap-1"
+                >
+                  Yield Strategies <ArrowRight className="w-3 h-3" />
                 </button>
               )}
             </div>
@@ -255,6 +271,11 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         open={rebalanceDrawerOpen}
         onClose={() => setRebalanceDrawerOpen(false)}
         suggestions={riskReport?.rebalanceSuggestions ?? null}
+      />
+      <YieldDrawer
+        open={yieldDrawerOpen}
+        onClose={() => setYieldDrawerOpen(false)}
+        strategies={riskReport?.yieldStrategies ?? null}
       />
     </>
   );
