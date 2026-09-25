@@ -66,22 +66,10 @@ Zivic aggregates data from multiple sources to provide comprehensive tokenized e
 
 | Source | Data | Coverage |
 |--------|------|----------|
-| **CoinMarketCap Pro** | Price, market cap, volume, % changes, OHLCV | All tokenized stocks (xStocks, Ondo) |
+| **CoinMarketCap Pro** | Price, market cap, volume, % changes, OHLCV, RWA endpoints | All tokenized stocks (xStocks, Ondo) |
 | **PreStocks API** | Mark price, token price, valuations, supply | All pre-IPO tokens |
 | **Kamino** | Lending APY, borrow rates, utilization | 8 tokenized stock markets |
 | **Byreal** | LP APR, TVL, trading volume | 12 tokenized stock pools |
-
-### CoinMarketCap Pro
-
-The primary market data source for tokenized stocks. The Price Tracker fetches latest quotes every hour for all configured tokens, storing price, market cap, 24h volume, and percentage changes (1h, 24h, 7d, 30d). OHLCV historical data powers the price charts on token detail pages.
-
-### PreStocks API
-
-Source of truth for pre-IPO token valuations. The PreStock Tracker pulls latest data every 6 hours, capturing mark price (private market reference), token price (on-chain trading price), mark valuation, implied valuation, and circulating supply. Premium/discount is computed from the spread between token price and mark price.
-
-### Kamino & Byreal
-
-DeFi yield data sources. Kamino provides lending market APY and borrow rates for 8 tokenized stock markets. Byreal provides liquidity pool APR and TVL data for 12 tokenized stock pools. Both are used by the Yield Strategist agent to recommend earn and borrow-to-accumulate strategies.
 
 ## AI Agents
 
@@ -159,6 +147,28 @@ npm run dev
 # or
 pnpm dev
 ```
+
+## AI Credits
+
+Zivic uses an AI credits system to power on-demand analysis. Each wallet can claim **1,000 free AI credits** to get started.
+
+### How Credits Work
+
+Credits are consumed when running AI-powered operations:
+- **Risk Evaluation** — consumes credits based on input/output token usage across the 3-turn analysis pipeline
+- **AI Chat** — each message in the multi-agent chat system consumes credits based on model token usage
+
+### Planned Pricing Tiers
+
+Zivic is currently free. As we scale, usage-based pricing will be introduced:
+
+| Plan | Price | Credits | Savings |
+|------|-------|---------|---------|
+| **Starter** | $5 | 1,000 | — |
+| **Pro** | $20 | 5,000 | 20% |
+| **Power** | $50 | 15,000 | 50% |
+
+Priced in USD, payable in SOL. Credits never expire.
 
 ## Tech Stack
 
