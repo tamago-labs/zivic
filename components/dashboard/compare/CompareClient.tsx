@@ -276,10 +276,10 @@ export default function CompareClient() {
       bySymbol.get(item.symbol)!.push(item);
     }
     const map = new Map<string, any>();
-    for (const [sym, items] of bySymbol) {
+    bySymbol.forEach((items, sym) => {
       items.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
       map.set(sym, { first: items[0], latest: items[items.length - 1] });
-    }
+    });
     return map;
   }, [preStocks]);
 
