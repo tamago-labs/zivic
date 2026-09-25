@@ -43,7 +43,8 @@ export default function PriceChart({ token }: { token: Token }) {
       timeStart: start.toISOString(),
       timeEnd: end.toISOString(),
     }).then((res: any) => {
-      setCandles(res?.data ?? []);
+      const parsed = typeof res?.data === 'string' ? JSON.parse(res.data) : res;
+      setCandles(parsed?.data ?? []);
     }).catch(() => {
       setCandles([]);
     }).finally(() => {
