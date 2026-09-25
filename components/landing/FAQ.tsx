@@ -34,10 +34,6 @@ const faqs = [
     q: 'What are Yield & DeFi opportunities?',
     a: 'Zivic shows you how to earn yield on tokens you hold via Kamino lending and Byreal liquidity pools, with real-time APY and APR data.',
   },
-  {
-    q: 'Can I compare tokens?',
-    a: 'Yes. The Compare page lets you pick any two tokens (tokenized or pre-IPO) and see them side-by-side: price, market cap, volume, issuer, yield, and more.',
-  },
 ];
 
 export default function FAQ() {
