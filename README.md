@@ -4,22 +4,20 @@
 
 ## Highlighted Features
 
-- **Live on Solana Mainnet** — real on-chain transactions for acquiring tokenized stocks (xStocks, Ondo) and PreStocks via OKX DEX Router
+- **Live on Solana Mainnet** — real on-chain transactions for acquiring tokenized stocks (xStocks, Ondo) and PreStocks (pre-IPO tokens) via OKX DEX Router
 - **AI Risk Engine** — evaluates portfolios across three dimensions: concentration risk, market risk (equity volatility, sector concentration), and token/liquidity risk (issuer quality, trading volume), producing a 0-100 risk score
 - **Multi-Agent AI System** — triage routing to specialized agents: Trade Specialist, Risk Evaluator, Rebalance Advisor, and Yield Strategist
-- **Portfolio Tracking** — connects to your Solana wallet and reads on-chain holdings across tokenized stocks (xStocks by Backed Assets, Ondo Stocks) and PreStocks (private company tokens)
+- **Portfolio Tracking** — connects to your Solana wallet and reads on-chain holdings across tokenized stocks (xStocks by Backed Assets, Ondo Stocks) and PreStocks (pre-IPO equity tokens)
 - **DeFi Yield Discovery** — shows available yield opportunities via Kamino lending and Byreal liquidity pools with real-time APY and APR data
-- **Token Comparison** — side-by-side comparison of any two tokens (tokenized or pre-IPO) across price, market cap, volume, issuer, yield, and more
-- **Pre-IPO Discovery** — tracks PreStocks (Anthropic, OpenAI, SpaceX, Neuralink, and more) with independently attested supply verification by BlockOffice (ACCA-certified)
+- **CoinMarketCap Pro Market Analytics** — indexes all Solana tokenized stocks and enriches with CoinMarketCap Pro market data for direct asset evaluation and portfolio decisions
+- **Frontier AI Research** — empowers AWS Lambda serverless functions to analyze all tokens, summarizing risk, valuation, and on-chain fundamentals at scale
 
 ## System Overview
 
 The system comprises 3 main components designed for scalability and comprehensive tokenized equity analysis:
 
 - **Next.js Frontend (App Router)** — The main interface where users access portfolio tracking, risk analysis, token exploration, pre-IPO discovery, side-by-side comparison, and AI chat. The dashboard reads on-chain wallet data, displays live market metrics from CoinMarketCap, and visualizes AI-generated risk reports and recommendations.
-
 - **AWS Amplify Backend** — Handles data persistence, serverless compute, and scheduled data ingestion. DynamoDB stores price snapshots, pre-_stock valuations, risk evaluations, and user sessions. Lambda functions run scheduled trackers for market data, PreStock valuations, and AI-powered analysis agents.
-
 - **AI Agent System** — Powered by the OpenAI Agents SDK with a multi-agent architecture. A Triage Agent routes user requests to specialized agents, each with distinct tools and context. Agents have access to real-time market data, on-chain balances, OKX DEX routing, and yield protocol data.
 
 The architecture enables continuous data ingestion from multiple sources (CoinMarketCap Pro, PreStocks API, Kamino, Byreal), AI analysis on demand, and real-time portfolio tracking through a unified dashboard. Trade execution occurs on Solana Mainnet with user approval at every step.
@@ -32,7 +30,7 @@ The dashboard provides a comprehensive interface for tokenized equity analysis:
 
 - **Explore** — Browse all tokenized stocks on Solana with real-time price, market cap, volume, and percentage changes from CoinMarketCap data. Filter by issuer (xStock/Ondo), sector, or metric.
 
-- **Pre-IPO** — Discover pre-IPO tokens (PreStocks) with mark price, implied valuation, premium/discount, and 24h change. Each token includes company metadata and attestation status.
+- **Pre-IPO** — Discover pre-IPO tokens (PreStocks) with mark price, implied valuation, premium/discount, and 24h change. Each token includes company metadata with a built-in trade widget enables direct swaps via OKX DEX Router.
 
 - **Compare** — Select any two tokens (tokenized or pre-IPO) for side-by-side comparison across price, market cap, volume, supply, yield (Kamino/Byreal), mark price, and premium.
 
@@ -52,7 +50,7 @@ Zivic's backend uses **AWS Amplify Gen 2** with serverless functions, DynamoDB t
 ### Scheduled Trackers
 
 - **Price Tracker** — Fetches market data from CoinMarketCap Pro for all configured tokenized stocks. Stores price, market cap, volume, and percentage changes. Runs every hour.
-- **PreStock Tracker** — Pulls latest valuations from PreStocks API for pre-IPO tokens. Updates markPrice, tokenPrice, markValuation, impliedValuation, and supply. Runs every 6 hours.
+- **PreStock Tracker** — Pulls latest valuations from PreStocks API for pre-IPO tokens. Updates markPrice, tokenPrice, markValuation, impliedValuation, and supply. Runs every hour.
 
 ### Lambda Functions
 
@@ -61,6 +59,29 @@ Zivic's backend uses **AWS Amplify Gen 2** with serverless functions, DynamoDB t
 - **Balance API** — Fetches on-chain SPL token balances for connected wallets.
 - **OHLCV API** — Retrieves historical price data from CoinMarketCap for chart rendering.
 - **OKX Swap** — Handles quote fetching and swap instruction building via OKX DEX Router.
+
+## Data Sources
+
+Zivic aggregates data from multiple sources to provide comprehensive tokenized equity coverage:
+
+| Source | Data | Coverage |
+|--------|------|----------|
+| **CoinMarketCap Pro** | Price, market cap, volume, % changes, OHLCV | All tokenized stocks (xStocks, Ondo) |
+| **PreStocks API** | Mark price, token price, valuations, supply | All pre-IPO tokens |
+| **Kamino** | Lending APY, borrow rates, utilization | 8 tokenized stock markets |
+| **Byreal** | LP APR, TVL, trading volume | 12 tokenized stock pools |
+
+### CoinMarketCap Pro
+
+The primary market data source for tokenized stocks. The Price Tracker fetches latest quotes every hour for all configured tokens, storing price, market cap, 24h volume, and percentage changes (1h, 24h, 7d, 30d). OHLCV historical data powers the price charts on token detail pages.
+
+### PreStocks API
+
+Source of truth for pre-IPO token valuations. The PreStock Tracker pulls latest data every 6 hours, capturing mark price (private market reference), token price (on-chain trading price), mark valuation, implied valuation, and circulating supply. Premium/discount is computed from the spread between token price and mark price.
+
+### Kamino & Byreal
+
+DeFi yield data sources. Kamino provides lending market APY and borrow rates for 8 tokenized stock markets. Byreal provides liquidity pool APR and TVL data for 12 tokenized stock pools. Both are used by the Yield Strategist agent to recommend earn and borrow-to-accumulate strategies.
 
 ## AI Agents
 
@@ -118,7 +139,7 @@ OKX_API_KEY=your_okx_api_key
 OKX_SECRET_KEY=your_okx_secret_key
 OKX_PASSPHRASE=your_okx_passphrase
 
-# AI Provider (LongCat-2.0 compatible)
+# AI Provider
 OPENAI_API_KEY=your_openai_api_key
 
 # Solana
