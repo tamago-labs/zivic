@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 import { generateClient } from 'aws-amplify/data';
@@ -33,8 +34,9 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
   const [riskReport, setRiskReport] = useState<any>(null);
   const [riskLoading, setRiskLoading] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [rebalanceDrawerOpen, setRebalanceDrawerOpen] = useState(false);
+const [rebalanceDrawerOpen, setRebalanceDrawerOpen] = useState(false);
   const [yieldDrawerOpen, setYieldDrawerOpen] = useState(false);
+  const [evalModalOpen, setEvalModalOpen] = useState(false);
   const [evalError, setEvalError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -56,6 +58,12 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
       }
     }).catch(() => {});
   }, [walletAddress]);
+
+  const handleEvaluateAgain = () => {
+    setDrawerOpen(false);
+    setEvalModalOpen(true);
+    handleEvaluate();
+  };
 
   const handleEvaluate = async () => { 
     if (!walletAddress) return;
@@ -264,7 +272,7 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         report={riskReport}
         loading={riskLoading}
         evalError={evalError}
-        onEvaluate={handleEvaluate}
+        onEvaluate={handleEvaluateAgain}
       />
       <RebalanceDrawer
         open={rebalanceDrawerOpen}
@@ -276,6 +284,43 @@ export default function PortfolioStats({ balances, knownTokens, loading, knownLo
         onClose={() => setYieldDrawerOpen(false)}
         strategies={riskReport?.yieldStrategies ?? null}
       />
+
+      <AnimatePresence>
+        {evalModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center"
+          >
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setEvalModalOpen(false)} />
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative bg-surface border border-border3/50 rounded-2xl p-8 max-w-sm w-full mx-4 text-center"
+            >
+              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  className="w-6 h-6 border-2 border-accent border-t-transparent rounded-full"
+                />
+              </div>
+              <h3 className="text-[16px] font-display font-semibold text-white/90 mb-2">New Evaluation In Progress</h3>
+              <p className="text-[13px] text-white/50 leading-relaxed mb-6">
+                AI is analyzing your portfolio across risk, rebalancing, and yield opportunities. This usually takes 2-3 minutes.
+              </p>
+              <button
+                onClick={() => setEvalModalOpen(false)}
+                className="w-full py-2.5 rounded-xl bg-accent text-sm font-medium text-white hover:bg-accent/80 transition-colors"
+              >
+                Close
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

@@ -8,23 +8,35 @@ import Section from './Section';
 const faqs = [
   {
     q: 'What is Zivic?',
-    a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    a: 'Zivic is an AI-powered risk engine for tokenized equities on Solana. It analyzes your portfolio across concentration, market volatility, and token liquidity to give you a risk score and actionable recommendations.',
   },
   {
     q: 'How does Zivic personalize my experience?',
-    a: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    a: 'Zivic connects to your wallet, reads your on-chain holdings, and uses your portfolio composition to power AI analysis. Risk scores, rebalancing suggestions, and yield opportunities are all tailored to the assets you actually hold.',
   },
   {
     q: 'What are tokenized stocks?',
-    a: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    a: 'Tokenized stocks are on-chain tokens backed by real-world equities. On Solana, xStocks (by Backed Assets) and Ondo Stocks track stocks like NVIDIA, Apple, Tesla, and Circle. Zivic tracks prices, market cap, and volume via CoinMarketCap data.',
   },
   {
     q: 'What are PreStocks?',
-    a: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    a: 'PreStocks are tokens representing economic exposure to private companies (pre-IPO) like Anthropic, OpenAI, SpaceX, and Neuralink. Each PreStock is independently attested by BlockOffice (ACCA-certified) to verify token supply against offchain backing.',
   },
   {
     q: 'How do credits work?',
-    a: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.',
+    a: 'Zivic uses AI credits to power analysis. Running a risk evaluation or asking complex questions consumes credits based on token usage. You can purchase credits via the dashboard.',
+  },
+  {
+    q: 'What is the AI Risk Engine?',
+    a: 'The Risk Engine evaluates your portfolio across three dimensions: concentration risk (position sizing), market risk (equity volatility, sector concentration), and token/liquidity risk (issuer quality, trading volume). It produces a 0-100 risk score.',
+  },
+  {
+    q: 'What are Yield & DeFi opportunities?',
+    a: 'Zivic shows you how to earn yield on tokens you hold via Kamino lending and Byreal liquidity pools, with real-time APY and APR data.',
+  },
+  {
+    q: 'Can I compare tokens?',
+    a: 'Yes. The Compare page lets you pick any two tokens (tokenized or pre-IPO) and see them side-by-side: price, market cap, volume, issuer, yield, and more.',
   },
 ];
 
