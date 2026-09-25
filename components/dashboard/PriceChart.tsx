@@ -42,8 +42,8 @@ export default function PriceChart({ token }: { token: Token }) {
       interval: tf.interval,
       timeStart: start.toISOString(),
       timeEnd: end.toISOString(),
-    }).then((res) => {
-      setCandles(res.data?.data ?? []);
+    }).then((res: any) => {
+      setCandles(res?.data ?? []);
     }).catch(() => {
       setCandles([]);
     }).finally(() => {
