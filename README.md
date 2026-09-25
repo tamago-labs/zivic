@@ -68,6 +68,8 @@ Zivic aggregates data from multiple sources to provide comprehensive tokenized e
 |--------|------|----------|
 | **CoinMarketCap Pro** | Price, market cap, volume, % changes, OHLCV, RWA endpoints | All tokenized stocks (xStocks, Ondo) |
 | **PreStocks API** | Mark price, token price, valuations, supply | All pre-IPO tokens |
+| **Google News RSS** | Latest financial and crypto news | Tokenized stock news |
+| **Yahoo Finance RSS** | Market news and analysis | Broader market context |
 | **Kamino** | Lending APY, borrow rates, utilization | 8 tokenized stock markets |
 | **Byreal** | LP APR, TVL, trading volume | 12 tokenized stock pools |
 

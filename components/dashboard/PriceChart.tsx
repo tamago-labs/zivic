@@ -2,7 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createChart, ColorType, CandlestickSeries, type UTCTimestamp } from "lightweight-charts";
+import { generateClient } from "aws-amplify/data";
+import type { Schema } from "@/amplify/data/resource";
 import type { Token } from "@/lib/types/token";
+
+const dataClient = generateClient<Schema>();
 
 type Timeframe = "1D" | "7D" | "30D" | "90D";
 
@@ -32,21 +36,19 @@ export default function PriceChart({ token }: { token: Token }) {
     const tf = timeframes.find((t) => t.key === timeframe)!;
     const end = new Date();
     const start = new Date(end.getTime() - tf.hours * 60 * 60 * 1000);
-    const url = `/api/ohlcv?crypto_id=${token.crypto_id}&interval=${tf.interval}&time_start=${encodeURIComponent(start.toISOString())}&time_end=${encodeURIComponent(end.toISOString())}`;
 
-    fetch(url, { signal: controller.signal })
-      .then((r) => r.json())
-      .then((json) => {
-        setCandles(json.data ?? []);
-      })
-      .catch((err) => {
-        if (err.name !== "AbortError") {
-          setCandles([]);
-        }
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    dataClient.queries.ohlcvFetcher({
+      cryptoId: String(token.crypto_id),
+      interval: tf.interval,
+      timeStart: start.toISOString(),
+      timeEnd: end.toISOString(),
+    }).then((res) => {
+      setCandles(res.data?.data ?? []);
+    }).catch(() => {
+      setCandles([]);
+    }).finally(() => {
+      setLoading(false);
+    });
 
     return () => {
       if (fetchedRef.current !== key) controller.abort();

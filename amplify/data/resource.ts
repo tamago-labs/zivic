@@ -3,6 +3,7 @@ import { priceTracker } from "../functions/price-tracker/resource";
 import { chatApiFunction } from "../functions/chat-api/resource";
 import { prestockTracker } from "../functions/prestock-tracker/resource";
 import { evaluateRiskFunction } from "../functions/evaluate-risk/resource";
+import { ohlcvFetcherFunction } from "../functions/ohlcv-fetcher/resource";
 
 const schema = a.schema({
   PriceSnapshot: a
@@ -111,6 +112,18 @@ const schema = a.schema({
     .returns(a.ref("RiskReportType"))
     .authorization((allow) => [allow.publicApiKey()])
     .handler(a.handler.function(evaluateRiskFunction)),
+
+  ohlcvFetcher: a
+    .query()
+    .arguments({
+      cryptoId: a.string(),
+      interval: a.string(),
+      timeStart: a.string(),
+      timeEnd: a.string(),
+    })
+    .returns(a.json())
+    .authorization((allow) => [allow.publicApiKey()])
+    .handler(a.handler.function(ohlcvFetcherFunction)),
 
   NewsArticle: a
     .model({
