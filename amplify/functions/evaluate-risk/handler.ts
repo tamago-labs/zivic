@@ -413,15 +413,7 @@ export const handler: Schema["evaluateRisk"]["functionHandler"] = async (event) 
             issuerRisk: z.string(),
           })
         ),
-      }),
-      rebalanceSuggestions: z.array(
-        z.object({
-          action: z.enum(["reduce", "add", "diversify", "hedge"]),
-          symbol: z.string(),
-          reason: z.string(),
-          suggestedAllocation: z.number(),
-        })
-      ).optional(),
+      })
     });
 
     const session = new MemorySession();

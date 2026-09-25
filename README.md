@@ -71,6 +71,8 @@ Zivic aggregates data from multiple sources to provide comprehensive tokenized e
 | **Kamino** | Lending APY, borrow rates, utilization | 8 tokenized stock markets |
 | **Byreal** | LP APR, TVL, trading volume | 12 tokenized stock pools |
 
+We use CoinMarketCap's new **RWA endpoints** to fetch company information, enriching each token with metadata like sector, issuer, and exchange listing.
+
 ## AI Agents
 
 Zivic uses a **multi-agent architecture** powered by the OpenAI Agents SDK. Agents communicate through a shared session memory, enabling context passing across analysis turns.
@@ -150,25 +152,9 @@ pnpm dev
 
 ## AI Credits
 
-Zivic uses an AI credits system to power on-demand analysis. Each wallet can claim **1,000 free AI credits** to get started.
+Zivic uses an AI credits system to power on-demand analysis. Each wallet can claim **1,000 free AI credits** to get started — no purchase required. Credits are consumed when running AI-powered operations: risk evaluations consume based on input/output token usage across the 3-turn analysis pipeline, and each chat message in the multi-agent system consumes based on model token usage.
 
-### How Credits Work
-
-Credits are consumed when running AI-powered operations:
-- **Risk Evaluation** — consumes credits based on input/output token usage across the 3-turn analysis pipeline
-- **AI Chat** — each message in the multi-agent chat system consumes credits based on model token usage
-
-### Planned Pricing Tiers
-
-Zivic is currently free. As we scale, usage-based pricing will be introduced:
-
-| Plan | Price | Credits | Savings |
-|------|-------|---------|---------|
-| **Starter** | $5 | 1,000 | — |
-| **Pro** | $20 | 5,000 | 20% |
-| **Power** | $50 | 15,000 | 50% |
-
-Priced in USD, payable in SOL. Credits never expire.
+Zivic is currently free for all users. As we scale, usage-based pricing will be introduced so you only pay for the AI analysis you actually use. All AI operations deduct credits at a fixed rate of **$0.05 per 1,000 tokens** (input + output).
 
 ## Tech Stack
 
