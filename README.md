@@ -2,6 +2,11 @@
 
 **Zivic** is an AI-powered risk engine for **tokenized equities on Solana** that transforms on-chain stock tokens into productive, analyzable assets. It evaluates portfolio risk across concentration, market volatility, and token liquidity dimensions, then delivers actionable rebalancing suggestions and yield opportunities through a multi-agent AI system. Trade execution happens directly on **Solana Mainnet** via the OKX DEX Router.
 
+## Quick Links
+
+* **YouTube Demo (3 min)** — https://youtu.be/00rSwTwFMFw
+* **Live Demo** — https://zivic.tamagolabs.com
+
 ## Highlighted Features
 
 - **Live on Solana Mainnet** — real on-chain transactions for acquiring tokenized stocks (xStocks, Ondo) and PreStocks (pre-IPO tokens) via OKX DEX Router
